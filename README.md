@@ -29,5 +29,6 @@
 
 ## Stretch
 
+- blockage support
 - Sub-projects (global vs current sp)
 - can sell extra crops to a market for coins, and use coins for some real life action (eg. planting a real tree)
