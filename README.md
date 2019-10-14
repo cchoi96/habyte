@@ -10,6 +10,7 @@
   - see project life and progress
     - Commit history
     - % tasks completed
+- drag and drop / sockets
 - visual representation of progress
   - progress bar
   - some graph / chart
@@ -20,7 +21,7 @@
     - make transition fun
   - once finished, should be a visual celebration / confirmation
   - gets added to inventory
-  - can add crops from inventory to farm plot (3x3)
+  - new crops are added immediately to farm plot, extras are kept in inventory
 
 ## Tech Stack
 
@@ -32,3 +33,27 @@
 - blockage support
 - Sub-projects (global vs current sp)
 - can sell extra crops to a market for coins, and use coins for some real life action (eg. planting a real tree)
+
+## Components
+
+- App
+- Login
+- Navigation
+- ProjectList
+  - ProjectListItem
+- TrelloBoard
+  - TrelloBoardColumn
+    - ColumnTitle
+    - ColumnList
+      - ColumnListItem
+- Farm
+  - FarmList
+    - FarmListItem
+  - FarmBoard
+  - Crop
+- Footer
+- Add
+- Delete
+- Edit
+- Loading
+- Error
