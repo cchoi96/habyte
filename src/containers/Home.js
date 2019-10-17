@@ -1,5 +1,6 @@
 import React from "react";
 import ProjectList from "./ProjectList";
+import Farm from "./Farm";
 import Footer from "../components/Footer";
 
 const Home = () => {
@@ -26,8 +27,8 @@ const Home = () => {
     <div>
       {/* <Navigation /> */}
       <ProjectList array={fakeData} />
-      {/* <ProjectBoard />
-      <Farm /> */}
+      {/* <ProjectBoard /> */}
+      <Farm />
       <Footer />
     </div>
   );
