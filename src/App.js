@@ -8,6 +8,7 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
+        <Route path={"/verify"} component={Login} />
         <Route path={"/:username"} component={Home} />
         <Route path={"/"} component={Login} />
       </Switch>
