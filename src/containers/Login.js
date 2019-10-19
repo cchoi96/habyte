@@ -9,6 +9,9 @@ const Login = () => {
   const [token, setToken] = useState(null);
 
   useEffect(() => {
+    fetch("http://0.0.0.0:8080/").then(res =>
+      res.json().then(data => console.log(data[0]))
+    );
     const code =
       window.location.href.match(/\\?code=(.*)/) &&
       window.location.href.match(/\\?code=(.*)/)[1];
