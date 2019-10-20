@@ -1,11 +1,16 @@
 import React from "react";
 
-const ProjectListItem = ({ projectName, projectCropImage, projectStatus }) => {
+const ProjectListItem = ({
+  projectName,
+  projectCropImage,
+  projectStatus,
+  className
+}) => {
   return (
-    <li>
-      <p>{projectName}</p>
+    <li className={className}>
+      <p className="projectName">{projectName}</p>
       <img src={projectCropImage} alt={projectName} />
-      <p>{projectStatus}</p>
+      <p className="projectStatus">{projectStatus}</p>
     </li>
   );
 };

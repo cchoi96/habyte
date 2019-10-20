@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Login from "./containers/Login";
+import ProjectList from "./containers/ProjectList";
 import Home from "./containers/Home";
 
 function App() {
