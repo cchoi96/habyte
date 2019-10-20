@@ -50,6 +50,10 @@ const StyledProjectList = styled(ProjectList)`
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
+
+  @media (min-width: 480px) {
+    flex-direction: column;
+  }
 `;
 
 export default Home;
