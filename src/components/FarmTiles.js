@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-const FarmTiles = ({ img }) => {
-  return <StyledImage src={img} />;
+const FarmTiles = props => {
+  return <StyledImage className={props.className} src={props.img} />;
 };
 
 const StyledImage = styled.img`
