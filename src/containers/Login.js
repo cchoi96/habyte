@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import DummyProjects from "./DummyProjects";
 import Footer from "../components/Footer";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
+import { history } from "../App";
 
 const CLIENT_ID = "9eef6e17d66411722d42";
 const REDIRECT_URI = "http://localhost:3000/verify";
@@ -15,6 +17,9 @@ const Login = ({ setRepos, repos, setStatus }) => {
       .then(res => {
         let result = res.data;
         setRepos(result);
+      })
+      .then(() => {
+        history.push("/home");
       });
   };
 
@@ -29,7 +34,7 @@ const Login = ({ setRepos, repos, setStatus }) => {
     }
   }, [repos]);
 
-  return !repos ? (
+  return (
     <div className="Login">
       <h1>Welcome to Codeville!</h1>
       <a
@@ -39,8 +44,6 @@ const Login = ({ setRepos, repos, setStatus }) => {
       </a>
       <Footer />
     </div>
-  ) : (
-    <DummyProjects repos={repos} />
   );
 };
 

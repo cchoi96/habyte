@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
+import createHistory from 'history/createBrowserHistory';
 import "./App.css";
 import Login from "./containers/Login";
 import ProjectList from "./containers/ProjectList";
 import Home from "./containers/Home";
+export const history = createHistory();
 
 function App() {
   const [status, setStatus] = useState("initial");
   const [repos, setRepos] = useState([]);
 
   return (
-    <BrowserRouter>
+    <Router history={history}>
       <Switch>
         <Route
           path={"/verify"}
@@ -24,10 +26,10 @@ function App() {
             />
           )}
         />
-        <Route path={"/:username"} component={Home} />
+        <Route path={"/home"} component={Home} />
         <Route path={"/"} component={Login} />
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
 }
 
