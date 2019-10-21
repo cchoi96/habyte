@@ -26,10 +26,11 @@ const ProjectList = ({ array, className }) => {
   }, [array]);
 
   const onSortEnd = ({ oldIndex, newIndex }) => {
-    setProjectList(arrayMove(array, oldIndex, newIndex));
+    setProjectList(arrayMove(projectList, oldIndex, newIndex));
   };
 
   let projectListItems = projectList.map((item, index) => {
+    console.log("Building item ==> ", item, index);
     return (
       <SortableItem
         key={`item-${item.name}`}
@@ -41,13 +42,17 @@ const ProjectList = ({ array, className }) => {
     );
   });
   return (
-    <StyledSortableContainer onSortEnd={onSortEnd}>
+    <StyledSortableContainer
+      style={{ border: "1px solid black" }}
+      onSortEnd={onSortEnd}
+    >
       {projectListItems}
     </StyledSortableContainer>
   );
 };
 
 const StyledProjectListItem = styled(ProjectListItem)`
+  border: 1px solid black;
   width: 30%;
   margin: 30px;
   padding:
@@ -67,6 +72,7 @@ const StyledProjectListItem = styled(ProjectListItem)`
 
 const StyledSortableContainer = styled(SortableContainer)`
   border: 1px solid black;
+  list-style-type: none;
 `;
 
 export default ProjectList;
