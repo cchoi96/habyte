@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import ProjectList from "./ProjectList";
 import Farm from "./Farm";
 import Footer from "../components/Footer";
@@ -6,38 +6,26 @@ import styled from "styled-components";
 import axios from "axios";
 
 const Home = () => {
-  const fakeData = [
-    {
-      name: "final_project",
-      crop: "/Blueberry_Stage_1.png",
-      status: "completed"
-    },
-    {
-      name: "midterm_project",
-      crop: "https://stardewvalleywiki.com/mediawiki/images/c/c2/Grape.png",
-      status: "in progress"
-    },
-    {
-      name: "react_project",
-      crop: "https://stardewvalleywiki.com/mediawiki/images/1/19/Melon.png",
-      status: "dead"
-    },
-    {
-      name: "sleeping",
-      crop: "https://stardewvalleywiki.com/mediawiki/images/8/81/Sunflower.png",
-      status: "completed"
-    }
-  ];
-
+  const [projectList, setProjectList] = useState([]);
+  const [id, setId] = useState(0);
   useEffect(() => {
-    axios.get("http://0.0.0.0:8080/username/projects").then(res => {
-      console.log("projects.........", res);
-    });
-  }, []);
+    axios
+      .post("http://0.0.0.0:8080/projects", {
+        github_id: "github_gary"
+      })
+      .then(res => {
+        console.log("Selected user projects.........", res.data);
+        console.log(JSON.stringify(res.data) !== JSON.stringify(projectList));
+        if (JSON.stringify(res.data) !== JSON.stringify(projectList)) {
+          setId(id + 1);
+          setProjectList(res.data);
+        }
+      });
+  }, [id]);
 
   return (
     <div>
-      <StyledProjectList array={fakeData} />
+      <StyledProjectList array={projectList} />
       <Footer />
     </div>
   );

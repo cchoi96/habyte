@@ -7,8 +7,8 @@ const ProjectList = ({ array, className }) => {
     return (
       <StyledProjectListItem
         projectName={item.name}
-        projectCropImage={item.crop}
-        projectStatus={item.status}
+        projectCropImage={item.crop_id}
+        // projectStatus={item.status}
       />
     );
   });
