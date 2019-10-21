@@ -5,6 +5,7 @@ import "./App.css";
 import Login from "./containers/Login";
 import ProjectList from "./containers/ProjectList";
 import Home from "./containers/Home";
+import DummyProjects from "./containers/DummyProjects";
 export const history = createHistory();
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           )}
         />
         <Route path={"/home"} component={Home} />
+        <Route path={"/project-selection"} component={DummyProjects} />
         <Route path={"/"} component={Login} />
       </Switch>
     </Router>
