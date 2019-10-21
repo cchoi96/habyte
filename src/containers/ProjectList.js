@@ -4,12 +4,18 @@ import ProjectListItem from "./ProjectListItem";
 import { sortableContainer, sortableElement } from "react-sortable-hoc";
 import arrayMove from "array-move";
 
-const SortableItem = sortableElement(({ value }) => (
-  <div style={{ width: "30%", margin: "100px" }}>{value}</div>
-));
+const SortableItem = sortableElement(
+  ({ projectName, projectCropImage, projectStatus }) => (
+    <StyledProjectListItem
+      projectName={projectName}
+      projectCropImage={projectCropImage}
+      projectStatus={projectStatus}
+    />
+  )
+);
 
 const SortableContainer = sortableContainer(({ children }) => {
-  return <div style={{ width: "30%" }}>{children}</div>;
+  return <ul>{children}</ul>;
 });
 
 const ProjectList = ({ array, className }) => {
@@ -28,13 +34,9 @@ const ProjectList = ({ array, className }) => {
       <SortableItem
         key={`item-${item.name}`}
         index={index}
-        value={
-          <StyledProjectListItem
-            projectName={item.name}
-            projectCropImage={item.name}
-            projectStatus={item.status}
-          />
-        }
+        projectName={item.name}
+        projectCropImage="/"
+        projectStatus={item.status}
       ></SortableItem>
     );
   });
@@ -47,7 +49,8 @@ const ProjectList = ({ array, className }) => {
 
 const StyledProjectListItem = styled(ProjectListItem)`
   width: 30%;
-  justify-content: center;
+  margin: 30px;
+  padding:
   list-style-type: none;
   .projectName {
     font-size: 1.5em;
@@ -63,7 +66,7 @@ const StyledProjectListItem = styled(ProjectListItem)`
 `;
 
 const StyledSortableContainer = styled(SortableContainer)`
-  display: flex;
+  border: 1px solid black;
 `;
 
 export default ProjectList;
