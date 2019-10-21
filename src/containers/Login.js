@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
-import DummyProjects from "./DummyProjects";
 import Footer from "../components/Footer";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
 import { history } from "../App";
 
 const CLIENT_ID = "9eef6e17d66411722d42";
@@ -15,7 +13,6 @@ const Login = ({ setRepos, repos, setStatus }) => {
         code
       })
       .then(res => {
-        console.log("res inside react", res);
         if (res.data) {
           let result = res.data;
           setRepos(result);
@@ -25,9 +22,6 @@ const Login = ({ setRepos, repos, setStatus }) => {
           return history.push("/home");
         }
       });
-    // .then(() => {
-    //   history.push("/project-selection");
-    // });
   };
 
   useEffect(() => {

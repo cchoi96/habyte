@@ -37,9 +37,7 @@ const Home = () => {
 
   return (
     <div>
-      {/* <Navigation /> */}
       <StyledProjectList array={fakeData} />
-      {/* <ProjectBoard /> */}
       <Footer />
     </div>
   );
