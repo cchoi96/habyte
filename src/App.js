@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Login from "./containers/Login";
 import Home from "./containers/Home";
+import TrelloBoard from "./containers/TrelloBoard";
 
 function App() {
   const [status, setStatus] = useState("initial");
@@ -24,7 +25,17 @@ function App() {
           )}
         />
         <Route path={"/:username"} component={Home} />
-        <Route path={"/"} component={Login} />
+        <Route
+          path={"/"}
+          render={props => (
+            <TrelloBoard
+              columns={[
+                { title: "Column Title", list: ["task1", "task2", "task3"] },
+                { title: "Column Title2", list: ["task1", "task2", "task3"] }
+              ]}
+            />
+          )}
+        />
       </Switch>
     </BrowserRouter>
   );
