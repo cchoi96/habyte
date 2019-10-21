@@ -5,12 +5,12 @@ import Footer from "../components/Footer";
 import styled from "styled-components";
 import axios from "axios";
 
-const Home = ({ github_id }) => {
+const Home = ({ cookies }) => {
   const [projectList, setProjectList] = useState([]);
   useEffect(() => {
     axios
       .post("http://0.0.0.0:8080/projects", {
-        github_id
+        github_id: cookies.github_id
       })
       .then(res => {
         console.log("Selected user projects.........", res.data);

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Footer from "../components/Footer";
-import ProjeectSelectionItems from "../containers/ProjectSelectionItems";
+import ProjectSelectionItems from "../containers/ProjectSelectionItems";
 
-const ProjectSelections = ({ github_id }) => {
+const ProjectSelections = ({ cookies }) => {
   const [projectList, setProjectList] = useState([]);
   useEffect(() => {
     axios
       .post("http://0.0.0.0:8080/project-selection", {
-        github_id
+        github_id: cookies.github_id
       })
       .then(res => {
         setProjectList(res.data);
@@ -16,7 +16,6 @@ const ProjectSelections = ({ github_id }) => {
   }, []);
 
   const SaveProject = projectID => {
-    console.log("inside projectselection component, project ID =>", projectID);
     axios.post("http://0.0.0.0:8080/project-save", {
       id: projectID
     });
@@ -24,7 +23,7 @@ const ProjectSelections = ({ github_id }) => {
 
   return (
     <div>
-      <ProjeectSelectionItems projectList={projectList} onSave={SaveProject} />
+      <ProjectSelectionItems projectList={projectList} onSave={SaveProject} />
       <Footer />
     </div>
   );

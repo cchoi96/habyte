@@ -32,13 +32,10 @@ function App() {
             />
           )}
         />
-        <Route
-          path={"/home"}
-          render={() => <Home github_id={cookies.github_id} />}
-        />
+        <Route path={"/home"} render={() => <Home cookies={cookies} />} />
         <Route
           path={"/project-selection"}
-          render={() => <ProjectSelections github_id={cookies.github_id} />}
+          render={() => <ProjectSelections cookies={cookies} />}
         />
         <Route path={"/"} component={Login} />
       </Switch>
