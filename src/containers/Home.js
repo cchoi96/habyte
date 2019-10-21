@@ -7,7 +7,6 @@ import axios from "axios";
 
 const Home = () => {
   const [projectList, setProjectList] = useState([]);
-  const [id, setId] = useState(0);
   useEffect(() => {
     axios
       .post("http://0.0.0.0:8080/projects", {
@@ -17,11 +16,10 @@ const Home = () => {
         console.log("Selected user projects.........", res.data);
         console.log(JSON.stringify(res.data) !== JSON.stringify(projectList));
         if (JSON.stringify(res.data) !== JSON.stringify(projectList)) {
-          setId(id + 1);
           setProjectList(res.data);
         }
       });
-  }, [id]);
+  }, []);
 
   return (
     <div>
