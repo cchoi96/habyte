@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
+import createHistory from "history/createBrowserHistory";
 import "./App.css";
 import Login from "./containers/Login";
 import Home from "./containers/Home";
 import TrelloBoard from "./containers/TrelloBoard";
+import DummyProjects from "./containers/DummyProjects";
+export const history = createHistory();
 
 function App() {
   const [status, setStatus] = useState("initial");
   const [repos, setRepos] = useState([]);
 
   return (
-    <BrowserRouter>
+    <Router history={history}>
       <Switch>
         <Route
           path={"/verify"}
@@ -37,7 +40,7 @@ function App() {
           )}
         />
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
 }
 
