@@ -15,16 +15,18 @@ const Login = ({ setRepos, repos, setStatus }) => {
         code
       })
       .then(res => {
-        let result = res.data;
+        let result = res.data[0];
         setRepos(result);
+        console.log("result ---->", result);
+        return res;
       })
-      .then(() => {
+      .then(res => {
+        console.log("response ---->", res);
         history.push("/home");
       });
   };
 
   useEffect(() => {
-    console.log("Repos in Login -->", repos);
     const code =
       window.location.href.match(/\\?code=(.*)/) &&
       window.location.href.match(/\\?code=(.*)/)[1];

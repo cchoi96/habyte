@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Router, Switch, Route } from "react-router-dom";
-import createHistory from 'history/createBrowserHistory';
+import createHistory from "history/createBrowserHistory";
 import "./App.css";
 import Login from "./containers/Login";
-import ProjectList from "./containers/ProjectList";
 import Home from "./containers/Home";
 export const history = createHistory();
 

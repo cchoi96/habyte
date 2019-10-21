@@ -3,7 +3,7 @@ import TaskItems from "./TaskItems";
 
 const TaskCategories = ({ array }) => {
   let projectList = array.map(item => {
-    return <TaskItems takName={item.name} projectCrop={item.crop} />;
+    return <TaskItems taskName={item.name} projectCrop={item.crop} />;
   });
   return <div>{projectList}</div>;
 };

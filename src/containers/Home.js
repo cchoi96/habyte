@@ -9,8 +9,7 @@ const Home = () => {
   const fakeData = [
     {
       name: "final_project",
-      crop:
-        "https://stardewvalleywiki.com/mediawiki/images/6/6d/Strawberry.png",
+      crop: "/Blueberry_Stage_1.png",
       status: "completed"
     },
     {
