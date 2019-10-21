@@ -1,35 +1,45 @@
 import React, { useState, useEffect } from "react";
 import { Router, Switch, Route } from "react-router-dom";
-// import createHistory from "history/createBrowserHistory";
-import { createBrowserHistory } from 'history'
+import { createBrowserHistory } from "history";
 import "./App.css";
 import Login from "./containers/Login";
 import Home from "./containers/Home";
 import ProjectSelections from "./containers/ProjectSelections";
-// export const history = createHistory();
+import { useCookies } from "react-cookie";
 export const history = createBrowserHistory();
 
 function App() {
   const [status, setStatus] = useState("initial");
   const [repos, setRepos] = useState([]);
+  const [cookies, setCookie, removeCookie] = useCookies(["github_id"]);
+
+  const setGithubId = github_id => {
+    setCookie("github_id", github_id, { path: "/ " });
+  };
 
   return (
     <Router history={history}>
       <Switch>
         <Route
           path={"/verify"}
-          render={props => (
+          render={() => (
             <Login
-              {...props}
               setRepos={setRepos}
               repos={repos}
               setStatus={setStatus}
               status={status}
+              setGithubId={setGithubId}
             />
           )}
         />
-        <Route path={"/home"} component={Home} />
-        <Route path={"/project-selection"} component={ProjectSelections} />
+        <Route
+          path={"/home"}
+          render={() => <Home github_id={cookies.github_id} />}
+        />
+        <Route
+          path={"/project-selection"}
+          render={() => <ProjectSelections github_id={cookies.github_id} />}
+        />
         <Route path={"/"} component={Login} />
       </Switch>
     </Router>

@@ -6,7 +6,7 @@ import { history } from "../App";
 const CLIENT_ID = "9eef6e17d66411722d42";
 const REDIRECT_URI = "http://localhost:3000/verify";
 
-const Login = ({ setRepos, repos, setStatus }) => {
+const Login = ({ setRepos, repos, setStatus, setGithubId }) => {
   const verify_user = code => {
     axios
       .post(`http://0.0.0.0:8080/verify`, {
@@ -14,11 +14,12 @@ const Login = ({ setRepos, repos, setStatus }) => {
       })
       .then(res => {
         if (res.data) {
-          let result = res.data;
+          let result = res.data[0];
+          let github_id = res.data[1];
+          setGithubId(github_id);
           setRepos(result);
           history.push("/project-selection");
         } else {
-          console.log("inside else, home");
           return history.push("/home");
         }
       });
