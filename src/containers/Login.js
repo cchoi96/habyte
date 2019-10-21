@@ -15,15 +15,19 @@ const Login = ({ setRepos, repos, setStatus }) => {
         code
       })
       .then(res => {
-        let result = res.data[0];
-        setRepos(result);
-        console.log("result ---->", result);
-        return res;
-      })
-      .then(res => {
-        console.log("response ---->", res);
-        history.push("/home");
+        console.log("res inside react", res);
+        if (res.data) {
+          let result = res.data;
+          setRepos(result);
+          history.push("/project-selection");
+        } else {
+          console.log("inside else, home");
+          return history.push("/home");
+        }
       });
+    // .then(() => {
+    //   history.push("/project-selection");
+    // });
   };
 
   useEffect(() => {
