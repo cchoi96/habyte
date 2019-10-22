@@ -5,6 +5,7 @@ import "./App.css";
 import Login from "./containers/Login";
 import Home from "./containers/Home";
 import Logout from "./containers/Logout";
+import Farm from "./containers/Farm";
 import ProjectSelections from "./containers/ProjectSelections";
 import { useCookies } from "react-cookie";
 export const history = createBrowserHistory();
@@ -35,6 +36,7 @@ function App() {
         />
         <Route path={"/logout"} render={() => <Logout removeCookie={removeCookie}/>} />
         <Route path={"/home"} render={() => <Home cookies={cookies} />} />
+        <Route path={"/farm"} render={() => <Farm cookies={cookies} />} />
         <Route
           path={"/project-selection"}
           render={() => <ProjectSelections cookies={cookies} />}
