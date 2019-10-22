@@ -3,7 +3,12 @@ import ColumnListItem from "./ColumnListItem";
 //columnlist.text
 const Column = ({ columnTitle, columnList }) => {
   let columnlist = columnList.map(columnListItem => {
-    return <ColumnListItem text={columnListItem.text} />;
+    return (
+      <ColumnListItem
+        text={columnListItem.name}
+        status={columnListItem.status}
+      />
+    );
   });
   return (
     <div>

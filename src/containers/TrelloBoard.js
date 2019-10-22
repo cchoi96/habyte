@@ -6,7 +6,7 @@ import Column from "./Column";
 
 const TrelloBoard = ({ columns }) => {
   let columnsArr = columns.map(column => {
-    return <Column columnTitle={column.title} columnList={column.List} />;
+    return <Column columnTitle={column.title} columnList={column.list} />;
   });
   return <div>{columnsArr}</div>;
 };
