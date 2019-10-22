@@ -13,7 +13,7 @@ const Login = ({ setRepos, repos, setStatus, setGithubId}) => {
         code
       })
       .then(res => {
-        if (res.data) {
+        if (res.data.length > 1) {
           let result = res.data[0];
           let github_id = res.data[1];
           setGithubId(github_id);
@@ -21,8 +21,9 @@ const Login = ({ setRepos, repos, setStatus, setGithubId}) => {
           history.push("/project-selection");
         } else {
           console.log(res.data)
-          // setGithubId(github_id);
-          return history.push("/home");
+          let github_id = res.data[0].github_id;
+          setGithubId(github_id);
+          history.push("/home");
         }
       });
   };
