@@ -34,7 +34,11 @@ function App() {
             />
           )}
         />
-        <Route path={"/logout"} render={() => <Logout removeCookie={removeCookie}/>} />
+        <Route path={"/:username"} component={Home} />
+        <Route
+          path={"/logout"}
+          render={() => <Logout removeCookie={removeCookie} />}
+        />
         <Route path={"/home"} render={() => <Home cookies={cookies} />} />
         <Route path={"/farm"} render={() => <Farm cookies={cookies} />} />
         <Route
