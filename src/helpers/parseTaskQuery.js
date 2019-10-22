@@ -10,7 +10,10 @@ const ParseTaskQuery = ({ taskslist }) => {
       columns[taskItem.category_name] = [];
       console.log(columns);
     }
-    columns[taskItem.category_name].push(taskItem.name);
+    columns[taskItem.category_name].push({
+      name: taskItem.name,
+      status: taskItem.status
+    });
   }
   for (let columnTitle of Object.keys(columns)) {
     result.push({ title: columnTitle, list: columns[columnTitle] });
