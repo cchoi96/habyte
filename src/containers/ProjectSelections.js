@@ -24,6 +24,7 @@ const ProjectSelections = ({ cookies }) => {
   return (
     <div>
       <ProjectSelectionItems projectList={projectList} onSave={SaveProject} />
+      <a href="/home">Move to the home page</a>
       <Footer />
     </div>
   );

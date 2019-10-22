@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ProjectList from "./ProjectList";
 import Farm from "./Farm";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 import styled from "styled-components";
 import axios from "axios";
 
@@ -23,6 +24,7 @@ const Home = ({ cookies }) => {
 
   return (
     <div>
+      <Header cookies={cookies}/>
       <StyledProjectList array={projectList} />
       <Footer />
     </div>
