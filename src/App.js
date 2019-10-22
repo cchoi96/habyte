@@ -40,7 +40,7 @@ function App() {
             <TrelloBoard
               columns={[
                 { title: "Column Title", list: ["task1", "task2", "task3"] },
-                { title: "Column Title2", list: ["task1", "task2", "task3"] }
+                { title: "Column Title3", list: ["task1", "task2", "task3"] }
               ]}
             />
           )}
