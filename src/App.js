@@ -7,6 +7,7 @@ import Home from "./containers/Home";
 import TrelloBoard from "./containers/TrelloBoard";
 import ProjectSelections from "./containers/ProjectSelections";
 import { useCookies } from "react-cookie";
+import ParseTaskQuery from "./helpers/parseTaskQuery";
 export const history = createBrowserHistory();
 
 function App() {
@@ -37,10 +38,22 @@ function App() {
         <Route
           path={"/"}
           render={props => (
-            <TrelloBoard
-              columns={[
-                { title: "Column Title", list: ["task1", "task2", "task3"] },
-                { title: "Column Title3", list: ["task1", "task2", "task3"] }
+            <ParseTaskQuery
+              taskslist={[
+                {
+                  id: 1,
+                  name: "Task1",
+                  task_categories_id: 1,
+                  status: false,
+                  category_name: "Complete"
+                },
+                {
+                  id: 2,
+                  name: "Task2",
+                  task_categories_id: 1,
+                  status: true,
+                  category_name: "Incomplete"
+                }
               ]}
             />
           )}
