@@ -8,6 +8,7 @@ import axios from "axios";
 
 const Home = ({ cookies }) => {
   const [projectList, setProjectList] = useState([]);
+  console.log(cookies);
   useEffect(() => {
     axios
       .post("http://0.0.0.0:8080/projects", {
