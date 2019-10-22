@@ -1,29 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { Router, Switch, Route } from "react-router-dom";
-import createHistory from "history/createBrowserHistory";
+import { createBrowserHistory } from "history";
 import "./App.css";
 import Login from "./containers/Login";
 import Home from "./containers/Home";
 import TrelloBoard from "./containers/TrelloBoard";
-import DummyProjects from "./containers/DummyProjects";
-export const history = createHistory();
+import ProjectSelections from "./containers/ProjectSelections";
+import { useCookies } from "react-cookie";
+export const history = createBrowserHistory();
 
 function App() {
   const [status, setStatus] = useState("initial");
   const [repos, setRepos] = useState([]);
+  const [cookies, setCookie, removeCookie] = useCookies(["github_id"]);
+
+  const setGithubId = github_id => {
+    setCookie("github_id", github_id, { path: "/ " });
+  };
 
   return (
     <Router history={history}>
       <Switch>
         <Route
           path={"/verify"}
-          render={props => (
+          render={() => (
             <Login
-              {...props}
               setRepos={setRepos}
               repos={repos}
               setStatus={setStatus}
               status={status}
+              setGithubId={setGithubId}
             />
           )}
         />
@@ -38,6 +44,11 @@ function App() {
               ]}
             />
           )}
+        />
+        <Route path={"/home"} render={() => <Home cookies={cookies} />} />
+        <Route
+          path={"/project-selection"}
+          render={() => <ProjectSelections cookies={cookies} />}
         />
       </Switch>
     </Router>

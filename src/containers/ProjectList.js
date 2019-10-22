@@ -4,12 +4,18 @@ import ProjectListItem from "./ProjectListItem";
 import { sortableContainer, sortableElement } from "react-sortable-hoc";
 import arrayMove from "array-move";
 
-const SortableItem = sortableElement(({ value }) => (
-  <div style={{ width: "30%", margin: "100px" }}>{value}</div>
-));
+const SortableItem = sortableElement(
+  ({ projectName, projectCropImage, projectStatus }) => (
+    <StyledProjectListItem
+      projectName={projectName}
+      projectCropImage={projectCropImage}
+      projectStatus={projectStatus}
+    />
+  )
+);
 
 const SortableContainer = sortableContainer(({ children }) => {
-  return <div style={{ width: "30%" }}>{children}</div>;
+  return <ul>{children}</ul>;
 });
 
 const ProjectList = ({ array, className }) => {
@@ -20,34 +26,36 @@ const ProjectList = ({ array, className }) => {
   }, [array]);
 
   const onSortEnd = ({ oldIndex, newIndex }) => {
-    setProjectList(arrayMove(array, oldIndex, newIndex));
+    setProjectList(arrayMove(projectList, oldIndex, newIndex));
   };
 
   let projectListItems = projectList.map((item, index) => {
+    console.log("Building item ==> ", item, index);
     return (
       <SortableItem
         key={`item-${item.name}`}
         index={index}
-        value={
-          <StyledProjectListItem
-            projectName={item.name}
-            projectCropImage={item.name}
-            projectStatus={item.status}
-          />
-        }
+        projectName={item.name}
+        projectCropImage="/"
+        projectStatus={item.status}
       ></SortableItem>
     );
   });
   return (
-    <StyledSortableContainer onSortEnd={onSortEnd}>
+    <StyledSortableContainer
+      style={{ border: "1px solid black" }}
+      onSortEnd={onSortEnd}
+    >
       {projectListItems}
     </StyledSortableContainer>
   );
 };
 
 const StyledProjectListItem = styled(ProjectListItem)`
+  border: 1px solid black;
   width: 30%;
-  justify-content: center;
+  margin: 30px;
+  padding:
   list-style-type: none;
   .projectName {
     font-size: 1.5em;
@@ -63,7 +71,8 @@ const StyledProjectListItem = styled(ProjectListItem)`
 `;
 
 const StyledSortableContainer = styled(SortableContainer)`
-  display: flex;
+  border: 1px solid black;
+  list-style-type: none;
 `;
 
 export default ProjectList;
