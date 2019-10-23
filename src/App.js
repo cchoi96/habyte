@@ -33,7 +33,7 @@ function App() {
             />
           )}
         />
-        <Route path={"/:username"} component={Home} />
+
         <Route
           path={"/logout"}
           render={() => <Logout removeCookie={removeCookie} />}
@@ -43,6 +43,7 @@ function App() {
           path={"/project-selection"}
           render={() => <ProjectSelections cookies={cookies} />}
         />
+        <Route path={"/:username"} component={Home} />
         <Route path={"/"} component={Login} />
       </Switch>
     </Router>
