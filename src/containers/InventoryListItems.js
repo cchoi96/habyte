@@ -1,10 +1,10 @@
 import React from "react";
 
-const InventoryListItems = ({ cropInventory }) => {
+const InventoryListItems = ({ crop, index }) => {
   return (
-    <div>
-      <div>{cropInventory.name}</div>
-      <div>{cropInventory.quantity}</div>
+    <div key={index}>
+      <div>{crop.id}</div>
+      <div>{crop.name}</div>
     </div>
   );
 };
