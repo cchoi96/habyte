@@ -13,6 +13,7 @@ export const history = createBrowserHistory();
 function App() {
   const [status, setStatus] = useState("initial");
   const [repos, setRepos] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [cookies, setCookie, removeCookie] = useCookies(["github_id"]);
 
   const setGithubId = github_id => {
@@ -31,6 +32,8 @@ function App() {
               setStatus={setStatus}
               status={status}
               setGithubId={setGithubId}
+              setLoading={setLoading}
+              loading={loading}
             />
           )}
         />
@@ -39,14 +42,20 @@ function App() {
           path={"/logout"}
           render={() => <Logout removeCookie={removeCookie} />}
         />
-        <Route path={"/home"} render={() => <Home cookies={cookies} />} />
+        <Route
+          path={"/home"}
+          render={() => <Home cookies={cookies} setLoading={setLoading} />}
+        />
         <Route path={"/farm"} render={() => <Farm cookies={cookies} />} />
         <Route
           path={"/project-selection"}
           render={() => <ProjectSelections cookies={cookies} />}
         />
         <Route path={"/:username"} component={Home} />
-        <Route path={"/"} component={Login} />
+        <Route
+          path={"/"}
+          render={() => <Login setLoading={setLoading} loading={loading} />}
+        />
       </Switch>
     </Router>
   );

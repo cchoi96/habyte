@@ -6,26 +6,25 @@ import Header from "../components/Header";
 import styled from "styled-components";
 import axios from "axios";
 
-const Home = ({ cookies }) => {
+const Home = ({ cookies, setLoading }) => {
   const [projectList, setProjectList] = useState([]);
-  console.log(cookies);
+
   useEffect(() => {
     axios
       .post("http://0.0.0.0:8080/projects", {
         github_id: cookies.github_id
       })
       .then(res => {
-        console.log("Selected user projects.........", res.data);
-        console.log(JSON.stringify(res.data) !== JSON.stringify(projectList));
         if (JSON.stringify(res.data) !== JSON.stringify(projectList)) {
           setProjectList(res.data);
         }
+        setLoading(false);
       });
   }, []);
 
   return (
     <div>
-      <Header cookies={cookies}/>
+      <Header cookies={cookies} />
       <StyledProjectList array={projectList} />
       <Footer />
     </div>
