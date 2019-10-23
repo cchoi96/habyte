@@ -1,12 +1,15 @@
 import React from "react";
-import styled from "styled-components";
 
-const FarmTiles = props => {
-  return <StyledImage className={props.className} src={props.img} />;
+const FarmTiles = ({ className, img }) => {
+  return (
+    <div className={`${className}`}>
+      <img className="soilTile" src={img} />
+      <img
+        className="fruitImg"
+        src={"/assets/crops/blueberry/Blueberry_Stage_6.png"}
+      />
+    </div>
+  );
 };
-
-const StyledImage = styled.img`
-  width: 50px;
-`;
 
 export default FarmTiles;

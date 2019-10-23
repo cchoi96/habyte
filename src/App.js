@@ -11,9 +11,8 @@ import { useCookies } from "react-cookie";
 export const history = createBrowserHistory();
 
 function App() {
-  const [status, setStatus] = useState("initial");
   const [repos, setRepos] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState();
   const [cookies, setCookie, removeCookie] = useCookies(["github_id"]);
 
   const setGithubId = github_id => {
@@ -29,11 +28,7 @@ function App() {
             <Login
               setRepos={setRepos}
               repos={repos}
-              setStatus={setStatus}
-              status={status}
               setGithubId={setGithubId}
-              setLoading={setLoading}
-              loading={loading}
             />
           )}
         />
@@ -52,10 +47,7 @@ function App() {
           render={() => <ProjectSelections cookies={cookies} />}
         />
         <Route path={"/:username"} component={Home} />
-        <Route
-          path={"/"}
-          render={() => <Login setLoading={setLoading} loading={loading} />}
-        />
+        <Route path={"/"} render={() => <Login />} />
       </Switch>
     </Router>
   );
