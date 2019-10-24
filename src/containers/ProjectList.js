@@ -30,7 +30,6 @@ const ProjectList = ({ array, className }) => {
   };
 
   let projectListItems = projectList.map((item, index) => {
-    console.log("Building item ==> ", item, index);
     return (
       <SortableItem
         key={`item-${item.name}`}

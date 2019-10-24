@@ -1,6 +1,6 @@
 import React from "react";
 import Column from "./Column";
-//prop.columns array of objects
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const TrelloBoard = ({ columns }) => {
   let columnsArr = columns.map(column => {

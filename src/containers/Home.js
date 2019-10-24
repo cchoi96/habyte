@@ -5,9 +5,12 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import styled from "styled-components";
 import axios from "axios";
+import ParseTaskQuery from "../helpers/parseTaskQuery";
 
 const Home = ({ cookies }) => {
   const [projectList, setProjectList] = useState([]);
+  const [projectSelected, setProjectSelected] = useState(8);
+  const [projectTasks, setProjectTasks] = useState([{}]);
   console.log(cookies);
   useEffect(() => {
     axios
@@ -15,18 +18,27 @@ const Home = ({ cookies }) => {
         github_id: cookies.github_id
       })
       .then(res => {
-        console.log("Selected user projects.........", res.data);
-        console.log(JSON.stringify(res.data) !== JSON.stringify(projectList));
         if (JSON.stringify(res.data) !== JSON.stringify(projectList)) {
           setProjectList(res.data);
         }
       });
   }, []);
 
+  // On project selected, make a call to retrieve the columns/tasks associated with the project and send that in as a prop to the trelloboard
+  useEffect(() => {
+    axios
+      .get(`http://0.0.0.0:8080/${cookies.github_id}/${projectSelected}/tasks`)
+      .then(res => {
+        console.log("Selected tasks.........", res.data);
+        setProjectTasks(res.data);
+      });
+  }, [projectSelected]);
+
   return (
     <div>
-      <Header cookies={cookies}/>
+      <Header cookies={cookies} />
       <StyledProjectList array={projectList} />
+      <ParseTaskQuery taskslist={projectTasks} />
       <Footer />
     </div>
   );
