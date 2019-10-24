@@ -23,27 +23,26 @@ const TaskList = styled.div`
   min-height: 100px;
 `;
 
-export default class Column extends React.Component {
-  render() {
-    return (
-      <Container>
-        <Title>{this.props.column.title}</Title>
-        <Droppable droppableId={this.props.column.id} type="TASK">
-          {(provided, snapshot) => (
-            <TaskList
-              ref={provided.innerRef}
-              innerRef={provided.innerRef}
-              {...provided.droppableProps}
-              isDraggingOver={snapshot.isDraggingOver}
-            >
-              {this.props.tasks.map((task, index) => (
-                <Task key={task.id} task={task} index={index} />
-              ))}
-              {provided.placeholder}
-            </TaskList>
-          )}
-        </Droppable>
-      </Container>
-    );
-  }
-}
+const Column = ({ key, column, tasks }) => {
+  return (
+    <Container>
+      <Title>{column.title}</Title>
+      <Droppable droppableId={column.id} type="TASK">
+        {(provided, snapshot) => (
+          <TaskList
+            ref={provided.innerRef}
+            innerRef={provided.innerRef}
+            {...provided.droppableProps}
+            isDraggingOver={snapshot.isDraggingOver}
+          >
+            {tasks.map((task, index) => (
+              <Task key={task.id} task={task} index={index} />
+            ))}
+            {provided.placeholder}
+          </TaskList>
+        )}
+      </Droppable>
+    </Container>
+  );
+};
+export default Column;

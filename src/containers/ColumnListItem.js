@@ -16,28 +16,27 @@ const Container = styled.div`
       : "white"};
 `;
 
-export default class Task extends React.Component {
-  render() {
-    const isDragDisabled = this.props.task.id === "task-1";
-    return (
-      <Draggable
-        draggableId={this.props.task.id}
-        index={this.props.index}
-        isDragDisabled={isDragDisabled}
-      >
-        {(provided, snapshot) => (
-          <Container
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-            ref={provided.innerRef}
-            innerRef={provided.innerRef}
-            isDragging={snapshot.isDragging}
-            isDragDisabled={isDragDisabled}
-          >
-            {this.props.task.content}
-          </Container>
-        )}
-      </Draggable>
-    );
-  }
-}
+const Task = ({ task, index }) => {
+  const isDragDisabled = task.id === "task-1";
+  return (
+    <Draggable
+      draggableId={task.id}
+      index={index}
+      isDragDisabled={isDragDisabled}
+    >
+      {(provided, snapshot) => (
+        <Container
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          ref={provided.innerRef}
+          innerRef={provided.innerRef}
+          isDragging={snapshot.isDragging}
+          isDragDisabled={isDragDisabled}
+        >
+          {task.content}
+        </Container>
+      )}
+    </Draggable>
+  );
+};
+export default Task;
