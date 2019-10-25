@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import FarmTiles from "../components/FarmTiles";
 import styled from "styled-components";
-import InventoryList from '../containers/InventoryList';
+import InventoryList from "../containers/InventoryList";
 
 const Farm = ({ cookies }) => {
   return (
@@ -25,6 +25,7 @@ const Farm = ({ cookies }) => {
           <StyledFarmTiles img={"assets/other/soil-tile-br.png"} />
         </div>
       </div>
+      <InventoryList cookies={cookies} />
     </div>
   );
 };
