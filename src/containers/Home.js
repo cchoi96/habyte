@@ -7,11 +7,12 @@ import styled from "styled-components";
 import axios from "axios";
 import ParseTaskQuery from "../helpers/parseTaskQuery";
 
-const Home = ({ cookies }) => {
+const Home = ({ cookies, setLoading }) => {
   const [projectList, setProjectList] = useState([]);
   const [projectSelected, setProjectSelected] = useState(8);
   const [projectTasks, setProjectTasks] = useState([{}]);
   console.log(cookies);
+
   useEffect(() => {
     axios
       .post("http://0.0.0.0:8080/projects", {
@@ -21,6 +22,7 @@ const Home = ({ cookies }) => {
         if (JSON.stringify(res.data) !== JSON.stringify(projectList)) {
           setProjectList(res.data);
         }
+        setLoading(false);
       });
   }, []);
 
