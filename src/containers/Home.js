@@ -7,9 +7,6 @@ import styled from "styled-components";
 import axios from "axios";
 
 const Home = ({ cookies, setLoading }) => {
-  const [projectSelected, setProjectSelected] = useState(8);
-  const [projectTasks, setProjectTasks] = useState([{}]);
-
   useEffect(() => {
     // Eventually need to implement post request to get tasks for the day (new and old habits)
     // Stretch: query database for currency / exp / points
