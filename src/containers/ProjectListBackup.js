@@ -4,7 +4,6 @@ import ProjectListItem from "./ProjectListItem";
 import { sortableContainer, sortableElement } from "react-sortable-hoc";
 import arrayMove from "array-move";
 import axios from "axios";
-import { PageItem } from "react-bootstrap";
 
 const SortableItem = sortableElement(
   ({ projectName, projectCropImage, projectStatus }) => (
@@ -19,9 +18,11 @@ const SortableItem = sortableElement(
 const SortableContainer = sortableContainer(({ children }) => {
   return <ul>{children}</ul>;
 });
-
+//
 const ProjectList = ({ array, className }) => {
   const [projectList, setProjectList] = useState([]);
+
+  console.log("project-list", projectList);
 
   useEffect(() => {
     setProjectList(array);
@@ -31,16 +32,25 @@ const ProjectList = ({ array, className }) => {
     setProjectList(arrayMove(projectList, oldIndex, newIndex));
   };
 
-  let combinedProjectList = projectList.map((item, index) => {
-    return (
-      <SortableItem
-        key={item.name}
-        index={index}
-        projectName={item.name}
-        projectCropImage={`/assets/crops/${item.crop_name}/${item.crop_name}_Stage_${item.crop_state}.png`}
-        projectStatus={item.crop_state}
-      ></SortableItem>
+  const projectImages = async () => {
+    let images = await Promise.all(
+      projectList.map(item => {
+        console.log("Item ==>", item);
+        axios
+          .post("http://0.0.0.0:8080/project-crops", {
+            name: item.crop_name,
+            state: item.crop_state
+          })
+          .then(res => {
+            return res.data[0].image_url;
+          });
+      })
     );
+    return images;
+  };
+
+  projectImages().then(data => {
+    console.log("Data ==>", data);
   });
 
   return (
@@ -48,7 +58,7 @@ const ProjectList = ({ array, className }) => {
       style={{ border: "1px solid black" }}
       onSortEnd={onSortEnd}
     >
-      {combinedProjectList}
+      {/* {combinedProjectListItems} */}
     </StyledSortableContainer>
   );
 };
