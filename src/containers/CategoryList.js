@@ -11,6 +11,10 @@ const CategoryList = ({ setMode }) => {
     {
       name: "health",
       img: "/assets/other/health_icon.png"
+    },
+    {
+      name: "farm",
+      img: "/assets/other/farm.png"
     }
   ];
 

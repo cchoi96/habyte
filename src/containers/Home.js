@@ -4,6 +4,7 @@ import ProjectList from "./ProjectList";
 import Farm from "./Farm";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import ProjectModal from "./ProjectModal";
 import styled from "styled-components";
 import axios from "axios";
 
@@ -61,7 +62,6 @@ const Home = ({ cookies, className }) => {
         }
         setProjectState(taskstate);
       });
-    console.log("Mode ==>", mode);
   }, [projectSelected, mode]);
 
   return (

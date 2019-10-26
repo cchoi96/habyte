@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import ProjectModal from "./ProjectModal";
 import axios from "axios";
 
 const AddProject = () => {
-  const getRepos = () => {
-    axios.get(`https://api.github.com/users/cchoi96/repos`).then(res => {
-      let repos = res.data.map(repo => repo.name);
-      console.log(repos);
-    });
-  };
+  const [isOpen, setIsOpen] = useState(false);
+  const [repos, setRepos] = useState([]);
 
-  return <div onClick={getRepos}> Click Me! </div>;
+  useEffect(() => {
+    axios
+      .get(`https://api.github.com/users/cchoi96/repos`)
+      .then(res => {
+        return res.data.map(repo => repo.name);
+      })
+      .then(res => {
+        setRepos(res);
+      });
+  }, []);
+
+  return (
+    <div>
+      <img src="/assets/other/plus.png" onClick={() => setIsOpen(true)}></img>
+      {isOpen && (
+        <ProjectModal setIsOpen={setIsOpen} isOpen={isOpen} repos={repos} />
+      )}
+    </div>
+  );
 };
 
 export default AddProject;
