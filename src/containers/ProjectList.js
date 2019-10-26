@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import ProjectListItem from "./ProjectListItem";
+import AddProject from "./AddProject";
 import { sortableContainer, sortableElement } from "react-sortable-hoc";
 import arrayMove from "array-move";
 
@@ -47,6 +48,7 @@ const ProjectList = () => {
   return (
     <StyledSortableContainer onSortEnd={onSortEnd}>
       {totalProjectList}
+      <AddProject />
     </StyledSortableContainer>
   );
 };
