@@ -3,8 +3,6 @@ import styled from "styled-components";
 import ProjectListItem from "./ProjectListItem";
 import { sortableContainer, sortableElement } from "react-sortable-hoc";
 import arrayMove from "array-move";
-import axios from "axios";
-import { PageItem } from "react-bootstrap";
 
 const SortableItem = sortableElement(
   ({ projectName, projectCropImage, projectStatus }) => (

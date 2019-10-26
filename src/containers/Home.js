@@ -5,9 +5,13 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import styled from "styled-components";
 import axios from "axios";
+import ParseTaskQuery from "../helpers/parseTaskQuery";
 
 const Home = ({ cookies, setLoading }) => {
   const [projectList, setProjectList] = useState([]);
+  const [projectSelected, setProjectSelected] = useState(8);
+  const [projectTasks, setProjectTasks] = useState([{}]);
+  console.log(cookies);
 
   useEffect(() => {
     axios
@@ -22,10 +26,21 @@ const Home = ({ cookies, setLoading }) => {
       });
   }, []);
 
+  // On project selected, make a call to retrieve the columns/tasks associated with the project and send that in as a prop to the trelloboard
+  useEffect(() => {
+    axios
+      .get(`http://0.0.0.0:8080/${cookies.github_id}/${projectSelected}/tasks`)
+      .then(res => {
+        console.log("Selected tasks.........", res.data);
+        setProjectTasks(res.data);
+      });
+  }, [projectSelected]);
+
   return (
     <div>
       <Header cookies={cookies} />
       <StyledProjectList array={projectList} />
+      <ParseTaskQuery taskslist={projectTasks} />
       <Footer />
     </div>
   );
