@@ -1,56 +1,34 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import CategoryListItem from "./CategoryListItem";
-import { sortableContainer, sortableElement } from "react-sortable-hoc";
-import arrayMove from "array-move";
 
-const SortableItem = sortableElement(({ categoryName, categoryImg }) => (
-  <StyledCategoryListItem
-    categoryName={categoryName}
-    categoryImg={categoryImg}
-  />
-));
-
-const SortableContainer = sortableContainer(({ children, className }) => {
-  return <ul className={className}>{children}</ul>;
-});
-
-const CategoryList = () => {
+const CategoryList = ({ setMode }) => {
   const categories = [
     {
-      category: "coding",
+      name: "coding",
       img: "/assets/other/coding_icon.png"
     },
     {
-      category: "health",
+      name: "health",
       img: "/assets/other/health_icon.png"
     }
   ];
 
   const [categoryList, setCategoryList] = useState(categories);
 
-  const onSortEnd = ({ oldIndex, newIndex }) => {
-    setCategoryList(arrayMove(categoryList, oldIndex, newIndex));
-  };
-
   let totalCategoryList = categoryList.map((category, index) => {
     return (
-      <SortableItem
-        key={category.category}
+      <StyledCategoryListItem
+        key={category.name}
         index={index}
-        categoryName={category.category}
+        categoryName={category.name}
         categoryImg={category.img}
-      ></SortableItem>
+        setMode={setMode}
+      ></StyledCategoryListItem>
     );
   });
 
-  return (
-    <StyledSortableContainer
-      onSortEnd={onSortEnd}
-    >
-      {totalCategoryList}
-    </StyledSortableContainer>
-  );
+  return <StyledDiv>{totalCategoryList}</StyledDiv>;
 };
 
 const StyledCategoryListItem = styled(CategoryListItem)`
@@ -72,7 +50,7 @@ const StyledCategoryListItem = styled(CategoryListItem)`
   }
 `;
 
-const StyledSortableContainer = styled(SortableContainer)`
+const StyledDiv = styled.div`
   border: 1px solid black;
   list-style-type: none;
   list-style-type: none;

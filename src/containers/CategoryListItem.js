@@ -1,8 +1,13 @@
 import React from "react";
 
-const CategoryListItem = ({ categoryName, categoryImg, className }) => {
+const CategoryListItem = ({
+  categoryName,
+  categoryImg,
+  setMode,
+  className
+}) => {
   return (
-    <li className={className}>
+    <li className={className} onClick={() => setMode(categoryName)}>
       <p className="categoryName">{categoryName}</p>
       <img src={categoryImg} alt={categoryName} />
     </li>

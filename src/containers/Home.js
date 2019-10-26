@@ -9,15 +9,16 @@ import axios from "axios";
 
 import TrelloBoard from "./TrelloBoard";
 
-const Home = ({ cookies, setLoading, className }) => {
+const Home = ({ cookies, className }) => {
   const [projectList, setProjectList] = useState([]);
   const [projectSelected, setProjectSelected] = useState(1);
-  const [projectTasks, setProjectTasks] = useState([{}]);
   const [projectState, setProjectState] = useState({
     tasks: {},
     columns: {},
     columnOrder: []
   });
+
+  const [mode, setMode] = useState("farm");
 
   useEffect(() => {
     axios
@@ -37,14 +38,11 @@ const Home = ({ cookies, setLoading, className }) => {
     axios
       .get(`http://0.0.0.0:8080/28830013/${projectSelected}/tasks`)
       .then(res => {
-        console.log("Selected tasks.........", res.data);
-
         let taskstate = {
           tasks: {},
           columns: {},
           columnOrder: [1, 2]
         };
-        console.log("taskslist......", res.data);
         for (let taskItem of res.data) {
           taskstate.tasks[taskItem.id] = {
             id: taskItem.id,
@@ -61,24 +59,27 @@ const Home = ({ cookies, setLoading, className }) => {
             taskItem.id
           );
         }
-        console.log("taskstate", taskstate);
         setProjectState(taskstate);
       });
-  }, [projectSelected]);
+    console.log("Mode ==>", mode);
+  }, [projectSelected, mode]);
 
   return (
     <div className={className}>
       <Header cookies={cookies} />
       <div className="main-content">
-        <StyledCategoryList />
-        <StyledProjectList />
+        <StyledCategoryList setMode={setMode} />
       </div>
-      <Farm />
-
-      <TrelloBoard
-        projectState={projectState}
-        setProjectState={setProjectState}
-      />
+      {mode === "farm" && <Farm />}
+      {mode === "coding" && (
+        <div>
+          <StyledProjectList />
+          <TrelloBoard
+            projectState={projectState}
+            setProjectState={setProjectState}
+          />
+        </div>
+      )}
       <Footer />
     </div>
   );
