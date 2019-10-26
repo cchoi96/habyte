@@ -16,7 +16,7 @@ function App() {
   const [cookies, setCookie, removeCookie] = useCookies(["github_id"]);
 
   const setGithubId = github_id => {
-    setCookie("github_id", github_id, { path: "/ " });
+    setCookie("github_id", github_id, { path: "/" });
   };
 
   return (
@@ -29,6 +29,7 @@ function App() {
               setRepos={setRepos}
               repos={repos}
               setGithubId={setGithubId}
+              cookies={cookies}
             />
           )}
         />
