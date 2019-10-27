@@ -16,7 +16,7 @@ const SortableContainer = sortableContainer(({ children, className }) => {
   return <ul className={className}>{children}</ul>;
 });
 
-const ProjectList = () => {
+const ProjectList = ({ cookies }) => {
   const projects = [
     {
       project_name: "Project 1",
@@ -48,7 +48,7 @@ const ProjectList = () => {
   return (
     <StyledSortableContainer onSortEnd={onSortEnd}>
       {totalProjectList}
-      <AddProject />
+      <AddProject cookies={cookies} />
     </StyledSortableContainer>
   );
 };

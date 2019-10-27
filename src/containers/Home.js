@@ -73,7 +73,7 @@ const Home = ({ cookies, className }) => {
       {mode === "farm" && <Farm />}
       {mode === "coding" && (
         <div>
-          <StyledProjectList />
+          <StyledProjectList cookies={cookies} />
           <TrelloBoard
             projectState={projectState}
             setProjectState={setProjectState}
