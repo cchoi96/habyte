@@ -10,7 +10,8 @@ const Header = ({ cookies }) => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link href="/home">Home</Nav.Link>
-          <Nav.Link href="/farm">Farm</Nav.Link>
+          <Nav.Link href="/current-habits">New Habits</Nav.Link>
+          <Nav.Link href="/new-habits">Past Habits</Nav.Link>
         </Nav>
         <NavDropdown title={cookies.github_id} id="basic-nav-dropdown">
           <NavDropdown.Item href="/username">My Profile</NavDropdown.Item>
