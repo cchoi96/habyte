@@ -58,7 +58,7 @@ const ProjectList = ({ cookies }) => {
   return (
     <StyledSortableContainer onSortEnd={onSortEnd}>
       {totalProjectList}
-      <AddProject refreshList={refreshList} cookies={cookies} />
+      <AddProject refreshList={refreshList} projectList={projectList} cookies={cookies} />
     </StyledSortableContainer>
   );
 };
