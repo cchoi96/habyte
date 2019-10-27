@@ -5,36 +5,16 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import styled from "styled-components";
 import axios from "axios";
-import ParseTaskQuery from "../helpers/parseTaskQuery";
+
 import TrelloBoard from "./TrelloBoard";
 const Home = ({ cookies, setLoading }) => {
   const [projectList, setProjectList] = useState([]);
   const [projectSelected, setProjectSelected] = useState(1);
   const [projectTasks, setProjectTasks] = useState([{}]);
   const [projectState, setProjectState] = useState({
-    tasks: {
-      "task-1": { id: "task-1", content: "Take out the garbage" },
-      "task-2": { id: "task-2", content: "Watch my favorite show" },
-      "task-3": { id: "task-3", content: "Charge my phone" }
-    },
-    columns: {
-      "column-1": {
-        id: "column-1",
-        title: "To do",
-        taskIds: ["task-1", "task-2", "task-3"]
-      },
-      "column-2": {
-        id: "column-2",
-        title: "In progress",
-        taskIds: []
-      },
-      "column-3": {
-        id: "column-3",
-        title: "Done",
-        taskIds: []
-      }
-    },
-    columnOrder: ["column-1", "column-2", "column-3"]
+    tasks: {},
+    columns: {},
+    columnOrder: []
   });
 
   useEffect(() => {
