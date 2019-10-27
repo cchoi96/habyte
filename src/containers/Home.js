@@ -9,7 +9,7 @@ import ParseTaskQuery from "../helpers/parseTaskQuery";
 
 const Home = ({ cookies, setLoading }) => {
   const [projectList, setProjectList] = useState([]);
-  const [projectSelected, setProjectSelected] = useState(8);
+  const [projectSelected, setProjectSelected] = useState(1);
   const [projectTasks, setProjectTasks] = useState([{}]);
   console.log(cookies);
 
@@ -28,9 +28,11 @@ const Home = ({ cookies, setLoading }) => {
 
   // On project selected, make a call to retrieve the columns/tasks associated with the project and send that in as a prop to the trelloboard
   useEffect(() => {
+    //28830013 hardcoded in, it should be cookies.github_id
     axios
-      .get(`http://0.0.0.0:8080/${cookies.github_id}/${projectSelected}/tasks`)
+      .get(`http://0.0.0.0:8080/28830013/${projectSelected}/tasks`)
       .then(res => {
+        console.log(cookies.github_id);
         console.log("Selected tasks.........", res.data);
         setProjectTasks(res.data);
       });
