@@ -8,6 +8,7 @@ import Logout from "./containers/Logout";
 import Farm from "./containers/Farm";
 import ProjectSelections from "./containers/ProjectSelections";
 import { useCookies } from "react-cookie";
+import styled from "styled-components";
 export const history = createBrowserHistory();
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
         />
         <Route
           path={"/home"}
-          render={() => <Home cookies={cookies} setLoading={setLoading} />}
+          render={() => <StyledHome cookies={cookies} setLoading={setLoading} />}
         />
         <Route path={"/farm"} render={() => <Farm cookies={cookies} />} />
         <Route
@@ -46,5 +47,17 @@ function App() {
     </Router>
   );
 }
+
+const StyledHome = styled(Home)`
+  * {
+    border: 1px solid black;
+  }
+  border: 5px solid black;
+  .main-content {
+    display: flex;
+    width: 100%
+  }
+
+`;
 
 export default App;

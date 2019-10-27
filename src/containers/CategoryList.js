@@ -11,11 +11,11 @@ const SortableItem = sortableElement(({ categoryName, categoryImg }) => (
   />
 ));
 
-const SortableContainer = sortableContainer(({ children }) => {
-  return <ul>{children}</ul>;
+const SortableContainer = sortableContainer(({ children, className }) => {
+  return <ul className={className}>{children}</ul>;
 });
 
-const CategoryList = ({ className }) => {
+const CategoryList = () => {
   const categories = [
     {
       category: "coding",
@@ -46,7 +46,6 @@ const CategoryList = ({ className }) => {
 
   return (
     <StyledSortableContainer
-      style={{ border: "1px solid black" }}
       onSortEnd={onSortEnd}
     >
       {totalCategoryList}
@@ -56,7 +55,7 @@ const CategoryList = ({ className }) => {
 
 const StyledCategoryListItem = styled(CategoryListItem)`
   border: 1px solid black;
-  width: 30%;
+  width: 50%;
   margin: 30px;
   padding:
   list-style-type: none;
@@ -76,6 +75,8 @@ const StyledCategoryListItem = styled(CategoryListItem)`
 const StyledSortableContainer = styled(SortableContainer)`
   border: 1px solid black;
   list-style-type: none;
+  list-style-type: none;
+  width: 30%;
 `;
 
 export default CategoryList;
