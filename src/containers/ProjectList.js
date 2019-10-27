@@ -15,15 +15,8 @@ const SortableContainer = sortableContainer(({ children, className }) => {
   return <ul className={className}>{children}</ul>;
 });
 
-const projects = [
-  {
-    project_name: 'Add a Project',
-    number_commit: "+"
-  }
-]
-
 const ProjectList = () => {
-  projects.push(
+  const projects = [
     {
       project_name: "Project 1",
       number_commit: 1
@@ -32,7 +25,7 @@ const ProjectList = () => {
       project_name: "Project 2",
       number_commit: 2
     }
-  );
+  ];
 
   const [projectList, setProjectList] = useState(projects);
 
@@ -42,7 +35,7 @@ const ProjectList = () => {
 
   let totalProjectList = projectList.map((project, index) => {
     return (
-      <SortableItem 
+      <SortableItem
         key={project.project_name}
         index={index}
         projectName={project.project_name}
