@@ -3,7 +3,6 @@ import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Header = ({ cookies }) => {
-
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand href="/home">CodeVille</Navbar.Brand>

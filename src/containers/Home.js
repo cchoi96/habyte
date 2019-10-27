@@ -1,52 +1,28 @@
 import React, { useState, useEffect } from "react";
-import ProjectList from "./ProjectList";
+import CategoryList from "./CategoryList";
 import Farm from "./Farm";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import styled from "styled-components";
 import axios from "axios";
-import ParseTaskQuery from "../helpers/parseTaskQuery";
 
 const Home = ({ cookies, setLoading }) => {
-  const [projectList, setProjectList] = useState([]);
-  const [projectSelected, setProjectSelected] = useState(8);
-  const [projectTasks, setProjectTasks] = useState([{}]);
-  console.log(cookies);
-
   useEffect(() => {
-    axios
-      .post("http://0.0.0.0:8080/projects", {
-        github_id: cookies.github_id
-      })
-      .then(res => {
-        if (JSON.stringify(res.data) !== JSON.stringify(projectList)) {
-          setProjectList(res.data);
-        }
-        setLoading(false);
-      });
+    // Eventually need to implement post request to get tasks for the day (new and old habits)
+    // Stretch: query database for currency / exp / points
   }, []);
-
-  // On project selected, make a call to retrieve the columns/tasks associated with the project and send that in as a prop to the trelloboard
-  useEffect(() => {
-    axios
-      .get(`http://0.0.0.0:8080/${cookies.github_id}/${projectSelected}/tasks`)
-      .then(res => {
-        console.log("Selected tasks.........", res.data);
-        setProjectTasks(res.data);
-      });
-  }, [projectSelected]);
 
   return (
     <div>
       <Header cookies={cookies} />
-      <StyledProjectList array={projectList} />
-      <ParseTaskQuery taskslist={projectTasks} />
+      <StyledCategoryList />
+      <Farm />
       <Footer />
     </div>
   );
 };
 
-const StyledProjectList = styled(ProjectList)`
+const StyledCategoryList = styled(CategoryList)`
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;

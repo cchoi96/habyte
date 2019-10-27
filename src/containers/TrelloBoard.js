@@ -81,7 +81,6 @@ const TrelloBoard = ({ projectState, setProjectState }) => {
           const tasks = column.taskIds.map(
             taskId => projectState.tasks[taskId]
           );
-
           return <Column key={column.id} column={column} tasks={tasks} />;
         })}
       </Container>
