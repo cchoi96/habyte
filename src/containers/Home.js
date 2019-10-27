@@ -6,12 +6,36 @@ import Header from "../components/Header";
 import styled from "styled-components";
 import axios from "axios";
 import ParseTaskQuery from "../helpers/parseTaskQuery";
-
+import TrelloBoard from "./TrelloBoard";
 const Home = ({ cookies, setLoading }) => {
   const [projectList, setProjectList] = useState([]);
   const [projectSelected, setProjectSelected] = useState(1);
   const [projectTasks, setProjectTasks] = useState([{}]);
-  console.log(cookies);
+  const [projectState, setProjectState] = useState({
+    tasks: {
+      "task-1": { id: "task-1", content: "Take out the garbage" },
+      "task-2": { id: "task-2", content: "Watch my favorite show" },
+      "task-3": { id: "task-3", content: "Charge my phone" }
+    },
+    columns: {
+      "column-1": {
+        id: "column-1",
+        title: "To do",
+        taskIds: ["task-1", "task-2", "task-3"]
+      },
+      "column-2": {
+        id: "column-2",
+        title: "In progress",
+        taskIds: []
+      },
+      "column-3": {
+        id: "column-3",
+        title: "Done",
+        taskIds: []
+      }
+    },
+    columnOrder: ["column-1", "column-2", "column-3"]
+  });
 
   useEffect(() => {
     axios
@@ -22,7 +46,6 @@ const Home = ({ cookies, setLoading }) => {
         if (JSON.stringify(res.data) !== JSON.stringify(projectList)) {
           setProjectList(res.data);
         }
-        setLoading(false);
       });
   }, []);
 
@@ -32,9 +55,32 @@ const Home = ({ cookies, setLoading }) => {
     axios
       .get(`http://0.0.0.0:8080/28830013/${projectSelected}/tasks`)
       .then(res => {
-        console.log(cookies.github_id);
         console.log("Selected tasks.........", res.data);
-        setProjectTasks(res.data);
+
+        let taskstate = {
+          tasks: {},
+          columns: {},
+          columnOrder: [1, 2]
+        };
+        console.log("taskslist......", res.data);
+        for (let taskItem of res.data) {
+          taskstate.tasks[taskItem.id] = {
+            id: taskItem.id,
+            content: taskItem.name
+          };
+          taskstate.columns[taskItem.task_categories_id] = {
+            id: taskItem.task_categories_id,
+            title: taskItem.category_name
+          };
+          if (!taskstate.columns[taskItem.task_categories_id].taskIds) {
+            taskstate.columns[taskItem.task_categories_id].taskIds = [];
+          }
+          taskstate.columns[taskItem.task_categories_id].taskIds.push(
+            taskItem.id
+          );
+        }
+        console.log("taskstate", taskstate);
+        setProjectState(taskstate);
       });
   }, [projectSelected]);
 
@@ -42,7 +88,10 @@ const Home = ({ cookies, setLoading }) => {
     <div>
       <Header cookies={cookies} />
       <StyledProjectList array={projectList} />
-      <ParseTaskQuery taskslist={projectTasks} />
+      <TrelloBoard
+        projectState={projectState}
+        setProjectState={setProjectState}
+      />
       <Footer />
     </div>
   );
