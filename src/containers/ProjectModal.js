@@ -17,8 +17,6 @@ const ProjectModal = ({ setIsOpen, isOpen, repos, cookies }) => {
     }
   };
 
-  const [checkBox, setCheckBox] = useState({});
-
   // Required to set link modal to react app
   Modal.setAppElement(document.getElementById("root"));
 
@@ -45,6 +43,7 @@ const ProjectModal = ({ setIsOpen, isOpen, repos, cookies }) => {
       repos: selectedProject,
       github_id: cookies.github_id
     });
+
   };
 
   const data = {};

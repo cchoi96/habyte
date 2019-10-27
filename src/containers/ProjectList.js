@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import ProjectListItem from "./ProjectListItem";
 import AddProject from "./AddProject";
 import { sortableContainer, sortableElement } from "react-sortable-hoc";
 import arrayMove from "array-move";
+import axios from 'axios';
 
 const SortableItem = sortableElement(({ projectName, projectNumberCommit }) => (
   <StyledProjectListItem
@@ -17,18 +18,18 @@ const SortableContainer = sortableContainer(({ children, className }) => {
 });
 
 const ProjectList = ({ cookies }) => {
-  const projects = [
-    {
-      project_name: "Project 1",
-      number_commit: 1
-    },
-    {
-      project_name: "Project 2",
-      number_commit: 2
-    }
-  ];
+  const [projectList, setProjectList] = useState([]);
+  useEffect(()=> {
+    axios.post("http://0.0.0.0:8080/projects", {
+      github_id: cookies.github_id
+    })
+    .then(res => {
+      console.log(res.data)
+      setProjectList(res.data)
+    })
+  }, [])
 
-  const [projectList, setProjectList] = useState(projects);
+ 
 
   const onSortEnd = ({ oldIndex, newIndex }) => {
     setProjectList(arrayMove(projectList, oldIndex, newIndex));
@@ -37,9 +38,9 @@ const ProjectList = ({ cookies }) => {
   let totalProjectList = projectList.map((project, index) => {
     return (
       <SortableItem
-        key={project.project_name}
+        key={project.name}
         index={index}
-        projectName={project.project_name}
+        projectName={project.name}
         projectNumberCommit={project.number_commit}
       ></SortableItem>
     );
