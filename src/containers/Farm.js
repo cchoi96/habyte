@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "../components/Header";
 import FarmTiles from "../components/FarmTiles";
 import styled from "styled-components";
 
