@@ -24,14 +24,7 @@ function App() {
       <Switch>
         <Route
           path={"/verify"}
-          render={() => (
-            <Login
-              setRepos={setRepos}
-              repos={repos}
-              setGithubId={setGithubId}
-              cookies={cookies}
-            />
-          )}
+          render={() => <Login setGithubId={setGithubId} />}
         />
 
         <Route

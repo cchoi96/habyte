@@ -14,17 +14,9 @@ const Login = ({ setRepos, repos, setGithubId, cookies }) => {
         code
       })
       .then(res => {
-        if (res.data.length > 1) {
-          let result = res.data[0];
-          let github_id = res.data[1];
-          setGithubId(github_id);
-          setRepos(result);
-          history.push("/project-selection");
-        } else {
-          let github_id = res.data[0].github_id;
-          setGithubId(github_id);
-          history.push("/home");
-        }
+        let github_id = res.data.github_id;
+        setGithubId(github_id);
+        history.push("/home");
       });
   };
 
