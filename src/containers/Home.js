@@ -87,7 +87,7 @@ const Home = ({ cookies, className }) => {
   const isCounterMoreFrequency = (habit) => {
     const counter = habit.counter;
     const frequency = habit.frequency;
-    return counter > frequency ? true : false
+    return counter >= frequency ? true : false
   }
 
   const datePlusSeven = (habit) => {
@@ -150,6 +150,8 @@ const Home = ({ cookies, className }) => {
           })
         };
       }
+      console.log('isoveraday', isOverADay(habitsArray[0]));
+
       //reset last_check_date_day
       if (isOverADay(habitsArray[0])) {
         const new_date_day = new Date();
