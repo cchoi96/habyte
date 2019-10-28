@@ -7,6 +7,7 @@ import Header from "../components/Header";
 import ProjectModal from "./ProjectModal";
 import styled from "styled-components";
 import axios from "axios";
+import moment from "moment";
 
 import TrelloBoard from "./TrelloBoard";
 
@@ -73,10 +74,68 @@ const Home = ({ cookies, className }) => {
       });
   }, [projectSelected, mode]);
 
+  const isOverAWeek = habit => {
+    let last_check_date_week = habit.last_check_date_week
+      .split(" ")[0]
+      .split("-")
+      .join("/");
+    last_check_date_week = new Date(last_check_date_week).getTime();
+    let now = Date.now();
+    return Math.floor((now - last_check_date_week) / 1000 / 60 / 60 / 24) >= 7 ? true : false;
+  };
+
+  const isCounterMoreFrequency = (habit) => {
+    const counter = habit.counter;
+    const frequency = habit.frequency;
+    return counter > frequency ? true : false
+  }
+
+  const datePlusSeven = (habit) => {
+    let last_check_date_week = habit.last_check_date_week
+    .split(" ")[0]
+    .split("-")
+    .join("/");
+    last_check_date_week = new Date(last_check_date_week).getTime();
+    let new_check_date_week = last_check_date_week + 1000*60*60*24*7;
+    new_check_date_week = new Date(new_check_date_week)
+    return new_check_date_week;
+    
+  }
+
+
   useEffect(() => {
     axios.get(`http://0.0.0.0:8080/${cookies.github_id}/habits`).then(res => {
+      console.log("inside habits query", res.data);
       let habitsArray = res.data;
       setHabits(habitsArray);
+      for (let habit of habitsArray) {
+        if(isOverAWeek(habit)) {
+          if(isCounterMoreFrequency(habit)) {
+            axios.put(`http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}`)
+            .then((res) => {
+              console.log('just did axios.call?')
+            })
+          } else {
+            if (habit.is_already_dying) {
+              axios.put(`http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/dead`)
+              .then((res) => {
+                console.log('dead crop')
+              })
+            } else {
+              axios.put(`http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/dying`)
+              .then((res) => {
+                console.log('not dying, just downgrade')
+              })
+            }
+          }
+          const new_date_week = datePlusSeven(habit);
+          axios.put(`http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/counter/${new_date_week}`)
+          .then(res => {
+            console.log('reset habit counter and new_check_date_week')
+          })
+        };
+
+      }
     });
   }, []);
 
