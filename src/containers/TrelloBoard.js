@@ -70,7 +70,6 @@ const TrelloBoard = ({ projectState, setProjectState }) => {
         [newFinish.id]: newFinish
       }
     };
-
     setProjectState(newState);
   };
 
