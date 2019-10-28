@@ -4,7 +4,7 @@ import ProjectListItem from "./ProjectListItem";
 import AddProject from "./AddProject";
 import { sortableContainer, sortableElement } from "react-sortable-hoc";
 import arrayMove from "array-move";
-import axios from 'axios';
+import axios from "axios";
 
 const SortableItem = sortableElement(({ projectName, projectNumberCommit }) => (
   <StyledProjectListItem
@@ -19,17 +19,26 @@ const SortableContainer = sortableContainer(({ children, className }) => {
 
 const ProjectList = ({ cookies }) => {
   const [projectList, setProjectList] = useState([]);
-  useEffect(()=> {
-    axios.post("http://0.0.0.0:8080/projects", {
+  useEffect(() => {
+    axios
+      .post("http://0.0.0.0:8080/projects", {
+        github_id: cookies.github_id
+      })
+      .then(res => {
+        setProjectList(res.data);
+      });
+  }, []);
+
+
+  const refreshList = () => {
+    axios
+    .post("http://0.0.0.0:8080/projects", {
       github_id: cookies.github_id
     })
     .then(res => {
-      console.log(res.data)
-      setProjectList(res.data)
-    })
-  }, [])
-
- 
+      setProjectList(res.data);
+    });
+  }
 
   const onSortEnd = ({ oldIndex, newIndex }) => {
     setProjectList(arrayMove(projectList, oldIndex, newIndex));
@@ -49,7 +58,7 @@ const ProjectList = ({ cookies }) => {
   return (
     <StyledSortableContainer onSortEnd={onSortEnd}>
       {totalProjectList}
-      <AddProject cookies={cookies} />
+      <AddProject refreshList={refreshList} cookies={cookies} />
     </StyledSortableContainer>
   );
 };
