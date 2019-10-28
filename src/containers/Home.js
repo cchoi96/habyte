@@ -98,9 +98,18 @@ const Home = ({ cookies, className }) => {
     last_check_date_week = new Date(last_check_date_week).getTime();
     let new_check_date_week = last_check_date_week + 1000*60*60*24*7;
     new_check_date_week = new Date(new_check_date_week)
-    return new_check_date_week;
-    
+    return new_check_date_week; 
   }
+
+  const isOverADay = habit => {
+    let last_check_date_day = habit.last_check_date_day      
+      .split(" ")[0]
+      .split("-")
+      .join("/");
+    last_check_date_day = new Date(last_check_date_day).getTime();
+    let now = Date.now();
+    return Math.floor((now - last_check_date_day) / 1000 / 60 / 60 / 24) >= 1 ? true : false;
+  };
 
 
   useEffect(() => {
@@ -111,30 +120,45 @@ const Home = ({ cookies, className }) => {
       for (let habit of habitsArray) {
         if(isOverAWeek(habit)) {
           if(isCounterMoreFrequency(habit)) {
+            //upgrade the crop_State to the next state
             axios.put(`http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}`)
             .then((res) => {
               console.log('just did axios.call?')
             })
           } else {
             if (habit.is_already_dying) {
+              //if the crop is already dying, it will be dead.
               axios.put(`http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/dead`)
               .then((res) => {
                 console.log('dead crop')
               })
             } else {
+              //downgrade the crop_state and is_already_dying = true
               axios.put(`http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/dying`)
               .then((res) => {
                 console.log('not dying, just downgrade')
               })
             }
           }
+          //reset counter and last_check_date_week
           const new_date_week = datePlusSeven(habit);
-          axios.put(`http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/counter/${new_date_week}`)
+          axios.put(`http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/counter`, {
+            "new_date_week": new_date_week
+          })
           .then(res => {
             console.log('reset habit counter and new_check_date_week')
           })
         };
-
+      }
+      //reset last_check_date_day
+      if (isOverADay(habitsArray[0])) {
+        const new_date_day = new Date();
+        axios.put(`http://0.0.0.0:8080/${cookies.github_id}/habits`, {
+          new_date_day: new_date_day
+        })
+        .then(res => {
+          console.log('inside isOverADay')
+        })
       }
     });
   }, []);
