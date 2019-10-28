@@ -2,6 +2,7 @@ import React from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import styled from "styled-components";
 import Column from "./Column";
+import axios from "axios";
 
 const Container = styled.div`
   display: flex;
@@ -10,7 +11,7 @@ const Container = styled.div`
 const TrelloBoard = ({ projectState, setProjectState }) => {
   let onDragEnd = result => {
     const { destination, source, draggableId } = result;
-
+    console.log("draggableid", draggableId);
     if (!destination) {
       return;
     }
@@ -70,18 +71,25 @@ const TrelloBoard = ({ projectState, setProjectState }) => {
         [newFinish.id]: newFinish
       }
     };
-
     setProjectState(newState);
+
+    axios.post("http://0.0.0.0:8080/project/category/task", {
+      task_id: draggableId,
+      category_id: finish.id
+    });
   };
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Container>
+        {console.log(projectState)}
         {projectState.columnOrder.map(columnId => {
           const column = projectState.columns[columnId];
+
           const tasks = column.taskIds.map(
             taskId => projectState.tasks[taskId]
           );
+
           return <Column key={column.id} column={column} tasks={tasks} />;
         })}
       </Container>
