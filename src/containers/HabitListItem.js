@@ -1,7 +1,7 @@
 import React from "react";
 
-const HabitListItem = () => {
-  return <div></div>;
+const HabitListItem = ({ habit }) => {
+  return <div>{habit.name}</div>;
 };
 
 export default HabitListItem;
