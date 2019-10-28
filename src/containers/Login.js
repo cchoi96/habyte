@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Loading from "../components/Loading";
+import styled from "styled-components";
 import Footer from "../components/Footer";
 import axios from "axios";
 import { history } from "../App";
@@ -30,16 +30,20 @@ const Login = ({ setRepos, repos, setGithubId, cookies }) => {
   }, [repos]);
 
   return (
-    <div className="Login">
-      <h1>Welcome to Codeville!</h1>
+    <StyledLogin>
+      <h1>Codeville</h1>
       <a
         href={`https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=user&redirect_uri=${REDIRECT_URI}`}
       >
         Login
       </a>
       <Footer />
-    </div>
+    </StyledLogin>
   );
 };
+
+const StyledLogin = styled.div`
+  height: 100vh;
+`;
 
 export default Login;
