@@ -36,16 +36,20 @@ const CategoryList = ({ setMode }) => {
 };
 
 const StyledCategoryListItem = styled(CategoryListItem)`
-  border-bottom: 1px solid black;
   width: 100%;
   list-style-type: none;
   text-align: center;
+  padding: 10px 0 20px 0;
   .projectName {
     font-size: 1.5em;
   }
 
   .projectStatus {
     font-size: 1.5em;
+  }
+
+  p {
+    margin: 0;
   }
 
   img {
@@ -55,13 +59,26 @@ const StyledCategoryListItem = styled(CategoryListItem)`
 
   &:hover {
     cursor: pointer;
+    background-color: ${props =>
+      props.categoryName === "coding"
+        ? "rgba(67, 40, 116, 0.9)"
+        : props.categoryName === "health"
+        ? "rgba(247, 78, 82, 0.9)"
+        : "rgba(36, 204, 143, 0.9)"};
   }
+
+  color: #fff;
+
+  background-color: ${props =>
+    props.categoryName === "coding"
+      ? "rgba(67, 40, 116)"
+      : props.categoryName === "health"
+      ? "rgba(247, 78, 82)"
+      : "rgba(36, 204, 143)"};
 `;
 
 const StyledDiv = styled.div`
   list-style-type: none;
-  border: 1px solid black;
-  border-bottom: none;
   width: 20%;
 `;
 
