@@ -39,27 +39,35 @@ const Home = ({ cookies, className }) => {
     axios
       .get(`http://0.0.0.0:8080/28830013/${projectSelected}/tasks`)
       .then(res => {
+        console.log("res printing", res.data);
         let taskstate = {
           tasks: {},
           columns: {},
-          columnOrder: [1, 2]
+          columnOrder: []
         };
         for (let taskItem of res.data) {
           taskstate.tasks[taskItem.id] = {
             id: taskItem.id,
             content: taskItem.name
           };
-          taskstate.columns[taskItem.task_categories_id] = {
-            id: taskItem.task_categories_id,
-            title: taskItem.category_name
-          };
+          if (!taskstate.columns[taskItem.task_categories_id]) {
+            taskstate.columns[taskItem.task_categories_id] = {
+              id: taskItem.task_categories_id,
+              title: taskItem.category_name
+            };
+          }
           if (!taskstate.columns[taskItem.task_categories_id].taskIds) {
             taskstate.columns[taskItem.task_categories_id].taskIds = [];
           }
           taskstate.columns[taskItem.task_categories_id].taskIds.push(
             taskItem.id
           );
+          if (!taskstate.columnOrder.includes(taskItem.task_categories_id)) {
+            taskstate.columnOrder.push(taskItem.task_categories_id);
+          }
+          console.log("taskstate", taskstate);
         }
+
         setProjectState(taskstate);
       });
   }, [projectSelected, mode]);
