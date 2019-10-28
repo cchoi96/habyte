@@ -77,17 +77,17 @@ const Home = ({ cookies, className }) => {
       <Header cookies={cookies} />
       <div className="main-content">
         <StyledCategoryList setMode={setMode} />
+        {mode === "farm" && <Farm habits={habits} />}
+        {mode === "coding" && (
+          <div>
+            <StyledProjectList cookies={cookies} />
+            <TrelloBoard
+              projectState={projectState}
+              setProjectState={setProjectState}
+            />
+          </div>
+        )}
       </div>
-      {mode === "farm" && <Farm habits={habits} />}
-      {mode === "coding" && (
-        <div>
-          <StyledProjectList cookies={cookies} />
-          <TrelloBoard
-            projectState={projectState}
-            setProjectState={setProjectState}
-          />
-        </div>
-      )}
       <Footer />
     </div>
   );
@@ -108,6 +108,7 @@ const StyledCategoryList = styled(CategoryList)`
   display: flex;
   flex-wrap: wrap;
 
+  min-height: 100vh;
   @media (min-width: 480px) {
     flex-direction: column;
   }

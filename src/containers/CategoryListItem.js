@@ -8,8 +8,8 @@ const CategoryListItem = ({
 }) => {
   return (
     <li className={className} onClick={() => setMode(categoryName)}>
-      <p className="categoryName">{categoryName}</p>
       <img src={categoryImg} alt={categoryName} />
+      <p className="categoryName">{categoryName.toUpperCase()}</p>
     </li>
   );
 };

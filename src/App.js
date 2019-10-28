@@ -35,7 +35,6 @@ function App() {
           path={"/project-selection"}
           render={() => <ProjectSelections cookies={cookies} />}
         />
-        <Route path={"/:username"} component={Home} />
         <Route path={"/"} render={() => <Login />} />
       </Switch>
     </Router>
@@ -43,11 +42,8 @@ function App() {
 }
 
 const StyledHome = styled(Home)`
-  * {
-    border: 1px solid black;
-  }
-  border: 5px solid black;
   .main-content {
+    margin-top: 5vh;
     display: flex;
     width: 100%;
   }

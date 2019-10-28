@@ -36,11 +36,10 @@ const CategoryList = ({ setMode }) => {
 };
 
 const StyledCategoryListItem = styled(CategoryListItem)`
-  border: 1px solid black;
-  width: 50%;
-  margin: 30px;
-  padding:
+  border-bottom: 1px solid black;
+  width: 100%;
   list-style-type: none;
+  text-align: center;
   .projectName {
     font-size: 1.5em;
   }
@@ -50,15 +49,20 @@ const StyledCategoryListItem = styled(CategoryListItem)`
   }
 
   img {
+    margin: 5px;
     width: 50px;
+  }
+
+  &:hover {
+    cursor: pointer;
   }
 `;
 
 const StyledDiv = styled.div`
+  list-style-type: none;
   border: 1px solid black;
-  list-style-type: none;
-  list-style-type: none;
-  width: 30%;
+  border-bottom: none;
+  width: 20%;
 `;
 
 export default CategoryList;

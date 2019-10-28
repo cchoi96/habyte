@@ -29,16 +29,15 @@ const ProjectList = ({ cookies }) => {
       });
   }, []);
 
-
   const refreshList = () => {
     axios
-    .post("http://0.0.0.0:8080/projects", {
-      github_id: cookies.github_id
-    })
-    .then(res => {
-      setProjectList(res.data);
-    });
-  }
+      .post("http://0.0.0.0:8080/projects", {
+        github_id: cookies.github_id
+      })
+      .then(res => {
+        setProjectList(res.data);
+      });
+  };
 
   const onSortEnd = ({ oldIndex, newIndex }) => {
     setProjectList(arrayMove(projectList, oldIndex, newIndex));
@@ -58,7 +57,11 @@ const ProjectList = ({ cookies }) => {
   return (
     <StyledSortableContainer onSortEnd={onSortEnd}>
       {totalProjectList}
-      <AddProject refreshList={refreshList} projectList={projectList} cookies={cookies} />
+      <AddProject
+        refreshList={refreshList}
+        projectList={projectList}
+        cookies={cookies}
+      />
     </StyledSortableContainer>
   );
 };
@@ -67,9 +70,8 @@ const StyledProjectListItem = styled(ProjectListItem)`
   border: 1px solid black;
   width: 50%;
   margin: 30px;
-  padding:
   list-style-type: none;
-  
+
   .projectName {
     font-size: 1.5em;
   }
