@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProjectModal from "./ProjectModal";
 import axios from "axios";
+import styled from "styled-components";
 
 const AddProject = ({ cookies, refreshList, projectList }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +33,7 @@ const AddProject = ({ cookies, refreshList, projectList }) => {
   }, [projectList]);
 
   return (
-    <div>
+    <StyledDiv>
       <img src="/assets/other/plus.png" onClick={() => setIsOpen(true)}></img>
       {isOpen && (
         <ProjectModal
@@ -43,8 +44,19 @@ const AddProject = ({ cookies, refreshList, projectList }) => {
           repos={repos}
         />
       )}
-    </div>
+    </StyledDiv>
   );
 };
+
+const StyledDiv = styled.div`
+  img {
+    width: 50px;
+    transition: 0.1s ease-out;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+    }
+  }
+`;
 
 export default AddProject;

@@ -1,7 +1,6 @@
 import React from "react";
 
 const FarmTiles = ({ className, img, habit }) => {
-  console.log("habit ==>", habit);
   return (
     <div className={`${className}`}>
       <img className="soilTile" src={img} />
