@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Modal from "react-modal";
 import axios from "axios";
 
-const ProjectModal = ({ setIsOpen, isOpen, repos, cookies }) => {
+const ProjectModal = ({ setIsOpen, isOpen, repos, cookies, refreshList}) => {
   const customStyles = {
     content: {
       width: "100%",
@@ -42,6 +42,8 @@ const ProjectModal = ({ setIsOpen, isOpen, repos, cookies }) => {
     axios.post("http://0.0.0.0:8080/project-save", {
       repos: selectedProject,
       github_id: cookies.github_id
+    }).then( () => {
+      refreshList();
     });
 
   };

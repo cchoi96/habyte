@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ProjectModal from "./ProjectModal";
 import axios from "axios";
 
-const AddProject = ({cookies}) => {
+const AddProject = ({cookies, refreshList}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [repos, setRepos] = useState([]);
 
@@ -21,7 +21,7 @@ const AddProject = ({cookies}) => {
     <div>
       <img src="/assets/other/plus.png" onClick={() => setIsOpen(true)}></img>
       {isOpen && (
-        <ProjectModal cookies={cookies} setIsOpen={setIsOpen} isOpen={isOpen} repos={repos} />
+        <ProjectModal refreshList={refreshList} cookies={cookies} setIsOpen={setIsOpen} isOpen={isOpen} repos={repos} />
       )}
     </div>
   );
