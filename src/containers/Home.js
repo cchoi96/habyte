@@ -18,6 +18,7 @@ const Home = ({ cookies, className }) => {
     columns: {},
     columnOrder: []
   });
+  const [habits, setHabits] = useState([]);
 
   const [mode, setMode] = useState("farm");
 
@@ -72,13 +73,20 @@ const Home = ({ cookies, className }) => {
       });
   }, [projectSelected, mode]);
 
+  useEffect(() => {
+    axios.get(`http://0.0.0.0:8080/${cookies.github_id}/habits`).then(res => {
+      let habitsArray = res.data;
+      setHabits(habitsArray);
+    });
+  }, []);
+
   return (
     <div className={className}>
       <Header cookies={cookies} />
       <div className="main-content">
         <StyledCategoryList setMode={setMode} />
       </div>
-      {mode === "farm" && <Farm />}
+      {mode === "farm" && <Farm habits={habits} />}
       {mode === "coding" && (
         <div>
           <StyledProjectList cookies={cookies} />

@@ -1,13 +1,16 @@
 import React from "react";
 
-const FarmTiles = ({ className, img }) => {
+const FarmTiles = ({ className, img, habit }) => {
+  console.log("habit ==>", habit);
   return (
     <div className={`${className}`}>
       <img className="soilTile" src={img} />
-      <img
-        className="fruitImg"
-        src={"/assets/crops/blueberry/Blueberry_Stage_6.png"}
-      />
+      {habit && (
+        <img
+          className="fruitImg"
+          src={`/assets/crops/${habit.crop_name}/${habit.crop_name}_Stage_${habit.crop_state}.png`}
+        />
+      )}
     </div>
   );
 };
