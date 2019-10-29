@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const Header = ({ cookies }) => {
+const Header = ({ cookies, setMode }) => {
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand href="/home">CodeVille</Navbar.Brand>
@@ -10,7 +10,7 @@ const Header = ({ cookies }) => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link href="/home">Home</Nav.Link>
-          <Nav.Link href="/current-habits">New Habits</Nav.Link>
+          <Nav.Link onClick={() => setMode("new-habits")}>New Habits</Nav.Link>
           <Nav.Link href="/new-habits">Past Habits</Nav.Link>
         </Nav>
         <NavDropdown title={cookies.github_id} id="basic-nav-dropdown">
