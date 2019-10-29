@@ -38,7 +38,7 @@ const Home = ({ cookies, className }) => {
   useEffect(() => {
     //28830013 hardcoded in, it should be cookies.github_id
     axios
-      .get(`http://0.0.0.0:8080/28830013/${projectSelected}/tasks`)
+      .get(`http://0.0.0.0:8080/${cookies.github_id}/${projectSelected}/tasks`)
       .then(res => {
         console.log("res printing", res.data);
         let taskstate = {
@@ -71,7 +71,7 @@ const Home = ({ cookies, className }) => {
 
         setProjectState(taskstate);
       });
-  }, [projectSelected, mode]);
+  }, [projectSelected]);
 
   useEffect(() => {
     axios.get(`http://0.0.0.0:8080/${cookies.github_id}/habits`).then(res => {
@@ -88,7 +88,10 @@ const Home = ({ cookies, className }) => {
         {mode === "farm" && <Farm habits={habits} />}
         {mode === "coding" && (
           <div>
-            <StyledProjectList cookies={cookies} />
+            <StyledProjectList
+              cookies={cookies}
+              setProjectSelected={setProjectSelected}
+            />
             <TrelloBoard
               projectState={projectState}
               setProjectState={setProjectState}
