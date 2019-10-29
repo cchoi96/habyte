@@ -9,6 +9,7 @@ import NewHabits from "./NewHabits";
 import styled from "styled-components";
 import axios from "axios";
 import Habit from "./Habit";
+import moment from "moment";
 
 import TrelloBoard from "./TrelloBoard";
 
@@ -82,6 +83,93 @@ const Home = ({ cookies, className }) => {
       });
   }, [projectSelected]);
 
+  const isOverAWeek = habit => {
+    let last_check_date_week = habit.last_check_date_week
+      .split(" ")[0]
+      .split("-")
+      .join("/");
+    last_check_date_week = new Date(last_check_date_week).getTime();
+    let now = Date.now();
+    return Math.floor((now - last_check_date_week) / 1000 / 60 / 60 / 24) >= 7
+      ? true
+      : false;
+  };
+
+  const isCounterMoreFrequency = habit => {
+    const counter = habit.counter;
+    const frequency = habit.frequency;
+    return counter >= frequency ? true : false;
+  };
+
+  const datePlusSeven = habit => {
+    let last_check_date_week = habit.last_check_date_week
+      .split(" ")[0]
+      .split("-")
+      .join("/");
+    last_check_date_week = new Date(last_check_date_week).getTime();
+    let new_check_date_week = last_check_date_week + 1000 * 60 * 60 * 24 * 7;
+    new_check_date_week = new Date(new_check_date_week);
+    return new_check_date_week;
+  };
+
+  const isOverADay = habit => {
+    let last_check_date_day = habit.last_check_date_day
+      .split(" ")[0]
+      .split("-")
+      .join("/");
+    last_check_date_day = new Date(last_check_date_day).getTime();
+    let now = Date.now();
+    return Math.floor((now - last_check_date_day) / 1000 / 60 / 60 / 24) >= 1
+      ? true
+      : false;
+  };
+
+  useEffect(() => {
+    axios.get(`http://0.0.0.0:8080/${cookies.github_id}/habits`).then(res => {
+      console.log("inside habits query", res.data);
+      let habitsArray = res.data;
+      setHabits(habitsArray);
+      for (let habit of habitsArray) {
+        if (isOverAWeek(habit)) {
+          if (isCounterMoreFrequency(habit)) {
+            //upgrade the crop_State to the next state
+            axios.put(
+              `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}`
+            );
+          } else {
+            if (habit.is_already_dying) {
+              //if the crop is already dying, it will be dead.
+              axios.put(
+                `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/dead`
+              );
+            } else {
+              //downgrade the crop_state and is_already_dying = true
+              axios.put(
+                `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/dying`
+              );
+            }
+          }
+          //reset counter and last_check_date_week
+          const new_date_week = datePlusSeven(habit);
+          axios.put(
+            `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/counter`,
+            {
+              new_date_week: new_date_week
+            }
+          );
+        }
+      }
+      console.log("isoveraday", isOverADay(habitsArray[0]));
+
+      //reset last_check_date_day
+      if (isOverADay(habitsArray[0])) {
+        const new_date_day = new Date();
+        axios.put(`http://0.0.0.0:8080/${cookies.github_id}/habits`, {
+          new_date_day: new_date_day
+        });
+      }
+    });
+  });
   // Function to be passed down that refreshes the habit state
   const refreshHabits = github_id => {
     axios.get(`http://0.0.0.0:8080/${github_id}/new-habits`).then(res => {
