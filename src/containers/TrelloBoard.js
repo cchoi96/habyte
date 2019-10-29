@@ -9,6 +9,7 @@ const Container = styled.div`
 `;
 
 const TrelloBoard = ({ projectState, setProjectState }) => {
+  console.log("trelloboard", projectState);
   let onDragEnd = result => {
     const { destination, source, draggableId } = result;
     console.log("draggableid", draggableId);
@@ -85,12 +86,19 @@ const TrelloBoard = ({ projectState, setProjectState }) => {
         {console.log(projectState)}
         {projectState.columnOrder.map(columnId => {
           const column = projectState.columns[columnId];
-
           const tasks = column.taskIds.map(
             taskId => projectState.tasks[taskId]
           );
 
-          return <Column key={column.id} column={column} tasks={tasks} />;
+          return (
+            <Column
+              projectState={projectState}
+              setProjectState={setProjectState}
+              key={column.id}
+              column={column}
+              tasks={tasks}
+            />
+          );
         })}
       </Container>
     </DragDropContext>
