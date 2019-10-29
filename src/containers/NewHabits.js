@@ -44,12 +44,18 @@ const NewHabits = ({ cookies, habits, setHabits, refreshHabits }) => {
 const StyledDiv = styled.div`
   width: 100%;
   border: 1px solid black;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const CheckedStyledDiv = styled.div`
   width: 100%;
   text-decoration: line-through;
   border: 1px solid black;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export default NewHabits;

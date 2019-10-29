@@ -36,7 +36,6 @@ const CategoryList = ({ setMode }) => {
 };
 
 const StyledCategoryListItem = styled(CategoryListItem)`
-  border-bottom: 1px solid black;
   width: 100%;
   list-style-type: none;
   text-align: center;
@@ -48,6 +47,10 @@ const StyledCategoryListItem = styled(CategoryListItem)`
     font-size: 1.5em;
   }
 
+  p {
+    margin: 0;
+  }
+
   img {
     margin: 5px;
     width: 50px;
@@ -56,12 +59,19 @@ const StyledCategoryListItem = styled(CategoryListItem)`
   &:hover {
     cursor: pointer;
   }
+
+  color: white;
+
+  background-color: ${props =>
+    props.categoryName === "coding"
+      ? "blue"
+      : props.categoryName === "health"
+      ? "red"
+      : "green"};
 `;
 
 const StyledDiv = styled.div`
   list-style-type: none;
-  border: 1px solid black;
-  border-bottom: none;
   width: 20%;
 `;
 
