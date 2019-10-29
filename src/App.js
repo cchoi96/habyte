@@ -45,7 +45,8 @@ const StyledHome = styled(Home)`
   .main-content {
     margin-top: 5vh;
     display: flex;
-    width: 100%;
+    width: 95%;
+    margin: 5vh auto 0 auto;
   }
 `;
 

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import styled from "styled-components";
 
-const Header = ({ cookies, setMode }) => {
+const Header = ({ cookies, setMode, className }) => {
   return (
-    <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="/home">CodeVille</Navbar.Brand>
+    <StyledNavbar className={className} expand="lg">
+      <StyledBrand href="/home">CodeVille</StyledBrand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
@@ -19,8 +20,17 @@ const Header = ({ cookies, setMode }) => {
           <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
         </NavDropdown>
       </Navbar.Collapse>
-    </Navbar>
+    </StyledNavbar>
   );
 };
+
+const StyledNavbar = styled(Navbar)`
+  font-size: 1.1em;
+  background: inherit;
+`;
+
+const StyledBrand = styled(Navbar)`
+  font-size: 1.5em;
+`;
 
 export default Header;

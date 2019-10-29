@@ -74,6 +74,7 @@ const StyledFarmTiles = styled(FarmTiles)`
 const StyledDiv = styled.div`
   width: 60vw;
   height: 60vw;
+  margin-left: 5vw;
 `;
 
 export default Farm;
