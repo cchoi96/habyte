@@ -60,14 +60,14 @@ const StyledCategoryListItem = styled(CategoryListItem)`
     cursor: pointer;
   }
 
-  color: white;
+  color: #fff;
 
   background-color: ${props =>
     props.categoryName === "coding"
-      ? "blue"
+      ? "#432874"
       : props.categoryName === "health"
-      ? "red"
-      : "green"};
+      ? "#F74E52"
+      : "#24CC8F"};
 `;
 
 const StyledDiv = styled.div`

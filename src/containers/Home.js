@@ -113,7 +113,6 @@ const Home = ({ cookies, className }) => {
           />
         )}
       </div>
-      <Footer />
     </div>
   );
 };
