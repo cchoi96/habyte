@@ -8,6 +8,7 @@ import ProjectModal from "./ProjectModal";
 import NewHabits from "./NewHabits";
 import styled from "styled-components";
 import axios from "axios";
+import Habit from "./Habit";
 
 import TrelloBoard from "./TrelloBoard";
 
@@ -115,6 +116,9 @@ const Home = ({ cookies, className }) => {
             setHabits={setHabits}
             refreshHabits={refreshHabits}
           />
+        )}
+        {mode === "health" && (
+          <Habit github_id={cookies.github_id} habit_name="health" />
         )}
       </div>
     </div>
