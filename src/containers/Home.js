@@ -93,13 +93,13 @@ const Home = ({ cookies, className }) => {
               setProjectSelected={setProjectSelected}
             />
             <TrelloBoard
+              projectSelected={projectSelected}
               projectState={projectState}
               setProjectState={setProjectState}
             />
           </div>
         )}
       </div>
-      <Footer />
     </div>
   );
 };
