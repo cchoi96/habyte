@@ -79,7 +79,7 @@ const Home = ({ cookies, className }) => {
 
         setProjectState(taskstate);
       });
-  }, [projectSelected, mode]);
+  }, [projectSelected]);
 
   // Function to be passed down that refreshes the habit state
   const refreshHabits = github_id => {
@@ -97,8 +97,12 @@ const Home = ({ cookies, className }) => {
         {mode === "farm" && <Farm habits={habits} />}
         {mode === "coding" && (
           <div>
-            <StyledProjectList cookies={cookies} />
+            <StyledProjectList
+              cookies={cookies}
+              setProjectSelected={setProjectSelected}
+            />
             <TrelloBoard
+              projectSelected={projectSelected}
               projectState={projectState}
               setProjectState={setProjectState}
             />
@@ -113,7 +117,6 @@ const Home = ({ cookies, className }) => {
           />
         )}
       </div>
-      <Footer />
     </div>
   );
 };

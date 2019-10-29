@@ -1,18 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import styled from "styled-components";
 import Column from "./Column";
 import axios from "axios";
-
+import NewColumn from "./NewColumn";
 const Container = styled.div`
   display: flex;
 `;
 
-const TrelloBoard = ({ projectState, setProjectState }) => {
-  console.log("trelloboard", projectState);
+const TrelloBoard = ({ projectState, setProjectState, projectSelected }) => {
+  const [newColumn, setNewColumn] = useState(false);
+
   let onDragEnd = result => {
     const { destination, source, draggableId } = result;
-    console.log("draggableid", draggableId);
+
     if (!destination) {
       return;
     }
@@ -83,13 +84,11 @@ const TrelloBoard = ({ projectState, setProjectState }) => {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Container>
-        {console.log(projectState)}
         {projectState.columnOrder.map(columnId => {
           const column = projectState.columns[columnId];
           const tasks = column.taskIds.map(
             taskId => projectState.tasks[taskId]
           );
-
           return (
             <Column
               projectState={projectState}
@@ -100,9 +99,25 @@ const TrelloBoard = ({ projectState, setProjectState }) => {
             />
           );
         })}
+        {newColumn && (
+          <NewColumn
+            projectState={projectState}
+            projectSelected={projectSelected}
+            setNewColumn={setNewColumn}
+            setProjectState={setProjectState}
+          />
+        )}
+        <StyledAddNewColumn onClick={() => setNewColumn(!newColumn)}>
+          Add new column
+        </StyledAddNewColumn>
       </Container>
     </DragDropContext>
   );
 };
-
+const StyledAddNewColumn = styled.div`
+  &:hover {
+    cursor: pointer;
+    color: red;
+  }
+`;
 export default TrelloBoard;
