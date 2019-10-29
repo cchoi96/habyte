@@ -14,6 +14,13 @@ const Habit = ({ github_id, habit_name }) => {
     });
   }, []);
 
+  // Function to be passed down that refreshes specific habit state
+  const refreshSpecificHabits = (github_id, habit_name) => {
+    axios.get(`http://0.0.0.0:8080/${github_id}/${habit_name}`).then(res => {
+      setHabits(res.data);
+    });
+  };
+
   const habitList = habits.map(habit => <HabitListItem habit={habit} />);
   return (
     <div>
@@ -27,6 +34,7 @@ const Habit = ({ github_id, habit_name }) => {
           isOpen={isOpen}
           github_id={github_id}
           habit_name={habit_name}
+          refreshSpecificHabits={refreshSpecificHabits}
         />
       )}
     </div>
