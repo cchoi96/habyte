@@ -9,7 +9,6 @@ import NewHabits from "./NewHabits";
 import styled from "styled-components";
 import axios from "axios";
 import Habit from "./Habit";
-import moment from "moment";
 
 import TrelloBoard from "./TrelloBoard";
 
@@ -169,7 +168,7 @@ const Home = ({ cookies, className }) => {
         });
       }
     });
-  });
+  }, []);
   // Function to be passed down that refreshes the habit state
   const refreshHabits = github_id => {
     axios.get(`http://0.0.0.0:8080/${github_id}/new-habits`).then(res => {

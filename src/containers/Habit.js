@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import HabitListItem from "./HabitListItem";
+import HabitModal from "./HabitModal";
 import axios from "axios";
 
 const Habit = ({ github_id, habit_name }) => {
@@ -19,6 +20,15 @@ const Habit = ({ github_id, habit_name }) => {
       <h1>{habit_name}</h1>
       <p>This is the {habit_name} component. Welcome!</p>
       <div>{habitList}</div>
+      <img src="/assets/other/plus.png" onClick={() => setIsOpen(true)}></img>
+      {isOpen && (
+        <HabitModal
+          setIsOpen={setIsOpen}
+          isOpen={isOpen}
+          github_id={github_id}
+          habit_name={habit_name}
+        />
+      )}
     </div>
   );
 };
