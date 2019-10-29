@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import CategoryList from "./CategoryList";
 import ProjectList from "./ProjectList";
 import Farm from "./Farm";
-import Footer from "../components/Footer";
 import Header from "../components/Header";
 import ProjectModal from "./ProjectModal";
 import NewHabits from "./NewHabits";
@@ -23,17 +22,21 @@ const Home = ({ cookies, className }) => {
     columns: {},
     columnOrder: []
   });
-  // Habit List state management
+  // Total Habit List state management
   const [habits, setHabits] = useState([]);
+  console.log("habits ==>", habits);
 
   // Renders different components on home page based on mode
   const [mode, setMode] = useState("farm");
 
+  // Function to refresh total habit list state
   const updateHabits = github_id => {
-    axios.get(`http://0.0.0.0:8080/${cookies.github_id}/habits`).then(res => {
+    console.log("HEYYYYYYYYYYY");
+    axios.get(`http://0.0.0.0:8080/${github_id}/habits`).then(res => {
+      console.log("RES.DATA!", res.data);
       let habitsArray = res.data;
-      console.log("Updated res.data!", habitsArray);
       setHabits(habitsArray);
+      console.log("Updated res.data!", habitsArray);
     });
   };
 
@@ -177,7 +180,12 @@ const Home = ({ cookies, className }) => {
       <div className="main-content">
         <StyledCategoryList setMode={setMode} />
         {mode === "farm" && (
-          <Farm habits={habits} setHabits={setHabits} cookies={cookies} />
+          <Farm
+            habits={habits}
+            setHabits={setHabits}
+            cookies={cookies}
+            updateHabits={updateHabits}
+          />
         )}
         {mode === "coding" && (
           <div>
@@ -198,14 +206,13 @@ const Home = ({ cookies, className }) => {
             habits={habits}
             setHabits={setHabits}
             refreshHabits={refreshHabits}
-            updateHabits={updateHabits}
           />
         )}
         {mode === "health" && (
           <Habit
             github_id={cookies.github_id}
             habit_name="health"
-            refreshHabits={refreshHabits}
+            updateHabits={updateHabits}
           />
         )}
       </div>

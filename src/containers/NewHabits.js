@@ -2,13 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
-const NewHabits = ({
-  cookies,
-  habits,
-  setHabits,
-  refreshHabits,
-  updateHabits
-}) => {
+const NewHabits = ({ cookies, habits, setHabits, refreshHabits }) => {
   useEffect(() => {
     axios
       .get(`http://0.0.0.0:8080/${cookies.github_id}/new-habits`)
@@ -25,9 +19,6 @@ const NewHabits = ({
       })
       .then(() => {
         refreshHabits(cookies.github_id);
-      })
-      .then(() => {
-        updateHabits(cookies.github_id);
       });
   };
 
