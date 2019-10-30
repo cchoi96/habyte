@@ -10,6 +10,7 @@ const Habit = ({ github_id, habit_name }) => {
   useEffect(() => {
     console.log(github_id, habit_name);
     axios.get(`http://0.0.0.0:8080/${github_id}/${habit_name}`).then(res => {
+      console.log("inside the health habit, get request",res.data)
       setHabits(res.data);
     });
   }, []);
