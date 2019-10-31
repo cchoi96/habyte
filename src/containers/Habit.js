@@ -22,9 +22,6 @@ const Habit = ({ github_id, habit_name, updateHabits }) => {
     });
   };
 
-  const habitList = specificHabits.map(habit => (
-    <HabitListItem habit={habit} />
-  ));
   return (
     <StyledHabitCategory>
       <h1>{habit_name}</h1>
