@@ -8,12 +8,13 @@ const ProjectListItem = ({
   setProjectSelected,
   projectid
 }) => {
+  console.log("projectNumberCommit", projectNumberCommit);
   return (
     <li
       className={className}
       onClick={() => {
-        setModalOpen(true);
         setProjectSelected(projectid);
+        setModalOpen(true);
       }}
     >
       <p className="projectName">{projectName}</p>
