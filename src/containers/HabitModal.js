@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import axios from "axios";
 
-const HabitModal = ({ setIsOpen, isOpen, github_id, habit_name }) => {
+const HabitModal = ({
+  setIsOpen,
+  isOpen,
+  github_id,
+  habit_name,
+  refreshSpecificHabits,
+  updateHabits
+}) => {
   const customStyles = {
     content: {
       width: "100%",
@@ -60,14 +67,17 @@ const HabitModal = ({ setIsOpen, isOpen, github_id, habit_name }) => {
   const saveHabit = event => {
     event.preventDefault();
     closeModal();
-    console.log(newHabit);
-    axios.post("http://0.0.0.0:8080/habit-save", {
-      newHabit,
-      github_id
-    });
-    // .then(() => {
-    //   refreshList();
-    // });
+    axios
+      .post("http://0.0.0.0:8080/habit-save", {
+        newHabit,
+        github_id
+      })
+      .then(() => {
+        refreshSpecificHabits(github_id, habit_name);
+      })
+      .then(() => {
+        updateHabits(github_id);
+      });
   };
 
   return (

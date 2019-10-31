@@ -8,7 +8,6 @@ const NewHabits = ({ cookies, habits, setHabits, refreshHabits }) => {
       .get(`http://0.0.0.0:8080/${cookies.github_id}/new-habits`)
       .then(res => {
         setHabits(res.data);
-        console.log(habits);
       });
   }, []);
 

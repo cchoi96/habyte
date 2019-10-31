@@ -3,18 +3,27 @@ import HabitList from "./HabitList";
 import HabitListItem from "./HabitListItem";
 import HabitModal from "./HabitModal";
 import axios from "axios";
-import styled from "styled-components";
-const Habit = ({ github_id, habit_name }) => {
+
+const Habit = ({ github_id, habit_name, updateHabits }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [habits, setHabits] = useState([]);
+  const [specificHabits, setSpecificHabits] = useState([]);
 
   useEffect(() => {
-    console.log(github_id, habit_name);
     axios.get(`http://0.0.0.0:8080/${github_id}/${habit_name}`).then(res => {
-      setHabits(res.data);
+      setSpecificHabits(res.data);
     });
   }, []);
 
+  // Function to be passed down that refreshes specific habit state
+  const refreshSpecificHabits = (github_id, habit_name) => {
+    axios.get(`http://0.0.0.0:8080/${github_id}/${habit_name}`).then(res => {
+      setSpecificHabits(res.data);
+    });
+  };
+
+  const habitList = specificHabits.map(habit => (
+    <HabitListItem habit={habit} />
+  ));
   return (
     <StyledHabitCategory>
       <h1>{habit_name}</h1>
@@ -27,6 +36,8 @@ const Habit = ({ github_id, habit_name }) => {
           isOpen={isOpen}
           github_id={github_id}
           habit_name={habit_name}
+          refreshSpecificHabits={refreshSpecificHabits}
+          updateHabits={updateHabits}
         />
       )}
     </StyledHabitCategory>
