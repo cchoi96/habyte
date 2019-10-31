@@ -22,14 +22,11 @@ const Habit = ({ github_id, habit_name, updateHabits }) => {
     });
   };
 
-  const habitList = specificHabits.map(habit => (
-    <HabitListItem habit={habit} />
-  ));
   return (
     <StyledHabitCategory>
       <h1>{habit_name}</h1>
       <p>This is the {habit_name} component. Welcome!</p>
-      <StyledHabitList habits={habits} />
+      <StyledHabitList habits={specificHabits} />
       <img src="/assets/other/plus.png" onClick={() => setIsOpen(true)}></img>
       {isOpen && (
         <HabitModal

@@ -10,8 +10,11 @@ const HabitListItem = ({ habit }) => {
         setIsStatsOpen(true);
       }}
     >
+      <img
+        src={`/assets/crops/${habit.crop_name}/${habit.crop_name}_Stage_${habit.crop_state}.png`}
+        alt=""
+      />
       {habit.name}
-
       {isStatsOpen && (
         <CurrentHabitModal
           setIsStatsOpen={setIsStatsOpen}
