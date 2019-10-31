@@ -4,50 +4,52 @@ import styled from "styled-components";
 
 const Farm = ({ habits, updateHabits, cookies }) => {
   return (
-    <StyledDiv>
-      <div style={{ display: "flex" }}>
-        <StyledFarmTiles
-          habit={habits[0]}
-          img={"assets/other/soil-tile-tl.png"}
-        />
-        <StyledFarmTiles
-          habit={habits[1]}
-          img={"assets/other/soil-tile-tm.png"}
-        />
-        <StyledFarmTiles
-          habit={habits[2]}
-          img={"assets/other/soil-tile-tr.png"}
-        />
-      </div>
-      <div style={{ display: "flex" }}>
-        <StyledFarmTiles
-          habit={habits[3]}
-          img={"assets/other/soil-tile-ml.png"}
-        />
-        <StyledFarmTiles
-          habit={habits[4]}
-          img={"assets/other/soil-tile-mm.png"}
-        />
-        <StyledFarmTiles
-          habit={habits[5]}
-          img={"assets/other/soil-tile-mr.png"}
-        />
-      </div>
-      <div style={{ display: "flex" }}>
-        <StyledFarmTiles
-          habit={habits[6]}
-          img={"assets/other/soil-tile-bl.png"}
-        />
-        <StyledFarmTiles
-          habit={habits[7]}
-          img={"assets/other/soil-tile-bm.png"}
-        />
-        <StyledFarmTiles
-          habit={habits[8]}
-          img={"assets/other/soil-tile-br.png"}
-        />
-      </div>
-    </StyledDiv>
+    <StyledContainer>
+      <StyledDiv>
+        <div style={{ display: "flex" }}>
+          <StyledFarmTiles
+            habit={habits[0]}
+            img={"assets/other/soil-tile-tl.png"}
+          />
+          <StyledFarmTiles
+            habit={habits[1]}
+            img={"assets/other/soil-tile-tm.png"}
+          />
+          <StyledFarmTiles
+            habit={habits[2]}
+            img={"assets/other/soil-tile-tr.png"}
+          />
+        </div>
+        <div style={{ display: "flex" }}>
+          <StyledFarmTiles
+            habit={habits[3]}
+            img={"assets/other/soil-tile-ml.png"}
+          />
+          <StyledFarmTiles
+            habit={habits[4]}
+            img={"assets/other/soil-tile-mm.png"}
+          />
+          <StyledFarmTiles
+            habit={habits[5]}
+            img={"assets/other/soil-tile-mr.png"}
+          />
+        </div>
+        <div style={{ display: "flex" }}>
+          <StyledFarmTiles
+            habit={habits[6]}
+            img={"assets/other/soil-tile-bl.png"}
+          />
+          <StyledFarmTiles
+            habit={habits[7]}
+            img={"assets/other/soil-tile-bm.png"}
+          />
+          <StyledFarmTiles
+            habit={habits[8]}
+            img={"assets/other/soil-tile-br.png"}
+          />
+        </div>
+      </StyledDiv>
+    </StyledContainer>
   );
 };
 
@@ -72,9 +74,16 @@ const StyledFarmTiles = styled(FarmTiles)`
 `;
 
 const StyledDiv = styled.div`
-  width: 60vw;
-  height: 60vw;
+  width: 30vw;
+  height: 30vw;
   margin-left: 5vw;
+`;
+
+const StyledContainer = styled.div`
+  height: 80vh;
+  width: 70vw;
+  margin-left: 3vw;
+  border-radius: 10px;
 `;
 
 export default Farm;

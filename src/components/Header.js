@@ -6,7 +6,7 @@ import styled from "styled-components";
 const Header = ({ cookies, setMode, className }) => {
   return (
     <StyledNavbar className={className} expand="lg">
-      <StyledBrand href="/home">CodeVille</StyledBrand>
+      <StyledBrand onClick={() => setMode("farm")}>habyte</StyledBrand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">

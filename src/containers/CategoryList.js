@@ -5,16 +5,16 @@ import CategoryListItem from "./CategoryListItem";
 const CategoryList = ({ setMode }) => {
   const categories = [
     {
+      name: "farm",
+      img: "/assets/other/farm.png"
+    },
+    {
       name: "coding",
       img: "/assets/other/coding_icon.png"
     },
     {
       name: "health",
       img: "/assets/other/health_icon.png"
-    },
-    {
-      name: "farm",
-      img: "/assets/other/farm.png"
     }
   ];
 
@@ -36,10 +36,12 @@ const CategoryList = ({ setMode }) => {
 };
 
 const StyledCategoryListItem = styled(CategoryListItem)`
-  width: 100%;
+  width: 75%;
+  margin: 15px auto;
   list-style-type: none;
   text-align: center;
   padding: 10px 0 20px 0;
+  border-radius: 10px;
   .projectName {
     font-size: 1.5em;
   }
@@ -61,10 +63,10 @@ const StyledCategoryListItem = styled(CategoryListItem)`
     cursor: pointer;
     background-color: ${props =>
       props.categoryName === "coding"
-        ? "rgba(67, 40, 116, 0.9)"
+        ? "rgba(67, 40, 116, 0.85)"
         : props.categoryName === "health"
-        ? "rgba(247, 78, 82, 0.9)"
-        : "rgba(36, 204, 143, 0.9)"};
+        ? "rgba(247, 78, 82, 0.85)"
+        : "rgba(36, 204, 143, 0.85)"};
   }
 
   color: #fff;
@@ -80,6 +82,9 @@ const StyledCategoryListItem = styled(CategoryListItem)`
 const StyledDiv = styled.div`
   list-style-type: none;
   width: 20%;
+  background-color: #edecee;
+  height: 80vh;
+  border-radius: 10px;
 `;
 
 export default CategoryList;
