@@ -12,6 +12,7 @@ const Header = ({ cookies, setMode, className }) => {
         <Nav className="mr-auto" id="basic-nav">
           <Nav.Link href="/home">Home</Nav.Link>
           <Nav.Link onClick={() => setMode("new-habits")}>New Habits</Nav.Link>
+          <Nav.Link onClick={() => setMode("store")}>Store</Nav.Link>
           <Nav.Link href="/new-habits">Past Habits</Nav.Link>
         </Nav>
         <NavDropdown title={cookies.github_id} id="basic-nav-dropdown">

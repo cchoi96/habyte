@@ -8,6 +8,7 @@ import NewHabits from "./NewHabits";
 import styled from "styled-components";
 import axios from "axios";
 import Habit from "./Habit";
+import Store from "./Store";
 
 // Make function that updates habit state with get request down to individual components and update state on every onclick
 
@@ -222,6 +223,7 @@ const Home = ({ cookies, className }) => {
             refreshHabits={refreshHabits}
           />
         )}
+        {mode === 'store' && (<Store />)}
         {mode === "health" && (
           <Habit
             github_id={cookies.github_id}
