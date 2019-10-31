@@ -85,7 +85,7 @@ const StyledProjectListItem = styled(ProjectListItem)`
   border: 1px solid black;
   background-color: grey;
   width: 100%;
-  margin: 30px;
+  margin: 2% auto;
   list-style-type: none;
   border-radius: 10px;
   .projectName {
@@ -101,16 +101,23 @@ const StyledProjectListItem = styled(ProjectListItem)`
 `;
 
 const StyledSortableContainer = styled(SortableContainer)`
-  border: 1px solid black;
   list-style-type: none;
-  width: 100%;
-  border-radius: 10px;
+  padding: 3%;
 
-  background-color: lightblue;
+  border-radius: 10px;
+  height: 80vh;
+  width: 70vw;
+  background-color: rgba(67, 40, 116, 0.6);
+  @media only screen and (max-width: 950px) {
+    margin: 0 auto;
+    margin-bottom: 10vh;
+    height: 70vh;
+    width: 100%;
+  }
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex-wrap: wrap;
+
+  overflow-y: scroll;
 `;
 
 export default ProjectList;

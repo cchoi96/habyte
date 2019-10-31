@@ -43,10 +43,10 @@ const StyledHabitName = styled.div`
 `;
 
 const StyledHabitItem = styled.div`
-  width: 250px;
-  height: 250px;
+  width: 20%;
+  height: 40%;
   padding: 20px;
-  margin: 20px;
+  margin: 20px 2.5%;
   border-radius: 10px;
   background-color: rgb(237, 236, 238);
   box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
@@ -54,6 +54,18 @@ const StyledHabitItem = styled.div`
 
   &:hover {
     box-shadow: 0 2px 2px 0 #fff, 0 1px 4px 0 #fff;
+  }
+
+  @media only screen and (max-width: 750px) {
+    width: 40%;
+    height: 30%;
+    margin: 20px 5%;
+  }
+
+  @media only screen and (max-width: 500px) {
+    width: 220px;
+    height: 220px;
+    margin: 20px auto;
   }
 `;
 
