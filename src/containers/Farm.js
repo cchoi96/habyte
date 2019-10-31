@@ -1,15 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import FarmTiles from "../components/FarmTiles";
 import styled from "styled-components";
-import axios from "axios";
 
-const Farm = ({ habits, setHabits, cookies }) => {
-  // useEffect(() => {
-  //   axios.get(`http://0.0.0.0:8080/${cookies.github_id}/habits`).then(res => {
-  //     let habitsArray = res.data;
-  //     setHabits(habitsArray);
-  //   });
-  // }, []);
+const Farm = ({ habits }) => {
   return (
     <StyledDiv>
       <div style={{ display: "flex" }}>

@@ -7,7 +7,8 @@ const HabitModal = ({
   isOpen,
   github_id,
   habit_name,
-  refreshSpecificHabits
+  refreshSpecificHabits,
+  updateHabits
 }) => {
   const customStyles = {
     content: {
@@ -73,6 +74,9 @@ const HabitModal = ({
       })
       .then(() => {
         refreshSpecificHabits(github_id, habit_name);
+      })
+      .then(() => {
+        updateHabits(github_id);
       });
   };
 

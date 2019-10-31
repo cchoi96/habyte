@@ -3,26 +3,27 @@ import HabitListItem from "./HabitListItem";
 import HabitModal from "./HabitModal";
 import axios from "axios";
 
-const Habit = ({ github_id, habit_name }) => {
+const Habit = ({ github_id, habit_name, updateHabits }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [habits, setHabits] = useState([]);
+  const [specificHabits, setSpecificHabits] = useState([]);
 
   useEffect(() => {
-    console.log(github_id, habit_name);
     axios.get(`http://0.0.0.0:8080/${github_id}/${habit_name}`).then(res => {
       console.log("inside the health habit, get request",res.data)
-      setHabits(res.data);
+      setSpecificHabits(res.data);
     });
   }, []);
 
   // Function to be passed down that refreshes specific habit state
   const refreshSpecificHabits = (github_id, habit_name) => {
     axios.get(`http://0.0.0.0:8080/${github_id}/${habit_name}`).then(res => {
-      setHabits(res.data);
+      setSpecificHabits(res.data);
     });
   };
 
-  const habitList = habits.map(habit => <HabitListItem habit={habit} />);
+  const habitList = specificHabits.map(habit => (
+    <HabitListItem habit={habit} />
+  ));
   return (
     <div>
       <h1>{habit_name}</h1>
@@ -36,6 +37,7 @@ const Habit = ({ github_id, habit_name }) => {
           github_id={github_id}
           habit_name={habit_name}
           refreshSpecificHabits={refreshSpecificHabits}
+          updateHabits={updateHabits}
         />
       )}
     </div>

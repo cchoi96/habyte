@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import CategoryList from "./CategoryList";
 import ProjectList from "./ProjectList";
 import Farm from "./Farm";
-import Footer from "../components/Footer";
 import Header from "../components/Header";
 import ProjectModal from "./ProjectModal";
 import NewHabits from "./NewHabits";
@@ -23,17 +22,21 @@ const Home = ({ cookies, className }) => {
     columns: {},
     columnOrder: []
   });
-  // Habit List state management
+  // Total Habit List state management
   const [habits, setHabits] = useState([]);
+  console.log("habits ==>", habits);
 
   // Renders different components on home page based on mode
-  const [mode, setMode] = useState("farm");
+  const [mode, setMode] = useState();
 
+  // Function to refresh total habit list state
   const updateHabits = github_id => {
-    axios.get(`http://0.0.0.0:8080/${cookies.github_id}/habits`).then(res => {
+    console.log("HEYYYYYYYYYYY");
+    axios.get(`http://0.0.0.0:8080/${github_id}/habits`).then(res => {
+      console.log("RES.DATA!", res.data);
       let habitsArray = res.data;
-      console.log("Updated res.data!", habitsArray);
       setHabits(habitsArray);
+      console.log("Updated res.data!", habitsArray);
     });
   };
 
@@ -118,8 +121,8 @@ const Home = ({ cookies, className }) => {
 
   useEffect(() => {
     axios.get(`http://0.0.0.0:8080/${cookies.github_id}/habits`).then(res => {
+      console.log('in the beginning of the useeffect')
       let habitsArray = res.data;
-      setHabits(habitsArray);
       for (let habit of habitsArray) {
         if (isOverDays(habit.last_check_date_week, 7)) {
           if (isCounterMoreFrequency(habit)) {
@@ -157,7 +160,16 @@ const Home = ({ cookies, className }) => {
           new_date_day: new_date_day
         });
       }
-    });
+
+    }).then((habitsArray) => {
+      axios.get(`http://0.0.0.0:8080/${cookies.github_id}/habits`).then((res) => {
+        let newHabitsArray = res.data;
+        setMode('farm');
+        setHabits(newHabitsArray);
+        console.log('after all the axios requests')
+        console.log('just finished setting farm')
+      })
+    })
   }, []);
 
   // Function to be passed down that refreshes the habit state
@@ -177,7 +189,12 @@ const Home = ({ cookies, className }) => {
       <div className="main-content">
         <StyledCategoryList setMode={setMode} />
         {mode === "farm" && (
-          <Farm habits={habits} setHabits={setHabits} cookies={cookies} />
+          <Farm
+            habits={habits}
+            setHabits={setHabits}
+            cookies={cookies}
+            updateHabits={updateHabits}
+          />
         )}
         {mode === "coding" && (
           <div>
@@ -198,14 +215,13 @@ const Home = ({ cookies, className }) => {
             habits={habits}
             setHabits={setHabits}
             refreshHabits={refreshHabits}
-            updateHabits={updateHabits}
           />
         )}
         {mode === "health" && (
           <Habit
             github_id={cookies.github_id}
             habit_name="health"
-            refreshHabits={refreshHabits}
+            updateHabits={updateHabits}
           />
         )}
       </div>
