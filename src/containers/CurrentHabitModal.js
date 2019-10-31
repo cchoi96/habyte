@@ -1,5 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import Modal from "react-modal";
+import {
+  XYPlot,
+  LineSeries,
+  VerticalGridLines,
+  HorizontalGridLines,
+  XAxis,
+  YAxis,
+  LineMarkSeries
+} from "react-vis";
+// import "../node_modules/react-vis/dist/style.css";
 
 const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
   const customStyles = {
@@ -16,6 +26,17 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
     }
   };
 
+  const data = new Array(19).fill(0).reduce(
+    (prev, curr) => [
+      ...prev,
+      {
+        x: prev.slice(-1)[0].x + 1,
+        y: prev.slice(-1)[0].y * (0.9 + Math.random() * 0.2)
+      }
+    ],
+    [{ x: 0, y: 10 }]
+  );
+
   // Required to set link modal to react app
   Modal.setAppElement(document.getElementById("root"));
 
@@ -23,19 +44,17 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
     setIsStatsOpen(true);
   };
 
-  const closeModal = () => {
+  const closeModal = e => {
+    e.stopPropagation();
     setIsStatsOpen(false);
-    console.log(isStatsOpen);
   };
 
   const closeHabitModal = e => {
     e.preventDefault();
-    console.log("hello");
-    setIsStatsOpen(false);
-    console.log(isStatsOpen);
     closeModal();
   };
 
+  console.log(habit);
   return (
     <div>
       <Modal
@@ -45,7 +64,15 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
         contentLabel="Habit Modal"
       >
         <h2>{habit.name}</h2>
-        <button onClick={closeModal}>close</button>
+        <div>Graph thingy goes here</div>
+        <XYPlot width={400} height={300}>
+          <XAxis />
+          <YAxis />
+          <HorizontalGridLines />
+          <VerticalGridLines />
+          <LineMarkSeries data={data} />
+        </XYPlot>
+        ;<button onClick={closeModal}>close</button>
       </Modal>
     </div>
   );
