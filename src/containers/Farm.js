@@ -2,7 +2,9 @@ import React from "react";
 import FarmTiles from "../components/FarmTiles";
 import styled from "styled-components";
 
-const Farm = ({ habits }) => {
+const Farm = ({ habits, updateHabits, cookies }) => {
+
+  useEffect(() =>)
   return (
     <StyledDiv>
       <div style={{ display: "flex" }}>
