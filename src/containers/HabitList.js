@@ -1,9 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import HabitListItem from "./HabitListItem";
-
+import styled from "styled-components";
 const HabitList = ({ habits }) => {
+  const [openModal, setOpenModal] = useState(false);
   const habitList = habits.map(habit => {
-    return <HabitListItem habit={habit.name} image={habit.image} />;
+    return (
+      <HabitListItem
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        habit={habit}
+        image={habit.image}
+      />
+    );
   });
   return <div>{habitList}</div>;
 };
