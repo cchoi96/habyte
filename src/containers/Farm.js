@@ -49,6 +49,12 @@ const Farm = ({ habits, updateHabits, cookies }) => {
           />
         </div>
       </StyledDiv>
+      <img src="/assets/other/farm.png" alt="farm house" />
+      <img
+        src="/assets/other/cat.gif"
+        id="animal"
+        onClick={() => console.log("<3")}
+      />
     </StyledContainer>
   );
 };
@@ -77,13 +83,31 @@ const StyledDiv = styled.div`
   width: 30vw;
   height: 30vw;
   margin-left: 5vw;
+  align-self: center;
 `;
 
 const StyledContainer = styled.div`
+  display: flex;
   height: 80vh;
   width: 70vw;
   margin-left: 3vw;
   border-radius: 10px;
+  background-image: url("/assets/other/soil.png");
+  background-repeat: repeat;
+  background-size: 100px 100px;
+  img {
+    max-width: 30vw;
+    max-height: 30vw;
+    align-self: center;
+  }
+  #animal {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: 70%;
+    left: 71%;
+  }
+  }
 `;
 
 export default Farm;

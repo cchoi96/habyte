@@ -7,14 +7,12 @@ const Header = ({ cookies, setMode, className }) => {
   return (
     <StyledNavbar className={className} expand="lg">
       <StyledBrand onClick={() => setMode("farm")}>habyte</StyledBrand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Toggle aria-controls="basic-navbar-nav" id="toggle" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto" id="basic-nav">
-          <Nav.Link href="/home">Home</Nav.Link>
-          <Nav.Link onClick={() => setMode("new-habits")}>New Habits</Nav.Link>
-          <Nav.Link onClick={() => setMode("store")}>Store</Nav.Link>
-          <Nav.Link href="/new-habits">Past Habits</Nav.Link>
-        </Nav>
+        <Nav.Link href="/home">Home</Nav.Link>
+        <Nav.Link onClick={() => setMode("new-habits")}>New Habits</Nav.Link>
+        <Nav.Link onClick={() => setMode("store")}>Store</Nav.Link>
+        <Nav.Link href="/new-habits">Past Habits</Nav.Link>
         <NavDropdown title={cookies.github_id} id="basic-nav-dropdown">
           <NavDropdown.Item href="/username">My Profile</NavDropdown.Item>
           <NavDropdown.Divider />
@@ -31,11 +29,16 @@ const StyledNavbar = styled(Navbar)`
   font-size: 1.1em;
   color: #fff;
   background: rgba(36, 204, 143);
-  #basic-nav-dropdown {
+  #basic-nav-dropdown,
+  #basic-navbar-nav a {
     color: #fff;
   }
-  #basic-nav a {
-    color: #fff;
+  .dropdown-menu.show {
+    background-color: rgba(36, 204, 143);
+    border: none;
+  }
+  .dropdown-menu.show a:hover {
+    background-color: rgba(36, 204, 143);
   }
 `;
 
