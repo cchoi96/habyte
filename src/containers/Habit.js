@@ -29,7 +29,7 @@ const Habit = ({ github_id, habit_name, updateHabits }) => {
     <StyledHabitCategory>
       <h1>{habit_name}</h1>
       <p>This is the {habit_name} component. Welcome!</p>
-      <StyledHabitList habits={habits} />
+      <StyledHabitList specificHabits={specificHabits} />
       <img src="/assets/other/plus.png" onClick={() => setIsOpen(true)}></img>
       {isOpen && (
         <HabitModal
