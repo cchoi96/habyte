@@ -32,16 +32,22 @@ const CategoryList = ({ setMode }) => {
     );
   });
 
-  return <StyledDiv>{totalCategoryList}</StyledDiv>;
+  return (
+    <StyledDiv>
+      <div id="header">Categories</div>
+      {totalCategoryList}
+    </StyledDiv>
+  );
 };
 
 const StyledCategoryListItem = styled(CategoryListItem)`
-  width: 75%;
-  margin: 15px auto;
+  width: 90%;
+  margin: 10px auto;
   list-style-type: none;
   text-align: center;
   padding: 10px 0 20px 0;
   border-radius: 10px;
+  height: 20%;
   .projectName {
     font-size: 1.5em;
   }
@@ -63,23 +69,36 @@ const StyledCategoryListItem = styled(CategoryListItem)`
     cursor: pointer;
     background-color: ${props =>
       props.categoryName === "coding"
-        ? "rgba(67, 40, 116, 0.85)"
+        ? "rgba(67, 40, 116, 1)"
         : props.categoryName === "health"
-        ? "rgba(247, 78, 82, 0.85)"
-        : "rgba(36, 204, 143, 0.85)"};
+        ? "rgba(247, 78, 82, 1)"
+        : "rgba(36, 204, 143, 1)"};
   }
 
   color: #fff;
 
   background-color: ${props =>
     props.categoryName === "coding"
-      ? "rgba(67, 40, 116)"
+      ? "rgba(67, 40, 116, 0.85)"
       : props.categoryName === "health"
-      ? "rgba(247, 78, 82)"
-      : "rgba(36, 204, 143)"};
+      ? "rgba(247, 78, 82, 0.85)"
+      : "rgba(36, 204, 143, 0.85)"};
 `;
 
 const StyledDiv = styled.div`
+  #header {
+    text-align: center;
+    width: 100%;
+    height: 10vh;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    background-color: rgba(26, 24, 29, 0.3);
+    color: #fff;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   list-style-type: none;
   width: 20%;
   background-color: #edecee;
