@@ -2,12 +2,18 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import CurrentHabitModal from "./CurrentHabitModal";
 
-const HabitListItem = ({ habit, openModal, setOpenModal }) => {
-  console.log(openModal);
+const HabitListItem = ({ habit, setIsStatsOpen, isStatsOpen }) => {
+  console.log(isStatsOpen);
   return (
-    <StyledHabitItem onClick={() => setOpenModal(prev => !prev)}>
+    <StyledHabitItem onClick={() => setIsStatsOpen(true)}>
       {habit.name}
-      {openModal && <CurrentHabitModal habit={habit} />}
+      {isStatsOpen && (
+        <CurrentHabitModal
+          setIsStatsOpen={setIsStatsOpen}
+          isStatsOpen={isStatsOpen}
+          habit={habit}
+        />
+      )}
     </StyledHabitItem>
   );
 };

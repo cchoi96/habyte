@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import axios from "axios";
 
-const HabitModal = ({ habit, setIsOpen, isOpen }) => {
+const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
   const customStyles = {
     content: {
       width: "100%",
@@ -21,18 +20,26 @@ const HabitModal = ({ habit, setIsOpen, isOpen }) => {
   Modal.setAppElement(document.getElementById("root"));
 
   const openModal = () => {
-    setIsOpen(true);
+    setIsStatsOpen(true);
   };
 
   const closeModal = () => {
-    setIsOpen(false);
+    setIsStatsOpen(false);
+    console.log(isStatsOpen);
+  };
+
+  const closeHabitModal = e => {
+    e.preventDefault();
+    console.log("hello");
+    setIsStatsOpen(false);
+    console.log(isStatsOpen);
+    closeModal();
   };
 
   return (
     <div>
-      Testing
       <Modal
-        isOpen={isOpen}
+        isOpen={isStatsOpen}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Habit Modal"
@@ -44,4 +51,4 @@ const HabitModal = ({ habit, setIsOpen, isOpen }) => {
   );
 };
 
-export default HabitModal;
+export default CurrentHabitModal;
