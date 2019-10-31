@@ -24,19 +24,14 @@ const Home = ({ cookies, className }) => {
   });
   // Total Habit List state management
   const [habits, setHabits] = useState([]);
-  console.log("habits ==>", habits);
-
   // Renders different components on home page based on mode
   const [mode, setMode] = useState();
 
   // Function to refresh total habit list state
   const updateHabits = github_id => {
-    console.log("HEYYYYYYYYYYY");
     axios.get(`http://0.0.0.0:8080/${github_id}/habits`).then(res => {
-      console.log("RES.DATA!", res.data);
       let habitsArray = res.data;
       setHabits(habitsArray);
-      console.log("Updated res.data!", habitsArray);
     });
   };
 
