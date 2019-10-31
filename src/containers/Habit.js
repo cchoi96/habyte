@@ -3,6 +3,7 @@ import HabitList from "./HabitList";
 import HabitListItem from "./HabitListItem";
 import HabitModal from "./HabitModal";
 import axios from "axios";
+import styled from "styled-components";
 
 const Habit = ({ github_id, habit_name, updateHabits }) => {
   const [isOpen, setIsOpen] = useState(false);
