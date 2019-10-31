@@ -47,6 +47,7 @@ export default Habit;
 
 const StyledHabitCategory = styled.div`
   width: 100%;
+  font-family: "Roboto", sans-serif;
 `;
 
 const StyledHabitList = styled(HabitList)`
