@@ -121,55 +121,65 @@ const Home = ({ cookies, className }) => {
 
   useEffect(() => {
     axios.get(`http://0.0.0.0:8080/${cookies.github_id}/habits`).then(res => {
-      console.log('in the beginning of the useeffect')
       let habitsArray = res.data;
+      let queryArray = [];
       for (let habit of habitsArray) {
         if (isOverDays(habit.last_check_date_week, 7)) {
           if (isCounterMoreFrequency(habit)) {
             //upgrade the crop_State to the next state
-            axios.put(
-              `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}`
+            queryArray.push(
+              axios.put(
+                `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}`
+              )
             );
           } else {
             if (habit.is_already_dying) {
-              //if the crop is already dying, it will be dead.
-              axios.put(
-                `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/dead`
+              queryArray.push(
+                axios.put(
+                  `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/dead`
+                )
               );
             } else {
               //downgrade the crop_state and is_already_dying = true
-              axios.put(
-                `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/dying`
+              queryArray.push(
+                axios.put(
+                  `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/dying`
+                )
               );
             }
           }
           //reset counter and last_check_date_week
           const new_date_week = datePlusDays(habit.last_check_date_week, 7);
-          axios.put(
-            `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/counter`,
-            {
-              new_date_week: new_date_week
-            }
+          queryArray.push(
+            axios.put(
+              `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/counter`,
+              {
+                new_date_week: new_date_week
+              }
+            )
           );
         }
       }
       //reset last_check_date_day
       if (isOverDays(habitsArray[0].last_check_date_day, 1)) {
         const new_date_day = new Date();
-        axios.put(`http://0.0.0.0:8080/${cookies.github_id}/habits`, {
-          new_date_day: new_date_day
-        });
+        queryArray.push(
+          axios.put(`http://0.0.0.0:8080/${cookies.github_id}/habits`, {
+            new_date_day: new_date_day
+          })
+        );
       }
-
-    }).then((habitsArray) => {
-      axios.get(`http://0.0.0.0:8080/${cookies.github_id}/habits`).then((res) => {
-        let newHabitsArray = res.data;
-        setMode('farm');
-        setHabits(newHabitsArray);
-        console.log('after all the axios requests')
-        console.log('just finished setting farm')
-      })
-    })
+      //Try to update the states after each if statement, so we don't need to 
+      Promise.all(queryArray).then(() => {
+        axios
+          .get(`http://0.0.0.0:8080/${cookies.github_id}/habits`)
+          .then(res => {
+            let habits = res.data
+            setHabits(habits);
+            setMode("farm");
+          });
+      });
+    });
   }, []);
 
   // Function to be passed down that refreshes the habit state
