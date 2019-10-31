@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import HabitList from "./HabitList";
 import HabitListItem from "./HabitListItem";
 import HabitModal from "./HabitModal";
 import axios from "axios";
+import styled from "styled-components";
 
 const Habit = ({ github_id, habit_name, updateHabits }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,14 +23,11 @@ const Habit = ({ github_id, habit_name, updateHabits }) => {
     });
   };
 
-  const habitList = specificHabits.map(habit => (
-    <HabitListItem habit={habit} />
-  ));
   return (
-    <div>
+    <StyledHabitCategory>
       <h1>{habit_name}</h1>
       <p>This is the {habit_name} component. Welcome!</p>
-      <div>{habitList}</div>
+      <StyledHabitList specificHabits={specificHabits} />
       <img src="/assets/other/plus.png" onClick={() => setIsOpen(true)}></img>
       {isOpen && (
         <HabitModal
@@ -40,8 +39,20 @@ const Habit = ({ github_id, habit_name, updateHabits }) => {
           updateHabits={updateHabits}
         />
       )}
-    </div>
+    </StyledHabitCategory>
   );
 };
 
 export default Habit;
+
+const StyledHabitCategory = styled.div`
+  width: 100%;
+`;
+
+const StyledHabitList = styled(HabitList)`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border: 2px solid red;
+`;

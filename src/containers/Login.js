@@ -33,7 +33,7 @@ const Login = ({ setRepos, repos, setGithubId, cookies }) => {
 
   return (
     <StyledLogin>
-      <h1>Codeville</h1>
+      <h1>habyte</h1>
       <h2>
         Motivate yourself to become a better developer, in all aspects of life.
       </h2>
@@ -72,6 +72,7 @@ const StyledLogin = styled.div`
     margin: 0 auto;
     color: black;
     border: 1px solid black;
+    border-radius: 5px;
     padding: 5px 10px;
     transition: 0.1s ease-out;
     &:hover {

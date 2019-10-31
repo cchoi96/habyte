@@ -42,6 +42,8 @@ function App() {
 }
 
 const StyledHome = styled(Home)`
+  background-color: #fff;
+  height: 100vh;
   .main-content {
     margin-top: 5vh;
     display: flex;
