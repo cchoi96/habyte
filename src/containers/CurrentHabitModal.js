@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
 import "../../node_modules/react-vis/dist/style.css";
+import styled from "styled-components";
 import {
   XYPlot,
   LineSeries,
@@ -64,16 +65,15 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
         style={customStyles}
         contentLabel="Habit Modal"
       >
-        <h2>
+        <StyledFlexDiv>
           <img
             src={`/assets/crops/${habit.crop_name}/${habit.crop_name}_Stage_${habit.crop_state}.png`}
             alt=""
           />
-          {habit.name}
-        </h2>
-        <div>Graph thingy goes here</div>
+          <h2>{habit.name}</h2>
+        </StyledFlexDiv>
+        <div>Stats</div>
         <p>Habit created on {habit.created_at.slice(0, 10)}</p>
-
         <p>
           Current habit progress: {habit.counter} / {habit.frequency} for the
           week
@@ -94,3 +94,8 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
 };
 
 export default CurrentHabitModal;
+
+const StyledFlexDiv = styled.div`
+  display: flex;
+  align-items: flex-end;
+`;
