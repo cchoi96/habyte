@@ -7,8 +7,15 @@ import arrayMove from "array-move";
 import axios from "axios";
 
 const SortableItem = sortableElement(
-  ({ projectName, projectNumberCommit, setProjectSelected, projectid }) => (
+  ({
+    setModalOpen,
+    projectName,
+    projectNumberCommit,
+    setProjectSelected,
+    projectid
+  }) => (
     <StyledProjectListItem
+      setModalOpen={setModalOpen}
       setProjectSelected={setProjectSelected}
       projectName={projectName}
       projectid={projectid}
@@ -21,7 +28,7 @@ const SortableContainer = sortableContainer(({ children, className }) => {
   return <ul className={className}>{children}</ul>;
 });
 
-const ProjectList = ({ cookies, setProjectSelected }) => {
+const ProjectList = ({ cookies, setProjectSelected, setModalOpen }) => {
   const [projectList, setProjectList] = useState([]);
   useEffect(() => {
     axios
@@ -29,6 +36,7 @@ const ProjectList = ({ cookies, setProjectSelected }) => {
         github_id: cookies.github_id
       })
       .then(res => {
+        setProjectSelected(res.data[0].id);
         setProjectList(res.data);
       });
   }, []);
@@ -56,6 +64,7 @@ const ProjectList = ({ cookies, setProjectSelected }) => {
         projectid={project.id}
         projectName={project.name}
         projectNumberCommit={project.number_commit}
+        setModalOpen={setModalOpen}
       ></SortableItem>
     );
   });

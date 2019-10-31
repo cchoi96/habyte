@@ -8,6 +8,7 @@ import styled from "styled-components";
 import axios from "axios";
 import Habit from "./Habit";
 import Store from "./Store";
+import Coding from "./Coding";
 
 // Make function that updates habit state with get request down to individual components and update state on every onclick
 
@@ -25,7 +26,7 @@ const Home = ({ cookies, className }) => {
   // Total Habit List state management
   const [habits, setHabits] = useState([]);
   // Renders different components on home page based on mode
-  const [mode, setMode] = useState();
+  const [mode, setMode] = useState("farm");
 
   // Function to refresh total habit list state
   const updateHabits = github_id => {
@@ -153,18 +154,15 @@ const Home = ({ cookies, className }) => {
               }
             )
           );
-        };
+        }
 
         if (isOverDays(habit.last_check_date_day, 1)) {
           const new_date_day = new Date();
           queryArray.push(
-            axios.put(
-              `http://0.0.0.0:8080/${cookies.github_id}/update/habit`,
-              {
-                new_date_day: new_date_day,
-                habit: habit.name
-              }
-            )
+            axios.put(`http://0.0.0.0:8080/${cookies.github_id}/update/habit`, {
+              new_date_day: new_date_day,
+              habit: habit.name
+            })
           );
         }
       }
@@ -195,7 +193,7 @@ const Home = ({ cookies, className }) => {
   return (
     <div className={className}>
       <Header cookies={cookies} setMode={setMode} />
-      <div className="main-content">
+      <StyledMainContent className="main-content">
         <StyledCategoryList setMode={setMode} />
         {mode === "farm" && (
           <Farm
@@ -206,17 +204,13 @@ const Home = ({ cookies, className }) => {
           />
         )}
         {mode === "coding" && (
-          <div>
-            <StyledProjectList
-              cookies={cookies}
-              setProjectSelected={setProjectSelected}
-            />
-            <TrelloBoard
-              projectSelected={projectSelected}
-              projectState={projectState}
-              setProjectState={setProjectState}
-            />
-          </div>
+          <Coding
+            cookies={cookies}
+            setProjectSelected={setProjectSelected}
+            projectSelected={projectSelected}
+            projectState={projectState}
+            setProjectState={setProjectState}
+          />
         )}
         {mode === "new-habits" && (
           <NewHabits
@@ -234,17 +228,14 @@ const Home = ({ cookies, className }) => {
             updateHabits={updateHabits}
           />
         )}
-      </div>
+      </StyledMainContent>
     </div>
   );
 };
 
-const StyledProjectList = styled(ProjectList)`
-  list-style-type: none;
+const StyledMainContent = styled.div`
   display: flex;
-  flex-wrap: wrap;
-
-  @media (min-width: 480px) {
+  @media only screen and (max-width: 950px) {
     flex-direction: column;
   }
 `;
@@ -253,10 +244,7 @@ const StyledCategoryList = styled(CategoryList)`
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-
-  @media (min-width: 480px) {
-    flex-direction: column;
-  }
+  flex-direction: column;
 `;
 
 export default Home;

@@ -63,9 +63,10 @@ const StyledFarmTiles = styled(FarmTiles)`
   position: relative;
   .fruitImg {
     position: absolute;
-    top: 30%;
+    top: 10%;
     left: 30%;
     transition: 0.1s ease-out;
+    z-index: 999;
   }
 
   .soilTile {
@@ -86,7 +87,9 @@ const StyledDiv = styled.div`
   align-self: center;
   @media only screen and (max-width: 950px) {
     order: 2;
-    min-width: 300px;
+    min-width: 250px;
+    width: 20vw;
+    height: 20vw;
   }
 `;
 
@@ -98,7 +101,9 @@ const StyledContainer = styled.div`
   border-radius: 10px;
   background-image: url("/assets/other/soil.png");
   background-repeat: repeat;
-  background-size: 100px 100px;
+  background-size: 90px 90px;
+  box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
+  0 1px 4px 0 rgba(26, 24, 29, 0.12);
   img {
     max-width: 30vw;
     max-height: 30vw;
@@ -113,12 +118,15 @@ const StyledContainer = styled.div`
   }
   @media only screen and (max-width: 950px) {
     flex-direction: column;
+    width: 88vw;
+    height: 70vh;
     img {
       order: 1;
     }
     #farm-house {
-      min-width: 250px;
-      min-height: 220px;
+      margin-top: 10px;
+      min-width: 240px;
+      min-height: 210px;
     }
   }
 }

@@ -51,8 +51,7 @@ const StyledCategoryListItem = styled(CategoryListItem)`
   .projectName {
     font-size: 1.5em;
   }
-
-  .projectStatus {
+  b .projectStatus {
     font-size: 1.5em;
   }
 
@@ -64,7 +63,8 @@ const StyledCategoryListItem = styled(CategoryListItem)`
     margin: 5px;
     width: 50px;
   }
-
+  box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
+    0 1px 4px 0 rgba(26, 24, 29, 0.12);
   &:hover {
     cursor: pointer;
     background-color: ${props =>
@@ -83,6 +83,22 @@ const StyledCategoryListItem = styled(CategoryListItem)`
       : props.categoryName === "health"
       ? "rgba(247, 78, 82, 0.85)"
       : "rgba(36, 204, 143, 0.85)"};
+
+  @media only screen and (max-width: 950px) {
+    width: 15vw;
+    height: 8vw;
+    min-width: 60px;
+    min-height: 60px;
+    display: inline-block;
+    img {
+      margin: 0;
+      width: 40%;
+      min-width: 40px;
+    }
+    p {
+      display: none;
+    }
+  }
 `;
 
 const StyledDiv = styled.div`
@@ -104,6 +120,27 @@ const StyledDiv = styled.div`
   background-color: #edecee;
   height: 80vh;
   border-radius: 10px;
+  box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
+    0 1px 4px 0 rgba(26, 24, 29, 0.12);
+
+  @media only screen and (max-width: 950px) {
+    width: 100%;
+    min-height: 80px;
+    height: 10vw;
+    margin-bottom: 30px;
+    #header {
+      display: none;
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    margin: 0;
+    border-radius: 0;
+  }
 `;
 
 export default CategoryList;

@@ -4,9 +4,6 @@ import styled from "styled-components";
 import Column from "./Column";
 import axios from "axios";
 import NewColumn from "./NewColumn";
-const Container = styled.div`
-  display: flex;
-`;
 
 const TrelloBoard = ({ projectState, setProjectState, projectSelected }) => {
   const [newColumn, setNewColumn] = useState(false);
@@ -99,25 +96,41 @@ const TrelloBoard = ({ projectState, setProjectState, projectSelected }) => {
             />
           );
         })}
-        {newColumn && (
-          <NewColumn
-            projectState={projectState}
-            projectSelected={projectSelected}
-            setNewColumn={setNewColumn}
-            setProjectState={setProjectState}
-          />
-        )}
-        <StyledAddNewColumn onClick={() => setNewColumn(!newColumn)}>
-          Add new column
-        </StyledAddNewColumn>
+        <div>
+          <StyledAddNewColumn onClick={() => setNewColumn(!newColumn)}>
+            Add new column
+          </StyledAddNewColumn>
+          {newColumn && (
+            <NewColumn
+              projectState={projectState}
+              projectSelected={projectSelected}
+              setNewColumn={setNewColumn}
+              setProjectState={setProjectState}
+            />
+          )}
+        </div>
       </Container>
     </DragDropContext>
   );
 };
+
+const Container = styled.div`
+  padding: 2%;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid blue;
+`;
 const StyledAddNewColumn = styled.div`
   &:hover {
     cursor: pointer;
-    color: red;
+
+    background-color: #777;
   }
+  height: auto;
+  width: 100%;
+  margin: 5%;
+  padding: 5%;
+  border-radius: 10px;
+  background-color: grey;
 `;
 export default TrelloBoard;
