@@ -16,7 +16,7 @@ const Header = ({ cookies, setMode, className, userCoin }) => {
           <Nav.Link onClick={() => setMode("new-habits")}>New Habits</Nav.Link>
           <Nav.Link onClick={() => setMode("store")}>Store</Nav.Link>
           <Nav.Link href="/new-habits">Past Habits</Nav.Link>
-          <Nav.Link >{userCoinInfo} Coin! :)</Nav.Link>
+          <Nav.Link >{userCoinInfo} Coin!</Nav.Link>
           <NavDropdown title={cookies.github_id} id="basic-nav-dropdown">
             <NavDropdown.Item href="/username">My Profile</NavDropdown.Item>
             <NavDropdown.Divider />
