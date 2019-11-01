@@ -63,7 +63,8 @@ const StyledCategoryListItem = styled(CategoryListItem)`
     margin: 5px;
     width: 50px;
   }
-
+  box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
+    0 1px 4px 0 rgba(26, 24, 29, 0.12);
   &:hover {
     cursor: pointer;
     background-color: ${props =>
@@ -119,6 +120,8 @@ const StyledDiv = styled.div`
   background-color: #edecee;
   height: 80vh;
   border-radius: 10px;
+  box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
+    0 1px 4px 0 rgba(26, 24, 29, 0.12);
 
   @media only screen and (max-width: 950px) {
     width: 100%;
