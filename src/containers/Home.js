@@ -54,6 +54,7 @@ const Home = ({ cookies, className }) => {
     axios.get(`http://0.0.0.0:8080/${cookies.github_id}/coin`).then(res => {
       let userCoin = res.data;
       setUserCoin(userCoin);
+      console.log(userCoin)
     });
   }, []);
 
@@ -207,7 +208,7 @@ const Home = ({ cookies, className }) => {
 
   return (
     <div className={className}>
-      <Header cookies={cookies} setMode={setMode} />
+      <Header cookies={cookies} setMode={setMode} userCoin={userCoin} />
       <StyledMainContent className="main-content">
         <StyledCategoryList setMode={setMode} />
         {mode === "farm" && (
