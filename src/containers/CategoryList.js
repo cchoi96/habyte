@@ -51,8 +51,7 @@ const StyledCategoryListItem = styled(CategoryListItem)`
   .projectName {
     font-size: 1.5em;
   }
-
-  .projectStatus {
+  b .projectStatus {
     font-size: 1.5em;
   }
 
@@ -86,8 +85,18 @@ const StyledCategoryListItem = styled(CategoryListItem)`
 
   @media only screen and (max-width: 950px) {
     width: 15vw;
-    height: 15vw;
+    height: 8vw;
+    min-width: 60px;
+    min-height: 60px;
     display: inline-block;
+    img {
+      margin: 0;
+      width: 40%;
+      min-width: 40px;
+    }
+    p {
+      display: none;
+    }
   }
 `;
 
@@ -113,7 +122,8 @@ const StyledDiv = styled.div`
 
   @media only screen and (max-width: 950px) {
     width: 100%;
-    height: 25vw;
+    min-height: 80px;
+    height: 10vw;
     margin-bottom: 30px;
     #header {
       display: none;
@@ -126,6 +136,7 @@ const StyledDiv = styled.div`
     left: 0;
     z-index: 999;
     margin: 0;
+    border-radius: 0;
   }
 `;
 
