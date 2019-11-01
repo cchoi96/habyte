@@ -9,7 +9,7 @@ const Header = ({ cookies, setMode, className }) => {
       <StyledBrand onClick={() => setMode("farm")}>habyte</StyledBrand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
+        <Nav className="mr-auto" id="basic-nav">
           <Nav.Link href="/home">Home</Nav.Link>
           <Nav.Link onClick={() => setMode("new-habits")}>New Habits</Nav.Link>
           <Nav.Link href="/new-habits">Past Habits</Nav.Link>
@@ -25,11 +25,21 @@ const Header = ({ cookies, setMode, className }) => {
 };
 
 const StyledNavbar = styled(Navbar)`
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
   font-size: 1.1em;
-  background: inherit;
+  color: #fff;
+  background: rgba(36, 204, 143);
+  #basic-nav-dropdown {
+    color: #fff;
+  }
+  #basic-nav a {
+    color: #fff;
+  }
 `;
 
 const StyledBrand = styled(Navbar)`
+  font-family: "Roboto", sans-serif;
   font-size: 1.5em;
 `;
 

@@ -7,7 +7,7 @@ import Logout from "./containers/Logout";
 import Farm from "./containers/Farm";
 import ProjectSelections from "./containers/ProjectSelections";
 import { useCookies } from "react-cookie";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 export const history = createBrowserHistory();
 
 function App() {
@@ -17,8 +17,20 @@ function App() {
     setCookie("github_id", github_id, { path: "/" });
   };
 
+  const GlobalStyles = createGlobalStyle`
+    @font-face {
+      font-family: 'Roboto';
+      src: url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+    }
+    @font-face {
+      font-family: 'Roboto Condensed';
+      src: url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
+    }
+  `;
+
   return (
     <Router history={history}>
+      <GlobalStyles />
       <Switch>
         <Route
           path={"/verify"}
@@ -42,7 +54,7 @@ function App() {
 }
 
 const StyledHome = styled(Home)`
-  background-color: #fff;
+  background-color: #f8f9fa;
   height: 100vh;
   .main-content {
     margin-top: 5vh;

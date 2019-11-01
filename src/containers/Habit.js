@@ -11,6 +11,7 @@ const Habit = ({ github_id, habit_name, updateHabits }) => {
 
   useEffect(() => {
     axios.get(`http://0.0.0.0:8080/${github_id}/${habit_name}`).then(res => {
+      console.log("inside the health habit, get request",res.data)
       setSpecificHabits(res.data);
     });
   }, []);
@@ -46,6 +47,7 @@ export default Habit;
 
 const StyledHabitCategory = styled.div`
   width: 100%;
+  font-family: "Roboto", sans-serif;
 `;
 
 const StyledHabitList = styled(HabitList)`
