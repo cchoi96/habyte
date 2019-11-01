@@ -96,36 +96,38 @@ const TrelloBoard = ({ projectState, setProjectState, projectSelected }) => {
             />
           );
         })}
-
-        <StyledAddNewColumn onClick={() => setNewColumn(!newColumn)}>
-          Add new column
-        </StyledAddNewColumn>
-        {newColumn && (
-          <NewColumn
-            projectState={projectState}
-            projectSelected={projectSelected}
-            setNewColumn={setNewColumn}
-            setProjectState={setProjectState}
-          />
-        )}
+        <div>
+          <StyledAddNewColumn onClick={() => setNewColumn(!newColumn)}>
+            Add new column
+          </StyledAddNewColumn>
+          {newColumn && (
+            <NewColumn
+              projectState={projectState}
+              projectSelected={projectSelected}
+              setNewColumn={setNewColumn}
+              setProjectState={setProjectState}
+            />
+          )}
+        </div>
       </Container>
     </DragDropContext>
   );
 };
 
 const Container = styled.div`
+  padding: 2%;
   display: flex;
   flex-wrap: wrap;
   border: 1px solid blue;
-  height: 100%;
 `;
 const StyledAddNewColumn = styled.div`
   &:hover {
     cursor: pointer;
-    color: red;
+
+    background-color: #777;
   }
-  border: 1px solid red;
-  height: 3vh;
+  height: auto;
+  width: 100%;
   margin: 5%;
   padding: 5%;
   border-radius: 10px;
