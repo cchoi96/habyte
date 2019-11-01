@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import TrelloBoard from "./TrelloBoard";
-
+import styled from "styled-components";
 const TrelloModal = ({
   modalOpen,
   setModalOpen,
@@ -19,6 +19,7 @@ const TrelloModal = ({
       right: "auto",
       bottom: "auto",
       marginRight: "-50%",
+      backgroundColor: "lightgrey",
       transform: "translate(-50%, -50%)"
     }
   };

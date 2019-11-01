@@ -36,7 +36,6 @@ const ProjectList = ({ cookies, setProjectSelected, setModalOpen }) => {
         github_id: cookies.github_id
       })
       .then(res => {
-        setProjectSelected(res.data[0].id);
         setProjectList(res.data);
       });
   }, []);
@@ -56,6 +55,7 @@ const ProjectList = ({ cookies, setProjectSelected, setModalOpen }) => {
   };
   console.log("projectlist", projectList);
   let totalProjectList = projectList.map((project, index) => {
+    console.log("projectnc", project);
     return (
       <SortableItem
         key={project.name}
@@ -83,14 +83,14 @@ const ProjectList = ({ cookies, setProjectSelected, setModalOpen }) => {
 
 const StyledProjectListItem = styled(ProjectListItem)`
   border: 1px solid black;
-  width: 50%;
+  background-color: grey;
+  width: 100%;
   margin: 30px;
   list-style-type: none;
-
+  border-radius: 10px;
   .projectName {
     font-size: 1.5em;
   }
-
   .projectStatus {
     font-size: 1.5em;
   }
@@ -104,6 +104,13 @@ const StyledSortableContainer = styled(SortableContainer)`
   border: 1px solid black;
   list-style-type: none;
   width: 100%;
+  border-radius: 10px;
+
+  background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 export default ProjectList;

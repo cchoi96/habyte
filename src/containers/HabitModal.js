@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import axios from "axios";
+import styled from "styled-components";
 
 const HabitModal = ({
   setIsOpen,
@@ -12,13 +13,14 @@ const HabitModal = ({
 }) => {
   const customStyles = {
     content: {
-      width: "100%",
+      width: "30%",
       overflow: "scroll",
-      height: "80vh",
+      height: "auto",
       top: "50%",
       left: "50%",
       right: "auto",
       bottom: "auto",
+      backgroundColor: "lightgrey",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)"
     }
@@ -88,53 +90,82 @@ const HabitModal = ({
         style={customStyles}
         contentLabel="Habit Modal"
       >
-        <h2>New Habit!</h2>
-        <button onClick={closeModal}>close</button>
-        <form>
-          <label>Habit: </label>
-          <input
-            type="text"
-            name="habit_name"
-            id="habit"
-            required
-            onChange={event => {
-              event.persist();
-              setNewHabit(prev => ({
-                ...prev,
-                ...(prev["habit"] = event.target.value)
-              }));
-            }}
-          />
-          <label>Frequency: </label>
-          <input
-            type="number"
-            name="frequency"
-            id="frequency"
-            onChange={event => {
-              event.persist();
-              setNewHabit(prev => ({
-                ...prev,
-                ...(prev["frequency"] = event.target.value)
-              }));
-            }}
-            required
-          />
-          <label>Notes: </label>
-          <textarea
-            id="notes"
-            onChange={event => {
-              event.persist();
-              setNewHabit(prev => ({
-                ...prev,
-                ...(prev["notes"] = event.target.value)
-              }));
-            }}
-          ></textarea>
+        <StyledTitle>New Habit!</StyledTitle>
+        <StyledButton onClick={closeModal}>x</StyledButton>
+
+        <StyledForm>
+          <StyledInputs>
+            <input
+              placeholder="Habit:"
+              type="text"
+              name="habit_name"
+              id="habit"
+              required
+              onChange={event => {
+                event.persist();
+                setNewHabit(prev => ({
+                  ...prev,
+                  ...(prev["habit"] = event.target.value)
+                }));
+              }}
+            />
+          </StyledInputs>
+          <StyledInputs>
+            <input
+              placeholder="Frequency:"
+              type="number"
+              name="frequency"
+              id="frequency"
+              onChange={event => {
+                event.persist();
+                setNewHabit(prev => ({
+                  ...prev,
+                  ...(prev["frequency"] = event.target.value)
+                }));
+              }}
+              required
+            />
+          </StyledInputs>
+          <StyledInputs>
+            <textarea
+              id="notes"
+              placeholder="Notes: "
+              onChange={event => {
+                event.persist();
+                setNewHabit(prev => ({
+                  ...prev,
+                  ...(prev["notes"] = event.target.value)
+                }));
+              }}
+            ></textarea>
+          </StyledInputs>
           <button onClick={saveHabit}>Submit</button>
-        </form>
+        </StyledForm>
       </Modal>
     </div>
   );
 };
 
 export default HabitModal;
+
+const StyledTitle = styled.h2`
+  text-align: center;
+`;
+
+const StyledButton = styled.button`
+  position: absolute;
+  top: 0;
+  right: 0;
+`;
+const StyledForm = styled.form`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+const StyledInputs = styled.div`
+  width: 100%;
+  margin: 10px;
+  text-align: center;
+  outline: none;
+  box-shadow: none;
+`;
