@@ -49,7 +49,7 @@ const Farm = ({ habits, updateHabits, cookies }) => {
           />
         </div>
       </StyledDiv>
-      <img src="/assets/other/farm.png" alt="farm house" />
+      <img src="/assets/other/farm.png" alt="farm house" id="farm-house" />
       <img
         src="/assets/other/cat.gif"
         id="animal"
@@ -84,6 +84,10 @@ const StyledDiv = styled.div`
   height: 30vw;
   margin-left: 5vw;
   align-self: center;
+  @media only screen and (max-width: 950px) {
+    order: 2;
+    min-width: 300px;
+  }
 `;
 
 const StyledContainer = styled.div`
@@ -107,7 +111,17 @@ const StyledContainer = styled.div`
     top: 70%;
     left: 71%;
   }
+  @media only screen and (max-width: 950px) {
+    flex-direction: column;
+    img {
+      order: 1;
+    }
+    #farm-house {
+      min-width: 250px;
+      min-height: 220px;
+    }
   }
+}
 `;
 
 export default Farm;

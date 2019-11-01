@@ -159,22 +159,21 @@ const Home = ({ cookies, className }) => {
             )
           );
         }
+        if (isOverDays(habit.last_check_date_day, 1)) {
+          const new_date_day = new Date();
+          queryArray.push(
+            axios.put(`http://0.0.0.0:8080/${cookies.github_id}/habits`, {
+              new_date_day: new_date_day
+            })
+          );
+        }
       }
-      //reset last_check_date_day
-      if (isOverDays(habitsArray[0].last_check_date_day, 1)) {
-        const new_date_day = new Date();
-        queryArray.push(
-          axios.put(`http://0.0.0.0:8080/${cookies.github_id}/habits`, {
-            new_date_day: new_date_day
-          })
-        );
-      }
-      //Try to update the states after each if statement, so we don't need to 
+      //Try to update the states after each if statement, so we don't need to
       Promise.all(queryArray).then(() => {
         axios
           .get(`http://0.0.0.0:8080/${cookies.github_id}/habits`)
           .then(res => {
-            let habits = res.data
+            let habits = res.data;
             setHabits(habits);
             setMode("farm");
           });
