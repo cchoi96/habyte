@@ -87,7 +87,9 @@ const StyledDiv = styled.div`
   align-self: center;
   @media only screen and (max-width: 950px) {
     order: 2;
-    min-width: 300px;
+    min-width: 250px;
+    width: 20vw;
+    heigth: 20vw;
   }
 `;
 
@@ -114,12 +116,15 @@ const StyledContainer = styled.div`
   }
   @media only screen and (max-width: 950px) {
     flex-direction: column;
+    width: 88vw;
+    height: 70vh;
     img {
       order: 1;
     }
     #farm-house {
-      min-width: 250px;
-      min-height: 220px;
+      margin-top: 10px;
+      min-width: 240px;
+      min-height: 210px;
     }
   }
 }
