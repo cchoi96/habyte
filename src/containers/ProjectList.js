@@ -29,6 +29,7 @@ const ProjectList = ({ cookies, setProjectSelected }) => {
         github_id: cookies.github_id
       })
       .then(res => {
+        setProjectSelected(res.data[0].id);
         setProjectList(res.data);
       });
   }, []);

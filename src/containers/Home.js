@@ -8,6 +8,7 @@ import styled from "styled-components";
 import axios from "axios";
 import Habit from "./Habit";
 import Store from "./Store";
+import Coding from "./Coding";
 
 // Make function that updates habit state with get request down to individual components and update state on every onclick
 
@@ -153,23 +154,20 @@ const Home = ({ cookies, className }) => {
               }
             )
           );
-        };
+        }
 
         if (isOverDays(habit.last_check_date_day, 1)) {
           const new_date_day = new Date();
-          console.log(new_date_day)
+          console.log(new_date_day);
           queryArray.push(
-            axios.put(
-              `http://0.0.0.0:8080/${cookies.github_id}/update/habit`,
-              {
-                new_date_day: new_date_day,
-                habit: habit.name
-              }
-            )
+            axios.put(`http://0.0.0.0:8080/${cookies.github_id}/update/habit`, {
+              new_date_day: new_date_day,
+              habit: habit.name
+            })
           );
         }
       }
-      console.log(queryArray)
+      console.log(queryArray);
       //Try to update the states after each if statement, so we don't need to
       Promise.all(queryArray).then(() => {
         axios
@@ -208,17 +206,13 @@ const Home = ({ cookies, className }) => {
           />
         )}
         {mode === "coding" && (
-          <div>
-            <StyledProjectList
-              cookies={cookies}
-              setProjectSelected={setProjectSelected}
-            />
-            <TrelloBoard
-              projectSelected={projectSelected}
-              projectState={projectState}
-              setProjectState={setProjectState}
-            />
-          </div>
+          <Coding
+            cookies={cookies}
+            setProjectSelected={setProjectSelected}
+            projectSelected={projectSelected}
+            projectState={projectState}
+            setProjectState={setProjectState}
+          />
         )}
         {mode === "new-habits" && (
           <NewHabits
@@ -244,16 +238,6 @@ const Home = ({ cookies, className }) => {
 const StyledMainContent = styled.div`
   display: flex;
   @media only screen and (max-width: 950px) {
-    flex-direction: column;
-  }
-`;
-
-const StyledProjectList = styled(ProjectList)`
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-
-  @media (min-width: 480px) {
     flex-direction: column;
   }
 `;
