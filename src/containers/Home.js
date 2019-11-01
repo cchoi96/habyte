@@ -9,6 +9,7 @@ import styled from "styled-components";
 import axios from "axios";
 import Habit from "./Habit";
 import Store from "./Store";
+import Coding from "./Coding";
 
 // Make function that updates habit state with get request down to individual components and update state on every onclick
 
@@ -202,17 +203,13 @@ const Home = ({ cookies, className }) => {
           />
         )}
         {mode === "coding" && (
-          <div>
-            <StyledProjectList
-              cookies={cookies}
-              setProjectSelected={setProjectSelected}
-            />
-            <TrelloBoard
-              projectSelected={projectSelected}
-              projectState={projectState}
-              setProjectState={setProjectState}
-            />
-          </div>
+          <Coding
+            cookies={cookies}
+            setProjectSelected={setProjectSelected}
+            projectSelected={projectSelected}
+            projectState={projectState}
+            setProjectState={setProjectState}
+          />
         )}
         {mode === "new-habits" && (
           <NewHabits
@@ -222,7 +219,7 @@ const Home = ({ cookies, className }) => {
             refreshHabits={refreshHabits}
           />
         )}
-        {mode === 'store' && (<Store />)}
+        {mode === "store" && <Store />}
         {mode === "health" && (
           <Habit
             github_id={cookies.github_id}
@@ -234,16 +231,6 @@ const Home = ({ cookies, className }) => {
     </div>
   );
 };
-
-const StyledProjectList = styled(ProjectList)`
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-
-  @media (min-width: 480px) {
-    flex-direction: column;
-  }
-`;
 
 const StyledCategoryList = styled(CategoryList)`
   list-style-type: none;
