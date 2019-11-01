@@ -5,6 +5,10 @@ const Footer = () => {
   let year = new Date().getFullYear();
   return (
     <StyledDiv>
+      <p>
+        Special thanks to ConcernedApe for all, and I mean literally all, the
+        assets. ❤️
+      </p>
       <p>Made with ❤️ by Chris, Gary, and Michael &copy;{year}</p>
     </StyledDiv>
   );

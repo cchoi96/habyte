@@ -195,7 +195,7 @@ const Home = ({ cookies, className }) => {
   return (
     <div className={className}>
       <Header cookies={cookies} setMode={setMode} />
-      <div className="main-content">
+      <StyledMainContent className="main-content">
         <StyledCategoryList setMode={setMode} />
         {mode === "farm" && (
           <Farm
@@ -230,12 +230,21 @@ const Home = ({ cookies, className }) => {
             updateHabits={updateHabits}
           />
         )}
-      </div>
+      </StyledMainContent>
     </div>
   );
 };
 
-const StyledCategoryList = styled(CategoryList)`
+<<<<<<< HEAD
+=======
+const StyledMainContent = styled.div`
+  display: flex;
+  @media only screen and (max-width: 950px) {
+    flex-direction: column;
+  }
+`;
+
+const StyledProjectList = styled(ProjectList)`
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
@@ -243,6 +252,14 @@ const StyledCategoryList = styled(CategoryList)`
   @media (min-width: 480px) {
     flex-direction: column;
   }
+`;
+
+>>>>>>> f8152b6091885235dae98cd2bdcc6b88d9dea085
+const StyledCategoryList = styled(CategoryList)`
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 `;
 
 export default Home;

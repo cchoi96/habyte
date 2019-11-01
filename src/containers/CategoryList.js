@@ -83,6 +83,12 @@ const StyledCategoryListItem = styled(CategoryListItem)`
       : props.categoryName === "health"
       ? "rgba(247, 78, 82, 0.85)"
       : "rgba(36, 204, 143, 0.85)"};
+
+  @media only screen and (max-width: 950px) {
+    width: 15vw;
+    height: 15vw;
+    display: inline-block;
+  }
 `;
 
 const StyledDiv = styled.div`
@@ -104,6 +110,23 @@ const StyledDiv = styled.div`
   background-color: #edecee;
   height: 80vh;
   border-radius: 10px;
+
+  @media only screen and (max-width: 950px) {
+    width: 100%;
+    height: 25vw;
+    margin-bottom: 30px;
+    #header {
+      display: none;
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    margin: 0;
+  }
 `;
 
 export default CategoryList;

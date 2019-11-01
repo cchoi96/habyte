@@ -8,12 +8,13 @@ const HabitList = ({ specificHabits, setIsOpen }) => {
   return (
     <StyledDiv className="habitList">
       {habitList}
-
-      <img
-        className="addImage"
-        src="/assets/other/plus.png"
-        onClick={() => setIsOpen(true)}
-      ></img>
+      <div className="addImage">
+        <img
+          className="addImage"
+          src="/assets/other/plus.png"
+          onClick={() => setIsOpen(true)}
+        ></img>
+      </div>
     </StyledDiv>
   );
 };
@@ -24,8 +25,18 @@ const StyledDiv = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   .addImage {
-    width: 10%;
-    height: 10%;
+    width: 250px;
+    height: 250px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid black;
+  }
+  .addImage img {
+    width: 100px;
+    height: 100px;
+    justify-self: center;
+    align-self: center;
   }
 `;

@@ -63,9 +63,10 @@ const StyledFarmTiles = styled(FarmTiles)`
   position: relative;
   .fruitImg {
     position: absolute;
-    top: 30%;
+    top: 10%;
     left: 30%;
     transition: 0.1s ease-out;
+    z-index: 999;
   }
 
   .soilTile {
@@ -98,7 +99,7 @@ const StyledContainer = styled.div`
   border-radius: 10px;
   background-image: url("/assets/other/soil.png");
   background-repeat: repeat;
-  background-size: 100px 100px;
+  background-size: 90px 90px;
   img {
     max-width: 30vw;
     max-height: 30vw;
