@@ -17,7 +17,7 @@ import TrelloBoard from "./TrelloBoard";
 const Home = ({ cookies, className }) => {
   // Project List state management
   const [projectList, setProjectList] = useState([]);
-  const [projectSelected, setProjectSelected] = useState();
+  const [projectSelected, setProjectSelected] = useState(1);
   const [projectState, setProjectState] = useState({
     tasks: {},
     columns: {},
