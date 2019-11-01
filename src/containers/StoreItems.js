@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 
 const StoreItems = ({ items, setItems }) => {
@@ -26,7 +26,6 @@ const StoreItems = ({ items, setItems }) => {
   };
 
   const StoreItemList = Object.keys(items).map(item => {
-    console.log("KEYS ==>", Object.keys(items))
     return (
       <label key={items[item].name}>
         <div>Item Name: {items[item].name}</div>

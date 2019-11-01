@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import StoreItems from "./StoreItems";
 import axios from "axios";
 
@@ -10,7 +10,6 @@ const Store = ({
   updateCoinInDatabase
 }) => {
   const [items, setItems] = useState({});
-  console.log(userCoin);
   const buyItems = event => {
     event.preventDefault();
     let total = 0;
@@ -23,7 +22,7 @@ const Store = ({
     }
 
     if (total > userCoin[0]["coin"]) {
-      console.log("too expensive for you, make more money dude");
+      alert("too expensive for you, make more money dude")
     } else {
       const updateCoin = [...userCoin];
       updateCoin[0]["coin"] -= total;
@@ -34,7 +33,6 @@ const Store = ({
           items: boughtItems
         })
         .then(() => {
-          console.log("hello");
           updateCoinInDatabase(cookies.github_id);
           setMode("farm");
         });

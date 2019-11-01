@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import CategoryList from "./CategoryList";
-import ProjectList from "./ProjectList";
 import Farm from "./Farm";
 import Header from "../components/Header";
 import NewHabits from "./NewHabits";
@@ -10,9 +9,7 @@ import Habit from "./Habit";
 import Store from "./Store";
 import Coding from "./Coding";
 
-// Make function that updates habit state with get request down to individual components and update state on every onclick
-
-import TrelloBoard from "./TrelloBoard";
+// Make function that updates habit state with get request down to individual components and update state on every onclick 
 
 const Home = ({ cookies, className }) => {
   // Project List state management
@@ -36,8 +33,6 @@ const Home = ({ cookies, className }) => {
       setHabits(habitsArray);
     });
   };
-
-  console.log(userCoin);
 
   useEffect(() => {
     // Sets project state
@@ -64,8 +59,6 @@ const Home = ({ cookies, className }) => {
 
   const updateCoinInDatabase = github_id => {
     let coin = userCoin[0]["coin"];
-    console.log(coin);
-    console.log("coin inside update");
     axios.post(
       `http://0.0.0.0:8080/coin/${github_id}`,
       {

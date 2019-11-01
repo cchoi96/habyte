@@ -10,7 +10,6 @@ const Habit = ({ github_id, habit_name, updateHabits }) => {
   const [specificHabits, setSpecificHabits] = useState([]);
 
   useEffect(() => {
-    console.log(habit_name, "!!!!!");
     axios.get(`http://0.0.0.0:8080/${github_id}/${habit_name}`).then(res => {
       setSpecificHabits(res.data);
     });
@@ -25,7 +24,7 @@ const Habit = ({ github_id, habit_name, updateHabits }) => {
 
   return (
     <StyledHabitCategory habit_name={habit_name}>
-      <div class="habit-info">
+      <div className="habit-info">
         <h1>{habit_name[0].toUpperCase() + habit_name.slice(1)}</h1>
       </div>
 

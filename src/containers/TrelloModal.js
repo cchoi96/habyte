@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import Modal from "react-modal";
 import TrelloBoard from "./TrelloBoard";
-import styled from "styled-components";
 const TrelloModal = ({
   modalOpen,
   setModalOpen,

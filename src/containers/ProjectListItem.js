@@ -8,7 +8,6 @@ const ProjectListItem = ({
   setProjectSelected,
   projectid
 }) => {
-  console.log("projectNumberCommit", projectNumberCommit);
   return (
     <li
       className={className}

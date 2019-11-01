@@ -53,9 +53,7 @@ const ProjectList = ({ cookies, setProjectSelected, setModalOpen }) => {
   const onSortEnd = ({ oldIndex, newIndex }) => {
     setProjectList(arrayMove(projectList, oldIndex, newIndex));
   };
-  console.log("projectlist", projectList);
   let totalProjectList = projectList.map((project, index) => {
-    console.log("projectnc", project);
     return (
       <SortableItem
         key={project.name}
