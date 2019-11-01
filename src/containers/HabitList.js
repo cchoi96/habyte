@@ -2,12 +2,10 @@ import React from "react";
 import HabitListItem from "./HabitListItem";
 import styled from "styled-components";
 const HabitList = ({ specificHabits, setIsOpen, habit_name }) => {
-  let id = 0;
   const habitList = specificHabits.map(habit => {
-    id++;
     return (
       <HabitListItem
-        key={id}
+        key={habit.id}
         habit={habit}
         image={habit.image}
         habit_name={habit_name}
