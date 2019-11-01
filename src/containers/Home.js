@@ -235,7 +235,6 @@ const StyledCategoryList = styled(CategoryList)`
   display: flex;
   flex-wrap: wrap;
 
-  min-height: 100vh;
   @media (min-width: 480px) {
     flex-direction: column;
   }

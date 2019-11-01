@@ -42,7 +42,7 @@ const StyledHabitName = styled.div`
 `;
 
 const StyledHabitItem = styled.div`
-  width: 45%;
+  width: 35%;
   margin: 20px;
   padding: 20px;
   border: 1px solid black;
