@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import StoreItems from "./StoreItems";
 import axios from "axios";
 
 const Store = () => {
 
-  return <div>Store Page</div>
+  
+  return <StoreItems />
 };
 
 export default Store;
