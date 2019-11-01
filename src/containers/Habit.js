@@ -11,6 +11,7 @@ const Habit = ({ github_id, habit_name, updateHabits }) => {
 
   useEffect(() => {
     axios.get(`http://0.0.0.0:8080/${github_id}/${habit_name}`).then(res => {
+      console.log("inside the health habit, get request",res.data)
       setSpecificHabits(res.data);
     });
   }, []);
@@ -26,8 +27,8 @@ const Habit = ({ github_id, habit_name, updateHabits }) => {
     <StyledHabitCategory>
       <h1>{habit_name}</h1>
       <p>This is the {habit_name} component. Welcome!</p>
-      <StyledHabitList specificHabits={specificHabits} />
-      <img src="/assets/other/plus.png" onClick={() => setIsOpen(true)}></img>
+      <StyledHabitList specificHabits={specificHabits} setIsOpen={setIsOpen} />
+
       {isOpen && (
         <HabitModal
           setIsOpen={setIsOpen}

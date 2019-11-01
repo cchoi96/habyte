@@ -18,7 +18,7 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
     content: {
       width: "50%",
       overflow: "scroll",
-      height: "50vh",
+      height: "60vh",
       top: "50%",
       left: "50%",
       right: "auto",
@@ -87,6 +87,7 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
           <VerticalGridLines /> */}
           <LineMarkSeries data={data} />
         </XYPlot>
+
         <button onClick={closeModal}>close</button>
       </Modal>
     </div>
