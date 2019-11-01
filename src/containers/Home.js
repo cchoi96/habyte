@@ -158,7 +158,6 @@ const Home = ({ cookies, className }) => {
 
         if (isOverDays(habit.last_check_date_day, 1)) {
           const new_date_day = new Date();
-          console.log(new_date_day);
           queryArray.push(
             axios.put(`http://0.0.0.0:8080/${cookies.github_id}/update/habit`, {
               new_date_day: new_date_day,
@@ -167,7 +166,6 @@ const Home = ({ cookies, className }) => {
           );
         }
       }
-      console.log(queryArray);
       //Try to update the states after each if statement, so we don't need to
       Promise.all(queryArray).then(() => {
         axios
@@ -222,7 +220,7 @@ const Home = ({ cookies, className }) => {
             refreshHabits={refreshHabits}
           />
         )}
-        {mode === "store" && <Store />}
+        {mode === "store" && <Store cookies={cookies}/>}
         {mode === "health" && (
           <Habit
             github_id={cookies.github_id}
