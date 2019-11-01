@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import HabitListItem from "./HabitListItem";
 import styled from "styled-components";
-const HabitList = ({ specificHabits, setIsOpen }) => {
+const HabitList = ({ specificHabits, setIsOpen, habit_name }) => {
   const habitList = specificHabits.map(habit => {
-    return <HabitListItem key={habit.name} habit={habit} image={habit.image} />;
+    return (
+      <HabitListItem
+        key={habit.name}
+        habit={habit}
+        image={habit.image}
+        habit_name={habit_name}
+      />
+    );
   });
   return (
     <StyledDiv className="habitList">

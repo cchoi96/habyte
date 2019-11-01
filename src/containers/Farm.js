@@ -89,7 +89,7 @@ const StyledDiv = styled.div`
     order: 2;
     min-width: 250px;
     width: 20vw;
-    heigth: 20vw;
+    height: 20vw;
   }
 `;
 
@@ -102,6 +102,8 @@ const StyledContainer = styled.div`
   background-image: url("/assets/other/soil.png");
   background-repeat: repeat;
   background-size: 90px 90px;
+  box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
+  0 1px 4px 0 rgba(26, 24, 29, 0.12);
   img {
     max-width: 30vw;
     max-height: 30vw;
