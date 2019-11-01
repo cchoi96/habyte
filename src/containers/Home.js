@@ -235,8 +235,6 @@ const Home = ({ cookies, className }) => {
   );
 };
 
-<<<<<<< HEAD
-=======
 const StyledMainContent = styled.div`
   display: flex;
   @media only screen and (max-width: 950px) {
@@ -244,17 +242,6 @@ const StyledMainContent = styled.div`
   }
 `;
 
-const StyledProjectList = styled(ProjectList)`
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-
-  @media (min-width: 480px) {
-    flex-direction: column;
-  }
-`;
-
->>>>>>> f8152b6091885235dae98cd2bdcc6b88d9dea085
 const StyledCategoryList = styled(CategoryList)`
   list-style-type: none;
   display: flex;
