@@ -8,6 +8,7 @@ import NewHabits from "./NewHabits";
 import styled from "styled-components";
 import axios from "axios";
 import Habit from "./Habit";
+import Store from "./Store";
 
 // Make function that updates habit state with get request down to individual components and update state on every onclick
 
@@ -24,19 +25,14 @@ const Home = ({ cookies, className }) => {
   });
   // Total Habit List state management
   const [habits, setHabits] = useState([]);
-  console.log("habits ==>", habits);
-
   // Renders different components on home page based on mode
   const [mode, setMode] = useState();
 
   // Function to refresh total habit list state
   const updateHabits = github_id => {
-    console.log("HEYYYYYYYYYYY");
     axios.get(`http://0.0.0.0:8080/${github_id}/habits`).then(res => {
-      console.log("RES.DATA!", res.data);
       let habitsArray = res.data;
       setHabits(habitsArray);
-      console.log("Updated res.data!", habitsArray);
     });
   };
 
@@ -226,6 +222,7 @@ const Home = ({ cookies, className }) => {
             refreshHabits={refreshHabits}
           />
         )}
+        {mode === 'store' && (<Store />)}
         {mode === "health" && (
           <Habit
             github_id={cookies.github_id}
