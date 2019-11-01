@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import ProjectList from "./ProjectList";
 import TrelloBoard from "./TrelloBoard";
@@ -10,6 +10,7 @@ const Coding = ({
   projectState,
   setProjectState
 }) => {
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <StyledDiv>
       <StyledProjectList
