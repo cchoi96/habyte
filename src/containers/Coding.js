@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import ProjectList from "./ProjectList";
-import TrelloBoard from "./TrelloBoard";
+import TrelloModal from "./TrelloModal";
 
 const Coding = ({
   cookies,
@@ -16,12 +16,18 @@ const Coding = ({
       <StyledProjectList
         cookies={cookies}
         setProjectSelected={setProjectSelected}
+        setModalOpen={setModalOpen}
       />
-      <TrelloBoard
-        projectSelected={projectSelected}
-        projectState={projectState}
-        setProjectState={setProjectState}
-      />
+      {modalOpen && (
+        <TrelloModal
+          projectSelected={projectSelected}
+          modalOpen={modalOpen}
+          setModalOpen={setModalOpen}
+          projectSelected={projectSelected}
+          projectState={projectState}
+          setProjectState={setProjectState}
+        />
+      )}
     </StyledDiv>
   );
 };

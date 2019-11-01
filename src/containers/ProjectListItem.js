@@ -1,6 +1,7 @@
 import React from "react";
 
 const ProjectListItem = ({
+  setModalOpen,
   projectName,
   projectNumberCommit,
   className,
@@ -8,7 +9,13 @@ const ProjectListItem = ({
   projectid
 }) => {
   return (
-    <li className={className} onClick={() => setProjectSelected(projectid)}>
+    <li
+      className={className}
+      onClick={() => {
+        setModalOpen(true);
+        setProjectSelected(projectid);
+      }}
+    >
       <p className="projectName">{projectName}</p>
       <img src={projectNumberCommit} alt={projectName} />
     </li>
