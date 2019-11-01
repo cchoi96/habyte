@@ -26,7 +26,7 @@ const Home = ({ cookies, className }) => {
   // Total Habit List state management
   const [habits, setHabits] = useState([]);
   // Renders different components on home page based on mode
-  const [mode, setMode] = useState();
+  const [mode, setMode] = useState("farm");
 
   // Function to refresh total habit list state
   const updateHabits = github_id => {
@@ -154,23 +154,20 @@ const Home = ({ cookies, className }) => {
               }
             )
           );
-        };
+        }
 
         if (isOverDays(habit.last_check_date_day, 1)) {
           const new_date_day = new Date();
-          console.log(new_date_day)
+          console.log(new_date_day);
           queryArray.push(
-            axios.put(
-              `http://0.0.0.0:8080/${cookies.github_id}/update/habit`,
-              {
-                new_date_day: new_date_day,
-                habit: habit.name
-              }
-            )
+            axios.put(`http://0.0.0.0:8080/${cookies.github_id}/update/habit`, {
+              new_date_day: new_date_day,
+              habit: habit.name
+            })
           );
         }
       }
-      console.log(queryArray)
+      console.log(queryArray);
       //Try to update the states after each if statement, so we don't need to
       Promise.all(queryArray).then(() => {
         axios

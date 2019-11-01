@@ -4,9 +4,6 @@ import styled from "styled-components";
 import Column from "./Column";
 import axios from "axios";
 import NewColumn from "./NewColumn";
-const Container = styled.div`
-  display: flex;
-`;
 
 const TrelloBoard = ({ projectState, setProjectState, projectSelected }) => {
   const [newColumn, setNewColumn] = useState(false);
@@ -114,6 +111,11 @@ const TrelloBoard = ({ projectState, setProjectState, projectSelected }) => {
     </DragDropContext>
   );
 };
+
+const Container = styled.div`
+  display: flex;
+  border: 1px solid blue;
+`;
 const StyledAddNewColumn = styled.div`
   &:hover {
     cursor: pointer;
