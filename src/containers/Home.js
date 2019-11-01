@@ -26,7 +26,7 @@ const Home = ({ cookies, className }) => {
   // Total Habit List state management
   const [habits, setHabits] = useState([]);
   // Renders different components on home page based on mode
-  const [mode, setMode] = useState();
+  const [mode, setMode] = useState("farm");
 
   // Function to refresh total habit list state
   const updateHabits = github_id => {
@@ -191,7 +191,7 @@ const Home = ({ cookies, className }) => {
   return (
     <div className={className}>
       <Header cookies={cookies} setMode={setMode} />
-      <div className="main-content">
+      <StyledMainContent className="main-content">
         <StyledCategoryList setMode={setMode} />
         {mode === "farm" && (
           <Farm
@@ -222,7 +222,7 @@ const Home = ({ cookies, className }) => {
             refreshHabits={refreshHabits}
           />
         )}
-        {mode === 'store' && (<Store />)}
+        {mode === "store" && <Store />}
         {mode === "health" && (
           <Habit
             github_id={cookies.github_id}
@@ -230,10 +230,17 @@ const Home = ({ cookies, className }) => {
             updateHabits={updateHabits}
           />
         )}
-      </div>
+      </StyledMainContent>
     </div>
   );
 };
+
+const StyledMainContent = styled.div`
+  display: flex;
+  @media only screen and (max-width: 950px) {
+    flex-direction: column;
+  }
+`;
 
 const StyledProjectList = styled(ProjectList)`
   list-style-type: none;
@@ -249,10 +256,7 @@ const StyledCategoryList = styled(CategoryList)`
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-
-  @media (min-width: 480px) {
-    flex-direction: column;
-  }
+  flex-direction: column;
 `;
 
 export default Home;

@@ -11,16 +11,16 @@ const HabitListItem = ({ habit }) => {
       }}
     >
       <Container>
-        <div>
+        <StyledDiv>
           <img
             src={`/assets/crops/${habit.crop_name}/${habit.crop_name}_Stage_${habit.crop_state}.png`}
             alt=""
           />
           <div>
+            <StyledHabitName>{habit.name}</StyledHabitName>
             {habit.counter}/{habit.frequency}
           </div>
-        </div>
-        <StyledHabitName>{habit.name}</StyledHabitName>
+        </StyledDiv>
         {isStatsOpen && (
           <CurrentHabitModal
             setIsStatsOpen={setIsStatsOpen}
@@ -42,12 +42,21 @@ const StyledHabitName = styled.div`
 `;
 
 const StyledHabitItem = styled.div`
-  width: 35%;
-  margin: 20px;
+  width: 250px;
+  height: 250px;
   padding: 20px;
+  margin: 20px;
   border: 1px solid black;
   &:hover {
     background-color: steelblue;
+  }
+`;
+
+const StyledDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  img {
+    width: 50px;
   }
 `;
 export default HabitListItem;
