@@ -12,6 +12,10 @@ const FarmTiles = ({ className, img, habit }) => {
     setShowCropDetail(false);
   };
 
+  const sellCrop = () => {
+    console.log("sold your crop");
+  };
+
   return (
     <div className={className} onMouseOver={showDeets} onMouseLeave={hideDeets}>
       {showCropDetail && (
@@ -24,7 +28,17 @@ const FarmTiles = ({ className, img, habit }) => {
             <li>habit task: {habit.name}</li>
             {habit.notes && <li>Notes: {habit.notes}</li>}
             <li>Habit started: {habit.created_at.slice(0, 10)}</li>
+            <li>
+              Habit is currently
+              {habit.is_already_dying ? " dying :(" : " healthy!"}
+            </li>
           </StyledUl>
+          {habit.crop_state === 3 && (
+            <div>
+              Sell ripe {habit.crop_name}
+              <button onClick={sellCrop}> Sell </button>
+            </div>
+          )}
         </StyledHover>
       )}
       <img className="soilTile" src={img} />
