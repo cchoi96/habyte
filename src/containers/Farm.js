@@ -66,7 +66,7 @@ const StyledFarmTiles = styled(FarmTiles)`
     top: 10%;
     left: 30%;
     transition: 0.1s ease-out;
-    z-index: 999;
+    z-index: 5;
   }
 
   .soilTile {

@@ -56,7 +56,6 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
     closeModal();
   };
 
-  console.log(habit);
   return (
     <div>
       <Modal

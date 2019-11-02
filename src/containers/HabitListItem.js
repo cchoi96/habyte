@@ -13,14 +13,14 @@ const HabitListItem = ({ habit, habit_name }) => {
     >
       <Container>
         <StyledDiv>
-          <img
-            src={`/assets/crops/${habit.crop_name}/${habit.crop_name}_Stage_${habit.crop_state}.png`}
-            alt=""
-          />
           <div>
             <StyledHabitName>{habit.name}</StyledHabitName>
             {habit.counter}/{habit.frequency}
           </div>
+          <img
+            src={`/assets/crops/${habit.crop_name}/${habit.crop_name}_Stage_${habit.crop_state}.png`}
+            alt=""
+          />
         </StyledDiv>
         {isStatsOpen && (
           <CurrentHabitModal

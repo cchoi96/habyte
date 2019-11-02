@@ -10,7 +10,8 @@ const StoreItems = ({ items, setItems }) => {
           name: data.name,
           price: data.price,
           description: data.description,
-          quantity: 0
+          quantity: 0,
+          image_url: data.image_url
         };
       }
       setItems(response);
@@ -31,6 +32,7 @@ const StoreItems = ({ items, setItems }) => {
         <div>Item Name: {items[item].name}</div>
         <div>Price: {items[item].price}</div>
         <div>Item Description: {items[item].description}</div>
+        <img src={items[item].image_url}/>
         <input
           onChange={(event) => handleChange(event)}
           id={items[item].name}
