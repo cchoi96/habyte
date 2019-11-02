@@ -1,21 +1,59 @@
 import React from "react";
 import styled from "styled-components";
 
-const IntroductionChat = ({ chatObj, chatNum, setChatNum }) => {
+const IntroductionChat = ({
+  chatObj,
+  chatNum,
+  setChatNum,
+  setName,
+  setAnimal,
+  animal,
+  cookies,
+  submitData
+}) => {
   const input = obj => {
     if (obj.input) {
-      return <input type="text" id="name" placeholder="Name"></input>;
+      return (
+        <input
+          type="text"
+          id="name"
+          placeholder="Name"
+          onChange={() => setName(document.getElementById("name").value)}
+        ></input>
+      );
     }
   };
 
   const catOrDog = obj => {
     if (obj.image) {
       return (
-        <StyledAnimals className="animals">
-          <img className="animalImg" src="/assets/other/dog.gif" />
-          <img className="animalImg" src="/assets/other/cat.gif" />
+        <StyledAnimals>
+          <StyledImg
+            className="animalImg"
+            src="/assets/other/dog.gif"
+            name="dog"
+            animal={animal}
+            onClick={() => setAnimal("dog")}
+          />
+          <StyledImg
+            className="animalImg"
+            src="/assets/other/cat.gif"
+            name="cat"
+            animal={animal}
+            onClick={() => {
+              setAnimal("cat");
+            }}
+          />
         </StyledAnimals>
       );
+    }
+  };
+
+  const finalChat = obj => {
+    if (obj.final) {
+      return <button onClick={submitData}>Start Farming!</button>;
+    } else {
+      return <button onClick={() => setChatNum(chatNum + 1)}>Next</button>;
     }
   };
 
@@ -31,8 +69,9 @@ const IntroductionChat = ({ chatObj, chatNum, setChatNum }) => {
         {input(chatObj[chatNum])}
         {catOrDog(chatObj[chatNum])}
       </div>
-      <img src="/assets/other/lewis.png" alt="lewis" />
-      <button onClick={() => setChatNum(chatNum + 1)}>Next</button>
+      <img src="/assets/other/lewis.png" alt="lewis" className="profile" />
+
+      {finalChat(chatObj[chatNum])}
     </div>
   );
 };
@@ -42,11 +81,16 @@ const StyledAnimals = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  .animalImg {
-    width: 75px;
-    margin: 10px;
-    height: 75px;
+  img {
+    width: 50px;
+    height: 50px;
   }
+`;
+
+const StyledImg = styled.img`
+  width: 50px;
+  height: 50px;
+  border: ${props => (props.animal === props.name ? "1px solid black" : "")};
 `;
 
 export default IntroductionChat;

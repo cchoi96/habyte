@@ -96,6 +96,7 @@ const StyledDiv = styled.div`
 const StyledContainer = styled.div`
   display: flex;
   height: 80vh;
+  min-height: 500px;
   width: 70vw;
   margin-left: 3vw;
   border-radius: 10px;

@@ -59,6 +59,7 @@ function App() {
 
 const StyledHome = styled(Home)`
   html {
+    overflow-y: scroll;
     background-color: #f8f9fa;
     min-height: 100vh;
   }

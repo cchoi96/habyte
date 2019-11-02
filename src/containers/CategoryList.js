@@ -47,6 +47,7 @@ const StyledCategoryListItem = styled(CategoryListItem)`
   text-align: center;
   padding: 10px 0 20px 0;
   border-radius: 10px;
+  min-height: 100px;
   height: 20%;
   .projectName {
     font-size: 1.5em;
@@ -106,6 +107,7 @@ const StyledDiv = styled.div`
     text-align: center;
     width: 100%;
     height: 10vh;
+    min-height: 75px;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     background-color: rgba(26, 24, 29, 0.3);
@@ -119,6 +121,7 @@ const StyledDiv = styled.div`
   width: 20%;
   background-color: #edecee;
   height: 80vh;
+  min-height: 500px;
   border-radius: 10px;
   box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
     0 1px 4px 0 rgba(26, 24, 29, 0.12);

@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import IntroductionChat from "./IntroductionChat";
+import axios from "axios";
+import { history } from "../App";
 
 const Introduction = ({ cookies }) => {
   const [chatNum, setChatNum] = useState(0);
+  const [name, setName] = useState("");
+  const [animal, setAnimal] = useState("");
   const chatObj = {
     0: {
       message:
@@ -69,21 +73,38 @@ const Introduction = ({ cookies }) => {
       image: true
     },
     11: {
-      message: `One final thing… do you prefer dogs or cats?`,
+      message: `Cool! Thansk for listening to an old man ramble... Good luck farming!`,
       input: false,
-      image: false
+      image: false,
+      final: true
     }
+  };
+
+  const submitData = () => {
+    axios
+      .post(`http://0.0.0.0:8080/${cookies.github_id}`, {
+        name,
+        animal
+      })
+      .then(() => {
+        history.push("/home");
+      });
   };
 
   return (
     <StyledDiv>
-      <audio autoPlay loop>
+      {/* <audio autoPlay loop>
         <source src="assets/music.mp3" type="audio/mp3" />
-      </audio>
+      </audio> */}
       <IntroductionChat
         chatObj={chatObj}
         chatNum={chatNum}
         setChatNum={setChatNum}
+        setName={setName}
+        setAnimal={setAnimal}
+        animal={animal}
+        cookies={cookies}
+        submitData={submitData}
       />
     </StyledDiv>
   );
@@ -92,7 +113,7 @@ const Introduction = ({ cookies }) => {
 const StyledDiv = styled.div`
   width: 80%;
   margin: 0 auto;
-  img {
+  .profile {
     width: 220px;
     height: 200px;
     border-radius: 5px;
@@ -103,6 +124,7 @@ const StyledDiv = styled.div`
     width: 350px;
     height: 200px;
     position: absolute;
+    z-index: -1;
   }
 
   .convo {
@@ -120,7 +142,7 @@ const StyledDiv = styled.div`
     p {
       margin: 5% auto 0 auto;
       width: 80%;
-      font-size: 1.3em;
+      font-size: 1.1em;
     }
 
     input {
