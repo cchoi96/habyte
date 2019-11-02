@@ -104,17 +104,19 @@ const StyledSortableContainer = styled(SortableContainer)`
   list-style-type: none;
   padding: 3%;
 
-  border: 1px solid black;
-  width: 100%;
   border-radius: 10px;
   height: 80vh;
-  background-color: lightblue;
-
+  width: 70vw;
+  background-color: rgba(67, 40, 116, 0.6);
+  @media only screen and (max-width: 950px) {
+    margin: 0 auto;
+    margin-bottom: 10vh;
+    height: 70vh;
+    width: 100%;
+  }
   display: flex;
   flex-wrap: wrap;
-  @media only screen and (max-width: 950px) {
-    margin-bottom: 12vh;
-  }
+
   overflow-y: scroll;
 `;
 

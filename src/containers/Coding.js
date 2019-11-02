@@ -36,6 +36,11 @@ export default Coding;
 
 const StyledDiv = styled.div`
   margin-left: 3vw;
-  width: 60%;
   border-radius: 10px;
+  height: 80vh;
+  width: 70vw;
+  @media only screen and (max-width: 950px) {
+    margin: 0 auto;
+    width: 88vw;
+  }
 `;
