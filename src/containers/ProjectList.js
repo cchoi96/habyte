@@ -112,7 +112,9 @@ const StyledSortableContainer = styled(SortableContainer)`
 
   display: flex;
   flex-wrap: wrap;
-
+  @media only screen and (max-width: 950px) {
+    margin-bottom: 12vh;
+  }
   overflow-y: scroll;
 `;
 
