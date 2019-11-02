@@ -59,6 +59,7 @@ const StyledHabitCategory = styled.div`
   text-align: center;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
   border-radius: 10px;
   background-color: #edecee;
   box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
@@ -81,6 +82,10 @@ const StyledHabitCategory = styled.div`
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     color: #fff;
+  }
+  @media only screen and (max-width: 950px) {
+    width: 87vw;
+    height: 70vh;
   }
 `;
 
