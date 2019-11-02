@@ -1,12 +1,12 @@
-import React from "react";
+// import React from "react";
 
-const FarmTile = ({ img, fruitImg = "/" }) => {
-  return (
-    <div>
-      <img src={img} />
-      <img className="fruitImg" src={fruitImg} />
-    </div>
-  );
-};
+// const FarmTile = ({ img, fruitImg = "/" }) => {
+//   return (
+//     <div>
+//       <img src={img} />
+//       <img className="fruitImg" src={fruitImg} />
+//     </div>
+//   );
+// };
 
-export default FarmTile;
+// export default FarmTile;

@@ -137,7 +137,7 @@ const StyledDiv = styled.div`
     position: fixed;
     bottom: 0;
     left: 0;
-    z-index: 999;
+    z-index: 5;
     margin: 0;
     border-radius: 0;
   }

@@ -9,7 +9,7 @@ import Habit from "./Habit";
 import Store from "./Store";
 import Coding from "./Coding";
 
-// Make function that updates habit state with get request down to individual components and update state on every onclick 
+// Make function that updates habit state with get request down to individual components and update state on every onclick
 
 const Home = ({ cookies, className }) => {
   // Project List state management
@@ -54,21 +54,18 @@ const Home = ({ cookies, className }) => {
     axios.get(`http://0.0.0.0:8080/${cookies.github_id}/coin`).then(res => {
       let userCoin = res.data;
       if (userCoin.length === 0) {
-        userCoin = [{'coin': 0}]
+        userCoin = [{ coin: 0 }];
       }
       setUserCoin(userCoin);
-      console.log(userCoin)
+      console.log(userCoin);
     });
   }, []);
 
   const updateCoinInDatabase = github_id => {
     let coin = userCoin[0]["coin"];
-    axios.post(
-      `http://0.0.0.0:8080/coin/${github_id}`,
-      {
-        coin: coin
-      }
-    );
+    axios.post(`http://0.0.0.0:8080/coin/${github_id}`, {
+      coin: coin
+    });
   };
 
   // On project selected, make a call to retrieve the columns/tasks associated with the project and send that in as a prop to the trelloboard
@@ -250,6 +247,7 @@ const Home = ({ cookies, className }) => {
         )}
         {mode === "health" && (
           <Habit
+            habitslength={habits.length}
             github_id={cookies.github_id}
             habit_name="health"
             updateHabits={updateHabits}
