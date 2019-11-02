@@ -1,9 +1,20 @@
-import React from "react";
-
+import React, { useState } from "react";
+import styled from "styled-components";
 const FarmTiles = ({ className, img, habit }) => {
+  const [showCropDetail, setShowCropDetail] = useState(false);
   return (
-    <div className={`${className}`}>
+    <div
+      className={`${className}`}
+      onMouseOver={() => {
+        if (habit) {
+          setShowCropDetail(true);
+        }
+      }}
+      onMouseLeave={() => setShowCropDetail(false)}
+    >
+      {showCropDetail && <StyledHover> {habit.crop_name}</StyledHover>}
       <img className="soilTile" src={img} />
+
       {habit && (
         <img
           className="fruitImg"
@@ -14,4 +25,10 @@ const FarmTiles = ({ className, img, habit }) => {
   );
 };
 
+const StyledHover = styled.div`
+  position: fixed;
+  background-color: white;
+  padding: 10px;
+  z-index: 10;
+`;
 export default FarmTiles;
