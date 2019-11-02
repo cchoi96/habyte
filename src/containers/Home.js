@@ -53,6 +53,9 @@ const Home = ({ cookies, className }) => {
   useEffect(() => {
     axios.get(`http://0.0.0.0:8080/${cookies.github_id}/coin`).then(res => {
       let userCoin = res.data;
+      if (userCoin.length === 0) {
+        userCoin = [{'coin': 0}]
+      }
       setUserCoin(userCoin);
       console.log(userCoin)
     });
