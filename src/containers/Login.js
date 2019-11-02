@@ -16,9 +16,14 @@ const Login = ({ setRepos, repos, setGithubId, cookies }) => {
         code
       })
       .then(res => {
-        let github_id = res.data;
+        let github_id = res.data[0];
+        let first_login = res.data[1];
         setGithubId(github_id);
-        history.push("/home");
+        if (first_login) {
+          history.push("/home");
+        } else {
+          history.push("/intro");
+        }
       });
   };
 

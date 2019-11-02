@@ -85,9 +85,9 @@ const StyledDiv = styled.div`
   height: 30vw;
   margin-left: 5vw;
   align-self: center;
-  @media only screen and (max-width: 950px) {
+  @media only screen and (max-width: 750px) {
     order: 2;
-    min-width: 250px;
+    min-width: 240px;
     width: 20vw;
     height: 20vw;
   }
@@ -105,8 +105,8 @@ const StyledContainer = styled.div`
   box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
   0 1px 4px 0 rgba(26, 24, 29, 0.12);
   img {
-    max-width: 30vw;
-    max-height: 30vw;
+    max-width: 33vw;
+    max-height: 33vw;
     align-self: center;
   }
   #animal {
@@ -116,10 +116,17 @@ const StyledContainer = styled.div`
     top: 70%;
     left: 71%;
   }
+
   @media only screen and (max-width: 950px) {
+    width: 88vw;
+    height: 70vh;
+    justify-content: center;
+  }
+  @media only screen and (max-width: 750px) {
     flex-direction: column;
     width: 88vw;
     height: 70vh;
+    justify-content: flex-start;
     img {
       order: 1;
     }

@@ -6,6 +6,7 @@ import Home from "./containers/Home";
 import Logout from "./containers/Logout";
 import Farm from "./containers/Farm";
 import ProjectSelections from "./containers/ProjectSelections";
+import Introduction from "./containers/Introduction";
 import { useCookies } from "react-cookie";
 import styled, { createGlobalStyle } from "styled-components";
 export const history = createBrowserHistory();
@@ -36,7 +37,10 @@ function App() {
           path={"/verify"}
           render={() => <Login setGithubId={setGithubId} />}
         />
-
+        <Route
+          path={"/intro"}
+          render={() => <Introduction cookies={cookies} />}
+        />
         <Route
           path={"/logout"}
           render={() => <Logout removeCookie={removeCookie} />}
