@@ -1,7 +1,10 @@
 import React from "react";
 import HabitListItem from "./HabitListItem";
 import styled from "styled-components";
-const HabitList = ({ specificHabits, setIsOpen, habit_name }) => {
+const HabitList = ({ specificHabits, setIsOpen, habit_name, habitslength }) => {
+  const addHabits = () => {
+    setIsOpen(true);
+  };
   const habitList = specificHabits.map(habit => {
     return (
       <HabitListItem
@@ -10,19 +13,20 @@ const HabitList = ({ specificHabits, setIsOpen, habit_name }) => {
         image={habit.image}
         habit_name={habit_name}
       />
-      );
-    
+    );
   });
   return (
     <StyledDiv className="habitList">
       {habitList}
-      <div className="addImage">
-        <img
-          className="addImage"
-          src="/assets/other/plus.png"
-          onClick={() => setIsOpen(true)}
-        ></img>
-      </div>
+      {habitslength <= 8 && (
+        <div className="addImage">
+          <img
+            className="addImage"
+            src="/assets/other/plus.png"
+            onClick={addHabits}
+          ></img>
+        </div>
+      )}
     </StyledDiv>
   );
 };
