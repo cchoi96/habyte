@@ -166,6 +166,5 @@ const StyledInputs = styled.div`
   width: 100%;
   margin: 10px;
   text-align: center;
-  outline: none;
-  box-shadow: none;
+  -webkit-appearance: none;
 `;

@@ -13,7 +13,7 @@ const Coding = ({
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <StyledDiv>
-      <StyledProjectList
+      <ProjectList
         cookies={cookies}
         setProjectSelected={setProjectSelected}
         setModalOpen={setModalOpen}
@@ -34,15 +34,6 @@ const Coding = ({
 
 export default Coding;
 
-const StyledProjectList = styled(ProjectList)`
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  width: 50%;
-  @media (min-width: 480px) {
-    flex-direction: column;
-  }
-`;
 const StyledDiv = styled.div`
   margin-left: 3vw;
   width: 60%;
