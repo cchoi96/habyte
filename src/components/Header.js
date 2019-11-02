@@ -12,7 +12,7 @@ const Header = ({ cookies, setMode, className, userCoin }) => {
         <StyledBrand onClick={() => setMode("farm")}>habyte</StyledBrand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" id="toggle" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav.Link href="/home">Home</Nav.Link>
+          <Nav.Link onClick={() => setMode('farm')}>Farm</Nav.Link>
           <Nav.Link onClick={() => setMode("new-habits")}>New Habits</Nav.Link>
           <Nav.Link onClick={() => setMode("store")}>Store</Nav.Link>
           <Nav.Link href="/new-habits">Past Habits</Nav.Link>

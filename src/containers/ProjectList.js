@@ -69,6 +69,9 @@ const ProjectList = ({ cookies, setProjectSelected, setModalOpen }) => {
 
   return (
     <StyledSortableContainer onSortEnd={onSortEnd} distance={1}>
+      <div className="habit-info">
+        <h1>Coding</h1>
+      </div>
       {totalProjectList}
       <AddProject
         refreshList={refreshList}
@@ -105,7 +108,19 @@ const StyledSortableContainer = styled(SortableContainer)`
   border-radius: 10px;
   height: 80vh;
   width: 70vw;
-  background-color: rgba(67, 40, 116, 0.6);
+  background-color: rgba(67, 40, 116, 0.4);
+  padding-top: 0;
+  .habit-info {
+    background-color: rgba(67, 40, 116, 1);
+    width: 40%;
+    height: fit-content;
+    margin: 0 auto;
+    text-align: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: #fff;
+  }
+
   @media only screen and (max-width: 950px) {
     margin: 0 auto;
     margin-bottom: 10vh;
@@ -118,4 +133,5 @@ const StyledSortableContainer = styled(SortableContainer)`
   overflow-y: scroll;
 `;
 
+const StyledTitle = styled.div``;
 export default ProjectList;

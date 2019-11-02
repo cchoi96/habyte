@@ -5,7 +5,7 @@ import HabitModal from "./HabitModal";
 import axios from "axios";
 import styled from "styled-components";
 
-const Habit = ({ github_id, habit_name, updateHabits }) => {
+const Habit = ({ github_id, habit_name, updateHabits, habitslength }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [specificHabits, setSpecificHabits] = useState([]);
 
@@ -29,6 +29,7 @@ const Habit = ({ github_id, habit_name, updateHabits }) => {
       </div>
 
       <StyledHabitList
+        habitslength={habitslength}
         specificHabits={specificHabits}
         setIsOpen={setIsOpen}
         habit_name={habit_name}

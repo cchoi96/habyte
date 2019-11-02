@@ -247,6 +247,7 @@ const Home = ({ cookies, className }) => {
         )}
         {mode === "health" && (
           <Habit
+            habitslength={habits.length}
             github_id={cookies.github_id}
             habit_name="health"
             updateHabits={updateHabits}
