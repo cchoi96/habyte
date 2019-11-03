@@ -9,7 +9,6 @@ const IntroductionChat = ({
   name,
   setAnimal,
   animal,
-  cookies,
   submitData
 }) => {
   const input = obj => {
@@ -59,11 +58,11 @@ const IntroductionChat = ({
   };
 
   const finalChat = obj => {
-    if (obj.final) {
-      return <button onClick={submitData}>Start Farming!</button>;
-    } else {
-      return <button onClick={handleClick}>Next</button>;
-    }
+    return obj.final ? (
+      <button onClick={submitData}>Start Farming!</button>
+    ) : (
+      <button onClick={handleClick}>Next</button>
+    );
   };
 
   const renderMonkaS = obj => {
@@ -131,6 +130,7 @@ const StyledAnimals = styled.div`
 const StyledImg = styled.img`
   width: 50px;
   height: 50px;
+  margin: 10px;
   transform: ${props => (props.animal === props.name ? "scale(1.5)" : "1")};
   transition: 0.1s ease;
 `;

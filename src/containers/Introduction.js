@@ -17,13 +17,13 @@ const Introduction = ({ cookies, setUserInfo }) => {
     },
     1: {
       message:
-        "Habyte is a gamified habit tracking tool made by developers for developers. To get started, simply login with Github!",
+        "Habyte is a gamified habit tracking tool made by developers for developers.",
       input: false,
       image: false
     },
     2: {
       message:
-        "When you first enter, you will see a mostly empty farm made of 9 tiles. Each tile represents one new habit.",
+        "After you finish talking with me, you will see a mostly empty farm made of 9 tiles. Each tile represents one new habit.",
       input: false,
       image: false
     },
@@ -35,7 +35,7 @@ const Introduction = ({ cookies, setUserInfo }) => {
     },
     4: {
       message:
-        "To create a habit, simply click the habit category of choice and click the + button.",
+        "To create a habit, simply click the habit category of choice and click the (+) button.",
       input: false,
       image: false
     },
@@ -63,7 +63,7 @@ const Introduction = ({ cookies, setUserInfo }) => {
       image: false
     },
     9: {
-      message: `Currently, I only know you by your boring Github ID: ${cookies.github_id}. What is your real name?`,
+      message: `Currently, I only know you as your boring Github ID: ${cookies.github_id}. What is your real name?`,
       input: true,
       image: false
     },
@@ -73,7 +73,7 @@ const Introduction = ({ cookies, setUserInfo }) => {
       image: true
     },
     11: {
-      message: `Cool! Thanks for listening to an old man ramble... Good luck farming!`,
+      message: `Cool! Thanks for listening to an old man ramble... Thank you, and good luck farming!`,
       input: false,
       image: false,
       final: true
@@ -88,9 +88,6 @@ const Introduction = ({ cookies, setUserInfo }) => {
       })
       .then(() => {
         setUserInfo(cookies.github_id, name, animal);
-        console.log(cookies);
-        console.log(name, animal);
-        console.log(cookies.animal, cookies.name);
       })
       .then(() => {
         history.push("/home");
@@ -99,9 +96,9 @@ const Introduction = ({ cookies, setUserInfo }) => {
 
   return (
     <StyledDiv>
-      {/* <audio autoPlay loop>
+      <audio autoPlay loop>
         <source src="assets/music.mp3" type="audio/mp3" />
-      </audio> */}
+      </audio>
       <IntroductionChat
         chatObj={chatObj}
         chatNum={chatNum}
@@ -155,7 +152,7 @@ const StyledDiv = styled.div`
 
     input {
       width: 50%;
-      margin: 0 auto;
+      margin: 10px auto 0 auto;
       border-radius: 5px;
     }
   }
