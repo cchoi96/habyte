@@ -133,5 +133,4 @@ const StyledSortableContainer = styled(SortableContainer)`
   overflow-y: scroll;
 `;
 
-const StyledTitle = styled.div``;
 export default ProjectList;

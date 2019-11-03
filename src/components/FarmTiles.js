@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
+
 const FarmTiles = ({ className, img, habit }) => {
   const [showCropDetail, setShowCropDetail] = useState(false);
 
@@ -13,7 +15,8 @@ const FarmTiles = ({ className, img, habit }) => {
   };
 
   const sellCrop = () => {
-    console.log("sold your crop");
+    console.log("sold your, ", habit.crop_name);
+    axios.post("http://0.0.0.0:8080/projects", {});
   };
 
   return (

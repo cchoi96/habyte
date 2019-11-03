@@ -20,11 +20,10 @@ const HabitList = ({ specificHabits, setIsOpen, habit_name, habitslength }) => {
       {habitList}
       {habitslength <= 8 && (
         <div className="addImage">
-          <img
-            className="addImage"
+          <StyledImg
             src="/assets/other/plus.png"
             onClick={addHabits}
-          ></img>
+          ></StyledImg>
         </div>
       )}
     </StyledDiv>
@@ -40,6 +39,7 @@ const StyledDiv = styled.div`
   .addImage {
     width: 20%;
     height: 40%;
+    min-height: 220px;
     padding: 20px;
     margin: 20px 2.5%;
     border-radius: 10px;
@@ -53,25 +53,26 @@ const StyledDiv = styled.div`
 
     @media only screen and (max-width: 750px) {
       width: 40%;
-      height: 30%;
+      height: 200px;
       margin: 20px 5%;
     }
 
     @media only screen and (max-width: 500px) {
       width: 220px;
-      height: 220px;
+      height: 200px;
       margin: 20px auto;
     }
   }
-  .addImage img {
-    width: 100px;
-    height: 100px;
-    border: none;
-    justify-self: center;
-    align-self: center;
-    box-shadow: none;
-    &:hover {
-      box-shadow: none;
-    }
+`;
+
+const StyledImg = styled.img`
+  width: 100px;
+  height: 100px;
+  border: none;
+  justify-self: center;
+  align-self: center;
+  box-shadow: none;
+  &:hover {
+    transform: scale(1.1);
   }
 `;
