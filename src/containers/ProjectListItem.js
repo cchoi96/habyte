@@ -13,7 +13,7 @@ const ProjectListItem = ({
       className={className}
       onClick={() => {
         setProjectSelected(projectid);
-        setModalOpen(true);
+        // setModalOpen(true);
       }}
     >
       <p className="projectName">{projectName}</p>

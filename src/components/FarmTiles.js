@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
-const FarmTiles = ({ className, img, habit }) => {
+const FarmTiles = ({ className, img, habit, cookies }) => {
   const [showCropDetail, setShowCropDetail] = useState(false);
 
   const showDeets = () => {
@@ -16,7 +16,10 @@ const FarmTiles = ({ className, img, habit }) => {
 
   const sellCrop = () => {
     console.log("sold your, ", habit.crop_name);
-    axios.post("http://0.0.0.0:8080/user/crops", {});
+    axios.post("http://0.0.0.0:8080/user/crops", {
+      user: cookies.github_id,
+      habit: habit
+    });
   };
 
   const cropImage = (habit) => {
@@ -40,7 +43,7 @@ const FarmTiles = ({ className, img, habit }) => {
               {habit.is_already_dying ? " dying :(" : " healthy!"}
             </li>
           </StyledUl>
-          {habit.crop_state === 6 && (
+          {habit.crop_state === 5 && (
             <div>
               Sell ripe {habit.crop_name}
               <button onClick={sellCrop}> Sell </button>
