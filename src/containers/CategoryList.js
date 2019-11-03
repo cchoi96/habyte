@@ -110,7 +110,7 @@ const StyledDiv = styled.div`
     min-height: 75px;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
-    background-color: rgba(26, 24, 29, 0.3);
+    background-color: rgba(36, 204, 143, 1);
     color: #fff;
     font-size: 1.2em;
     display: flex;

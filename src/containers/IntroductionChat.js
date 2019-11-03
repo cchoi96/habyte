@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
 
 const IntroductionChat = ({
@@ -9,7 +9,6 @@ const IntroductionChat = ({
   name,
   setAnimal,
   animal,
-  cookies,
   submitData
 }) => {
   const input = obj => {
@@ -59,34 +58,62 @@ const IntroductionChat = ({
   };
 
   const finalChat = obj => {
-    if (obj.final) {
-      return <button onClick={submitData}>Start Farming!</button>;
-    } else {
-      return <button onClick={handleClick}>Next</button>;
+    return obj.final ? (
+      <button onClick={submitData}>Start Farming!</button>
+    ) : (
+      <button onClick={handleClick}>Next</button>
+    );
+  };
+
+  const renderMonkaS = obj => {
+    if (chatNum === 6) {
+      return <img src="/assets/other/monkas.png" alt="monkaS" id="monkaS" />;
     }
   };
 
   return (
-    <div className="convo">
-      <div className="convo-box">
-        <img
-          src="/assets/other/lewis_chat.png"
-          alt="lewis chat box"
-          className="chat"
-        />
-        <p>{chatObj[chatNum].message}</p>
-        {input(chatObj[chatNum])}
-        {catOrDog(chatObj[chatNum])}
+    <StyledDiv>
+      <div className="convo">
+        <div className="convo-box">
+          <img
+            src="/assets/other/lewis_chat.png"
+            alt="lewis chat box"
+            className="chat"
+          />
+          <p>
+            {chatObj[chatNum].message} {renderMonkaS(chatObj[chatNum])}
+          </p>
+          {input(chatObj[chatNum])}
+          {catOrDog(chatObj[chatNum])}
+        </div>
+        <img src="/assets/other/lewis.png" alt="lewis" className="profile" />
       </div>
-      <img src="/assets/other/lewis.png" alt="lewis" className="profile" />
-
-      {finalChat(chatObj[chatNum])}
-      {chatNum < 9 && (
-        <button onClick={() => setChatNum(9)}>Skip dialogue</button>
-      )}
-    </div>
+      <StyledButtons>
+        {finalChat(chatObj[chatNum])}
+        {chatNum < 9 && (
+          <button onClick={() => setChatNum(9)}>Skip dialogue</button>
+        )}
+      </StyledButtons>
+    </StyledDiv>
   );
 };
+
+const StyledDiv = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  font-weight: 600;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url("https://store-images.s-microsoft.com/image/apps.46577.65985311967005000.4f51b5e9-febf-4990-8951-33ba59b634c9.53fbd86d-c51b-4aa2-86e8-b4f5a8b4e7b2?mode=scale&q=90&h=1080&w=1920");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  #monkaS {
+    display: inline;
+    width: 30px;
+  }
+`;
 
 const StyledAnimals = styled.div`
   width: 250px;
@@ -96,13 +123,36 @@ const StyledAnimals = styled.div`
   img {
     width: 50px;
     height: 50px;
+    cursor: pointer;
   }
 `;
 
 const StyledImg = styled.img`
   width: 50px;
   height: 50px;
-  border: ${props => (props.animal === props.name ? "1px solid black" : "")};
+  margin: 10px;
+  transform: ${props => (props.animal === props.name ? "scale(1.5)" : "1")};
+  transition: 0.1s ease;
+`;
+
+const StyledButtons = styled.div`
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  button {
+    margin: 0 20px 0 20px;
+    border-radius: 5px;
+    border: 2px solid rgba(136, 54, 0);
+    background-color: rgba(172, 79, 1, 1);
+    color: #fff;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    outline: none;
+  }
+
+  button:hover {
+    background-color: rgba(172, 79, 1, 0.85);
+  }
 `;
 
 export default IntroductionChat;

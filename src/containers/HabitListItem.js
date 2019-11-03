@@ -4,6 +4,11 @@ import CurrentHabitModal from "./CurrentHabitModal";
 
 const HabitListItem = ({ habit, habit_name }) => {
   const [isStatsOpen, setIsStatsOpen] = useState(false);
+
+  const cropImage = (habit) => {
+    return habit.crop_state === 0 ? `/assets/crops/rotten_plant.png` : `/assets/crops/${habit.crop_name}/${habit.crop_name}_Stage_${habit.crop_state}.png`
+  }
+
   return (
     <StyledHabitItem
       habit_name={habit_name}
@@ -18,7 +23,7 @@ const HabitListItem = ({ habit, habit_name }) => {
             {habit.counter}/{habit.frequency}
           </div>
           <img
-            src={`/assets/crops/${habit.crop_name}/${habit.crop_name}_Stage_${habit.crop_state}.png`}
+            src={cropImage(habit)}
             alt=""
           />
         </StyledDiv>

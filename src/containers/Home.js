@@ -145,23 +145,45 @@ const Home = ({ cookies, className }) => {
               )
             );
           } else {
-            if (habit.is_already_dying) {
-              queryArray.push(
-                axios.put(
-                  `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/dead`
-                )
-              );
+            if (habit.name !== "coding") {
+              if (habit.is_already_dying) {
+                queryArray.push(
+                  axios.put(
+                    `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/dead`
+                  )
+                );
+              } else {
+                if (habit.crop_state > 0) {
+                  //downgrade the crop_state and is_already_dying = true
+                  queryArray.push(
+                    axios.post(
+                      `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/dying`
+                    )
+                  );
+                }
+              }
             } else {
-              //downgrade the crop_state and is_already_dying = true
-              queryArray.push(
-                axios.put(
-                  `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/dying`
-                )
-              );
+              if (habit.crop_state > 1) {
+                queryArray.push(
+                  axios.post(
+                    `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/dying`
+                  )
+                );
+              }
             }
           }
           //reset counter and last_check_date_week
           const new_date_week = datePlusDays(habit.last_check_date_week, 7);
+
+          queryArray.push(
+            axios.post(
+              `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/record`,
+              {
+                counter: habit.counter,
+                id: habit.id
+              }
+            )
+          );
           queryArray.push(
             axios.put(
               `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/counter`,
