@@ -69,6 +69,7 @@ const StyledStoreItemList = styled.div`
     border: 1px solid green;
     border-radius: 10px;
     display: flex;
+    flex-wrap: wrap;
     height: 35vh;
     margin-bottom: 5vh;
     box-shadow: 0 2px 1px 0.6px;
@@ -77,25 +78,29 @@ const StyledStoreItemList = styled.div`
       box-shadow: 0px 3px 4px 2px;
       cursor: pointer;
     }
-    .store-image {
-      width: 20vw;
-    }
     background-color:#fff
   }
 
   .item-info {
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
+    width: 60%;
     margin: 20px;
   }
 
   .item-name {
     font-size: 35px;
+    color: rgba(36, 140, 143, 1);
+    font-weight: 500;
   }
 
   .item-description {
     margin: 10px;
+    margin-top: 3px;
+    border: 0.5px solid rgba(36, 160, 143, 1);
+    border-radius: 10px;
+    padding: 20px;
+    align-self: center;
   }
 
   .item-price-quantity-container {
@@ -124,16 +129,72 @@ const StyledStoreItemList = styled.div`
     text-align: center;
   }
 
-
-
   .store-image {
     border: 3px #009933 solid;
     border-radius: 5px;
     height: 200px;
     width: 200px;
     align-self: center;
-    margin-right: 10px;
+    margin-right: 15px;
   }
+
+  @media only screen and (max-width: 1024px) {
+    .item {
+      height: initial
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .item-name {
+      margin: 5px auto;
+    }
+
+    .item-info {
+      width: 90%;
+      margin: 10px auto;
+    }
+
+    .item-description {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      margin-top: 5px;
+    }
+
+    .item-price-quantity-container {
+      margin: 10px auto;
+    }
+
+    .store-image {
+      margin-bottom: 20px;
+    }
+  }
+
+  @media only screen and (max-width: 420px) {
+    .item-price-quantity-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+    }
+    .item-price {
+      text-align: center;
+      width: 100%;
+      margin-bottom: 5px;
+    }
+
+    .item-quantity-content {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    .item-quantity {
+      width: 25%;
+    }
+
+  }
+
 `;
 
 const StyledContainer = styled.div`
