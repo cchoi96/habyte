@@ -16,7 +16,7 @@ const FarmTiles = ({ className, img, habit }) => {
 
   const sellCrop = () => {
     console.log("sold your, ", habit.crop_name);
-    axios.post("http://0.0.0.0:8080/projects", {});
+    axios.post("http://0.0.0.0:8080/user/crops", {});
   };
 
   return (
