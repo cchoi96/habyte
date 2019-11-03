@@ -46,7 +46,7 @@ const Introduction = ({ cookies, setUserInfo }) => {
       image: false
     },
     6: {
-      message: "If you ignore your habits… they will die :O",
+      message: "If you ignore your habits… they will die...",
       input: false,
       image: false
     },
@@ -118,13 +118,14 @@ const Introduction = ({ cookies, setUserInfo }) => {
 };
 
 const StyledDiv = styled.div`
-  width: 80%;
+  width: 100%;
+  padding: 0;
+  height: 100vh;
   margin: 0 auto;
   .profile {
     width: 220px;
     height: 200px;
     border-radius: 5px;
-    z-index: -1;
   }
 
   .chat {
@@ -138,7 +139,7 @@ const StyledDiv = styled.div`
     display: flex;
     justify-content: center;
     width: 750x;
-    margin: 30px auto 30px auto;
+    margin: 0 auto;
   }
 
   .convo-box {
