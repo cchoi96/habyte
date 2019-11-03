@@ -92,12 +92,18 @@ const StyledProjectList = styled.div`
 
 const StyledProjectListItem = styled(ProjectListItem)`
   border: 1px solid black;
+  box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
+    0 1px 4px 0 rgba(26, 24, 29, 0.12);
+  &:hover {
+    box-shadow: 0 2px 1px 3px rgba(26, 24, 29, 0.21),
+      0 1px 1px 1px rgba(26, 24, 29, 0.16);
+  }
   background-color: ${props =>
     props.projectSelected == props.projectid
       ? "rgba(0, 0, 0, 0.5)"
       : "rgb(237, 236, 238);"};
   width: 100%;
-  margin: 2% auto;
+  margin: 4% auto;
   list-style-type: none;
   border-radius: 10px;
   .projectName {

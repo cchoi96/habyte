@@ -50,9 +50,9 @@ const Container = styled.div`
   margin: 8px;
   border: 1px solid lightgrey;
   border-radius: 2px;
-  width: 220px;
-
+  width: 300px;
   display: flex;
+  min-width: 25%;
   flex-direction: column;
 `;
 const Title = styled.h3`
@@ -63,5 +63,6 @@ const TaskList = styled.div`
   transition: background-color 0.2s ease;
   background-color: ${props => (props.isDraggingOver ? "grey" : "white")};
   flex-grow: 1;
+  width: 100%;
   min-height: 100px;
 `;

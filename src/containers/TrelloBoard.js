@@ -126,8 +126,6 @@ const StyledTrelloBoard = styled.div`
 `;
 const StyledColumn = styled(Column)`
   height: 100%;
-  min-width: 20%;
-  width: 20%;
 `;
 const StyledAddNewColumn = styled.div`
   &:hover {
