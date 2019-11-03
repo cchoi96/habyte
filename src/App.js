@@ -12,10 +12,16 @@ import styled, { createGlobalStyle } from "styled-components";
 export const history = createBrowserHistory();
 
 function App() {
-  const [cookies, setCookie, removeCookie] = useCookies(["github_id"]);
+  const [cookies, setCookie, removeCookie] = useCookies([
+    "github_id",
+    "name",
+    "animal"
+  ]);
 
-  const setGithubId = github_id => {
+  const setUserInfo = (github_id, name, animal) => {
     setCookie("github_id", github_id, { path: "/" });
+    setCookie("name", name, { path: "/" });
+    setCookie("animal", animal, { path: "/" });
   };
 
   const GlobalStyles = createGlobalStyle`
@@ -35,11 +41,13 @@ function App() {
       <Switch>
         <Route
           path={"/verify"}
-          render={() => <Login setGithubId={setGithubId} />}
+          render={() => <Login setUserInfo={setUserInfo} />}
         />
         <Route
           path={"/intro"}
-          render={() => <Introduction cookies={cookies} />}
+          render={() => (
+            <Introduction cookies={cookies} setUserInfo={setUserInfo} />
+          )}
         />
         <Route
           path={"/logout"}

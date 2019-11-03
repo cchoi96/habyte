@@ -9,7 +9,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 const CLIENT_ID = "9eef6e17d66411722d42";
 const REDIRECT_URI = "http://localhost:3000/verify";
 
-const Login = ({ setRepos, repos, setGithubId, cookies }) => {
+const Login = ({ setRepos, repos, setUserInfo, cookies }) => {
   const verify_user = code => {
     axios
       .post(`http://0.0.0.0:8080/verify`, {
@@ -18,7 +18,9 @@ const Login = ({ setRepos, repos, setGithubId, cookies }) => {
       .then(res => {
         let github_id = res.data[0];
         let first_login = res.data[1];
-        setGithubId(github_id);
+        let name = res.data[2];
+        let animal = res.data[3];
+        setUserInfo(github_id, name, animal);
         if (first_login) {
           history.push("/home");
         } else {

@@ -6,6 +6,7 @@ const IntroductionChat = ({
   chatNum,
   setChatNum,
   setName,
+  name,
   setAnimal,
   animal,
   cookies,
@@ -49,11 +50,19 @@ const IntroductionChat = ({
     }
   };
 
+  const handleClick = event => {
+    if (chatNum === 9 && name.length === 0) {
+      event.preventDefault();
+    } else {
+      setChatNum(chatNum + 1);
+    }
+  };
+
   const finalChat = obj => {
     if (obj.final) {
       return <button onClick={submitData}>Start Farming!</button>;
     } else {
-      return <button onClick={() => setChatNum(chatNum + 1)}>Next</button>;
+      return <button onClick={handleClick}>Next</button>;
     }
   };
 
@@ -72,6 +81,9 @@ const IntroductionChat = ({
       <img src="/assets/other/lewis.png" alt="lewis" className="profile" />
 
       {finalChat(chatObj[chatNum])}
+      {chatNum < 9 && (
+        <button onClick={() => setChatNum(9)}>Skip dialogue</button>
+      )}
     </div>
   );
 };

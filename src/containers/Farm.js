@@ -51,7 +51,7 @@ const Farm = ({ habits, updateHabits, cookies }) => {
       </StyledDiv>
       <img src="/assets/other/farm.png" alt="farm house" id="farm-house" />
       <img
-        src="/assets/other/cat.gif"
+        src={`/assets/other/${cookies.animal}.gif`}
         id="animal"
         onClick={() => console.log("<3")}
       />

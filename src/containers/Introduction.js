@@ -4,7 +4,7 @@ import IntroductionChat from "./IntroductionChat";
 import axios from "axios";
 import { history } from "../App";
 
-const Introduction = ({ cookies }) => {
+const Introduction = ({ cookies, setUserInfo }) => {
   const [chatNum, setChatNum] = useState(0);
   const [name, setName] = useState("");
   const [animal, setAnimal] = useState("");
@@ -73,7 +73,7 @@ const Introduction = ({ cookies }) => {
       image: true
     },
     11: {
-      message: `Cool! Thansk for listening to an old man ramble... Good luck farming!`,
+      message: `Cool! Thanks for listening to an old man ramble... Good luck farming!`,
       input: false,
       image: false,
       final: true
@@ -85,6 +85,12 @@ const Introduction = ({ cookies }) => {
       .post(`http://0.0.0.0:8080/${cookies.github_id}`, {
         name,
         animal
+      })
+      .then(() => {
+        setUserInfo(cookies.github_id, name, animal);
+        console.log(cookies);
+        console.log(name, animal);
+        console.log(cookies.animal, cookies.name);
       })
       .then(() => {
         history.push("/home");
@@ -101,6 +107,7 @@ const Introduction = ({ cookies }) => {
         chatNum={chatNum}
         setChatNum={setChatNum}
         setName={setName}
+        name={name}
         setAnimal={setAnimal}
         animal={animal}
         cookies={cookies}
