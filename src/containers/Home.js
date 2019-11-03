@@ -162,6 +162,16 @@ const Home = ({ cookies, className }) => {
           }
           //reset counter and last_check_date_week
           const new_date_week = datePlusDays(habit.last_check_date_week, 7);
+
+          queryArray.push(
+            axios.post(
+              `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/record`,
+              {
+                counter: habit.counter,
+                id: habit.id
+              }
+            )
+          );
           queryArray.push(
             axios.put(
               `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/counter`,
