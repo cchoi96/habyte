@@ -80,14 +80,14 @@ const TrelloBoard = ({ projectState, setProjectState, projectSelected }) => {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <Container>
+      <StyledTrelloBoard>
         {projectState.columnOrder.map(columnId => {
           const column = projectState.columns[columnId];
           const tasks = column.taskIds.map(
             taskId => projectState.tasks[taskId]
           );
           return (
-            <Column
+            <StyledColumn
               projectState={projectState}
               setProjectState={setProjectState}
               key={column.id}
@@ -109,21 +109,29 @@ const TrelloBoard = ({ projectState, setProjectState, projectSelected }) => {
             />
           )}
         </div>
-      </Container>
+      </StyledTrelloBoard>
     </DragDropContext>
   );
 };
 
-const Container = styled.div`
+const StyledTrelloBoard = styled.div`
   padding: 2%;
   display: flex;
-  flex-wrap: wrap;
-  border: 1px solid blue;
+
+  background-color: rgba(67, 40, 116, 0.4);
+  width: 100%;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow-x: scroll;
+`;
+const StyledColumn = styled(Column)`
+  height: 100%;
+  min-width: 20%;
+  width: 20%;
 `;
 const StyledAddNewColumn = styled.div`
   &:hover {
     cursor: pointer;
-
     background-color: #777;
   }
   height: auto;
@@ -133,4 +141,5 @@ const StyledAddNewColumn = styled.div`
   border-radius: 10px;
   background-color: grey;
 `;
+
 export default TrelloBoard;

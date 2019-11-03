@@ -15,6 +15,7 @@ const Coding = ({
     <StyledDiv>
       <ProjectList
         cookies={cookies}
+        projectSelected={projectSelected}
         setProjectSelected={setProjectSelected}
         // setModalOpen={setModalOpen}
       />

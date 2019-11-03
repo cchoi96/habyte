@@ -2,33 +2,10 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import ProjectListItem from "./ProjectListItem";
 import AddProject from "./AddProject";
-import { sortableContainer, sortableElement } from "react-sortable-hoc";
-import arrayMove from "array-move";
+
 import axios from "axios";
 
-const SortableItem = sortableElement(
-  ({
-    setModalOpen,
-    projectName,
-    projectNumberCommit,
-    setProjectSelected,
-    projectid
-  }) => (
-    <StyledProjectListItem
-      setModalOpen={setModalOpen}
-      setProjectSelected={setProjectSelected}
-      projectName={projectName}
-      projectid={projectid}
-      projectNumberCommit={projectNumberCommit}
-    />
-  )
-);
-
-const SortableContainer = sortableContainer(({ children, className }) => {
-  return <ul className={className}>{children}</ul>;
-});
-
-const ProjectList = ({ cookies, setProjectSelected, setModalOpen }) => {
+const ProjectList = ({ cookies, setProjectSelected, projectSelected }) => {
   const [projectList, setProjectList] = useState([]);
   useEffect(() => {
     axios
@@ -51,25 +28,21 @@ const ProjectList = ({ cookies, setProjectSelected, setModalOpen }) => {
       });
   };
 
-  const onSortEnd = ({ oldIndex, newIndex }) => {
-    setProjectList(arrayMove(projectList, oldIndex, newIndex));
-  };
-  let totalProjectList = projectList.map((project, index) => {
+  let totalProjectList = projectList.map(project => {
     return (
-      <SortableItem
+      <StyledProjectListItem
+        projectSelected={projectSelected}
         key={project.name}
         setProjectSelected={setProjectSelected}
-        index={index}
         projectid={project.id}
         projectName={project.name}
         projectNumberCommit={project.number_commit}
-        // setModalOpen={setModalOpen}
-      ></SortableItem>
+      />
     );
   });
 
   return (
-    <StyledSortableContainer onSortEnd={onSortEnd} distance={1}>
+    <StyledProjectList>
       <div className="habit-info">
         <h1>Coding</h1>
       </div>
@@ -79,41 +52,24 @@ const ProjectList = ({ cookies, setProjectSelected, setModalOpen }) => {
         projectList={projectList}
         cookies={cookies}
       />
-    </StyledSortableContainer>
+    </StyledProjectList>
   );
 };
 
-const StyledProjectListItem = styled(ProjectListItem)`
-  border: 1px solid black;
-  background-color: grey;
-  width: 100%;
-  margin: 2% auto;
-  list-style-type: none;
-  border-radius: 10px;
-  .projectName {
-    font-size: 1.5em;
-  }
-  .projectStatus {
-    font-size: 1.5em;
-  }
-
-  img {
-    width: 50px;
-  }
-`;
-
-const StyledSortableContainer = styled(SortableContainer)`
+const StyledProjectList = styled.div`
   list-style-type: none;
   padding: 3%;
 
   border-radius: 10px;
   height: 80vh;
-  width: 70vw;
+  min-width: 20vw;
+  max-width: 30vw;
   background-color: rgba(67, 40, 116, 0.4);
   padding-top: 0;
   .habit-info {
     background-color: rgba(67, 40, 116, 1);
-    width: 40%;
+    width: auto;
+    padding: 0 15px;
     height: fit-content;
     margin: 0 auto;
     text-align: center;
@@ -132,6 +88,27 @@ const StyledSortableContainer = styled(SortableContainer)`
   flex-wrap: wrap;
 
   overflow-y: scroll;
+`;
+
+const StyledProjectListItem = styled(ProjectListItem)`
+  border: 1px solid black;
+  background-color: ${props =>
+    props.projectSelected == props.projectid
+      ? "rgba(0, 0, 0, 0.5)"
+      : "rgb(237, 236, 238);"};
+  width: 100%;
+  margin: 2% auto;
+  list-style-type: none;
+  border-radius: 10px;
+  .projectName {
+    font-size: 1.5em;
+  }
+  .projectStatus {
+    font-size: 1.5em;
+  }
+  img {
+    width: 50px;
+  }
 `;
 
 export default ProjectList;
