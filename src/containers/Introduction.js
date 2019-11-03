@@ -7,7 +7,7 @@ import { history } from "../App";
 const Introduction = ({ cookies, setUserInfo }) => {
   const [chatNum, setChatNum] = useState(0);
   const [name, setName] = useState("");
-  const [animal, setAnimal] = useState("");
+  const [animal, setAnimal] = useState("dog");
   const chatObj = {
     0: {
       message:
