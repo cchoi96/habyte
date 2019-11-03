@@ -35,7 +35,7 @@ const StoreItems = ({ items, setItems }) => {
           <div className="item-description">{items[item].description}</div>
           <div className="item-price-quantity-container">
             <div className="item-price">${items[item].price}/each</div>
-            <div className="item-quantity-content">How Many Trees Do You Want To Plant Today? --> </div>
+            <div className="item-quantity-content">please, buy some 🌲...</div>
             <input
               className="item-quantity"
               onChange={event => handleChange(event)}
@@ -63,14 +63,24 @@ export default StoreItems;
 const StyledStoreItemList = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   .item {
+    width: 90%;
     border: 1px solid green;
-    border-radius: 5px;
+    border-radius: 10px;
     display: flex;
     height: 35vh;
+    margin-bottom: 5vh;
+    box-shadow: 0 2px 1px 0.6px;
+
+    &:hover {
+      box-shadow: 0px 3px 4px 2px;
+      cursor: pointer;
+    }
     .store-image {
       width: 20vw;
     }
+    background-color:#fff
   }
 
   .item-info {
@@ -92,6 +102,7 @@ const StyledStoreItemList = styled.div`
     display: flex;
     margin-left: 10px;
     justify-content: flex-start;
+    align-items: center;
   }
 
   .item-price {
@@ -100,10 +111,9 @@ const StyledStoreItemList = styled.div`
   }
   
   .item-quantity-content {
-    width: 40%;
-    font-size: 0.8em;
-    margin-right: 8px;
-    text-align: center;
+    font-size: 0.9em;
+    margin-right: 1px;
+    text-align: right;
   }
 
 
