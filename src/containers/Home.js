@@ -260,6 +260,7 @@ const Home = ({ cookies, className }) => {
 
 const StyledMainContent = styled.div`
   display: flex;
+  overflow-y: scroll;
   @media only screen and (max-width: 950px) {
     flex-direction: column;
   }
@@ -267,6 +268,7 @@ const StyledMainContent = styled.div`
 
 const StyledCategoryList = styled(CategoryList)`
   list-style-type: none;
+  overflow-y: scroll;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;

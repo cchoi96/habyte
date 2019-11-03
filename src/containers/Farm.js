@@ -51,7 +51,7 @@ const Farm = ({ habits, updateHabits, cookies }) => {
       </StyledDiv>
       <img src="/assets/other/farm.png" alt="farm house" id="farm-house" />
       <img
-        src="/assets/other/cat.gif"
+        src={`/assets/other/${cookies.animal}.gif`}
         id="animal"
         onClick={() => console.log("<3")}
       />
@@ -85,9 +85,9 @@ const StyledDiv = styled.div`
   height: 30vw;
   margin-left: 5vw;
   align-self: center;
-  @media only screen and (max-width: 950px) {
+  @media only screen and (max-width: 750px) {
     order: 2;
-    min-width: 250px;
+    min-width: 240px;
     width: 20vw;
     height: 20vw;
   }
@@ -96,6 +96,7 @@ const StyledDiv = styled.div`
 const StyledContainer = styled.div`
   display: flex;
   height: 80vh;
+  min-height: 500px;
   width: 70vw;
   margin-left: 3vw;
   border-radius: 10px;
@@ -105,8 +106,8 @@ const StyledContainer = styled.div`
   box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
   0 1px 4px 0 rgba(26, 24, 29, 0.12);
   img {
-    max-width: 30vw;
-    max-height: 30vw;
+    max-width: 33vw;
+    max-height: 33vw;
     align-self: center;
   }
   #animal {
@@ -116,10 +117,17 @@ const StyledContainer = styled.div`
     top: 70%;
     left: 71%;
   }
+
   @media only screen and (max-width: 950px) {
+    width: 88vw;
+    height: 70vh;
+    justify-content: center;
+  }
+  @media only screen and (max-width: 750px) {
     flex-direction: column;
     width: 88vw;
     height: 70vh;
+    justify-content: flex-start;
     img {
       order: 1;
     }
