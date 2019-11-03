@@ -8,7 +8,7 @@ const Header = ({ cookies, setMode, className, userCoin }) => {
     let userCoinInfo = userCoin[0]["coin"];
     return (
       <StyledNavbar collapseOnSelect expand="md" className={className}>
-        <Navbar.Brand>habyte</Navbar.Brand>
+        <StyledBrand>habyte</StyledBrand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
@@ -18,11 +18,17 @@ const Header = ({ cookies, setMode, className, userCoin }) => {
               id="basic-nav-dropdown"
               className="navbar-right"
             >
-              <NavDropdown.Item onClick={() => setMode("coding")}>
+              <NavDropdown.Item
+                className="item"
+                onClick={() => setMode("coding")}
+              >
                 Coding
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item onClick={() => setMode("health")}>
+              <NavDropdown.Item
+                className="item"
+                onClick={() => setMode("health")}
+              >
                 Health
               </NavDropdown.Item>
             </NavDropdown>
@@ -41,9 +47,13 @@ const Header = ({ cookies, setMode, className, userCoin }) => {
               title={cookies.name || cookies.github_id}
               id="basic-nav-dropdown"
             >
-              <NavDropdown.Item href="/username">My Profile</NavDropdown.Item>
+              <NavDropdown.Item className="item" href="/username">
+                My Profile
+              </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
+              <NavDropdown.Item className="item" href="/logout">
+                Logout
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
@@ -55,15 +65,33 @@ const Header = ({ cookies, setMode, className, userCoin }) => {
 };
 
 const StyledNavbar = styled(Navbar)`
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
-  .dropdown:hover .dropdown-menu {
-    display: block;
-    margin-right: 20%;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #fff;
+  background: rgba(36, 204, 143);
+
+  #basic-nav-dropdown,
+  #responsive-navbar-nav a {
+    background-color: rgba(36, 204, 143);
+    color: #fff;
   }
-  .dropdown-toggle:after {
-    content: none;
+
+  .dropdown-menu.show {
+    background-color: rgba(36, 204, 143);
+    border: none;
   }
+
+  .dropdown-menu.show a:hover {
+    background-color: rgba(36, 204, 143);
+  }
+`;
+
+const StyledBrand = styled(Navbar)`
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5em;
 `;
 
 export default Header;
