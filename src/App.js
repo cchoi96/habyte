@@ -27,7 +27,7 @@ function App() {
   const GlobalStyles = createGlobalStyle`
     @font-face {
       font-family: 'Roboto';
-      src: url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+      src: url('https://fonts.googleapis.com/css?family=Roboto:400,600,700&display=swap');
     }
     @font-face {
       font-family: 'Roboto Condensed';
