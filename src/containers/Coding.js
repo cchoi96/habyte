@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import ProjectList from "./ProjectList";
-import TrelloModal from "./TrelloModal";
+import TrelloBoard from "./TrelloBoard";
 
 const Coding = ({
   cookies,
@@ -10,24 +10,30 @@ const Coding = ({
   projectState,
   setProjectState
 }) => {
-  const [modalOpen, setModalOpen] = useState(false);
+  console.log(projectState);
   return (
     <StyledDiv>
       <ProjectList
         cookies={cookies}
+        projectSelected={projectSelected}
         setProjectSelected={setProjectSelected}
-        setModalOpen={setModalOpen}
+        // setModalOpen={setModalOpen}
       />
-      {modalOpen && (
-        <TrelloModal
-          projectSelected={projectSelected}
-          modalOpen={modalOpen}
-          setModalOpen={setModalOpen}
-          projectSelected={projectSelected}
-          projectState={projectState}
-          setProjectState={setProjectState}
-        />
-      )}
+
+      <TrelloBoard
+        projectSelected={projectSelected}
+        projectState={projectState}
+        setProjectState={setProjectState}
+      />
+
+      {/* <TrelloModal
+        projectSelected={projectSelected}
+        modalOpen={modalOpen}
+        setModalOpen={setModalOpen}
+        projectSelected={projectSelected}
+        projectState={projectState}
+        setProjectState={setProjectState}
+      /> */}
     </StyledDiv>
   );
 };
@@ -35,6 +41,9 @@ const Coding = ({
 export default Coding;
 
 const StyledDiv = styled.div`
+  box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
+    0 1px 4px 0 rgba(26, 24, 29, 0.12);
+  display: flex;
   margin-left: 3vw;
   border-radius: 10px;
   height: 80vh;

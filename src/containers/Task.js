@@ -15,7 +15,7 @@ const Container = styled.div`
     props.isDragDisabled
       ? "lightgrey"
       : props.isDragging
-      ? "lightgreen"
+      ? "steelblue"
       : "white"};
 `;
 
