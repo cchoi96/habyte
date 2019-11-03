@@ -43,7 +43,7 @@ const Store = ({
   return (
     <StyledStore>
       <form onSubmit={buyItems}>
-        <StyledTitle><u>STORE</u></StyledTitle>
+        <StyledTitle>Buy One, Get One Tree</StyledTitle>
         <StoreItems items={items} setItems={setItems} />
         <button type="submit">Buy and Save the Earth!</button>
       </form>
@@ -52,24 +52,33 @@ const Store = ({
 };
 
 const StyledTitle = styled.div`
-  display: flex;
-  justify-content: center;
-  font-family: bold;
-  font-size: 5vw;
-  width: 70%;
-
+  background-color: rgba(36, 160, 143, 1);
+  text-color: white;
+  width: 40%;
+  height: fit-content;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 5vh;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  color: #fff;
+  margin-bottom: 20px;
 `;
 
 const StyledStore = styled.div`
   width: 80%;
-  margin-left: 20px
+  border: 1px black solid;
+  background-color: rgba(36, 200, 143, 0.5);
+  border-radius: 10px;
 
+  margin-left: 20px
+    
   form {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
   }
-`;
 
+`;
 
 export default Store;
