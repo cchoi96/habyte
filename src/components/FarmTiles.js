@@ -19,6 +19,10 @@ const FarmTiles = ({ className, img, habit }) => {
     axios.post("http://0.0.0.0:8080/projects", {});
   };
 
+  const cropImage = (habit) => {
+    return habit.crop_state === 0 ? `/assets/crops/rotten_plant.png` : `/assets/crops/${habit.crop_name}/${habit.crop_name}_Stage_${habit.crop_state}.png`
+  }
+
   return (
     <div className={className} onMouseOver={showDeets} onMouseLeave={hideDeets}>
       {showCropDetail && (
@@ -49,7 +53,7 @@ const FarmTiles = ({ className, img, habit }) => {
       {habit && (
         <img
           className="fruitImg"
-          src={`/assets/crops/${habit.crop_name}/${habit.crop_name}_Stage_${habit.crop_state}.png`}
+          src={cropImage(habit)}
         />
       )}
     </div>
