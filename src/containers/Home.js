@@ -3,6 +3,7 @@ import CategoryList from "./CategoryList";
 import Farm from "./Farm";
 import Header from "../components/Header";
 import NewHabits from "./NewHabits";
+import OldHabits from "./OldHabits";
 import styled from "styled-components";
 import axios from "axios";
 import Habit from "./Habit";
@@ -23,6 +24,7 @@ const Home = ({ cookies, className }) => {
   });
   // Total Habit List state management
   const [habits, setHabits] = useState([]);
+  const [oldHabits, setOldHabits] = useState([]);
   // Renders different components on home page based on mode
   const [mode, setMode] = useState("farm");
 
@@ -225,6 +227,14 @@ const Home = ({ cookies, className }) => {
     });
   };
 
+  // Function to be passed down that refreshes the old habit state
+  const refreshOldHabits = github_id => {
+    axios.get(`http://0.0.0.0:8080/${github_id}/old-habits`).then(res => {
+      let oldHabitsArray = res.data;
+      setOldHabits(oldHabitsArray);
+    });
+  };
+
   // Function to be passed down that refreshes the farm state
   // const refreshFarm = github_id
 
@@ -232,7 +242,15 @@ const Home = ({ cookies, className }) => {
     <div className={className}>
       <Header cookies={cookies} setMode={setMode} userCoin={userCoin} />
       <StyledMainContent className="main-content">
-        <StyledCategoryList setMode={setMode} />
+        <StyledCategoryList
+          cookies={cookies}
+          habits={habits}
+          setHabits={setHabits}
+          refreshHabits={refreshHabits}
+          oldHabits={oldHabits}
+          setOldHabits={setOldHabits}
+          refreshOldHabits={refreshOldHabits}
+        />
         {mode === "farm" && (
           <Farm
             habits={habits}
@@ -248,14 +266,6 @@ const Home = ({ cookies, className }) => {
             projectSelected={projectSelected}
             projectState={projectState}
             setProjectState={setProjectState}
-          />
-        )}
-        {mode === "new-habits" && (
-          <NewHabits
-            cookies={cookies}
-            habits={habits}
-            setHabits={setHabits}
-            refreshHabits={refreshHabits}
           />
         )}
         {mode === "store" && (

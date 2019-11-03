@@ -2,27 +2,27 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
-const NewHabits = ({ cookies, habits, setHabits, refreshHabits }) => {
+const OldHabits = ({ cookies, oldHabits, setOldHabits, refreshOldHabits }) => {
   useEffect(() => {
     axios
       .get(`http://0.0.0.0:8080/${cookies.github_id}/old-habits`)
       .then(res => {
-        setHabits(res.data);
+        setOldHabits(res.data);
       });
   }, []);
 
   // Function that makes post request and updates state with new habit state
   const updateHabit = habit_id => {
     axios
-      .post(`http://0.0.0.0:8080/${cookies.github_id}/new-habits`, {
+      .post(`http://0.0.0.0:8080/${cookies.github_id}/old-habits`, {
         habit_id
       })
       .then(() => {
-        refreshHabits(cookies.github_id);
+        refreshOldHabits(cookies.github_id);
       });
   };
 
-  const newHabitsList = habits.map(habit =>
+  const oldHabitsList = oldHabits.map(habit =>
     habit.is_checked_day ? (
       <CheckedStyledDiv>
         {habit.name} {habit.counter}/{habit.frequency}
@@ -37,7 +37,7 @@ const NewHabits = ({ cookies, habits, setHabits, refreshHabits }) => {
       </StyledDiv>
     )
   );
-  return <div>{newHabitsList}</div>;
+  return <div>{oldHabitsList}</div>;
 };
 
 const StyledDiv = styled.div`
@@ -57,4 +57,4 @@ const CheckedStyledDiv = styled.div`
   }
 `;
 
-export default NewHabits;
+export default OldHabits;
