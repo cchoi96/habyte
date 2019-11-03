@@ -37,6 +37,7 @@ const ProjectList = ({ cookies, setProjectSelected, setModalOpen }) => {
       })
       .then(res => {
         setProjectList(res.data);
+        setProjectSelected(res.data[0].id);
       });
   }, []);
 
@@ -62,7 +63,7 @@ const ProjectList = ({ cookies, setProjectSelected, setModalOpen }) => {
         projectid={project.id}
         projectName={project.name}
         projectNumberCommit={project.number_commit}
-        setModalOpen={setModalOpen}
+        // setModalOpen={setModalOpen}
       ></SortableItem>
     );
   });
