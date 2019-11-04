@@ -87,14 +87,13 @@ const StyledNavbar = styled(Navbar)`
   }
 
   .dropdown-toggle {
-    margin: 0px;
+    margin: 0px auto;
     text-align: center;
 
   }
 
   .nav-link,
   .navbar-right {
-    width: 100%;
     margin: 0px 30px;
   }
 
@@ -104,12 +103,12 @@ const StyledNavbar = styled(Navbar)`
   }
 
   .dropdown-menu {
-    left: 30px;
+    left: 10px;
     text-align: center;
   }
 
 
-  
+
 `;
 
 const StyledBrand = styled(Navbar)`
