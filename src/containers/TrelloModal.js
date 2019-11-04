@@ -38,7 +38,7 @@ const TrelloModal = ({
         style={customStyles}
         contentLabel="Trello Modal"
       >
-        <button onClick={closeModal}>close</button>
+        <button onClick={closeModal}>Close</button>
 
         <TrelloBoard
           projectSelected={projectSelected}
