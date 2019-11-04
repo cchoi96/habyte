@@ -139,7 +139,7 @@ const StyledFarmTiles = styled(FarmTiles)`
 
   &:hover {
     .fruitImg {
-      transform: scale(1.3);
+      transform: scale(1.1);
     }
   }
 `;
@@ -163,6 +163,7 @@ const StyledContainer = styled.div`
   min-height: 500px;
   width: 70vw;
   margin-left: 3vw;
+  margin-bottom: 20px;
   border-radius: 10px;
   background-image: url("/assets/other/soil.png");
   background-repeat: repeat;

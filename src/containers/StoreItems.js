@@ -16,22 +16,24 @@ const StoreItems = ({ items, setItems, buyItem }) => {
           price: data.price,
           description: data.description,
           quantity: 0,
-          image_url: data.image_url
+          image_url: data.image_url,
+          background_url: data.background_url
         };
       }
       setItems(response);
-      console.log(response);
     });
   }, []);
 
   const StoreItemList = Object.keys(items).map(item => {
     return (
-      <div
+      <StyledDiv
         className="item"
         key={items[item].name}
+        treeType={items[item].name}
         onClick={() => {
           setIsOpen(true);
           setBuyingItem(items[item]);
+          console.log(items[item]);
         }}
       >
         <h5 className="item-name">{items[item].name}</h5>
@@ -44,12 +46,14 @@ const StoreItems = ({ items, setItems, buyItem }) => {
           />{" "}
           {items[item].price}
         </div>
-      </div>
+      </StyledDiv>
     );
   });
   return (
     <StyledContainer>
-      <StyledStoreItemList>{StoreItemList}</StyledStoreItemList>
+      <StyledStoreItemList buyingItem={buyingItem}>
+        {StoreItemList}
+      </StyledStoreItemList>
       {isOpen && (
         <StoreModal
           buyingItem={buyingItem}
@@ -63,6 +67,25 @@ const StoreItems = ({ items, setItems, buyItem }) => {
 };
 
 export default StoreItems;
+
+const StyledDiv = styled.div`
+  background-image: ${props =>
+    props.treeType === "Maple Tree"
+      ? 'url("/assets/other/shop-background.png")'
+      : props.treeType === "Oak Tree"
+      ? 'url("/assets/other/summer-background.png")'
+      : props.treeType === "Pine Tree"
+      ? 'url("/assets/other/snow-background.png")'
+      : 'url("/assets/other/beach-background.png")'};
+  color: ${props =>
+    props.treeType === "Maple Tree"
+      ? "#fff"
+      : props.treeType === "Oak Tree"
+      ? "#fff"
+      : props.treeType === "Pine Tree"
+      ? "#000"
+      : "#000"};
+`;
 
 const StyledStoreItemList = styled.div`
   display: flex;
@@ -87,15 +110,15 @@ const StyledStoreItemList = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url("/assets/other/shop-background.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center bottom;
     cursor: pointer;
     position: relative;
+    transition: 0.1s ease-out;
 
     &:hover {
-      opacity: 0.8;
+      transform: scale(1.02);
     }
 
     .item-name,

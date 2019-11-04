@@ -56,6 +56,7 @@ const StyledHabitCategory = styled.div`
   width: 70vw;
   font-family: "Roboto", sans-serif;
   margin-left: 3vw;
+  margin-bottom: 20px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -66,10 +67,12 @@ const StyledHabitCategory = styled.div`
     0 1px 4px 0 rgba(26, 24, 29, 0.12);
   background-color: ${props =>
     props.habit_name === "coding"
-      ? "rgba(67, 40, 116, 0.6)"
+      ? "rgba(67, 40, 116, 0.5)"
       : props.habit_name === "health"
-      ? "rgba(247, 78, 82, 0.6)"
-      : "rgba(36, 204, 143, 0.6)"};
+      ? "rgba(247, 78, 82, 0.5)"
+      : "rgba(36, 204, 143, 0.5)"};
+  margin-bottom: 20px;
+
   .habit-info {
     background-color: ${props =>
       props.habit_name === "coding"
@@ -86,6 +89,7 @@ const StyledHabitCategory = styled.div`
   @media only screen and (max-width: 950px) {
     width: 87vw;
     height: 70vh;
+    margin-bottom: 100px;
   }
 `;
 
