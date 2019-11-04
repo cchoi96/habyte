@@ -153,8 +153,10 @@ const CheckedStyledDiv = styled.div`
   .check {
     background-color: #c3c0c7;
     color: #a5a1ac;
-    height: 70px;
-    width: 50px;
+
+    height: 100%;
+    min-width: 50px;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -172,6 +174,27 @@ const CheckedStyledDiv = styled.div`
     color: #a5a1ac;
     h5 {
       margin: 0;
+    }
+  }
+
+  @media only screen and (max-width: 950px) {
+    width: 100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    .check {
+      width: 20px;
+      font-size: 0.8em;
+    }
+
+    .info {
+      width: 100px;
+      margin: 0 auto;
+      overflow-x: scroll;
+      align-items: center;
+      h5 {
+        font-size: 0.8em;
+      }
     }
   }
 `;
