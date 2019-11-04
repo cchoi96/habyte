@@ -5,7 +5,7 @@ import axios from "axios";
 
 const Task = ({ task, index, projectState, setProjectState, columnid }) => {
   const [onHover, setOnHover] = useState(false);
-
+  const [inEdit, setInEdit] = useState(false);
   const deleteTask = () => {
     let temp = { ...projectState };
     delete temp.tasks[task.id];
@@ -38,7 +38,7 @@ const Task = ({ task, index, projectState, setProjectState, columnid }) => {
           innerRef={provided.innerRef}
           isDragging={snapshot.isDragging}
         >
-          {task.content}
+          {!inEdit && task.content}
           {onHover && (
             <div style={{ position: "relative" }}>
               <StyledDelete onClick={deleteTask}>X</StyledDelete>

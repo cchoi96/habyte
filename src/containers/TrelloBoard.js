@@ -97,7 +97,9 @@ const TrelloBoard = ({ projectState, setProjectState, projectSelected }) => {
           );
         })}
         <div id="new-column">
-          <StyledAddNewColumn onClick={() => setNewColumn(!newColumn)}>
+          <StyledAddNewColumn onClick={() => {
+            setNewColumn(!newColumn)
+            }}>
             Add New Column
           </StyledAddNewColumn>
           {newColumn && (

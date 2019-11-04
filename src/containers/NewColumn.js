@@ -44,6 +44,7 @@ const NewColumn = ({
     <StyledNewColumn>
       <form>
         <input
+          id="input-new-column"
           className="new-column-title"
           type="text"
           onChange={e => setColumnText(e.target.value)}

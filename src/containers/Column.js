@@ -5,8 +5,8 @@ import { Droppable } from "react-beautiful-dnd";
 import NewTask from "../components/NewTask";
 const Column = ({ key, column, projectState, setProjectState, tasks }) => {
   let [newTask, setNewTask] = useState(false);
-  let [addTaskButton, setAddTaskButton] = useState(true)
-  let addATask = addTaskButton ? "New Task" : "Close"
+  let [addTaskButton, setAddTaskButton] = useState(true);
+  let addATask = addTaskButton ? "New Task" : "Close";
 
   return (
     <Container>
@@ -40,10 +40,12 @@ const Column = ({ key, column, projectState, setProjectState, tasks }) => {
                 setAddTaskButton={setAddTaskButton}
               />
             )}
-            <StyledDiv onClick={() => {
-              setNewTask(!newTask);
-              setAddTaskButton(!addTaskButton)
-              }}> 
+            <StyledDiv
+              onClick={() => {
+                setNewTask(!newTask);
+                setAddTaskButton(!addTaskButton);
+              }}
+            >
               {addATask}
             </StyledDiv>
           </TaskList>
@@ -57,16 +59,16 @@ export default Column;
 const StyledDiv = styled.div`
   margin: 0 auto;
   text-align: center;
-  margin-top: 5px;
+  margin-top: 15px;
   box-shadow: 0.5px 0.5px 1px 1px;
   border-radius: 10px;
-  width: 50%;
+  width: fit-content;
   padding: 2px 12px;
   margin-bottom: 15px;
 
   &:hover {
     cursor: pointer;
-    background-color: rgba(200,133,63,0.8);
+    background-color: rgba(200, 133, 63, 0.8);
     color: #ffffff;
     border-radius: 10px;
   }
@@ -85,16 +87,11 @@ const Container = styled.div`
   border-radius: 10px;
   box-shadow: 1px 1px 2px 1px;
   overflow-y: auto;
-  &: hover {
-    cursor: pointer;
-    transform: scale(1.01);
-  }
 `;
 const Title = styled.h3`
   padding: 8px;
   text-align: center;
   font-weight: 700;
-
 `;
 const TaskList = styled.div`
   padding: 8px;
@@ -105,6 +102,4 @@ const TaskList = styled.div`
   height: 100%;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-
-
 `;
