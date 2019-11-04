@@ -33,14 +33,14 @@ const Header = ({ cookies, setMode, className, userCoin }) => {
           </NavDropdown>
         </Nav>
         <Nav>
-          <Nav.Link>
+          <div id="coin">
             <img
               src="/assets/other/coin.png"
               style={{ width: "25px" }}
               alt="coin"
             />{" "}
             {userCoinInfo}
-          </Nav.Link>
+          </div>
           <NavDropdown
             title={cookies.name || cookies.github_id}
             id="basic-nav-dropdown"
@@ -64,7 +64,6 @@ const StyledNavbar = styled(Navbar)`
   #responsive-navbar-nav a {
     background-color: rgba(36, 204, 143);
     color: #fff;
-
     &:hover {
       font-weight: 900;
       border-bottom: 1px solid #ffffff
@@ -82,6 +81,44 @@ const StyledNavbar = styled(Navbar)`
 
   .dropdown.nav-item > .dropdown-toggle.nav-link {
     margin-right: 100px;
+  }
+
+  #coin {
+    text-align: center;
+    display: flex;
+    align-items: center
+    margin-right: 15px
+    border: 0.5px solid #ffffff;
+    padding: 0px 10px;
+    border-radius: 10px;
+    box-shadow: 0.2px 0.8px 1px 0.8px;
+  }
+
+  @media only screen and (max-width: 767px) {
+    .nav-link, .dropdown-toggle, .dropdown-item {
+      width: 100%;
+      text-align: center;
+      margin-top: 5px;
+    }
+
+    #coin {
+      justify-content: center;
+      border: none;
+      box-shadow: none;
+      width: 100%;
+      margin-top: 5px;
+
+      &:hover {
+        border-bottom: 1px solid #ffffff;
+        border-radius: 0px;
+        cursor: pointer;
+        font-weight: 900;
+      }
+
+    }
+
+
+
   }
 `;
 
