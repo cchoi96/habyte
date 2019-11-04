@@ -66,7 +66,6 @@ const StyledTitle = styled.div`
 
   @media only screen and (max-width: 420px) {
     width: 60%;
-
   }
 `;
 
@@ -75,8 +74,13 @@ const StyledStore = styled.div`
   border: 1px black solid;
   background-color: rgba(36, 200, 143, 0.6);
   border-radius: 10px;
+  margin-left: 30px;
 
-  margin-left: 30px
+  @media only screen and (max-width: 950px) {
+    margin: 0px auto;
+  }
+
+
     
   form {
     display: flex;
@@ -96,9 +100,14 @@ const StyledStore = styled.div`
       background-color: rgba(36, 160, 143, 1);
       font-weight: bold;
       color: #FFFFFF
+    }
   }
 
-
+  @media only screen and (max-width: 720px) {
+    width: 100%;
+    form {
+      width: 100%;
+    }
 
 
 `;

@@ -70,7 +70,8 @@ const StyledStoreItemList = styled.div`
     border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
-    height: 35vh;
+    justify-content: space-between;
+    
     margin-bottom: 5vh;
     box-shadow: 0 2px 1px 0.6px;
 
@@ -105,7 +106,7 @@ const StyledStoreItemList = styled.div`
 
   .item-price-quantity-container {
     display: flex;
-    margin-left: 10px;
+    margin-left: 20px;
     justify-content: flex-start;
     align-items: center;
   }
@@ -159,6 +160,10 @@ const StyledStoreItemList = styled.div`
       flex-wrap: wrap;
       width: 100%;
       margin-top: 5px;
+    }
+    
+    .item-quantity {
+      width: 8vh;
     }
 
     .item-price-quantity-container {
