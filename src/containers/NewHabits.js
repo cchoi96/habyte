@@ -57,12 +57,11 @@ const NewHabits = ({ cookies, habits, setHabits, refreshHabits }) => {
 
 const StyledMainDiv = styled.div`
   display: flex;
-  margin: auto auto;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
+  flex-direction: column;
+
   @media only screen and (max-width: 950px) {
     flex-direction: row;
+    margin: auto auto;
   }
 `;
 
