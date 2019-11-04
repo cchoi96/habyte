@@ -69,10 +69,13 @@ const StyledDiv = styled.div`
 `;
 
 const StyledProjectList = styled.div`
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: center;
-  height: 10vh;
+  height: 12vh;
+  margin: 0 auto;
+  min-width: 100%;
+
 
 `;
 
