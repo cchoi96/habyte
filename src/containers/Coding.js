@@ -16,7 +16,6 @@ const Coding = ({
         <div id="coding-title">Coding</div>
         <StyledProjectList>
           <ProjectList
-            id="project-list"
             cookies={cookies}
             projectSelected={projectSelected}
             setProjectSelected={setProjectSelected}
@@ -25,7 +24,6 @@ const Coding = ({
       </div>
       <StyledTrelloBoard>
         <TrelloBoard
-          id="trello-board"
           projectSelected={projectSelected}
           projectState={projectState}
           setProjectState={setProjectState}
@@ -75,11 +73,11 @@ const StyledProjectList = styled.div`
   height: 12vh;
   margin: 0px auto;
   min-width: 100%;
-
-
 `;
 
 const StyledTrelloBoard = styled.div`
-  width: 80%;
+  width: 90%;
   display: flex;
+  height: 60%;
+
 `;

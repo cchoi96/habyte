@@ -96,9 +96,9 @@ const TrelloBoard = ({ projectState, setProjectState, projectSelected }) => {
             />
           );
         })}
-        <div>
+        <div id="new-column">
           <StyledAddNewColumn onClick={() => setNewColumn(!newColumn)}>
-            Add new column
+            Add New Column
           </StyledAddNewColumn>
           {newColumn && (
             <NewColumn
@@ -117,27 +117,46 @@ const TrelloBoard = ({ projectState, setProjectState, projectSelected }) => {
 const StyledTrelloBoard = styled.div`
   padding: 2%;
   display: flex;
-
   background-color: rgba(67, 40, 116, 0.4);
   width: 100%;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
   overflow-x: scroll;
+  border-radius: 10px;
+
+    
+  #new-column {
+    display: flex;
+    justify-content: flex-start;
+    height: fit-content;
+    width: 20%;
+    flex-wrap: wrap;
+  }
 `;
+
 const StyledColumn = styled(Column)`
   height: 100%;
+  border: 1px solid green;
 `;
+
 const StyledAddNewColumn = styled.div`
-  &:hover {
-    cursor: pointer;
-    background-color: #777;
-  }
+
   height: auto;
   width: 100%;
   margin: 5%;
   padding: 5%;
+  text-align: center;
   border-radius: 10px;
-  background-color: grey;
+  background-color: rgba(205,133,63,0.8);
+  font-weight: 500;
+  box-shadow: 0.5px 0.5px 1px 1px;
+  margin-bottom: 20px;
+
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(212,126,48,0.9);
+    transform: scale(1.05);
+    color: #d7d1d1fa
+  }
 `;
 
 export default TrelloBoard;
