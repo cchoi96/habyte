@@ -84,7 +84,7 @@ const FarmTiles = ({
               <div>
                 Sell ripe {habit.crop_name}
                 <div id="button-div">
-                  <button onClick={sellCrop}> Sell </button>
+                  <button onClick={sellCrop}>Sell</button>
                 </div>
               </div>
             )}
@@ -99,15 +99,19 @@ const FarmTiles = ({
 };
 
 const StyledButton = styled.input`
-  border-radius: 10px;
-  box-shadow: rgba(26, 24, 29, 0.16) 0px 2px 2px 0px,
-    rgba(26, 24, 29, 0.12) 0px 1px 4px 0px;
-  transition: 0.1s ease-in;
-  background-color: rgba(36, 204, 143);
-  border: none;
-  &:hover {
-    box-shadow: rgba(26, 24, 29, 0.32) 0px 2.5px 2px 1px,
-      rgba(26, 24, 29, 0.25) 0px 1.5px 4px 1px;
+  margin-top: 5px;
+  width: 75px;
+  border-radius: 5px;
+  border: 2px solid rgba(136, 54, 0);
+  background-color: rgba(172, 79, 1, 1);
+  color: #fff;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  outline: none;
+
+  &: hover {
+    background-color: rgba(172, 79, 1, 0.85);
+    color: white;
   }
 `;
 
@@ -159,7 +163,6 @@ const StyledHover = styled.div`
   @media only screen and (max-width: 1100px) {
     transform: ${props => (props.top ? "translateY(50%)" : "translateY(-50%)")};
   }
-  
 
   @media only screen and (max-width: 950px) {
     transform: ${props => (props.top ? "translateY(40%)" : "translateY(-45%)")};
