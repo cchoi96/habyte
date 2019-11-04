@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import FarmTiles from "../components/FarmTiles";
 import styled from "styled-components";
 
@@ -18,8 +18,8 @@ const Farm = ({
     SetHeart(true);
     timeOut = setTimeout(() => {
       SetHeart(false);
-    }, 2000)
-  }
+    }, 2000);
+  };
   return (
     <StyledContainer heart={heart}>
       <StyledDiv>
@@ -128,10 +128,10 @@ const Farm = ({
         src={`/assets/other/${cookies.animal}.gif`}
         id="animal"
         onClick={() => {
-          heartFunction()
+          heartFunction();
         }}
       />
-      <img src="/assets/other/heart.png" alt="heart" id="heart" heart={heart}/>
+      <img src="/assets/other/heart.png" alt="heart" id="heart" heart={heart} />
     </StyledContainer>
   );
 };
@@ -206,7 +206,7 @@ const StyledContainer = styled.div`
   }
 
   #heart {
-    display: ${props => props.heart ? "block" : "none"}
+    display: ${props => (props.heart ? "block" : "none")}
     height: 20px;
     width: 20px;
     position: absolute;
@@ -216,7 +216,8 @@ const StyledContainer = styled.div`
   }
 
   @media only screen and (max-width: 950px) {
-    width: 88vw;
+    width: 100%;
+    margin: 0 auto 100px auto;
     height: 70vh;
     justify-content: center;
     order: 1;

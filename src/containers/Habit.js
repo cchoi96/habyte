@@ -94,9 +94,9 @@ const StyledHabitCategory = styled.div`
     color: #fff;
   }
   @media only screen and (max-width: 950px) {
-    width: 87vw;
+    width: 100%;
+    margin: 0 auto 100px auto;
     height: 70vh;
-    margin-bottom: 100px;
   }
 `;
 

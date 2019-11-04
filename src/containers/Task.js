@@ -68,12 +68,16 @@ const Task = ({ task, index, projectState, setProjectState, columnid }) => {
                 onBlur={blurtask}
                 onChange={e => setEditText(e.currentTarget.value)}
               />
-              <input type="submit" value="Edit" />
+              <input type="submit" value="Edit" style={{ display: "none" }} />
             </StyledForm>
           )}
           {onHover && !inEdit && (
-            <div style={{ position: "relative" }}>
-              <StyledDelete onClick={deleteTask}>X</StyledDelete>
+            <div
+              style={{
+                position: "relative"
+              }}
+            >
+              <StyledDelete onClick={deleteTask}>Delete</StyledDelete>
               <StyledEdit onClick={editTask}>Edit</StyledEdit>
             </div>
           )}
@@ -85,18 +89,47 @@ const Task = ({ task, index, projectState, setProjectState, columnid }) => {
 
 const StyledForm = styled.form`
   width: 100%;
+  input {
+    width: 80%;
+    margin: 0 auto;
+  }
   display: flex;
 `;
 
 const StyledDelete = styled.span`
   position: absolute;
-  right: 0px;
   bottom: 0px;
+  right: 0px;
+  width: 55px;
+  text-align: center;
+  z-index: 10;
+  background-color: rgba(140, 218, 254.5, 1);
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: rgba(26, 24, 29, 0.16) 0px 2px 2px 0px,
+    rgba(26, 24, 29, 0.12) 0px 1px 4px 0px;
+  transition: 0.1s ease-out;
+  :hover {
+    transform: scale(1.02);
+  }
 `;
 const StyledEdit = styled.span`
   position: absolute;
-  right: 20px;
   bottom: 0px;
+  right: 65px;
+  width: 40px;
+  text-align: center;
+  z-index: 10;
+  background-color: rgba(140, 218, 254.5, 1);
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: rgba(26, 24, 29, 0.16) 0px 2px 2px 0px,
+    rgba(26, 24, 29, 0.12) 0px 1px 4px 0px;
+  transition: 0.1s ease-out;
+  :hover {
+    transform: scale(1.02);
 `;
 
 const Container = styled.div`
@@ -108,15 +141,9 @@ const Container = styled.div`
   border-radius: 10px;
   text-align: left;
   padding-left: 10px;
+  overflow-wrap: break-word;
   &:hover {
     color: steelblue;
   }
 `;
 export default Task;
-
-// background-color: ${props =>
-//   props.isDragDisabled
-//     ? "lightgrey"
-//     : props.isDragging
-//     ? "steelblue"
-//     : "white"};

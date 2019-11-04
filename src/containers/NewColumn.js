@@ -30,14 +30,8 @@ const NewColumn = ({
             }),
             ...prevState.columnOrder.push(data.id)
           }));
-          console.log(projectState);
         });
     }
-    // .then(id => {
-    //   temp.tasks[id] = { id: id, content: taskText };
-    //   temp.columns[columnId].taskIds.push(id);
-    //   setProjectState(projectState => ({ ...projectState }));
-    // });
   };
 
   return (
@@ -48,38 +42,52 @@ const NewColumn = ({
           className="new-column-title"
           type="text"
           onChange={e => setColumnText(e.target.value)}
-          placeholder="column title"
+          placeholder="Title"
         />
-        <input id="add-column" onClick={clickHandler} type="submit" value="Add Column" />
+        <input
+          id="add-column"
+          onClick={clickHandler}
+          type="submit"
+          value="Save"
+        />
       </form>
     </StyledNewColumn>
   );
 };
 
 const StyledNewColumn = styled.div`
+  margin-top: 15px;
   .new-column-title {
     border-radius: 10px;
+    border: none;
+    margin-left: 10px;
     margin-bottom: 15px;
+    padding-left: 5px;
     width: 100%;
-    text-align: center;
+    text-align: left;
   }
 
   form {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
   }
 
   #add-column {
     border-radius: 10px;
+    border: none;
+    margin-left: 10px;
+    padding: 2px 12px;
+    background-color: rgba(140, 218, 254.5, 1);
+    box-shadow: rgba(26, 24, 29, 0.16) 0px 2px 2px 0px,
+      rgba(26, 24, 29, 0.12) 0px 1px 4px 0px;
+    color: #fff;
+    transition: 0.1s ease-out;
 
     &: hover {
       transform: scale(1.02);
-      background-color: rgba(205,133,63,0.8);
-      color: #ffffff
     }
   }
-
 `;
 
 export default NewColumn;

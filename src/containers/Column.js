@@ -79,11 +79,12 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 7.5px;
+  margin: 7.5px 7.5px 15px 7.5px;
   :first-child {
     margin-left: 15px;
   }
   width: 40%;
+  min-width: 200px;
   height: fit-content;
   border-radius: 10px;
   overflow-y: auto;
@@ -94,6 +95,7 @@ const Container = styled.div`
   }
 `;
 const Title = styled.h3`
+  overflow-wrap: break-word;
   padding: 8px;
   margin-bottom: 0;
   text-align: center;

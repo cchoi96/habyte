@@ -60,25 +60,6 @@ const StyledDiv = styled.div`
     height: 70vh;
     margin: 0 auto;
     margin-bottom: 100px;
-    width: 95%;
+    width: 100%;
   }
 `;
-
-// const StyledProjectList = styled.div`
-//   width: 100%;
-//   display: flex;
-//   justify-content: center;
-//   height: 12vh;
-//   margin: 0px auto;
-// `;
-
-// const StyledTrelloBoard = styled.div`
-//   width: 100%;
-//   display: flex;
-//   height: 60%;
-//   min-height: 350px;
-
-//   @media only screen and (max-width: 950px) {
-//     margin-top: 30px;
-//   }
-// `;
