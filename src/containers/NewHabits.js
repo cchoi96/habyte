@@ -24,7 +24,7 @@ const NewHabits = ({ cookies, habits, setHabits, refreshHabits }) => {
 
   const newHabitsList = habits.map(habit => {
     return habit.is_checked_day ? (
-      <CheckedStyledDiv>
+      <CheckedStyledDiv key={habit.name}>
         <div className="check">
           <p>
             {habit.counter}/{habit.frequency}
@@ -36,6 +36,7 @@ const NewHabits = ({ cookies, habits, setHabits, refreshHabits }) => {
       </CheckedStyledDiv>
     ) : (
       <StyledDiv
+        key={habit.name}
         onClick={() => {
           updateHabit(habit.id);
         }}

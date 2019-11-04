@@ -36,12 +36,12 @@ const CategoryList = ({
     );
 
   return (
-    <StyledDiv habitMode={habitMode}>
+    <StyledDiv habitmode={habitMode}>
       <div className="headers">
-        <div id="new" habitMode={habitMode} onClick={() => setHabitMode("new")}>
+        <div id="new" habitmode={habitMode} onClick={() => setHabitMode("new")}>
           Current
         </div>
-        <div id="old" habitMode={habitMode} onClick={() => setHabitMode("old")}>
+        <div id="old" habitmode={habitMode} onClick={() => setHabitMode("old")}>
           Past
         </div>
       </div>
@@ -78,7 +78,7 @@ const StyledDiv = styled.div`
   #new {
     border-right: 1px solid #fff;
     background-color: ${props =>
-      props.habitMode === "new"
+      props.habitmode === "new"
         ? "rgba(36, 204, 143)"
         : "rgba(36, 204, 143, 0.5)"};
   }
@@ -86,7 +86,7 @@ const StyledDiv = styled.div`
   #old {
     border-right: 1px solid #fff;
     background-color: ${props =>
-      props.habitMode === "old"
+      props.habitmode === "old"
         ? "rgba(36, 204, 143)"
         : "rgba(36, 204, 143, 0.5)"};
   }
