@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import GithubProjectList from "./GithubProjectList";
 import Modal from "react-modal";
 import axios from "axios";
 import styled from "styled-components";
@@ -58,32 +59,7 @@ const ProjectModal = ({ setIsOpen, isOpen, repos, cookies, refreshList }) => {
       });
   };
 
-
   const data = {};
-  const repoList = repos.map(repo => {
-    data[repo] = false;
-    return (
-      <StyledRepoList key={repo} >
-        <StyledLabel
-          onClick={() => {
-            data[repo] = !data[repo];
-            console.log(data[repo]);
-            console.log('hello from label')
-
-          }}
-        >
-          {repo}
-        </StyledLabel>
-        <input
-          type="checkbox"
-          id={repo}
-          name="repo"
-          value={repo}
-        />
-      </StyledRepoList>
-    );
-  });
-  console.log(repoList);
 
   return (
     <div>
@@ -96,7 +72,7 @@ const ProjectModal = ({ setIsOpen, isOpen, repos, cookies, refreshList }) => {
       >
         <StyledForm>
           <form method="POST" action="/project-save">
-            {repoList}
+            <GithubProjectList repos={repos} data={data} />
             <button onClick={saveProject} type="submit">
               Submit
             </button>
@@ -110,32 +86,7 @@ const ProjectModal = ({ setIsOpen, isOpen, repos, cookies, refreshList }) => {
 
 export default ProjectModal;
 
-const StyledLabel = styled.label`
-background-color: "white";
-width: 100%;
-text-align: center;
-cursor: pointer;
 
-`;
-
-const StyledRepoList = styled.div`
-  display: flex;
-  height: 100px;
-  width: 40%
-  justify-content: center;
-  border: 2px solid black;
-  border-radius: 10px;
-  margin: 10px;
-  padding: 10px;
-  flex-wrap: wrap;
-  box-shadow: 0.5px 0.5px 1px 1px;
-
-  input {
-    display: none;
-  }
-
-
-`;
 
 const StyledForm = styled.div`
   form {
