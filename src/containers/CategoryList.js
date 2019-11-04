@@ -54,6 +54,7 @@ const StyledDiv = styled.div`
   display: flex;
   width: 20vw;
   flex-direction: column;
+
   .headers {
     display: flex;
     height: 50px;
@@ -118,6 +119,9 @@ const StyledDiv = styled.div`
 `;
 
 const StyledHabitDiv = styled.div`
+  display: flex;
+  overflow-y: hidden;
+  width: 100%;
   height: 73vh;
   min-height: 400px;
   border-bottom-right-radius: 10px;
@@ -129,7 +133,6 @@ const StyledHabitDiv = styled.div`
     width: 70vw;
     max-height: 80px;
     min-height: 80px;
-
     overflow-x: scroll;
   }
 `;
