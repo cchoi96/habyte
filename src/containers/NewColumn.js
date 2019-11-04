@@ -41,17 +41,44 @@ const NewColumn = ({
   };
 
   return (
-    <div>
+    <StyledNewColumn>
       <form>
         <input
+          className="new-column-title"
           type="text"
           onChange={e => setColumnText(e.target.value)}
           placeholder="column title"
         />
-        <input onClick={clickHandler} type="submit" value="Add column" />
+        <input id="add-column" onClick={clickHandler} type="submit" value="Add Column" />
       </form>
-    </div>
+    </StyledNewColumn>
   );
 };
+
+const StyledNewColumn = styled.div`
+  .new-column-title {
+    border-radius: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  #add-column {
+    border-radius: 10px;
+
+    &: hover {
+      transform: scale(1.02);
+      background-color: rgba(205,133,63,0.8);
+      color: #ffffff
+    }
+  }
+
+`;
 
 export default NewColumn;

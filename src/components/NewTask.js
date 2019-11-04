@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import styled from 'styled-components';
 
 const NewTask = ({ setNewTask, projectState, setProjectState, columnId }) => {
   const [taskText, setTaskText] = useState("");
@@ -24,13 +25,44 @@ const NewTask = ({ setNewTask, projectState, setProjectState, columnId }) => {
     }
   };
   return (
-    <div>
+    <StyledNewTask>
       <form>
-        <input type="text" onChange={e => setTaskText(e.target.value)} />
-        <input onClick={clickHandler} type="submit" value="Add task" />
+        <input className="new-task-name" type="text" onChange={e => setTaskText(e.target.value)} />
+        <input className="add-new-task" onClick={clickHandler} type="submit" value="Add task" />
       </form>
-    </div>
+    </StyledNewTask>
   );
 };
+
+const StyledNewTask = styled.div`
+
+  form {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .new-task-name {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5px;
+    border-radius: 10px;
+  }
+
+  .add-new-task {
+    border-radius: 10px;
+    box-shadow: 0px 0.5px 0.5px;
+
+    &: hover {
+      cursor: pointer;
+      background-color: rgba(200,133,63,0.8);
+      color: #ffffff;
+      border-radius: 10px;
+    }
+
+  }
+
+`;
 
 export default NewTask;

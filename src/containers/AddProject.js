@@ -17,7 +17,7 @@ const AddProject = ({ cookies, refreshList, projectList }) => {
   //Add projectList as dependency, need to rerender this after projectList is changed
   useEffect(() => {
     axios
-      .get(`https://api.github.com/users/cchoi96/repos`)
+      .get(`https://api.github.com/users/${cookies.github_name}/repos`)
       .then(res => {
         let repoList = [];
         res.data.map(repo => {
@@ -50,11 +50,15 @@ const AddProject = ({ cookies, refreshList, projectList }) => {
 
 const StyledDiv = styled.div`
   img {
-    width: 50px;
-    transition: 0.1s ease-out;
+    width: 60px;
+    margin: 0px 15px;
+    
     &:hover {
       cursor: pointer;
       transform: scale(1.05);
+      background-color: #ffffff;
+      border-radius: 100%;
+      box-shadow: 0px 0px 0.5px 1px;
     }
   }
 `;
