@@ -60,13 +60,13 @@ const StyledNavbar = styled(Navbar)`
   font-size: 1.1em;
   color: #fff;
   background: rgba(36, 204, 143);
+  box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
   #basic-nav-dropdown,
   #responsive-navbar-nav a {
     background-color: rgba(36, 204, 143);
     color: #fff;
     &:hover {
       font-weight: 900;
-      border-bottom: 1px solid #ffffff
     }
   }
   .dropdown-menu.show {
@@ -80,7 +80,7 @@ const StyledNavbar = styled(Navbar)`
   }
 
   .dropdown.nav-item > .dropdown-toggle.nav-link {
-    margin-right: 100px;
+    margin-right: 20px;
   }
 
   #coin {
@@ -88,10 +88,7 @@ const StyledNavbar = styled(Navbar)`
     display: flex;
     align-items: center
     margin-right: 15px
-    border: 0.5px solid #ffffff;
     padding: 0px 10px;
-    border-radius: 10px;
-    box-shadow: inset 0 0 10px #66ff66;
   }
 
   @media only screen and (max-width: 767px) {
@@ -109,16 +106,11 @@ const StyledNavbar = styled(Navbar)`
       margin-top: 5px;
 
       &:hover {
-        border-bottom: 1px solid #ffffff;
         border-radius: 0px;
         cursor: pointer;
         font-weight: 900;
       }
-
     }
-
-
-
   }
 `;
 
@@ -128,44 +120,3 @@ const StyledBrand = styled(Navbar)`
 `;
 
 export default Header;
-
-// .navbar-nav > a {
-//   display: flex;
-//   width: 100%;
-// }
-
-// @media only screen and (max-width: 992px) {
-//   .navbar {
-//     display: flex;
-//     justify-content: center;
-//   }
-
-//   .nav-link {
-//     text-align: center;
-//   }
-
-//   .navbar-nav {
-//     width: 80%;
-//     border: 1px solid black;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//   }
-
-// .navbar-nav {
-//   display: flex;
-//   justify-content: space-around;
-//   text-align: center;
-//   margin: 0px 30px;
-// }
-
-// .dropdown-toggle {
-//   margin: 0px auto;
-//   text-align: center;
-
-// }
-
-// .nav-link,
-// .navbar-right {
-//   margin: 0px 30px;
-// }

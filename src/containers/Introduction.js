@@ -87,7 +87,6 @@ const Introduction = ({ cookies, setUserInfo }) => {
         animal
       })
       .then(() => {
-        console.log(cookies);
         setUserInfo(cookies.github_id, name, animal, cookies.github_name);
       })
       .then(() => {
@@ -155,6 +154,42 @@ const StyledDiv = styled.div`
       width: 50%;
       margin: 10px auto 0 auto;
       border-radius: 5px;
+    }
+  }
+
+  @media only screen and (max-width: 650px) {
+    .profile {
+      width: 150px;
+      height: 150px;
+    }
+
+    .chat {
+      width: 350px;
+      height: 150px;
+      margin: 0 auto;
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .convo {
+      height: 50vh;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .convo-box {
+      order: 2;
+    }
+
+    .profile {
+      order: 1;
+      margin-bottom: 15px;
+    }
+  }
+
+  @media only screen and (max-width: 350px) {
+    .chat {
+      width: 100%;
     }
   }
 `;
