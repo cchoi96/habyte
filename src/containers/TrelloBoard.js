@@ -87,7 +87,7 @@ const TrelloBoard = ({ projectState, setProjectState, projectSelected }) => {
             taskId => projectState.tasks[taskId]
           );
           return (
-            <StyledColumn
+            <Column
               projectState={projectState}
               setProjectState={setProjectState}
               key={column.id}
@@ -102,7 +102,7 @@ const TrelloBoard = ({ projectState, setProjectState, projectSelected }) => {
               setNewColumn(!newColumn);
             }}
           >
-            Add New Column
+            +
           </StyledAddNewColumn>
           {newColumn && (
             <NewColumn
@@ -119,47 +119,51 @@ const TrelloBoard = ({ projectState, setProjectState, projectSelected }) => {
 };
 
 const StyledTrelloBoard = styled.div`
-  padding: 2%;
   display: flex;
-  background-color: rgba(67, 40, 116, 0.4);
-  width: 100%;
+  height: 70%;
+  background-color: rgba(25, 181, 254, 0.7);
+  width: 95%;
   overflow-x: scroll;
-  border-radius: 10px;
+  border-top: 1px solid
+    rgba(
+      ${25 * 0.5 + 255 * 0.5},
+      ${181 * 0.5 + 255 * 0.5},
+      ${254 * 0.5 + 255 * 0.5},
+      1
+    );
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   justify-content: flex-start;
-
+  padding-top: 7.5px;
   #new-column {
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     height: fit-content;
-    width: 20%;
-    flex-wrap: wrap;
+    width: 100px;
   }
-`;
-
-const StyledColumn = styled(Column)`
-  height: 100%;
-  border: 1px solid green;
 `;
 
 const StyledAddNewColumn = styled.div`
   height: auto;
-  width: 100%;
-  margin: 5%;
-  padding: 5%;
+  margin-top: 7.5px;
   text-align: center;
   border-radius: 10px;
-  background-color: rgba(205, 133, 63, 0.8);
-  font-weight: 500;
-  box-shadow: 0.5px 0.5px 1px 1px;
-  margin-bottom: 20px;
+  color: #fff;
+  box-shadow: rgba(26, 24, 29, 0.16) 0px 2px 2px 0px,
+    rgba(26, 24, 29, 0.12) 0px 1px 4px 0px;
+  background-color: rgba(
+    ${25 * 0.5 + 255 * 0.5},
+    ${181 * 0.5 + 255 * 0.5},
+    ${254 * 0.5 + 255 * 0.5},
+    1
+  );
   min-width: 100px;
-  margin-right: 20px;
+  transition: 0.1s ease-out;
 
   &:hover {
     cursor: pointer;
-    background-color: rgba(212, 126, 48, 0.9);
     transform: scale(1.02);
-    color: #ffffff;
   }
 `;
 

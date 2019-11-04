@@ -34,7 +34,13 @@ const AddProject = ({ cookies, refreshList, projectList }) => {
 
   return (
     <StyledDiv>
-      <img src="/assets/other/plus.png" onClick={() => setIsOpen(true)}></img>
+      <div id="add-project">
+        <img
+          src="/assets/other/white-plus.png"
+          onClick={() => setIsOpen(true)}
+        ></img>
+      </div>
+
       {isOpen && (
         <ProjectModal
           refreshList={refreshList}
@@ -49,17 +55,32 @@ const AddProject = ({ cookies, refreshList, projectList }) => {
 };
 
 const StyledDiv = styled.div`
-  img {
-    width: 60px;
-    margin: 0px 15px;
-
+  #add-project {
+    height: 80%;
+    min-height: 60px;
+    transition: 0.1s ease-out;
+    border-radius: 10px;
+    box-shadow: rgba(26, 24, 29, 0.16) 0px 2px 2px 0px,
+      rgba(26, 24, 29, 0.12) 0px 1px 4px 0px;
+    background-color: rgba(
+      ${25 * 0.5 + 255 * 0.5},
+      ${181 * 0.5 + 255 * 0.5},
+      ${254 * 0.5 + 255 * 0.5},
+      1
+    );
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
     &:hover {
       cursor: pointer;
-      transform: scale(1.02);
-      background-color: #ffffff;
-      border-radius: 100%;
-      box-shadow: 0px 0px 0.5px 1px;
+      transform: scale(1.05);
     }
+  }
+  img {
+    width: 40px;
+    height: 40px;
+    margin: 0px 10px;
   }
 `;
 

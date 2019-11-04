@@ -12,23 +12,19 @@ const Coding = ({
 }) => {
   return (
     <StyledDiv>
-      <div id="title-container">
-        <div id="coding-title">Coding</div>
-        <StyledProjectList>
-          <ProjectList
-            cookies={cookies}
-            projectSelected={projectSelected}
-            setProjectSelected={setProjectSelected}
-          />
-        </StyledProjectList>
+      <div id="coding-title">
+        <h1>Coding</h1>
       </div>
-      <StyledTrelloBoard>
-        <TrelloBoard
-          projectSelected={projectSelected}
-          projectState={projectState}
-          setProjectState={setProjectState}
-        />
-      </StyledTrelloBoard>
+      <ProjectList
+        cookies={cookies}
+        projectSelected={projectSelected}
+        setProjectSelected={setProjectSelected}
+      />
+      <TrelloBoard
+        projectSelected={projectSelected}
+        projectState={projectState}
+        setProjectState={setProjectState}
+      />
     </StyledDiv>
   );
 };
@@ -36,60 +32,53 @@ const Coding = ({
 export default Coding;
 
 const StyledDiv = styled.div`
-
+  height: 80vh;
+  width: 70vw;
+  margin-left: 3vw;
+  margin-bottom: 20px;
+  text-align: center;
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 80%;
-  margin-left: 30px;
-  #title-container {
-    width: 100%
-    height: fit-content
-  }
-  border: 1px solid black;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
   border-radius: 10px;
-
-  background-color: rgba(67, 40, 116, 0.4);
+  background-color: rgba(25, 181, 254, 0.5);
+  box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
+    0 1px 4px 0 rgba(26, 24, 29, 0.12);
 
   #coding-title {
-    background-color: rgba(67, 40, 116, 1);
-    text-color: white;
+    background-color: rgba(25, 181, 254, 1);
     width: 40%;
-    height: fit-content;
+    min-width: 250px;
     margin: 0 auto;
-    text-align: center;
-    font-size: 5vh;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     color: #fff;
-    margin-bottom: 20px;
   }
 
   @media only screen and (max-width: 950px) {
-    height: 100%;
+    height: 70vh;
     margin: 0 auto;
-    margin-bottom: 120px;
+    margin-bottom: 100px;
     width: 95%;
   }
 `;
 
-const StyledProjectList = styled.div`
-  width: 90%;
-  display: flex;
-  justify-content: center;
-  height: 12vh;
-  margin: 0px auto;
-  min-width: 100%;
-`;
+// const StyledProjectList = styled.div`
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
+//   height: 12vh;
+//   margin: 0px auto;
+// `;
 
-const StyledTrelloBoard = styled.div`
-  width: 90%;
-  display: flex;
-  height: 60%;
-  min-height: 350px;
+// const StyledTrelloBoard = styled.div`
+//   width: 100%;
+//   display: flex;
+//   height: 60%;
+//   min-height: 350px;
 
-  @media only screen and (max-width: 950px) {
-    margin-top: 30px;
-  }
-
-`;
+//   @media only screen and (max-width: 950px) {
+//     margin-top: 30px;
+//   }
+// `;
