@@ -44,9 +44,6 @@ const ProjectList = ({ cookies, setProjectSelected, projectSelected }) => {
 
   return (
     <StyledProjectList>
-      <div className="habit-info">
-        <h1>Coding</h1>
-      </div>
       {totalProjectList}
       <AddProject
         refreshList={refreshList}
@@ -58,26 +55,15 @@ const ProjectList = ({ cookies, setProjectSelected, projectSelected }) => {
 };
 
 const StyledProjectList = styled.div`
-  list-style-type: none;
-  padding: 3%;
 
-  border-radius: 10px;
-  height: 80vh;
-  min-width: 20vw;
-  max-width: 30vw;
+  border: 5px solid green
+  list-style-type: none;
+  width: 95%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center
   background-color: rgba(67, 40, 116, 0.4);
-  padding-top: 0;
-  .habit-info {
-    background-color: rgba(67, 40, 116, 1);
-    width: auto;
-    padding: 0 15px;
-    height: fit-content;
-    margin: 0 auto;
-    text-align: center;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    color: #fff;
-  }
+
 
   @media only screen and (max-width: 950px) {
     margin: 0 auto;
@@ -85,37 +71,52 @@ const StyledProjectList = styled.div`
     height: 70vh;
     width: 100%;
   }
-  display: flex;
-  flex-wrap: wrap;
 
-  overflow-y: scroll;
 `;
 
 const StyledProjectListItem = styled(ProjectListItem)`
-  border: 1px solid black;
-  box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
-    0 1px 4px 0 rgba(26, 24, 29, 0.12);
-  &:hover {
-    box-shadow: 0 2px 1px 3px rgba(26, 24, 29, 0.21),
-      0 1px 1px 1px rgba(26, 24, 29, 0.16);
-  }
-  background-color: ${props =>
-    props.projectSelected == props.projectid
-      ? "rgba(0, 0, 0, 0.5)"
-      : "rgb(237, 236, 238);"};
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   width: 100%;
-  margin: 4% auto;
-  list-style-type: none;
+  height: 100%;
+
+  border: 3px solid black;
   border-radius: 10px;
+  margin-right: 5px;
+
+
+  .projectName, .projectCommit {
+    width: 100%;
+    text-align: center;
+    align-self: center;
+  }
+
   .projectName {
     font-size: 1.5em;
   }
-  .projectStatus {
-    font-size: 1.5em;
+
+  .projectCommit {
+    font-size: 1em;
   }
-  img {
-    width: 50px;
-  }
+
 `;
 
 export default ProjectList;
+
+
+// border: 1px solid black;
+// box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
+//   0 1px 4px 0 rgba(26, 24, 29, 0.12);
+// &:hover {
+//   box-shadow: 0 2px 1px 3px rgba(26, 24, 29, 0.21),
+//     0 1px 1px 1px rgba(26, 24, 29, 0.16);
+// }
+// background-color: ${props =>
+//   props.projectSelected == props.projectid
+//     ? "rgba(0, 0, 0, 0.5)"
+//     : "rgb(237, 236, 238);"};
+
+// display: flex;
+// flex-direction: column;
+
