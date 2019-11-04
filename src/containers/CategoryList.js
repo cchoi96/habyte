@@ -1,149 +1,72 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import styled from "styled-components";
-import CategoryListItem from "./CategoryListItem";
+// import CategoryListItem from "./CategoryListItem";
+import NewHabits from "./NewHabits";
+import OldHabits from "./OldHabits";
 
-const CategoryList = ({ setMode }) => {
-  const categories = [
-    {
-      name: "farm",
-      img: "/assets/other/farm.png"
-    },
-    {
-      name: "coding",
-      img: "/assets/other/coding_icon.png"
-    },
-    {
-      name: "health",
-      img: "/assets/other/health_icon.png"
-    }
-  ];
+const CategoryList = ({
+  cookies,
+  habits,
+  setHabits,
+  refreshHabits,
+  oldHabits,
+  setOldHabits,
+  refreshOldHabits
+}) => {
+  const [habitMode, setHabitMode] = useState("new");
 
-  const [categoryList, setCategoryList] = useState(categories);
-
-  let totalCategoryList = categoryList.map((category, index) => {
-    return (
-      <StyledCategoryListItem
-        key={category.name}
-        index={index}
-        categoryName={category.name}
-        categoryImg={category.img}
-        setMode={setMode}
-      ></StyledCategoryListItem>
+  const renderedHabits =
+    habitMode === "new" ? (
+      <StyledHabitDiv>
+        <NewHabits
+          cookies={cookies}
+          habits={habits}
+          setHabits={setHabits}
+          refreshHabits={refreshHabits}
+        />
+      </StyledHabitDiv>
+    ) : (
+      <StyledHabitDiv>
+        <OldHabits
+          cookies={cookies}
+          oldHabits={oldHabits}
+          setOldHabits={setOldHabits}
+          refreshOldHabits={refreshOldHabits}
+        />
+      </StyledHabitDiv>
     );
-  });
 
   return (
     <StyledDiv>
-      <div id="header">Categories</div>
-      {totalCategoryList}
+      <div className="headers">
+        <div id="new" onClick={() => setHabitMode("new")}>
+          Current
+        </div>
+        <div className="new" onClick={() => setHabitMode("old")}>
+          Past
+        </div>
+      </div>
+      {renderedHabits}
     </StyledDiv>
   );
 };
 
-const StyledCategoryListItem = styled(CategoryListItem)`
-  width: 90%;
-  margin: 10px auto;
-  list-style-type: none;
-  text-align: center;
-  padding: 10px 0 20px 0;
-  border-radius: 10px;
-  min-height: 100px;
-  height: 20%;
-  .projectName {
-    font-size: 1.5em;
-  }
-  b .projectStatus {
-    font-size: 1.5em;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  img {
-    margin: 5px;
-    width: 50px;
-  }
-  box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
-    0 1px 4px 0 rgba(26, 24, 29, 0.12);
-  &:hover {
-    cursor: pointer;
-    background-color: ${props =>
-      props.categoryName === "coding"
-        ? "rgba(67, 40, 116, 1)"
-        : props.categoryName === "health"
-        ? "rgba(247, 78, 82, 1)"
-        : "rgba(36, 204, 143, 1)"};
-  }
-
-  color: #fff;
-
-  background-color: ${props =>
-    props.categoryName === "coding"
-      ? "rgba(67, 40, 116, 0.85)"
-      : props.categoryName === "health"
-      ? "rgba(247, 78, 82, 0.85)"
-      : "rgba(36, 204, 143, 0.85)"};
-
-  @media only screen and (max-width: 950px) {
-    width: 15vw;
-    height: 8vw;
-    min-width: 60px;
-    min-height: 60px;
-    display: inline-block;
-    img {
-      margin: 0;
-      width: 40%;
-      min-width: 40px;
-    }
-    p {
-      display: none;
-    }
-  }
-`;
-
 const StyledDiv = styled.div`
-  #header {
-    text-align: center;
-    width: 100%;
-    height: 10vh;
-    min-height: 75px;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    background-color: rgba(36, 204, 143, 1);
-    color: #fff;
-    font-size: 1.2em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  list-style-type: none;
+  display: flex;
   width: 20%;
-  background-color: #edecee;
-  height: 80vh;
-  min-height: 500px;
-  border-radius: 10px;
-  box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
-    0 1px 4px 0 rgba(26, 24, 29, 0.12);
+  flex-direction: column;
 
-  @media only screen and (max-width: 950px) {
-    width: 100%;
-    min-height: 80px;
-    height: 10vw;
-    margin-bottom: 30px;
-    #header {
-      display: none;
-    }
+  .headers {
+    width: 90%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 5;
-    margin: 0;
-    border-radius: 0;
+    height: 100px;
+    background-color: rgba(36, 204, 143);
+    border-top-left-radius: 5px;
   }
 `;
+
+const StyledHabitDiv = styled.div``;
 
 export default CategoryList;
