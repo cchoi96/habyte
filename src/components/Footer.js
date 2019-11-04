@@ -5,21 +5,27 @@ const Footer = () => {
   let year = new Date().getFullYear();
   return (
     <StyledDiv>
-      <p>
-        Special thanks to ConcernedApe for all, and I mean literally all, the
-        assets. ❤️
-      </p>
-      <p>Made with ❤️ by Chris, Gary, and Michael &copy;{year}</p>
+      Special thanks to ConcernedApe for all, and I mean literally all, the
+      assets. ❤️ &copy;{year}
     </StyledDiv>
   );
 };
 
 const StyledDiv = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: 0px;
   left: 0;
   right: 0;
-  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0px 5px;
+  color: black;
+  font-weight: 560;
+  background-color: rgba(256, 256, 256, 0.6);
+  width: fit-content;
+  border-radius: 10px;
 `;
 
 export default Footer;

@@ -52,7 +52,7 @@ const Task = ({ task, index, projectState, setProjectState, columnid }) => {
     <Draggable draggableId={task.id} index={index}>
       {(provided, snapshot) => (
         <Container
-          onMouseEnter={() => setOnHover(true)}
+          onMouseOver={() => setOnHover(true)}
           onMouseLeave={() => setOnHover(false)}
           {...provided.draggableProps}
           {...provided.dragHandleProps}

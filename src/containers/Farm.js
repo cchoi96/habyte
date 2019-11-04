@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import FarmTiles from "../components/FarmTiles";
 import styled from "styled-components";
 
@@ -11,11 +11,21 @@ const Farm = ({
   updateCoinInDatabase,
   setHabits
 }) => {
+  const [heart, SetHeart] = useState(false);
+  let timeOut;
+
+  const heartFunction = () => {
+    SetHeart(true);
+    timeOut = setTimeout(() => {
+      SetHeart(false);
+    }, 2000)
+  }
   return (
-    <StyledContainer>
+    <StyledContainer heart={heart}>
       <StyledDiv>
         <div style={{ display: "flex" }}>
           <StyledFarmTiles
+            top={true}
             habit={habits[0]}
             img={"assets/other/soil-tile-tl.png"}
             setUserCoin={setUserCoin}
@@ -26,6 +36,7 @@ const Farm = ({
             habits={habits}
           />
           <StyledFarmTiles
+            top={true}
             habit={habits[1]}
             img={"assets/other/soil-tile-tm.png"}
             setUserCoin={setUserCoin}
@@ -36,6 +47,7 @@ const Farm = ({
             habits={habits}
           />
           <StyledFarmTiles
+            top={true}
             habit={habits[2]}
             img={"assets/other/soil-tile-tr.png"}
             setUserCoin={setUserCoin}
@@ -115,8 +127,11 @@ const Farm = ({
       <img
         src={`/assets/other/${cookies.animal}.gif`}
         id="animal"
-        onClick={() => console.log("<3")}
+        onClick={() => {
+          heartFunction()
+        }}
       />
+      <img src="/assets/other/heart.png" alt="heart" id="heart" heart={heart}/>
     </StyledContainer>
   );
 };
@@ -127,10 +142,12 @@ const StyledFarmTiles = styled(FarmTiles)`
   position: relative;
   .fruitImg {
     position: absolute;
-    top: 10%;
-    left: 30%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     transition: 0.1s ease-out;
     z-index: 5;
+    cursor: pointer;
   }
 
   .soilTile {
@@ -139,7 +156,7 @@ const StyledFarmTiles = styled(FarmTiles)`
 
   &:hover {
     .fruitImg {
-      transform: scale(1.1);
+      transform: scale(1.5) translate(-50%, -50%);
     }
   }
 `;
@@ -158,6 +175,7 @@ const StyledDiv = styled.div`
 `;
 
 const StyledContainer = styled.div`
+  position: relative;
   display: flex;
   height: 80vh;
   min-height: 500px;
@@ -169,7 +187,7 @@ const StyledContainer = styled.div`
   background-repeat: repeat;
   background-size: 90px 90px;
   box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
-  0 1px 4px 0 rgba(26, 24, 29, 0.12);
+    0 1px 4px 0 rgba(26, 24, 29, 0.12);
   img {
     max-width: 33vw;
     max-height: 33vw;
@@ -179,8 +197,22 @@ const StyledContainer = styled.div`
     width: 70px;
     height: 70px;
     position: absolute;
-    top: 70%;
-    left: 71%;
+    top: 75%;
+    left: 56%;
+
+    &: hover {
+      cursor: pointer;
+    }
+  }
+
+  #heart {
+    display: ${props => props.heart ? "block" : "none"}
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 73%;
+    left: 60%;
+    opacity: 0.8;
   }
 
   @media only screen and (max-width: 950px) {
@@ -202,6 +234,22 @@ const StyledContainer = styled.div`
       min-width: 240px;
       min-height: 210px;
     }
+    #animal {
+      left: 15%;
+      top: 28%;
+    }
+    #heart {
+      left: 20%;
+      top: 26%;
+    }
   }
-}
+
+  @media only screen and (max-width: 480px) {
+    #animal {
+      left: 0%;
+    }
+    #heart {
+      left: 9%;
+    }
+  }
 `;

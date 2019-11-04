@@ -8,13 +8,22 @@ const FarmTiles = ({
   img,
   habit,
   setUserCoin,
-  updateCoinInDatabase,
   userCoin,
   cookies,
   habits,
-  updateHabits
+  updateHabits,
+  top
 }) => {
   const [showCropDetail, setShowCropDetail] = useState(false);
+  console.log(habits);
+  const revive = () => {};
+  const remove = () => {
+    axios
+      .delete("http://0.0.0.0:8080/user/crops", {
+        data: { habit: habit }
+      })
+      .then(() => updateHabits(cookies.github_id));
+  };
 
   const showDeets = () => {
     if (habit) {
@@ -46,27 +55,39 @@ const FarmTiles = ({
   return (
     <div className={className} onMouseOver={showDeets} onMouseLeave={hideDeets}>
       {showCropDetail && habit && (
-        <StyledHover>
+        <StyledHover top={top}>
           <StyledUl>
+            <li>Habit: {habit.name}</li>
             <li>
               {habit.crop_name[0].toUpperCase() + habit.crop_name.slice(1)}:
               Lvl. {habit.crop_state}
             </li>
-            <li>habit task: {habit.name}</li>
+
             {habit.notes && <li>Notes: {habit.notes}</li>}
-            <li>Habit started: {habit.created_at.slice(0, 10)}</li>
-            <li>habit id: {habit.id}</li>
+            <li>Started: {habit.created_at.slice(0, 10)}</li>
+
             <li>
               Habit is currently
-              {habit.is_already_dying ? " dying :(" : " healthy!"}
+              {habit.crop_state === 0
+                ? " dead."
+                : habit.is_already_dying
+                ? " dying."
+                : " healthy!"}
             </li>
+
+            {habit.crop_state === 0 && (
+              <StyledButtonContainer>
+                {/* <input onClick={revive} type="button" value="Revive" /> */}
+                <input onClick={remove} type="button" value="Remove" />
+              </StyledButtonContainer>
+            )}
+            {habit.crop_state === 5 && (
+              <div>
+                Sell ripe {habit.crop_name}
+                <button onClick={sellCrop}> Sell </button>
+              </div>
+            )}
           </StyledUl>
-          {habit.crop_state === 2 && (
-            <div>
-              Sell ripe {habit.crop_name}
-              <button onClick={sellCrop}> Sell </button>
-            </div>
-          )}
         </StyledHover>
       )}
       <img className="soilTile" src={img} />
@@ -76,15 +97,28 @@ const FarmTiles = ({
   );
 };
 
+const StyledButtonContainer = styled.div`
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  padding: 0px;
+  display: flex;
+  justify-content: space-around;
+`;
 const StyledUl = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   padding: 10px;
   list-style: none;
 `;
 const StyledHover = styled.div`
   position: absolute;
   width: max-content;
-  transform: translateY(-80%);
+  transform: ${props => (props.top ? "translateY(60%)" : "translateY(-70%)")};
+  border-radius: 10px;
   background-color: rgba(150, 255, 150, 0.6);
-  z-index: 10;
+  z-index: 1000;
 `;
 export default FarmTiles;
