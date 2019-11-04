@@ -34,6 +34,12 @@ const StyledRepoList = styled.div`
   input {
     display: none;
   }
+
+
+  @media only screen and (max-width: 750px) {
+    width: 60%
+  }
+
 `;
 
 const StyledGithubProjectList = styled.div`

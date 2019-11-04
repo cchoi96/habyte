@@ -29,6 +29,7 @@ const StyledLabel = styled.label`
   height: 80%;
   justify-content: center;
   align-self: center;
+  text-align: center;
   box-shadow: ${props => (props.selected ? "1px 1px 1px 1px" : "0px 0.5px 0.5px 0.6px")};
 
   &: hover {
