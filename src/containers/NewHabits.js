@@ -7,6 +7,7 @@ const NewHabits = ({ cookies, habits, setHabits, refreshHabits }) => {
     axios
       .get(`http://0.0.0.0:8080/${cookies.github_id}/new-habits`)
       .then(res => {
+        console.log(res);
         setHabits(res.data);
       });
   }, []);
@@ -22,8 +23,9 @@ const NewHabits = ({ cookies, habits, setHabits, refreshHabits }) => {
       });
   };
 
-  const newHabitsList = habits.map(habit =>
-    habit.is_checked_day ? (
+  const newHabitsList = habits.map(habit => {
+    console.log("habit", habit.category_name);
+    return habit.is_checked_day ? (
       <CheckedStyledDiv>
         <div className="check">
           <p>
@@ -39,8 +41,9 @@ const NewHabits = ({ cookies, habits, setHabits, refreshHabits }) => {
         onClick={() => {
           updateHabit(habit.id);
         }}
+        category={habit.category_name}
       >
-        <div className="check">
+        <div className="check" category={habit.category_name}>
           <p>
             {habit.counter}/{habit.frequency}
           </p>
@@ -49,8 +52,8 @@ const NewHabits = ({ cookies, habits, setHabits, refreshHabits }) => {
           <h5>{habit.name}</h5>
         </div>
       </StyledDiv>
-    )
-  );
+    );
+  });
   return <div>{newHabitsList}</div>;
 };
 
@@ -71,9 +74,14 @@ const StyledDiv = styled.div`
   }
 
   .check {
-    background-color: red;
+    background-color: ${props =>
+      props.category === "coding"
+        ? "rgba(67,40,116,1)"
+        : props.category === "health"
+        ? "rgba(247,78,82,1)"
+        : "rgba(0, 128, 0);"};
     height: 100%;
-    width: 50px;
+    min-width: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -89,6 +97,7 @@ const StyledDiv = styled.div`
     display: flex;
     margin-left: 10px;
     align-items: center;
+    overflow-x: scroll;
     h5 {
       margin: 0;
     }
