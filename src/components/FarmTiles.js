@@ -26,21 +26,17 @@ const FarmTiles = ({
   };
 
   const sellCrop = () => {
-    console.log(userCoin);
-    console.log("sold your, ", habit.crop_name);
     let sellprice = crops[habit.crop_name];
-
-    axios
-      .delete("http://0.0.0.0:8080/user/crops", {
-        data: { habit: habit.id }
-      })
-      .then(() => updateHabits(cookies.github_id))
-      .then(() => {
-        console.log("userCoin", userCoin);
-        console.log("sellprice", sellprice);
-        let total = userCoin + sellprice;
-        setUserCoin(total);
-      });
+    habit.crop_name == "coding"
+      ? console.log("habit is coding")
+      : axios
+          .put("http://0.0.0.0:8080/user/crops", {
+            data: { habit: habit.id }
+          })
+          .then(() => updateHabits(cookies.github_id))
+          .then(() => {
+            setUserCoin(userCoin + sellprice);
+          });
   };
 
   const cropImage = habit => {
@@ -87,7 +83,9 @@ const StyledUl = styled.ul`
   list-style: none;
 `;
 const StyledHover = styled.div`
-  position: fixed;
+  position: absolute;
+  width: max-content;
+  transform: translateY(-100%);
   background-color: rgba(150, 255, 150, 0.6);
   z-index: 10;
 `;
