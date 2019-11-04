@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CategoryList from "./CategoryList";
-import Farm from "./Farm";
+import { Farm } from "./Farm";
 import Header from "../components/Header";
 import NewHabits from "./NewHabits";
 import OldHabits from "./OldHabits";
@@ -22,6 +22,7 @@ const Home = ({ cookies, className }) => {
     columns: {},
     columnOrder: []
   });
+
   // Total Habit List state management
   const [habits, setHabits] = useState([]);
   const [oldHabits, setOldHabits] = useState([]);
@@ -54,19 +55,16 @@ const Home = ({ cookies, className }) => {
 
   useEffect(() => {
     axios.get(`http://0.0.0.0:8080/${cookies.github_id}/coin`).then(res => {
-      let userCoin = res.data;
-      if (userCoin.length === 0) {
-        userCoin = [{ coin: 0 }];
-      }
+      let userCoin = res.data ? res.data[0].coin : 0;
       setUserCoin(userCoin);
       console.log(userCoin);
     });
   }, []);
 
   const updateCoinInDatabase = github_id => {
-    let coin = userCoin[0]["coin"];
+    let coin = userCoin;
     axios.post(`http://0.0.0.0:8080/coin/${github_id}`, {
-      coin: coin
+      coin
     });
   };
 
@@ -257,6 +255,9 @@ const Home = ({ cookies, className }) => {
             setHabits={setHabits}
             cookies={cookies}
             updateHabits={updateHabits}
+            setUserCoin={setUserCoin}
+            updateCoinInDatabase={updateCoinInDatabase}
+            userCoin={userCoin}
           />
         )}
         {mode === "coding" && (

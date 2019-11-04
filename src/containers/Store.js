@@ -22,11 +22,11 @@ const Store = ({
       }
     }
 
-    if (total > userCoin[0]["coin"]) {
+    if (total > userCoin) {
       alert("too expensive for you, make more money dude");
     } else {
-      const updateCoin = [...userCoin];
-      updateCoin[0]["coin"] -= total;
+      let updateCoin = userCoin;
+      updateCoin -= total;
       setUserCoin(updateCoin);
       axios
         .put(`http://0.0.0.0:8080/buy`, {
