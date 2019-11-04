@@ -23,7 +23,7 @@ const Task = ({ task, index, projectState, setProjectState, columnid }) => {
       .catch(err => console.log(err));
   };
   const editTask = () => {
-    setEditText("");
+    setEditText(task.content);
     setInEdit(prev => !prev);
   };
   const blurtask = e => {
@@ -64,6 +64,7 @@ const Task = ({ task, index, projectState, setProjectState, columnid }) => {
           {inEdit && (
             <StyledForm onSubmit={submitEdit}>
               <input
+                value={editText}
                 autoFocus
                 onBlur={blurtask}
                 onChange={e => setEditText(e.currentTarget.value)}
