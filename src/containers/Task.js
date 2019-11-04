@@ -66,25 +66,6 @@ const Container = styled.div`
   border: 1px solid lightgrey;
   border-radius: 2px;
   padding: 8px;
-  margin-bottom: 8px;
-  transition: background-color 0.2s ease;
-  &:hover {
-    color: steelblue;
-  }
-  background-color: ${props =>
-    props.isDragDisabled
-      ? "lightgrey"
-      : props.isDragging
-      ? "steelblue"
-      : "white"};
-`;
-export default Task;
-
-
-const Container = styled.div`
-  border: 1px solid lightgrey;
-  border-radius: 2px;
-  padding: 8px;
   margin: 0 auto;
   margin-bottom: 8px;
   width: 95%;
@@ -92,8 +73,10 @@ const Container = styled.div`
   &:hover {
     color: steelblue;
   }
-
 `;
+export default Task;
+
+
 
 
 // background-color: ${props =>
