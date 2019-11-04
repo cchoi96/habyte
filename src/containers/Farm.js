@@ -2,7 +2,14 @@ import React from "react";
 import FarmTiles from "../components/FarmTiles";
 import styled from "styled-components";
 
-const Farm = ({ habits, updateHabits, cookies }) => {
+const Farm = ({
+  habits,
+  updateHabits,
+  cookies,
+  userCoin,
+  setUserCoin,
+  updateCoinInDatabase
+}) => {
   return (
     <StyledContainer>
       <StyledDiv>
@@ -10,42 +17,69 @@ const Farm = ({ habits, updateHabits, cookies }) => {
           <StyledFarmTiles
             habit={habits[0]}
             img={"assets/other/soil-tile-tl.png"}
+            setUserCoin={setUserCoin}
+            updateCoinInDatabase={updateCoinInDatabase}
+            userCoin={userCoin}
           />
           <StyledFarmTiles
             habit={habits[1]}
             img={"assets/other/soil-tile-tm.png"}
+            setUserCoin={setUserCoin}
+            updateCoinInDatabase={updateCoinInDatabase}
+            userCoin={userCoin}
           />
           <StyledFarmTiles
             habit={habits[2]}
             img={"assets/other/soil-tile-tr.png"}
+            setUserCoin={setUserCoin}
+            updateCoinInDatabase={updateCoinInDatabase}
+            userCoin={userCoin}
           />
         </div>
         <div style={{ display: "flex" }}>
           <StyledFarmTiles
             habit={habits[3]}
             img={"assets/other/soil-tile-ml.png"}
+            setUserCoin={setUserCoin}
+            updateCoinInDatabase={updateCoinInDatabase}
+            userCoin={userCoin}
           />
           <StyledFarmTiles
             habit={habits[4]}
             img={"assets/other/soil-tile-mm.png"}
+            setUserCoin={setUserCoin}
+            updateCoinInDatabase={updateCoinInDatabase}
+            userCoin={userCoin}
           />
           <StyledFarmTiles
             habit={habits[5]}
             img={"assets/other/soil-tile-mr.png"}
+            setUserCoin={setUserCoin}
+            updateCoinInDatabase={updateCoinInDatabase}
+            userCoin={userCoin}
           />
         </div>
         <div style={{ display: "flex" }}>
           <StyledFarmTiles
             habit={habits[6]}
             img={"assets/other/soil-tile-bl.png"}
+            setUserCoin={setUserCoin}
+            updateCoinInDatabase={updateCoinInDatabase}
+            userCoin={userCoin}
           />
           <StyledFarmTiles
             habit={habits[7]}
             img={"assets/other/soil-tile-bm.png"}
+            setUserCoin={setUserCoin}
+            updateCoinInDatabase={updateCoinInDatabase}
+            userCoin={userCoin}
           />
           <StyledFarmTiles
             habit={habits[8]}
             img={"assets/other/soil-tile-br.png"}
+            setUserCoin={setUserCoin}
+            updateCoinInDatabase={updateCoinInDatabase}
+            userCoin={userCoin}
           />
         </div>
       </StyledDiv>
@@ -58,6 +92,8 @@ const Farm = ({ habits, updateHabits, cookies }) => {
     </StyledContainer>
   );
 };
+
+export { Farm };
 
 const StyledFarmTiles = styled(FarmTiles)`
   position: relative;
@@ -139,5 +175,3 @@ const StyledContainer = styled.div`
   }
 }
 `;
-
-export default Farm;

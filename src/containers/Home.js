@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CategoryList from "./CategoryList";
-import Farm from "./Farm";
+import { Farm } from "./Farm";
 import Header from "../components/Header";
 import NewHabits from "./NewHabits";
 import styled from "styled-components";
@@ -21,6 +21,7 @@ const Home = ({ cookies, className }) => {
     columns: {},
     columnOrder: []
   });
+
   // Total Habit List state management
   const [habits, setHabits] = useState([]);
   // Renders different components on home page based on mode
@@ -239,6 +240,9 @@ const Home = ({ cookies, className }) => {
             setHabits={setHabits}
             cookies={cookies}
             updateHabits={updateHabits}
+            setUserCoin={setUserCoin}
+            updateCoinInDatabase={updateCoinInDatabase}
+            userCoin={userCoin}
           />
         )}
         {mode === "coding" && (

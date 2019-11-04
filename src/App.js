@@ -4,7 +4,7 @@ import { createBrowserHistory } from "history";
 import Login from "./containers/Login";
 import Home from "./containers/Home";
 import Logout from "./containers/Logout";
-import Farm from "./containers/Farm";
+import { Farm } from "./containers/Farm";
 import ProjectSelections from "./containers/ProjectSelections";
 import Introduction from "./containers/Introduction";
 import { useCookies } from "react-cookie";
