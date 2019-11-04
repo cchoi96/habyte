@@ -5,8 +5,9 @@ import { Droppable } from "react-beautiful-dnd";
 import NewTask from "../components/NewTask";
 const Column = ({ key, column, projectState, setProjectState, tasks }) => {
   let [newTask, setNewTask] = useState(false);
-  let isShown = true;
-  let addATask;
+  let [addTaskButton, setAddTaskButton] = useState(true)
+  let addATask = addTaskButton ? "New Task" : "Close"
+
   return (
     <Container>
       <Title>{column.title}</Title>
@@ -28,13 +29,13 @@ const Column = ({ key, column, projectState, setProjectState, tasks }) => {
                 setProjectState={setProjectState}
                 columnId={column.id}
                 projectState={projectState}
+                addTaskButton={addTaskButton}
+                setAddTaskButton={setAddTaskButton}
               />
             )}
-            <StyledDiv id="add-new-task-button" onClick={() => {
-
-              console.log(isShown)
-              console.log(addATask)
-              setNewTask(!newTask)
+            <StyledDiv onClick={() => {
+              setNewTask(!newTask);
+              setAddTaskButton(!addTaskButton)
               }}> 
               {addATask}
             </StyledDiv>
@@ -47,8 +48,14 @@ const Column = ({ key, column, projectState, setProjectState, tasks }) => {
 export default Column;
 
 const StyledDiv = styled.div`
+  margin: 0 auto;
   text-align: center;
   margin-top: 5px;
+  box-shadow: 0.5px 0.5px 1px 1px;
+  border-radius: 10px;
+  width: fit-content;
+  padding: 2px 12px;
+
   &:hover {
     cursor: pointer;
     background-color: rgba(200,133,63,0.8);
@@ -81,8 +88,7 @@ const Title = styled.h3`
 `;
 const TaskList = styled.div`
   padding: 8px;
-  transition: background-color 0.2s ease;
-  background-color: ${props => (props.isDraggingOver ? "grey" : "white")};
+  background-color: white;
   flex-grow: 1;
   width: 100%;
   min-height: 100px;

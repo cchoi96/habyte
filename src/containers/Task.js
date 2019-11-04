@@ -2,23 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Draggable } from "react-beautiful-dnd";
 
-const Container = styled.div`
-  border: 1px solid lightgrey;
-  border-radius: 2px;
-  padding: 8px;
-  margin-bottom: 8px;
-  transition: background-color 0.2s ease;
-  &:hover {
-    color: steelblue;
-  }
-  background-color: ${props =>
-    props.isDragDisabled
-      ? "lightgrey"
-      : props.isDragging
-      ? "steelblue"
-      : "white"};
-`;
-
 const Task = ({ task, index }) => {
   const isDragDisabled = task.id === "task-1";
   return (
@@ -42,4 +25,28 @@ const Task = ({ task, index }) => {
     </Draggable>
   );
 };
+
 export default Task;
+
+
+const Container = styled.div`
+  border: 1px solid lightgrey;
+  border-radius: 2px;
+  padding: 8px;
+  margin: 0 auto;
+  margin-bottom: 8px;
+  width: 95%;
+  border-radius: 10px;
+  &:hover {
+    color: steelblue;
+  }
+
+`;
+
+
+// background-color: ${props =>
+//   props.isDragDisabled
+//     ? "lightgrey"
+//     : props.isDragging
+//     ? "steelblue"
+//     : "white"};
