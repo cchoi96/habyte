@@ -59,7 +59,7 @@ const StyledProjectList = styled.div`
   border: 2px solid #D7DEE3
   border-radius: 10px;
   list-style-type: none;
-  width: 95%;
+  width: 90%;
   display: flex;
   justify-content: flex-start;
   align-items: center
@@ -84,7 +84,6 @@ const StyledProjectListItem = styled(ProjectListItem)`
   box-shadow: 1.3px 1px 1px 2px;
 
   &: hover {
-    transform: scale(1.03);
     color: #ffffff;
     font-weight: 400;
     cursor: pointer
