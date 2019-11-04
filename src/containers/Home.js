@@ -16,7 +16,7 @@ const Home = ({ cookies, className }) => {
   // Project List state management
   const [projectList, setProjectList] = useState([]);
   const [projectSelected, setProjectSelected] = useState(1);
-  const [userCoin, setUserCoin] = useState(0);
+  const [userCoin, setUserCoin] = useState();
   const [projectState, setProjectState] = useState({
     tasks: {},
     columns: {},
@@ -31,8 +31,9 @@ const Home = ({ cookies, className }) => {
 
   // Function to refresh total habit list state
   const updateHabits = github_id => {
-    axios.get(`http://0.0.0.0:8080/${github_id}/habits`).then(res => {
+    axios.get(`http://0.0.0.0:8080/${github_id}/new-habits`).then(res => {
       let habitsArray = res.data;
+      console.log(res.data);
       setHabits(habitsArray);
     });
   };
@@ -60,14 +61,22 @@ const Home = ({ cookies, className }) => {
       console.log(userCoin);
     });
   }, []);
+  console.log(userCoin);
 
   const updateCoinInDatabase = github_id => {
     let coin = userCoin;
-    axios.post(`http://0.0.0.0:8080/coin/${github_id}`, {
-      coin
-    });
+    console.log("i am in updatecoin function", userCoin);
+    axios
+      .post(`http://0.0.0.0:8080/coin/${github_id}`, {
+        coin: coin
+      })
+      .then(() => "console after axios", userCoin)
+      .catch(err => console.log(err));
   };
 
+  useEffect(() => {
+    updateCoinInDatabase(cookies.github_id);
+  }, [userCoin]);
   // On project selected, make a call to retrieve the columns/tasks associated with the project and send that in as a prop to the trelloboard
   useEffect(() => {
     axios

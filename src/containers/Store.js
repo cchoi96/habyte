@@ -34,7 +34,7 @@ const Store = ({
           items: boughtItems
         })
         .then(() => {
-          updateCoinInDatabase(cookies.github_id);
+          // updateCoinInDatabase(cookies.github_id);
           setMode("farm");
         });
     }

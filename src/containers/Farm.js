@@ -8,7 +8,8 @@ const Farm = ({
   cookies,
   userCoin,
   setUserCoin,
-  updateCoinInDatabase
+  updateCoinInDatabase,
+  setHabits
 }) => {
   return (
     <StyledContainer>
@@ -21,6 +22,8 @@ const Farm = ({
             updateCoinInDatabase={updateCoinInDatabase}
             userCoin={userCoin}
             cookies={cookies}
+            updateHabits={updateHabits}
+            habits={habits}
           />
           <StyledFarmTiles
             habit={habits[1]}
@@ -29,6 +32,8 @@ const Farm = ({
             updateCoinInDatabase={updateCoinInDatabase}
             userCoin={userCoin}
             cookies={cookies}
+            updateHabits={updateHabits}
+            habits={habits}
           />
           <StyledFarmTiles
             habit={habits[2]}
@@ -37,6 +42,8 @@ const Farm = ({
             updateCoinInDatabase={updateCoinInDatabase}
             userCoin={userCoin}
             cookies={cookies}
+            updateHabits={updateHabits}
+            habits={habits}
           />
         </div>
         <div style={{ display: "flex" }}>
@@ -47,6 +54,8 @@ const Farm = ({
             updateCoinInDatabase={updateCoinInDatabase}
             userCoin={userCoin}
             cookies={cookies}
+            updateHabits={updateHabits}
+            habits={habits}
           />
           <StyledFarmTiles
             habit={habits[4]}
@@ -55,6 +64,8 @@ const Farm = ({
             updateCoinInDatabase={updateCoinInDatabase}
             userCoin={userCoin}
             cookies={cookies}
+            updateHabits={updateHabits}
+            habits={habits}
           />
           <StyledFarmTiles
             habit={habits[5]}
@@ -63,6 +74,8 @@ const Farm = ({
             updateCoinInDatabase={updateCoinInDatabase}
             userCoin={userCoin}
             cookies={cookies}
+            updateHabits={updateHabits}
+            habits={habits}
           />
         </div>
         <div style={{ display: "flex" }}>
@@ -73,6 +86,8 @@ const Farm = ({
             updateCoinInDatabase={updateCoinInDatabase}
             userCoin={userCoin}
             cookies={cookies}
+            updateHabits={updateHabits}
+            habits={habits}
           />
           <StyledFarmTiles
             habit={habits[7]}
@@ -81,6 +96,8 @@ const Farm = ({
             updateCoinInDatabase={updateCoinInDatabase}
             userCoin={userCoin}
             cookies={cookies}
+            updateHabits={updateHabits}
+            habits={habits}
           />
           <StyledFarmTiles
             habit={habits[8]}
@@ -89,6 +106,8 @@ const Farm = ({
             updateCoinInDatabase={updateCoinInDatabase}
             userCoin={userCoin}
             cookies={cookies}
+            updateHabits={updateHabits}
+            habits={habits}
           />
         </div>
       </StyledDiv>

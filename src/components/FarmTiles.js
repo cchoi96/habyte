@@ -10,7 +10,9 @@ const FarmTiles = ({
   setUserCoin,
   updateCoinInDatabase,
   userCoin,
-  cookies
+  cookies,
+  habits,
+  updateHabits
 }) => {
   const [showCropDetail, setShowCropDetail] = useState(false);
 
@@ -28,12 +30,17 @@ const FarmTiles = ({
     console.log("sold your, ", habit.crop_name);
     let sellprice = crops[habit.crop_name];
 
-    setUserCoin(prev => prev + sellprice);
-    updateCoinInDatabase(cookies.github_id);
-
-    axios.delete("http://0.0.0.0:8080/user/crops", {
-      data: { habit: habit.id }
-    });
+    axios
+      .delete("http://0.0.0.0:8080/user/crops", {
+        data: { habit: habit.id }
+      })
+      .then(() => updateHabits(cookies.github_id))
+      .then(() => {
+        console.log("userCoin", userCoin);
+        console.log("sellprice", sellprice);
+        let total = userCoin + sellprice;
+        setUserCoin(total);
+      });
   };
 
   const cropImage = habit => {
@@ -44,7 +51,7 @@ const FarmTiles = ({
 
   return (
     <div className={className} onMouseOver={showDeets} onMouseLeave={hideDeets}>
-      {showCropDetail && (
+      {showCropDetail && habit && (
         <StyledHover>
           <StyledUl>
             <li>

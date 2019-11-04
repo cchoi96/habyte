@@ -4,66 +4,61 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
 
 const Header = ({ cookies, setMode, className, userCoin }) => {
-  if (userCoin) {
-    let userCoinInfo = userCoin;
-    return (
-      <StyledNavbar collapseOnSelect expand="md" className={className}>
-        <StyledBrand>habyte</StyledBrand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link onClick={() => setMode("farm")}>Farm</Nav.Link>
-            <NavDropdown
-              title="Categories"
-              id="basic-nav-dropdown"
-              className="navbar-right"
+  let userCoinInfo = userCoin ? userCoin : 0;
+  return (
+    <StyledNavbar collapseOnSelect expand="md" className={className}>
+      <StyledBrand>habyte</StyledBrand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Link onClick={() => setMode("farm")}>Farm</Nav.Link>
+          <NavDropdown
+            title="Categories"
+            id="basic-nav-dropdown"
+            className="navbar-right"
+          >
+            <NavDropdown.Item
+              className="item"
+              onClick={() => setMode("coding")}
             >
-              <NavDropdown.Item
-                className="item"
-                onClick={() => setMode("coding")}
-              >
-                Coding
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item
-                className="item"
-                onClick={() => setMode("health")}
-              >
-                Health
-              </NavDropdown.Item>
-            </NavDropdown>
-            <Nav.Link onClick={() => setMode("store")}>Store</Nav.Link>
-          </Nav>
-          <Nav>
-            <Nav.Link>
-              <img
-                src="/assets/other/coin.png"
-                style={{ width: "25px" }}
-                alt="coin"
-              />{" "}
-              {userCoinInfo}
-            </Nav.Link>
-            <NavDropdown
-              title={cookies.name || cookies.github_id}
-              id="basic-nav-dropdown"
+              Coding
+            </NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item
+              className="item"
+              onClick={() => setMode("health")}
             >
-              <NavDropdown.Item className="item" href="/username">
-                My Profile
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item className="item" href="/logout">
-                Logout
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </StyledNavbar>
-    );
-  } else {
-    return <div></div>;
-  }
+              Health
+            </NavDropdown.Item>
+          </NavDropdown>
+          <Nav.Link onClick={() => setMode("store")}>Store</Nav.Link>
+        </Nav>
+        <Nav>
+          <Nav.Link>
+            <img
+              src="/assets/other/coin.png"
+              style={{ width: "25px" }}
+              alt="coin"
+            />{" "}
+            {userCoinInfo}
+          </Nav.Link>
+          <NavDropdown
+            title={cookies.name || cookies.github_id}
+            id="basic-nav-dropdown"
+          >
+            <NavDropdown.Item className="item" href="/username">
+              My Profile
+            </NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item className="item" href="/logout">
+              Logout
+            </NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
+      </Navbar.Collapse>
+    </StyledNavbar>
+  );
 };
-
 const StyledNavbar = styled(Navbar)`
   width: 100%;
   margin: 0 auto;
