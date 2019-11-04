@@ -27,16 +27,14 @@ const FarmTiles = ({
 
   const sellCrop = () => {
     let sellprice = crops[habit.crop_name];
-    habit.crop_name == "coding"
-      ? console.log("habit is coding")
-      : axios
-          .put("http://0.0.0.0:8080/user/crops", {
-            data: { habit: habit.id }
-          })
-          .then(() => updateHabits(cookies.github_id))
-          .then(() => {
-            setUserCoin(userCoin + sellprice);
-          });
+    axios
+      .delete("http://0.0.0.0:8080/user/crops", {
+        data: { habit: habit }
+      })
+      .then(() => updateHabits(cookies.github_id))
+      .then(() => {
+        setUserCoin(userCoin + sellprice);
+      });
   };
 
   const cropImage = habit => {
@@ -63,7 +61,7 @@ const FarmTiles = ({
               {habit.is_already_dying ? " dying :(" : " healthy!"}
             </li>
           </StyledUl>
-          {habit.crop_state === 5 && (
+          {habit.crop_state === 2 && (
             <div>
               Sell ripe {habit.crop_name}
               <button onClick={sellCrop}> Sell </button>
@@ -85,7 +83,7 @@ const StyledUl = styled.ul`
 const StyledHover = styled.div`
   position: absolute;
   width: max-content;
-  transform: translateY(-100%);
+  transform: translateY(-80%);
   background-color: rgba(150, 255, 150, 0.6);
   z-index: 10;
 `;
