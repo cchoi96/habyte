@@ -1,6 +1,5 @@
 import React, { useState, Fragment } from "react";
 import styled from "styled-components";
-// import CategoryListItem from "./CategoryListItem";
 import NewHabits from "./NewHabits";
 import OldHabits from "./OldHabits";
 
@@ -37,12 +36,12 @@ const CategoryList = ({
     );
 
   return (
-    <StyledDiv>
+    <StyledDiv habitMode={habitMode}>
       <div className="headers">
-        <div id="new" onClick={() => setHabitMode("new")}>
+        <div id="new" habitMode={habitMode} onClick={() => setHabitMode("new")}>
           Current
         </div>
-        <div className="new" onClick={() => setHabitMode("old")}>
+        <div id="old" habitMode={habitMode} onClick={() => setHabitMode("old")}>
           Past
         </div>
       </div>
@@ -53,20 +52,53 @@ const CategoryList = ({
 
 const StyledDiv = styled.div`
   display: flex;
-  width: 20%;
+  width: 20vw;
   flex-direction: column;
-
   .headers {
-    width: 90%;
     display: flex;
-    justify-content: space-around;
+    height: 50px;
+    color: #fff;
+  }
+
+  #new,
+  #old {
+    height: 100%;
+    width: 100%;
+    display: flex;
     align-items: center;
-    height: 100px;
-    background-color: rgba(36, 204, 143);
-    border-top-left-radius: 5px;
+    justify-content: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: 600;
+  }
+
+  #new {
+    border-right: 1px solid #fff;
+    background-color: ${props =>
+      props.habitMode === "new"
+        ? "rgba(36, 204, 143)"
+        : "rgba(36, 204, 143, 0.5)"};
+  }
+
+  #old {
+    border-right: 1px solid #fff;
+    background-color: ${props =>
+      props.habitMode === "old"
+        ? "rgba(36, 204, 143)"
+        : "rgba(36, 204, 143, 0.5)"};
   }
 `;
 
-const StyledHabitDiv = styled.div``;
+const StyledHabitDiv = styled.div`
+  height: 73vh;
+  min-height: 400px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  overflow-y: scroll;
+  background-color: #edecee;
+  overflow-x: hidden;
+`;
 
 export default CategoryList;

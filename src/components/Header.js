@@ -11,7 +11,9 @@ const Header = ({ cookies, setMode, className, userCoin }) => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link onClick={() => setMode("farm")}>Farm</Nav.Link>
+          <Nav.Link id="farm-page" onClick={() => setMode("farm")}>
+            Farm
+          </Nav.Link>
           <NavDropdown
             title="Categories"
             id="basic-nav-dropdown"
@@ -72,6 +74,22 @@ const StyledNavbar = styled(Navbar)`
   #responsive-navbar-nav a {
     background-color: rgba(36, 204, 143);
     color: #fff;
+    &:hover {
+      color: #ffffff;
+      border: 1px solid white;
+      border-radius: 10px;
+    }
+  }
+
+  .mr-auto {
+    justify-content: space-between;
+    width: 50%;
+  }
+
+  .nav-link,
+  .navbar-right {
+    width: 100%;
+    text-align: center;
   }
 
   .dropdown-menu.show {
@@ -79,8 +97,8 @@ const StyledNavbar = styled(Navbar)`
     border: none;
   }
 
-  .dropdown-menu.show a:hover {
-    background-color: rgba(36, 204, 143);
+  .dropdown-item {
+    text-align: center;
   }
 `;
 
