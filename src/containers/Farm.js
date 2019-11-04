@@ -139,7 +139,7 @@ const StyledFarmTiles = styled(FarmTiles)`
 
   &:hover {
     .fruitImg {
-      transform: scale(1.3);
+      transform: scale(1.1);
     }
   }
 `;

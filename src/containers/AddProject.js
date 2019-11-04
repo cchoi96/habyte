@@ -52,10 +52,10 @@ const StyledDiv = styled.div`
   img {
     width: 60px;
     margin: 0px 15px;
-    
+
     &:hover {
       cursor: pointer;
-      transform: scale(1.05);
+      transform: scale(1.02);
       background-color: #ffffff;
       border-radius: 100%;
       box-shadow: 0px 0px 0.5px 1px;
