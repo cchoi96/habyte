@@ -209,7 +209,7 @@ const Home = ({ cookies, className }) => {
       //Try to update the states after each if statement, so we don't need to
       Promise.all(queryArray).then(() => {
         axios
-          .get(`http://0.0.0.0:8080/${cookies.github_id}/habits`)
+          .get(`http://0.0.0.0:8080/${cookies.github_id}/new-habits`)
           .then(res => {
             let habits = res.data;
             setHabits(habits);
