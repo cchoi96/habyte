@@ -56,7 +56,7 @@ const ProjectList = ({ cookies, setProjectSelected, projectSelected }) => {
 
 const StyledProjectList = styled.div`
 
-  border: 1px solid #D7DEE3
+  border: 2px solid #D7DEE3
   border-radius: 10px;
   list-style-type: none;
   width: 95%;
@@ -64,7 +64,8 @@ const StyledProjectList = styled.div`
   justify-content: flex-start;
   align-items: center
   background-color: rgba(67, 40, 116, 0.4);
-  overflow: auto;
+  overflow-x: auto;
+
 
 
 `;
@@ -73,13 +74,21 @@ const StyledProjectListItem = styled(ProjectListItem)`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  width: 30%;
   height: 90%;
   padding: 0 15px;
-  margin: 0px 10px;
+  margin: 3px 10px;
 
-  border: 3px solid #ffffff;
+  border: 1px solid #ffffff;
   border-radius: 10px;
+  box-shadow: 1.3px 1px 1px 2px;
+
+  &: hover {
+    transform: scale(1.03);
+    color: #ffffff;
+    font-weight: 400;
+    cursor: pointer
+  }
+
 
 
   .projectName, .projectCommit {

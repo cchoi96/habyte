@@ -73,7 +73,7 @@ const StyledProjectList = styled.div`
   display: flex;
   justify-content: center;
   height: 12vh;
-  margin: 0 auto;
+  margin: 0px auto;
   min-width: 100%;
 
 

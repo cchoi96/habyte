@@ -50,11 +50,15 @@ const AddProject = ({ cookies, refreshList, projectList }) => {
 
 const StyledDiv = styled.div`
   img {
-    width: 50px;
-    transition: 0.1s ease-out;
+    width: 60px;
+    margin: 0px 15px;
+    
     &:hover {
       cursor: pointer;
       transform: scale(1.05);
+      background-color: #ffffff;
+      border-radius: 100%;
+      box-shadow: 0px 0px 0.5px 1px;
     }
   }
 `;
