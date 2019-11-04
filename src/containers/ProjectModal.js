@@ -63,17 +63,17 @@ const ProjectModal = ({ setIsOpen, isOpen, repos, cookies, refreshList }) => {
   const repoList = repos.map(repo => {
     data[repo] = false;
     return (
-      <StyledRepoList key={repo} isClicked={data[repo]} >
-        <label
-          isClicked={data[repo]}
+      <StyledRepoList key={repo} >
+        <StyledLabel
           onClick={() => {
             data[repo] = !data[repo];
+            console.log(data[repo]);
             console.log('hello from label')
 
           }}
         >
           {repo}
-        </label>
+        </StyledLabel>
         <input
           type="checkbox"
           id={repo}
@@ -110,6 +110,14 @@ const ProjectModal = ({ setIsOpen, isOpen, repos, cookies, refreshList }) => {
 
 export default ProjectModal;
 
+const StyledLabel = styled.label`
+background-color: "white";
+width: 100%;
+text-align: center;
+cursor: pointer;
+
+`;
+
 const StyledRepoList = styled.div`
   display: flex;
   height: 100px;
@@ -121,14 +129,6 @@ const StyledRepoList = styled.div`
   padding: 10px;
   flex-wrap: wrap;
   box-shadow: 0.5px 0.5px 1px 1px;
-
-  label {
-    width: 100%
-    text-align: center;
-    cursor: pointer;
-    background-color: ${props => props.isClicked ? "white" : "black"};
-
-  }
 
   input {
     display: none;
