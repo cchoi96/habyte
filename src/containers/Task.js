@@ -2,9 +2,20 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Draggable } from "react-beautiful-dnd";
 
-const Task = ({ task, index }) => {
+const Task = ({ task, index, projectState, setProjectState }) => {
   const [onHover, setOnHover] = useState(false);
-  console.log("onHover", onHover);
+
+  const deleteTask = () => {
+    console.log("task", task);
+    console.log("index", index);
+    console.log("projectState", projectState);
+    let temp = projectState;
+    delete temp.tasks[task.id];
+    setProjectState(temp);
+  };
+  const editTask = () => {
+    console.log("edit");
+  };
   return (
     <Draggable draggableId={task.id} index={index}>
       {(provided, snapshot) => (
@@ -20,8 +31,8 @@ const Task = ({ task, index }) => {
           {task.content}
           {onHover && (
             <>
-              <div>Delete</div>
-              <div>Edit</div>
+              <div onClick={deleteTask}>X</div>
+              <div onClick={editTask}>Edit</div>
             </>
           )}
         </Container>
