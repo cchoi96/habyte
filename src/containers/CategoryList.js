@@ -89,6 +89,32 @@ const StyledDiv = styled.div`
         ? "rgba(36, 204, 143)"
         : "rgba(36, 204, 143, 0.5)"};
   }
+
+  @media only screen and (max-width: 950px) {
+    order: 2;
+    flex-direction: row;
+    width: 92%;
+    margin: 0 auto;
+    .headers {
+      flex-direction: column;
+      margin-top: 10px;
+      height: 80px;
+
+      #new,
+      #old {
+        font-size: 0.7em;
+        width: 15vw;
+      }
+
+      #old {
+        border-radius: 0 0 0 10px;
+      }
+
+      #new {
+        border-radius: 10px 0 0 0;
+      }
+    }
+  }
 `;
 
 const StyledHabitDiv = styled.div`
@@ -96,9 +122,16 @@ const StyledHabitDiv = styled.div`
   min-height: 400px;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  overflow-y: scroll;
   background-color: #edecee;
-  overflow-x: hidden;
+  @media only screen and (max-width: 950px) {
+    margin-top: 10px;
+    border-radius: 0 10px 10px 0;
+    width: 70vw;
+    max-height: 80px;
+    min-height: 80px;
+
+    overflow-x: scroll;
+  }
 `;
 
 export default CategoryList;

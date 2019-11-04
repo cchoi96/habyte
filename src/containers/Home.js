@@ -31,7 +31,7 @@ const Home = ({ cookies, className }) => {
 
   // Function to refresh total habit list state
   const updateHabits = github_id => {
-    axios.get(`http://0.0.0.0:8080/${github_id}/habits`).then(res => {
+    axios.get(`http://0.0.0.0:8080/${github_id}/new-habits`).then(res => {
       let habitsArray = res.data;
       setHabits(habitsArray);
     });
@@ -293,7 +293,7 @@ const Home = ({ cookies, className }) => {
 
 const StyledMainContent = styled.div`
   display: flex;
-
+  overflow-y: scroll;
   @media only screen and (max-width: 950px) {
     flex-direction: column;
   }
