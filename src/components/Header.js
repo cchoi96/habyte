@@ -11,9 +11,8 @@ const Header = ({ cookies, setMode, className, userCoin }) => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link id="farm-page" onClick={() => setMode("farm")}>
-            Farm
-          </Nav.Link>
+          <Nav.Link onClick={() => setMode("farm")}>Farm</Nav.Link>
+          <Nav.Link onClick={() => setMode("store")}>Store</Nav.Link>
           <NavDropdown
             title="Categories"
             id="basic-nav-dropdown"
@@ -25,7 +24,6 @@ const Header = ({ cookies, setMode, className, userCoin }) => {
             >
               Coding
             </NavDropdown.Item>
-            <NavDropdown.Divider />
             <NavDropdown.Item
               className="item"
               onClick={() => setMode("health")}
@@ -33,25 +31,20 @@ const Header = ({ cookies, setMode, className, userCoin }) => {
               Health
             </NavDropdown.Item>
           </NavDropdown>
-          <Nav.Link onClick={() => setMode("store")}>Store</Nav.Link>
         </Nav>
         <Nav>
-          <Nav.Link>
+          <div id="coin">
             <img
               src="/assets/other/coin.png"
               style={{ width: "25px" }}
               alt="coin"
             />{" "}
             {userCoinInfo}
-          </Nav.Link>
+          </div>
           <NavDropdown
             title={cookies.name || cookies.github_id}
             id="basic-nav-dropdown"
           >
-            <NavDropdown.Item className="item" href="/username">
-              My Profile
-            </NavDropdown.Item>
-            <NavDropdown.Divider />
             <NavDropdown.Item className="item" href="/logout">
               Logout
             </NavDropdown.Item>
@@ -62,43 +55,70 @@ const Header = ({ cookies, setMode, className, userCoin }) => {
   );
 };
 const StyledNavbar = styled(Navbar)`
-  width: 100%;
-  margin: 0 auto;
   font-family: "Roboto", sans-serif;
-  font-weight: bold;
+  font-weight: 550;
   font-size: 1.1em;
   color: #fff;
   background: rgba(36, 204, 143);
-
   #basic-nav-dropdown,
   #responsive-navbar-nav a {
     background-color: rgba(36, 204, 143);
     color: #fff;
     &:hover {
-      color: #ffffff;
-      border: 1px solid white;
-      border-radius: 10px;
+      font-weight: 900;
+      border-bottom: 1px solid #ffffff
     }
   }
-
-  .mr-auto {
-    justify-content: space-between;
-    width: 50%;
-  }
-
-  .nav-link,
-  .navbar-right {
-    width: 100%;
-    text-align: center;
-  }
-
   .dropdown-menu.show {
     background-color: rgba(36, 204, 143);
     border: none;
   }
 
-  .dropdown-item {
+
+  .dropdown-menu.show a:hover {
+    background-color: rgba(36, 204, 143);
+  }
+
+  .dropdown.nav-item > .dropdown-toggle.nav-link {
+    margin-right: 100px;
+  }
+
+  #coin {
     text-align: center;
+    display: flex;
+    align-items: center
+    margin-right: 15px
+    border: 0.5px solid #ffffff;
+    padding: 0px 10px;
+    border-radius: 10px;
+    box-shadow: 0.2px 0.8px 1px 0.8px;
+  }
+
+  @media only screen and (max-width: 767px) {
+    .nav-link, .dropdown-toggle, .dropdown-item {
+      width: 100%;
+      text-align: center;
+      margin-top: 5px;
+    }
+
+    #coin {
+      justify-content: center;
+      border: none;
+      box-shadow: none;
+      width: 100%;
+      margin-top: 5px;
+
+      &:hover {
+        border-bottom: 1px solid #ffffff;
+        border-radius: 0px;
+        cursor: pointer;
+        font-weight: 900;
+      }
+
+    }
+
+
+
   }
 `;
 
@@ -108,3 +128,44 @@ const StyledBrand = styled(Navbar)`
 `;
 
 export default Header;
+
+// .navbar-nav > a {
+//   display: flex;
+//   width: 100%;
+// }
+
+// @media only screen and (max-width: 992px) {
+//   .navbar {
+//     display: flex;
+//     justify-content: center;
+//   }
+
+//   .nav-link {
+//     text-align: center;
+//   }
+
+//   .navbar-nav {
+//     width: 80%;
+//     border: 1px solid black;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//   }
+
+// .navbar-nav {
+//   display: flex;
+//   justify-content: space-around;
+//   text-align: center;
+//   margin: 0px 30px;
+// }
+
+// .dropdown-toggle {
+//   margin: 0px auto;
+//   text-align: center;
+
+// }
+
+// .nav-link,
+// .navbar-right {
+//   margin: 0px 30px;
+// }

@@ -31,6 +31,7 @@ const ProjectList = ({ cookies, setProjectSelected, projectSelected }) => {
   let totalProjectList = projectList.map(project => {
     return (
       <StyledProjectListItem
+        cookies={cookies}
         projectSelected={projectSelected}
         key={project.name}
         setProjectSelected={setProjectSelected}

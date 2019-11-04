@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import CategoryList from "./CategoryList";
 import { Farm } from "./Farm";
 import Header from "../components/Header";
-import NewHabits from "./NewHabits";
-import OldHabits from "./OldHabits";
 import styled from "styled-components";
 import axios from "axios";
 import Habit from "./Habit";
@@ -33,13 +31,13 @@ const Home = ({ cookies, className }) => {
   const updateHabits = github_id => {
     axios.get(`http://0.0.0.0:8080/${github_id}/new-habits`).then(res => {
       let habitsArray = res.data;
-      console.log(res.data);
       setHabits(habitsArray);
     });
   };
 
   useEffect(() => {
     // Sets project state
+    console.log("COOKIES ==>", cookies);
     axios
       .post("http://0.0.0.0:8080/projects", {
         github_id: cookies.github_id
@@ -58,14 +56,11 @@ const Home = ({ cookies, className }) => {
     axios.get(`http://0.0.0.0:8080/${cookies.github_id}/coin`).then(res => {
       let userCoin = res.data ? res.data[0].coin : 0;
       setUserCoin(userCoin);
-      console.log(userCoin);
     });
   }, []);
-  console.log(userCoin);
 
   const updateCoinInDatabase = github_id => {
     let coin = userCoin;
-    console.log("i am in updatecoin function", userCoin);
     axios
       .post(`http://0.0.0.0:8080/coin/${github_id}`, {
         coin: coin

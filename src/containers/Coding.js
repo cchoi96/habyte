@@ -10,14 +10,12 @@ const Coding = ({
   projectState,
   setProjectState
 }) => {
-  console.log(projectState);
   return (
     <StyledDiv>
       <ProjectList
         cookies={cookies}
         projectSelected={projectSelected}
         setProjectSelected={setProjectSelected}
-        // setModalOpen={setModalOpen}
       />
 
       <TrelloBoard
@@ -25,15 +23,6 @@ const Coding = ({
         projectState={projectState}
         setProjectState={setProjectState}
       />
-
-      {/* <TrelloModal
-        projectSelected={projectSelected}
-        modalOpen={modalOpen}
-        setModalOpen={setModalOpen}
-        projectSelected={projectSelected}
-        projectState={projectState}
-        setProjectState={setProjectState}
-      /> */}
     </StyledDiv>
   );
 };
