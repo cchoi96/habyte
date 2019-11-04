@@ -120,6 +120,7 @@ const StyledDiv = styled.div`
 
 const StyledHabitDiv = styled.div`
   display: flex;
+  flex-direction: column;
   overflow-y: hidden;
   width: 100%;
   height: 73vh;
