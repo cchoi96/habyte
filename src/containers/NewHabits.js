@@ -57,8 +57,10 @@ const NewHabits = ({ cookies, habits, setHabits, refreshHabits }) => {
 
 const StyledMainDiv = styled.div`
   display: flex;
-  flex-direction: column;
-
+  margin: auto auto;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
   @media only screen and (max-width: 950px) {
     flex-direction: row;
   }
