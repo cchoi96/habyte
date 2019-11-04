@@ -68,7 +68,7 @@ const StyledDiv = styled.div`
   @media only screen and (max-width: 950px) {
     height: 100%;
     margin: 0 auto;
-    margin-bottom: 100px;
+    margin-bottom: 120px;
     width: 95%;
   }
 `;
@@ -86,5 +86,10 @@ const StyledTrelloBoard = styled.div`
   width: 90%;
   display: flex;
   height: 60%;
+  min-height: 350px;
+
+  @media only screen and (max-width: 950px) {
+    margin-top: 30px;
+  }
 
 `;

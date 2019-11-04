@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
 import axios from "axios";
+import styled from 'styled-components';
 
 const ProjectModal = ({ setIsOpen, isOpen, repos, cookies, refreshList }) => {
   const customStyles = {
@@ -69,7 +70,7 @@ const ProjectModal = ({ setIsOpen, isOpen, repos, cookies, refreshList }) => {
   console.log(repoList);
 
   return (
-    <div>
+    <StyledContainer>
       <button onClick={openModal}>Open Modal</button>
       <Modal
         isOpen={isOpen}
@@ -86,8 +87,18 @@ const ProjectModal = ({ setIsOpen, isOpen, repos, cookies, refreshList }) => {
           </button>
         </form>
       </Modal>
-    </div>
+    </StyledContainer>
   );
 };
 
 export default ProjectModal;
+
+const StyledContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 70%;
+  margin-left: 30%;
+  border: 2px solid black
+
+`;
+

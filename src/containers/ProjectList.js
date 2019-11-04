@@ -77,7 +77,7 @@ const StyledProjectListItem = styled(ProjectListItem)`
   flex-wrap: wrap;
   height: 90%;
   padding: 0 15px;
-  margin: 3px 10px;
+  margin: 8px 10px;
 
   border: 1px solid #ffffff;
   border-radius: 10px;
