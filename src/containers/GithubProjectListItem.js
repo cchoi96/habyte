@@ -8,7 +8,6 @@ function GithubProjectListItem({ repo, data }) {
     <StyledLabel
       onClick={() => {
         data[repo] = !data[repo];
-        console.log(data[repo]);
         setRepoSelected(!repoSelected);
       }}
       selected={repoSelected}

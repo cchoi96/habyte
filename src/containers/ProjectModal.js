@@ -47,8 +47,6 @@ const ProjectModal = ({ setIsOpen, isOpen, repos, cookies, refreshList }) => {
         selectedProject.push(project);
       }
     }
-    console.log(selectedProject);
-
     axios
       .post("http://0.0.0.0:8080/project-save", {
         repos: selectedProject,
@@ -85,7 +83,6 @@ const ProjectModal = ({ setIsOpen, isOpen, repos, cookies, refreshList }) => {
 };
 
 export default ProjectModal;
-
 
 
 const StyledForm = styled.div`
