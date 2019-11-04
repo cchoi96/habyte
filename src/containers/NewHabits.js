@@ -7,7 +7,6 @@ const NewHabits = ({ cookies, habits, setHabits, refreshHabits }) => {
     axios
       .get(`http://0.0.0.0:8080/${cookies.github_id}/new-habits`)
       .then(res => {
-        console.log(res);
         setHabits(res.data);
       });
   }, []);
@@ -24,7 +23,6 @@ const NewHabits = ({ cookies, habits, setHabits, refreshHabits }) => {
   };
 
   const newHabitsList = habits.map(habit => {
-    console.log("habit", habit.category_name);
     return habit.is_checked_day ? (
       <CheckedStyledDiv>
         <div className="check">
@@ -54,8 +52,19 @@ const NewHabits = ({ cookies, habits, setHabits, refreshHabits }) => {
       </StyledDiv>
     );
   });
-  return <div>{newHabitsList}</div>;
+  return <StyledMainDiv>{newHabitsList}</StyledMainDiv>;
 };
+
+const StyledMainDiv = styled.div`
+  display: flex;
+  margin: auto auto;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  @media only screen and (max-width: 950px) {
+    flex-direction: row;
+  }
+`;
 
 const StyledDiv = styled.div`
   width: 90%;
@@ -102,6 +111,27 @@ const StyledDiv = styled.div`
       margin: 0;
     }
   }
+
+  @media only screen and (max-width: 950px) {
+    width: 100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    .check {
+      width: 20px;
+      font-size: 0.8em;
+    }
+
+    .info {
+      width: 100px;
+      margin: 0 auto;
+      overflow-x: scroll;
+      align-items: center;
+      h5 {
+        font-size: 0.8em;
+      }
+    }
+  }
 `;
 
 const CheckedStyledDiv = styled.div`
@@ -123,8 +153,10 @@ const CheckedStyledDiv = styled.div`
   .check {
     background-color: #c3c0c7;
     color: #a5a1ac;
+
     height: 100%;
-    width: 50px;
+    min-width: 50px;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -142,6 +174,27 @@ const CheckedStyledDiv = styled.div`
     color: #a5a1ac;
     h5 {
       margin: 0;
+    }
+  }
+
+  @media only screen and (max-width: 950px) {
+    width: 100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    .check {
+      width: 20px;
+      font-size: 0.8em;
+    }
+
+    .info {
+      width: 100px;
+      margin: 0 auto;
+      overflow-x: scroll;
+      align-items: center;
+      h5 {
+        font-size: 0.8em;
+      }
     }
   }
 `;

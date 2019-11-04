@@ -20,7 +20,8 @@ const Login = ({ setRepos, repos, setUserInfo, cookies }) => {
         let first_login = res.data[1];
         let name = res.data[2];
         let animal = res.data[3];
-        setUserInfo(github_id, name, animal);
+        let github_name = res.data[4];
+        setUserInfo(github_id, name, animal, github_name);
         if (first_login) {
           history.push("/home");
         } else {

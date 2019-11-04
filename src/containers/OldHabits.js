@@ -52,8 +52,17 @@ const OldHabits = ({ cookies, oldHabits, setOldHabits, refreshOldHabits }) => {
       </StyledDiv>
     );
   });
-  return <div>{oldHabitsList}</div>;
+  return <StyledMainDiv>{oldHabitsList}</StyledMainDiv>;
 };
+
+const StyledMainDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media only screen and (max-width: 950px) {
+    flex-direction: row;
+  }
+`;
 
 const StyledDiv = styled.div`
   width: 90%;
@@ -79,7 +88,7 @@ const StyledDiv = styled.div`
         ? "rgba(247,78,82,1)"
         : "rgba(0, 128, 0);"};
     height: 100%;
-    width: 50px;
+    min-width: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -95,8 +104,30 @@ const StyledDiv = styled.div`
     display: flex;
     margin-left: 10px;
     align-items: center;
+    overflow-x: scroll;
     h5 {
       margin: 0;
+    }
+  }
+
+  @media only screen and (max-width: 950px) {
+    width: 100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    .check {
+      width: 20px;
+      font-size: 0.8em;
+    }
+
+    .info {
+      width: 100px;
+      margin: 0 auto;
+      overflow-x: scroll;
+      align-items: center;
+      h5 {
+        font-size: 0.8em;
+      }
     }
   }
 `;
@@ -120,7 +151,7 @@ const CheckedStyledDiv = styled.div`
   .check {
     background-color: #c3c0c7;
     color: #a5a1ac;
-    height: 100%;
+    height: 70px;
     width: 50px;
     display: flex;
     align-items: center;

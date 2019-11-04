@@ -15,13 +15,15 @@ function App() {
   const [cookies, setCookie, removeCookie] = useCookies([
     "github_id",
     "name",
-    "animal"
+    "animal",
+    "github_name"
   ]);
 
-  const setUserInfo = (github_id, name, animal) => {
+  const setUserInfo = (github_id, name, animal, github_name) => {
     setCookie("github_id", github_id, { path: "/" });
     setCookie("name", name, { path: "/" });
     setCookie("animal", animal, { path: "/" });
+    setCookie("github_name", github_name, { path: "/" });
   };
 
   const GlobalStyles = createGlobalStyle`
