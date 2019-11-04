@@ -61,7 +61,7 @@ function App() {
           path={"/project-selection"}
           render={() => <ProjectSelections cookies={cookies} />}
         />
-        <Route path={"/"} render={() => <Login />} />
+        <Route path={"/"} render={() => <Login setUserInfo={setUserInfo} />} />
       </Switch>
     </Router>
   );

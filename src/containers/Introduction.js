@@ -87,7 +87,7 @@ const Introduction = ({ cookies, setUserInfo }) => {
         animal
       })
       .then(() => {
-        setUserInfo(cookies.github_id, name, animal);
+        setUserInfo(cookies.github_id, name, animal, cookies.github_name);
       })
       .then(() => {
         history.push("/home");
