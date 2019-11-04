@@ -15,7 +15,6 @@ const FarmTiles = ({
   top
 }) => {
   const [showCropDetail, setShowCropDetail] = useState(false);
-  console.log(habits);
   const revive = () => {};
   const remove = () => {
     axios

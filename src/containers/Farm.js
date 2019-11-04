@@ -156,7 +156,7 @@ const StyledFarmTiles = styled(FarmTiles)`
 
   &:hover {
     .fruitImg {
-      transform: scale(1.5) translate(-50%, -50%);
+      transform: scale(1.2) translate(-50%, -50%);
     }
   }
 `;
