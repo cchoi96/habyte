@@ -1,8 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import crops from "../helpers/cropprices";
 
-const FarmTiles = ({ className, img, habit, cookies }) => {
+const FarmTiles = ({
+  className,
+  img,
+  habit,
+  setUserCoin,
+  updateCoinInDatabase,
+  userCoin,
+  cookies
+}) => {
   const [showCropDetail, setShowCropDetail] = useState(false);
 
   const showDeets = () => {
@@ -15,16 +24,23 @@ const FarmTiles = ({ className, img, habit, cookies }) => {
   };
 
   const sellCrop = () => {
+    console.log(userCoin);
     console.log("sold your, ", habit.crop_name);
-    axios.post("http://0.0.0.0:8080/user/crops", {
-      user: cookies.github_id,
-      habit: habit
+    let sellprice = crops[habit.crop_name];
+
+    setUserCoin(prev => prev + sellprice);
+    updateCoinInDatabase(cookies.github_id);
+
+    axios.delete("http://0.0.0.0:8080/user/crops", {
+      data: { habit: habit.id }
     });
   };
 
-  const cropImage = (habit) => {
-    return habit.crop_state === 0 ? `/assets/crops/rotten_plant.png` : `/assets/crops/${habit.crop_name}/${habit.crop_name}_Stage_${habit.crop_state}.png`
-  }
+  const cropImage = habit => {
+    return habit.crop_state === 0
+      ? `/assets/crops/rotten_plant.png`
+      : `/assets/crops/${habit.crop_name}/${habit.crop_name}_Stage_${habit.crop_state}.png`;
+  };
 
   return (
     <div className={className} onMouseOver={showDeets} onMouseLeave={hideDeets}>
@@ -38,12 +54,13 @@ const FarmTiles = ({ className, img, habit, cookies }) => {
             <li>habit task: {habit.name}</li>
             {habit.notes && <li>Notes: {habit.notes}</li>}
             <li>Habit started: {habit.created_at.slice(0, 10)}</li>
+            <li>habit id: {habit.id}</li>
             <li>
               Habit is currently
               {habit.is_already_dying ? " dying :(" : " healthy!"}
             </li>
           </StyledUl>
-          {habit.crop_state === 5 && (
+          {habit.crop_state === 2 && (
             <div>
               Sell ripe {habit.crop_name}
               <button onClick={sellCrop}> Sell </button>
@@ -53,12 +70,7 @@ const FarmTiles = ({ className, img, habit, cookies }) => {
       )}
       <img className="soilTile" src={img} />
 
-      {habit && (
-        <img
-          className="fruitImg"
-          src={cropImage(habit)}
-        />
-      )}
+      {habit && <img className="fruitImg" src={cropImage(habit)} />}
     </div>
   );
 };
