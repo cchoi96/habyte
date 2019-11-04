@@ -42,7 +42,7 @@ const CategoryList = ({
         <div id="new" onClick={() => setHabitMode("new")}>
           Current
         </div>
-        <div className="new" onClick={() => setHabitMode("old")}>
+        <div id="old" onClick={() => setHabitMode("old")}>
           Past
         </div>
       </div>
@@ -53,20 +53,37 @@ const CategoryList = ({
 
 const StyledDiv = styled.div`
   display: flex;
-  width: 20%;
+  width: 20vw;
   flex-direction: column;
-
   .headers {
-    width: 90%;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 100px;
+    height: 60px;
+  }
+
+  #new,
+  #old {
     background-color: rgba(36, 204, 143);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  #new {
+    border-right: 1px solid black;
   }
 `;
 
-const StyledHabitDiv = styled.div``;
+const StyledHabitDiv = styled.div`
+  height: 66vh;
+  min-height: 400px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  overflow-y: scroll;
+  background-color: #edecee;
+`;
 
 export default CategoryList;

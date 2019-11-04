@@ -25,7 +25,14 @@ const NewHabits = ({ cookies, habits, setHabits, refreshHabits }) => {
   const newHabitsList = habits.map(habit =>
     habit.is_checked_day ? (
       <CheckedStyledDiv>
-        {habit.name} {habit.counter}/{habit.frequency}
+        <div className="check">
+          <p>
+            {habit.counter}/{habit.frequency}
+          </p>
+        </div>
+        <div className="info">
+          <h5>{habit.name}</h5>
+        </div>
       </CheckedStyledDiv>
     ) : (
       <StyledDiv
@@ -33,7 +40,14 @@ const NewHabits = ({ cookies, habits, setHabits, refreshHabits }) => {
           updateHabit(habit.id);
         }}
       >
-        {habit.name} {habit.counter}/{habit.frequency}
+        <div className="check">
+          <p>
+            {habit.counter}/{habit.frequency}
+          </p>
+        </div>
+        <div className="info">
+          <h5>{habit.name}</h5>
+        </div>
       </StyledDiv>
     )
   );
@@ -41,19 +55,85 @@ const NewHabits = ({ cookies, habits, setHabits, refreshHabits }) => {
 };
 
 const StyledDiv = styled.div`
-  width: 100%;
-  border: 1px solid black;
+  width: 90%;
+  height: 60px;
+  text-align: center;
+  background-color: #fff;
+  margin: 15px auto;
+  display: flex;
+  border-radius: 10px;
+  box-shadow: rgba(26, 24, 29, 0.16) 0px 2px 2px 0px,
+    rgba(26, 24, 29, 0.12) 0px 1px 4px 0px;
+  transition: 0.1s ease-out;
   &:hover {
     cursor: pointer;
+    transform: scale(1.02);
+  }
+
+  .check {
+    background-color: red;
+    height: 100%;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    p {
+      margin: 0;
+    }
+  }
+
+  .info {
+    display: flex;
+    margin-left: 10px;
+    align-items: center;
+    h5 {
+      margin: 0;
+    }
   }
 `;
 
 const CheckedStyledDiv = styled.div`
-  width: 100%;
-  text-decoration: line-through;
-  border: 1px solid black;
+  width: 90%;
+  height: 60px;
+  text-align: center;
+  background-color: #fff;
+  margin: 15px auto;
+  display: flex;
+  border-radius: 10px;
+  box-shadow: rgba(26, 24, 29, 0.16) 0px 2px 2px 0px,
+    rgba(26, 24, 29, 0.12) 0px 1px 4px 0px;
+  transition: 0.1s ease-out;
   &:hover {
     cursor: pointer;
+    transform: scale(1.02);
+  }
+
+  .check {
+    background-color: #c3c0c7;
+    color: #a5a1ac;
+    height: 100%;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    p {
+      margin: 0;
+    }
+  }
+
+  .info {
+    display: flex;
+    margin-left: 10px;
+    align-items: center;
+    color: #a5a1ac;
+    h5 {
+      margin: 0;
+    }
   }
 `;
 

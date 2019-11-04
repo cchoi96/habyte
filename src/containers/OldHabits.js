@@ -41,7 +41,9 @@ const OldHabits = ({ cookies, oldHabits, setOldHabits, refreshOldHabits }) => {
 };
 
 const StyledDiv = styled.div`
-  width: 100%;
+  width: 85%;
+  margin: 0 auto;
+  text-align: center;
   border: 1px solid black;
   &:hover {
     cursor: pointer;
