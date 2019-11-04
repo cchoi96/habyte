@@ -20,7 +20,14 @@ const Column = ({ key, column, projectState, setProjectState, tasks }) => {
             isDraggingOver={snapshot.isDraggingOver}
           >
             {tasks.map((task, index) => (
-              <Task key={task.id} task={task} index={index} />
+              <Task
+                columnid={column.id}
+                key={task.id}
+                task={task}
+                index={index}
+                projectState={projectState}
+                setProjectState={setProjectState}
+              />
             ))}
             {provided.placeholder}
             {newTask && (

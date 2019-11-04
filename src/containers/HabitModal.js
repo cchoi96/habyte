@@ -86,8 +86,8 @@ const HabitModal = ({
     <div>
       <Modal
         isOpen={isOpen}
-        onRequestClose={closeModal}
         style={customStyles}
+        onRequestClose={closeModal}
         contentLabel="Habit Modal"
       >
         <StyledTitle>New Habit!</StyledTitle>
@@ -147,6 +147,19 @@ const HabitModal = ({
 };
 
 export default HabitModal;
+
+const StyledModals = styled(Modal)`
+  width: "30%";
+  overflow: "scroll";
+  height: "auto";
+  top: "50%";
+  left: "50%";
+  right: "auto";
+  bottom: "auto";
+  backgroundColor: "lightgrey";
+  marginRight: "-50%";
+  transform: "translate(-50%, -50%);
+  `;
 
 const StyledTitle = styled.h2`
   text-align: center;
