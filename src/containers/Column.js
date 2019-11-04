@@ -87,6 +87,10 @@ const Container = styled.div`
   border-radius: 10px;
   box-shadow: 1px 1px 2px 1px;
   overflow-y: auto;
+
+  @media only screen and (max-width: 950px) {
+    min-width: 80%;
+  }
 `;
 const Title = styled.h3`
   padding: 8px;

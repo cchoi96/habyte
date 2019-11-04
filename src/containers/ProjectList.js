@@ -84,10 +84,6 @@ const StyledProjectListItem = styled(ProjectListItem)`
   box-shadow: 1.3px 1px 1px 2px;
 
   &: hover {
-<<<<<<< HEAD
-=======
-    transform: scale(1.02);
->>>>>>> 2107c653f8fba526f7e285f256f357d5f3aa120a
     color: #ffffff;
     font-weight: 400;
     cursor: pointer;
