@@ -54,10 +54,11 @@ const StyledDiv = styled.div`
   display: flex;
   width: 20vw;
   flex-direction: column;
-
+  border-radius: 10px;
+  z-index: 999;
   .headers {
     display: flex;
-    height: 50px;
+    height: 7vh;
     color: #fff;
   }
 
@@ -80,7 +81,7 @@ const StyledDiv = styled.div`
     background-color: ${props =>
       props.habitmode === "new"
         ? "rgba(36, 204, 143)"
-        : "rgba(36, 204, 143, 0.5)"};
+        : "rgba(146, 230, 199, 1)"};
   }
 
   #old {
@@ -88,14 +89,17 @@ const StyledDiv = styled.div`
     background-color: ${props =>
       props.habitmode === "old"
         ? "rgba(36, 204, 143)"
-        : "rgba(36, 204, 143, 0.5)"};
+        : "rgba(146, 230, 199, 1)"};
   }
 
   @media only screen and (max-width: 950px) {
     order: 2;
+    position: fixed;
+    bottom: 0;
+    left: 0;
     flex-direction: row;
-    width: 92%;
-    margin: 0 auto;
+    width: 100vw;
+
     .headers {
       flex-direction: column;
       margin-top: 10px;
@@ -108,11 +112,11 @@ const StyledDiv = styled.div`
       }
 
       #old {
-        border-radius: 0 0 0 10px;
+        border-radius: 0;
       }
 
       #new {
-        border-radius: 10px 0 0 0;
+        border-radius: 0;
       }
     }
   }
@@ -124,14 +128,16 @@ const StyledHabitDiv = styled.div`
   overflow-y: hidden;
   width: 100%;
   height: 73vh;
+  box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
+    0 1px 4px 0 rgba(26, 24, 29, 0.12);
   min-height: 400px;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
   background-color: #edecee;
   @media only screen and (max-width: 950px) {
     margin-top: 10px;
-    border-radius: 0 10px 10px 0;
-    width: 70vw;
+    border-radius: 0;
+    width: 85vw;
     max-height: 80px;
     min-height: 80px;
     overflow-x: scroll;

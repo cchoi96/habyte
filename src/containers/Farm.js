@@ -187,6 +187,7 @@ const StyledContainer = styled.div`
     height: 70vh;
     justify-content: center;
     order: 1;
+    margin-bottom: 100px;
   }
   @media only screen and (max-width: 750px) {
     flex-direction: column;
