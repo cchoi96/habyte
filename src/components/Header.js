@@ -91,7 +91,7 @@ const StyledNavbar = styled(Navbar)`
     border: 0.5px solid #ffffff;
     padding: 0px 10px;
     border-radius: 10px;
-    box-shadow: 0.2px 0.8px 1px 0.8px;
+    box-shadow: inset 0 0 10px #66ff66;
   }
 
   @media only screen and (max-width: 767px) {
