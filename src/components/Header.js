@@ -12,6 +12,7 @@ const Header = ({ cookies, setMode, className, userCoin }) => {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link onClick={() => setMode("farm")}>Farm</Nav.Link>
+          <Nav.Link onClick={() => setMode("store")}>Store</Nav.Link>
           <NavDropdown
             title="Categories"
             id="basic-nav-dropdown"
@@ -23,7 +24,6 @@ const Header = ({ cookies, setMode, className, userCoin }) => {
             >
               Coding
             </NavDropdown.Item>
-            <NavDropdown.Divider />
             <NavDropdown.Item
               className="item"
               onClick={() => setMode("health")}
@@ -31,7 +31,6 @@ const Header = ({ cookies, setMode, className, userCoin }) => {
               Health
             </NavDropdown.Item>
           </NavDropdown>
-          <Nav.Link onClick={() => setMode("store")}>Store</Nav.Link>
         </Nav>
         <Nav>
           <Nav.Link>
@@ -46,10 +45,6 @@ const Header = ({ cookies, setMode, className, userCoin }) => {
             title={cookies.name || cookies.github_id}
             id="basic-nav-dropdown"
           >
-            <NavDropdown.Item className="item" href="/username">
-              My Profile
-            </NavDropdown.Item>
-            <NavDropdown.Divider />
             <NavDropdown.Item className="item" href="/logout">
               Logout
             </NavDropdown.Item>
@@ -60,55 +55,34 @@ const Header = ({ cookies, setMode, className, userCoin }) => {
   );
 };
 const StyledNavbar = styled(Navbar)`
-  width: 100%;
-  margin: 0 auto;
   font-family: "Roboto", sans-serif;
-  font-weight: bold;
+  font-weight: 550;
   font-size: 1.1em;
   color: #fff;
   background: rgba(36, 204, 143);
-
   #basic-nav-dropdown,
   #responsive-navbar-nav a {
     background-color: rgba(36, 204, 143);
     color: #fff;
+
     &:hover {
-      color: #ffffff;
-      border-bottom: 1px solid white;
-      border-radius-bottom: 10px;
+      font-weight: 900;
+      border-bottom: 1px solid #ffffff
     }
   }
-
-  .navbar-nav {
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    margin: 0px 30px;
-  }
-
-  .dropdown-toggle {
-    margin: 0px auto;
-    text-align: center;
-
-  }
-
-  .nav-link,
-  .navbar-right {
-    margin: 0px 30px;
-  }
-
   .dropdown-menu.show {
     background-color: rgba(36, 204, 143);
     border: none;
   }
 
-  .dropdown-menu {
-    left: 10px;
-    text-align: center;
+
+  .dropdown-menu.show a:hover {
+    background-color: rgba(36, 204, 143);
   }
 
-
-
+  .dropdown.nav-item > .dropdown-toggle.nav-link {
+    margin-right: 100px;
+  }
 `;
 
 const StyledBrand = styled(Navbar)`
@@ -117,3 +91,44 @@ const StyledBrand = styled(Navbar)`
 `;
 
 export default Header;
+
+// .navbar-nav > a {
+//   display: flex;
+//   width: 100%;
+// }
+
+// @media only screen and (max-width: 992px) {
+//   .navbar {
+//     display: flex;
+//     justify-content: center;
+//   }
+
+//   .nav-link {
+//     text-align: center;
+//   }
+
+//   .navbar-nav {
+//     width: 80%;
+//     border: 1px solid black;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//   }
+
+// .navbar-nav {
+//   display: flex;
+//   justify-content: space-around;
+//   text-align: center;
+//   margin: 0px 30px;
+// }
+
+// .dropdown-toggle {
+//   margin: 0px auto;
+//   text-align: center;
+
+// }
+
+// .nav-link,
+// .navbar-right {
+//   margin: 0px 30px;
+// }
