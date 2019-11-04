@@ -18,6 +18,7 @@ const Column = ({ key, column, projectState, setProjectState, tasks }) => {
           >
             {tasks.map((task, index) => (
               <Task
+                columnid={column.id}
                 key={task.id}
                 task={task}
                 index={index}
