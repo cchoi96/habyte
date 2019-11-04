@@ -163,6 +163,7 @@ const StyledContainer = styled.div`
   min-height: 500px;
   width: 70vw;
   margin-left: 3vw;
+  margin-bottom: 20px;
   border-radius: 10px;
   background-image: url("/assets/other/soil.png");
   background-repeat: repeat;
