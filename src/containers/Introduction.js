@@ -87,6 +87,7 @@ const Introduction = ({ cookies, setUserInfo }) => {
         animal
       })
       .then(() => {
+        console.log(cookies);
         setUserInfo(cookies.github_id, name, animal, cookies.github_name);
       })
       .then(() => {

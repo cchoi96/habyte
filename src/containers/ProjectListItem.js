@@ -36,8 +36,8 @@ const ProjectListItem = ({
         setProjectSelected(projectid);
       }}
     >
-      <h5 className="projectName">{projectName}</h5>
-      <p>Commits: {commits}</p>
+      <div className="projectName">{projectName}</div>
+      <div className="projectCommit">Commits: {commits}</div>
     </li>
   );
 };

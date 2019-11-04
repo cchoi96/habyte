@@ -12,17 +12,23 @@ const Coding = ({
 }) => {
   return (
     <StyledDiv>
-      <ProjectList
-        cookies={cookies}
-        projectSelected={projectSelected}
-        setProjectSelected={setProjectSelected}
-      />
-
-      <TrelloBoard
-        projectSelected={projectSelected}
-        projectState={projectState}
-        setProjectState={setProjectState}
-      />
+      <div id="title-container">
+        <div id="coding-title">Coding</div>
+        <StyledProjectList>
+          <ProjectList
+            cookies={cookies}
+            projectSelected={projectSelected}
+            setProjectSelected={setProjectSelected}
+          />
+        </StyledProjectList>
+      </div>
+      <StyledTrelloBoard>
+        <TrelloBoard
+          projectSelected={projectSelected}
+          projectState={projectState}
+          setProjectState={setProjectState}
+        />
+      </StyledTrelloBoard>
     </StyledDiv>
   );
 };
@@ -30,15 +36,48 @@ const Coding = ({
 export default Coding;
 
 const StyledDiv = styled.div`
-  box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
-    0 1px 4px 0 rgba(26, 24, 29, 0.12);
+
   display: flex;
-  margin-left: 3vw;
-  border-radius: 10px;
-  height: 80vh;
-  width: 70vw;
-  @media only screen and (max-width: 950px) {
-    margin: 0 auto;
-    width: 88vw;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 80%;
+  margin-left: 30px;
+  #title-container {
+    width: 100%
+    height: fit-content
   }
+  border: 1px solid black;
+  border-radius: 10px;
+
+  background-color: rgba(67, 40, 116, 0.4);
+
+  #coding-title {
+    background-color: rgba(67, 40, 116, 1);
+    text-color: white;
+    width: 40%;
+    height: fit-content;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 5vh;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+`;
+
+const StyledProjectList = styled.div`
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  height: 12vh;
+  margin: 0px auto;
+  min-width: 100%;
+`;
+
+const StyledTrelloBoard = styled.div`
+  width: 90%;
+  display: flex;
+  height: 60%;
+
 `;

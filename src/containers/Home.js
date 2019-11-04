@@ -215,7 +215,7 @@ const Home = ({ cookies, className }) => {
           .then(res => {
             let habits = res.data;
             setHabits(habits);
-            setMode("farm");
+            setMode("coding");
           });
       });
     });
