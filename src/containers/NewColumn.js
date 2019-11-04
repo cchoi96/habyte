@@ -11,25 +11,27 @@ const NewColumn = ({
 
   let clickHandler = e => {
     e.preventDefault();
-    setNewColumn(false);
-    axios
-      .post("http://0.0.0.0:8080/projects/column", {
-        name: columnText,
-        project_id: projectSelected
-      })
-      .then(res => res.data[0])
-      .then(data => {
-        setProjectState(prevState => ({
-          ...prevState,
-          ...(prevState.columns[data.id] = {
-            id: data.id,
-            taskIds: [],
-            title: data.name
-          }),
-          ...prevState.columnOrder.push(data.id)
-        }));
-        console.log(projectState);
-      });
+    if (columnText) {
+      setNewColumn(false);
+      axios
+        .post("http://0.0.0.0:8080/projects/column", {
+          name: columnText,
+          project_id: projectSelected
+        })
+        .then(res => res.data[0])
+        .then(data => {
+          setProjectState(prevState => ({
+            ...prevState,
+            ...(prevState.columns[data.id] = {
+              id: data.id,
+              taskIds: [],
+              title: data.name
+            }),
+            ...prevState.columnOrder.push(data.id)
+          }));
+          console.log(projectState);
+        });
+    }
     // .then(id => {
     //   temp.tasks[id] = { id: id, content: taskText };
     //   temp.columns[columnId].taskIds.push(id);
