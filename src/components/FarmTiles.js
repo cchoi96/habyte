@@ -67,7 +67,7 @@ const FarmTiles = ({
               {habit.is_already_dying ? " dying :(" : " healthy!"}
             </li>
           </StyledUl>
-          {habit.crop_state === 2 && (
+          {habit.crop_state === 5 && (
             <div>
               Sell ripe {habit.crop_name}
               <button onClick={sellCrop}> Sell </button>
