@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const Header = ({ cookies, setMode, className, userCoin }) => {
   if (userCoin) {
-    let userCoinInfo = userCoin[0]["coin"];
+    let userCoinInfo = userCoin;
     return (
       <StyledNavbar collapseOnSelect expand="md" className={className}>
         <StyledBrand>habyte</StyledBrand>

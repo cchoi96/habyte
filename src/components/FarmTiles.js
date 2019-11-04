@@ -24,10 +24,13 @@ const FarmTiles = ({
   };
 
   const sellCrop = () => {
+    console.log(userCoin);
     console.log("sold your, ", habit.crop_name);
     let sellprice = crops[habit.crop_name];
-    setUserCoin(prev => prev[0].coin + sellprice);
+
+    setUserCoin(prev => prev + sellprice);
     updateCoinInDatabase(cookies.github_id);
+
     axios.delete("http://0.0.0.0:8080/user/crops", {
       data: { habit: habit.id }
     });
