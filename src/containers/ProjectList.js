@@ -65,7 +65,8 @@ const StyledProjectList = styled.div`
   align-items: center
   background-color: rgba(67, 40, 116, 0.4);
   overflow-x: auto;
-
+  height: fit-content;
+  margin: 10px;
 
 
 `;

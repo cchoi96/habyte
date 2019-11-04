@@ -64,6 +64,13 @@ const StyledDiv = styled.div`
     color: #fff;
     margin-bottom: 20px;
   }
+
+  @media only screen and (max-width: 950px) {
+    height: 100%;
+    margin: 0 auto;
+    margin-bottom: 100px;
+    width: 95%;
+  }
 `;
 
 const StyledProjectList = styled.div`
