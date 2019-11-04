@@ -74,7 +74,8 @@ const StyledNewColumn = styled.div`
 
     &: hover {
       transform: scale(1.02);
-      background-color: rgba(205,133,63,0.8)
+      background-color: rgba(205,133,63,0.8);
+      color: #ffffff
     }
   }
 

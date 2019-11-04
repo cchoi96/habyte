@@ -155,7 +155,7 @@ const StyledAddNewColumn = styled.div`
     cursor: pointer;
     background-color: rgba(212,126,48,0.9);
     transform: scale(1.05);
-    color: #d7d1d1fa
+    color: #ffffff
   }
 `;
 
