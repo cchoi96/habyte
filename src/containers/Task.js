@@ -1,6 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Draggable } from "react-beautiful-dnd";
+
+const Task = ({ task, index }) => {
+  const [onHover, setOnHover] = useState(false);
+  console.log("onHover", onHover);
+  return (
+    <Draggable draggableId={task.id} index={index}>
+      {(provided, snapshot) => (
+        <Container
+          onMouseEnter={() => setOnHover(true)}
+          onMouseLeave={() => setOnHover(false)}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          ref={provided.innerRef}
+          innerRef={provided.innerRef}
+          isDragging={snapshot.isDragging}
+        >
+          {task.content}
+          {onHover && (
+            <>
+              <div>Delete</div>
+              <div>Edit</div>
+            </>
+          )}
+        </Container>
+      )}
+    </Draggable>
+  );
+};
 
 const Container = styled.div`
   border: 1px solid lightgrey;
@@ -18,28 +46,4 @@ const Container = styled.div`
       ? "steelblue"
       : "white"};
 `;
-
-const Task = ({ task, index }) => {
-  const isDragDisabled = task.id === "task-1";
-  return (
-    <Draggable
-      draggableId={task.id}
-      index={index}
-      isDragDisabled={isDragDisabled}
-    >
-      {(provided, snapshot) => (
-        <Container
-          {...provided.draggableProps}
-          {...provided.dragHandleProps}
-          ref={provided.innerRef}
-          innerRef={provided.innerRef}
-          isDragging={snapshot.isDragging}
-          isDragDisabled={isDragDisabled}
-        >
-          {task.content}
-        </Container>
-      )}
-    </Draggable>
-  );
-};
 export default Task;
