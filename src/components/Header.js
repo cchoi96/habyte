@@ -30,6 +30,15 @@ const Header = ({ cookies, setMode, className, userCoin }) => {
             >
               Health
             </NavDropdown.Item>
+            <NavDropdown.Item
+              className="item"
+              onClick={() => setMode("finance")}
+            >
+              Finance
+            </NavDropdown.Item>
+            <NavDropdown.Item className="item" onClick={() => setMode("misc")}>
+              Misc
+            </NavDropdown.Item>
           </NavDropdown>
         </Nav>
         <Nav>

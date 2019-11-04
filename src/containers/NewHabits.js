@@ -88,7 +88,11 @@ const StyledDiv = styled.div`
         ? "rgba(67,40,116,1)"
         : props.category === "health"
         ? "rgba(247,78,82,1)"
-        : "rgba(0, 128, 0);"};
+        : props.category === "finance"
+        ? "rgba(248, 148, 6, 1)"
+        : props.category === "misc"
+        ? "rgba(145, 61, 136, 1)"
+        : "rgba(0, 128, 0, 1);"};
     height: 100%;
     min-width: 50px;
     display: flex;

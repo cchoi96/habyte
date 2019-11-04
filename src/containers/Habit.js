@@ -67,20 +67,29 @@ const StyledHabitCategory = styled.div`
     0 1px 4px 0 rgba(26, 24, 29, 0.12);
   background-color: ${props =>
     props.habit_name === "coding"
-      ? "rgba(67, 40, 116, 0.5)"
+      ? "rgba(34, 167, 240, 0.5)"
       : props.habit_name === "health"
       ? "rgba(247, 78, 82, 0.5)"
+      : props.habit_name === "finance"
+      ? "rgba(248, 148, 6, 0.5)"
+      : props.habit_name === "misc"
+      ? "rgba(145, 61, 136, 0.5)"
       : "rgba(36, 204, 143, 0.5)"};
   margin-bottom: 20px;
 
   .habit-info {
     background-color: ${props =>
       props.habit_name === "coding"
-        ? "rgba(67, 40, 116, 1)"
+        ? "rgba(34, 167, 240, 1)"
         : props.habit_name === "health"
         ? "rgba(247, 78, 82, 1)"
+        : props.habit_name === "finance"
+        ? "rgba(248, 148, 6, 1)"
+        : props.habit_name === "misc"
+        ? "rgba(145, 61, 136, 1)"
         : "rgba(36, 204, 143, 1)"};
     width: 40%;
+    min-width: 250px;
     margin: 0 auto;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
