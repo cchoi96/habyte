@@ -153,6 +153,14 @@ const StyledButtons = styled.div`
   button:hover {
     background-color: rgba(172, 79, 1, 0.85);
   }
+
+  @media only screen and (max-width: 500px) {
+    margin: 40px auto;
+  }
+
+  @media only screen and (max-width: 350px) {
+    margin: 60px auto;
+  }
 `;
 
 export default IntroductionChat;
