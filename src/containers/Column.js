@@ -53,8 +53,9 @@ const StyledDiv = styled.div`
   margin-top: 5px;
   box-shadow: 0.5px 0.5px 1px 1px;
   border-radius: 10px;
-  width: fit-content;
+  width: 50%;
   padding: 2px 12px;
+  margin-bottom: 15px;
 
   &:hover {
     cursor: pointer;
@@ -68,13 +69,15 @@ const Container = styled.div`
   margin: 8px;
   border: 1px solid lightgrey;
   border-radius: 2px;
-  width: fit-content;
+  width: 50%;
+  height: fit-content;
   display: flex;
   justify-content: center;
-  min-width: 25%;
+  min-width: 300px;
   flex-direction: column;
   border-radius: 10px;
   box-shadow: 1px 1px 2px 1px;
+  overflow-y: auto;
   &: hover {
     cursor: pointer;
     transform: scale(1.01);

@@ -121,6 +121,7 @@ const StyledTrelloBoard = styled.div`
   width: 100%;
   overflow-x: scroll;
   border-radius: 10px;
+  justify-content: flex-start;
 
     
   #new-column {
@@ -149,6 +150,9 @@ const StyledAddNewColumn = styled.div`
   font-weight: 500;
   box-shadow: 0.5px 0.5px 1px 1px;
   margin-bottom: 20px;
+  min-width: 100px;
+  margin-right: 20px;
+
 
 
   &:hover {
