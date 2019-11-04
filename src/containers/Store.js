@@ -3,27 +3,18 @@ import StoreItems from "./StoreItems";
 import axios from "axios";
 import styled from "styled-components";
 
-const Store = ({
-  cookies,
-  setMode,
-  userCoin,
-  setUserCoin,
-  updateCoinInDatabase
-}) => {
+const Store = ({ cookies, setMode, userCoin, setUserCoin }) => {
   const [items, setItems] = useState({});
-  const buyItems = event => {
-    event.preventDefault();
-    let total = 0;
+
+  const buyItem = item => {
     const boughtItems = {};
-    for (let key in items) {
-      if (items[key]["quantity"] !== 0) {
-        boughtItems[key] = items[key].quantity;
-        total += items[key].price * items[key].quantity;
-      }
-    }
+    boughtItems[item.name] = {
+      quantity: 1
+    };
+    let total = item.price;
 
     if (total > userCoin) {
-      alert("too expensive for you, make more money dude");
+      console.log("too expensive for you, make more money dude");
     } else {
       let updateCoin = userCoin;
       updateCoin -= total;
@@ -34,7 +25,6 @@ const Store = ({
           items: boughtItems
         })
         .then(() => {
-          // updateCoinInDatabase(cookies.github_id);
           setMode("farm");
         });
     }
@@ -42,20 +32,16 @@ const Store = ({
 
   return (
     <StyledStore>
-      <form onSubmit={buyItems}>
-        <StyledTitle>Plant It</StyledTitle>
-        <StoreItems items={items} setItems={setItems} />
-        <button type="submit">Buy and Save the Earth!</button>
-      </form>
+      <StyledTitle>Plant It</StyledTitle>
+      <StoreItems items={items} setItems={setItems} buyItem={buyItem} />
     </StyledStore>
   );
 };
 
 const StyledTitle = styled.div`
-  background-color: rgba(36, 160, 143, 1);
+  background-color: rgba(36, 204, 143);
   text-color: white;
   width: 40%;
-  height: fit-content;
   margin: 0 auto;
   text-align: center;
   font-size: 5vh;
@@ -70,46 +56,24 @@ const StyledTitle = styled.div`
 `;
 
 const StyledStore = styled.div`
-  width: 80%;
-  border: 1px black solid;
-  background-color: rgba(36, 200, 143, 0.6);
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  min-height: 500px;
+  width: 70vw;
+  margin-left: 3vw;
   border-radius: 10px;
-  margin-left: 30px;
-
+  background-color: rgba(36, 200, 143, 0.6);
+  box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
+  0 1px 4px 0 rgba(26, 24, 29, 0.12);
+  overflow-y: scroll;
+  
   @media only screen and (max-width: 950px) {
-    margin: 0px auto;
+    width: 88vw;
+    height: 70vh;
+    order: 1;
+    margin-bottom: 100px;
   }
-
-
-    
-  form {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  button {
-    margin-bottom: 5vh;
-    border: 1px solid black;
-    border-radius: 10px;
-    cursor: pointer
-    padding: 3px 10px;
-
-    &: hover {
-      transform: scale(1.02);
-      background-color: rgba(36, 160, 143, 1);
-      font-weight: bold;
-      color: #FFFFFF
-    }
-  }
-
-  @media only screen and (max-width: 720px) {
-    width: 100%;
-    form {
-      width: 100%;
-    }
-
-
-`;
+}`;
 
 export default Store;

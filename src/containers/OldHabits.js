@@ -154,7 +154,7 @@ const CheckedStyledDiv = styled.div`
     background-color: #c3c0c7;
     color: #a5a1ac;
 
-    height: 70px;
+    height: 100%;
     min-width: 50px;
 
     display: flex;

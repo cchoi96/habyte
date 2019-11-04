@@ -189,10 +189,9 @@ const StyledContainer = styled.div`
     order: 1;
     margin-bottom: 100px;
   }
+
   @media only screen and (max-width: 750px) {
     flex-direction: column;
-    width: 88vw;
-    height: 70vh;
     justify-content: flex-start;
     img {
       order: 1;
