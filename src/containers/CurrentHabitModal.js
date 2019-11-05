@@ -103,10 +103,14 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
           {modalData.length > 1 && (
             <XYPlot width={400} height={300}>
               <XAxis tickValues={[1, 2, 3, 4]} />
-              <YAxis tickValues={[0, 1, 2, 3, 4, 5, 6, 7]} yDomain={[0, 7]} />
-              <LineMarkSeries data={modalData} animation={"noWobble"} />
+              <YAxis tickValues={[0, 1, 2, 3, 4, 5, 6, 7]} />
+              <LineMarkSeries
+                data={[{ x: 0, y: 0 }, ...modalData]}
+                animation={"noWobble"}
+              />
             </XYPlot>
           )}
+          {console.log(modalData)}
         </StyledFlexColumn>
       </Modal>
     </div>
