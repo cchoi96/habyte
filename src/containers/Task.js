@@ -13,7 +13,7 @@ const Task = ({ task, index, projectState, setProjectState, columnid }) => {
       ele => ele != task.id
     );
     setProjectState(temp);
-    // ! needs testing to confirm
+
     axios
       .delete("http://0.0.0.0:8080/projects/tasks", {
         data: { task: task.id }
@@ -75,9 +75,6 @@ const Container = styled.div`
   }
 `;
 export default Task;
-
-
-
 
 // background-color: ${props =>
 //   props.isDragDisabled

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import "../../node_modules/react-vis/dist/style.css";
 import styled from "styled-components";
+import axios from "axios";
 import {
   XYPlot,
   LineSeries,
@@ -11,9 +12,11 @@ import {
   YAxis,
   LineMarkSeries
 } from "react-vis";
+
 // import "../node_modules/react-vis/dist/style.css";
 
 const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
+  const [modalData, setModalData] = useState();
   const customStyles = {
     content: {
       width: "50%",
@@ -27,6 +30,21 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
       transform: "translate(-50%, -50%)"
     }
   };
+  let habit_history = [];
+
+  useEffect(() => {
+    axios
+      .get(`http://0.0.0.0:8080/user/project/${habit.id}`)
+      .then(res => res.data)
+      .then(data => {
+        console.log(data);
+        for (let [index, val] of data.entries()) {
+          habit_history.push({ x: index, y: val.counter });
+        }
+        console.log(habit_history);
+        setModalData(habit_history);
+      });
+  }, []);
 
   const data = new Array(19).fill(0).reduce(
     (prev, curr) => [
@@ -84,7 +102,7 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
           <YAxis />
           {/* <HorizontalGridLines />
           <VerticalGridLines /> */}
-          <LineMarkSeries data={data} />
+          <LineMarkSeries data={modalData} />
         </XYPlot>
 
         <button onClick={closeModal}>close</button>
