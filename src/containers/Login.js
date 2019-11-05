@@ -93,6 +93,23 @@ const StyledLogin = styled.div`
       text-decoration: none;
     }
   }
+
+  @media only screen and (max-width: 650px) {
+    h1 {
+      padding-top: 8vh;
+      font-size: 3em;
+      margin-bottom: 8vh;
+    }
+
+    h2 {
+      font-size: 2em;
+      width: 85%;
+    }
+
+    a {
+      font-size: 1em;
+    }
+  }
 `;
 
 export default Login;
