@@ -35,6 +35,7 @@ const ProjectList = ({ cookies, setProjectSelected, projectSelected }) => {
         projectSelected={projectSelected}
         key={project.name}
         setProjectSelected={setProjectSelected}
+        projectSelected={projectSelected}
         projectid={project.id}
         projectName={project.name}
         projectNumberCommit={project.number_commit}

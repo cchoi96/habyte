@@ -9,6 +9,7 @@ const ProjectListItem = ({
   projectNumberCommit,
   className,
   setProjectSelected,
+  projectSelected,
   projectid
 }) => {
   const [commits, setCommits] = useState(0);
@@ -31,11 +32,19 @@ const ProjectListItem = ({
   return (
     <StyledDiv
       className={className}
+      projectid={projectid}
+      projectSelected={projectSelected}
       onClick={() => {
         setProjectSelected(projectid);
       }}
     >
-      <div className="projectCommit">{commits}</div>
+      <div
+        className="projectCommit"
+        projectid={projectid}
+        projectSelected={projectSelected}
+      >
+        {commits}
+      </div>
       <div className="projectName">{projectName}</div>
     </StyledDiv>
   );
@@ -83,7 +92,10 @@ const StyledDiv = styled.div`
     min-width: 50px;
     font-weight: 600;
     height: 100%;
-    background-color: rgba(140, 218, 254.5, 1);
+    background-color: ${props =>
+      props.projectid === props.projectSelected
+        ? "rgba(1, 122, 179, 1)"
+        : "rgba(140, 218, 254.5, 1)"};
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     display: flex;
