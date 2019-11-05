@@ -3,16 +3,7 @@ import Modal from "react-modal";
 import "../../node_modules/react-vis/dist/style.css";
 import styled from "styled-components";
 import axios from "axios";
-import {
-  XYPlot,
-  LineSeries,
-  Crosshair,
-  VerticalGridLines,
-  HorizontalGridLines,
-  XAxis,
-  YAxis,
-  LineMarkSeries
-} from "react-vis";
+import { XYPlot, XAxis, YAxis, LineMarkSeries } from "react-vis";
 
 // import "../node_modules/react-vis/dist/style.css";
 
