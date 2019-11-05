@@ -21,13 +21,10 @@ const Task = ({ task, index, projectState, setProjectState, columnid }) => {
       })
       .then(res => console.log(res))
       .catch(err => console.log(err));
-
-    console.log("projectState", projectState);
   };
   const editTask = () => {
     setEditText("");
     setInEdit(prev => !prev);
-    console.log("edit");
   };
   const submitEdit = e => {
     e.preventDefault();
@@ -62,7 +59,7 @@ const Task = ({ task, index, projectState, setProjectState, columnid }) => {
             <StyledForm onSubmit={submitEdit}>
               <input
                 autoFocus
-                onBlur={() => setInEdit(false)}
+                onBlur={submitEdit}
                 onChange={e => setEditText(e.currentTarget.value)}
               />
               <input type="submit" value="Edit" />
