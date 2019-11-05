@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
-import styled from 'styled-components';
+import styled from "styled-components";
 
-const NewTask = ({ setNewTask, projectState, setProjectState, columnId, addTaskButton, setAddTaskButton }) => {
+const NewTask = ({
+  setNewTask,
+  projectState,
+  setProjectState,
+  columnId,
+  addTaskButton,
+  setAddTaskButton
+}) => {
   const [taskText, setTaskText] = useState("");
   let clickHandler = e => {
     e.preventDefault();
@@ -27,18 +34,27 @@ const NewTask = ({ setNewTask, projectState, setProjectState, columnId, addTaskB
   return (
     <StyledNewTask>
       <form>
-        <input className="new-task-name" type="text" onChange={e => setTaskText(e.target.value)} />
-        <input className="add-new-task" onClick={(event) => {
-          clickHandler(event);
-          setAddTaskButton(!addTaskButton);
-          }} type="submit" value="Add Task" />
+        <input
+          className="new-task-name"
+          autoFocus
+          type="text"
+          onChange={e => setTaskText(e.target.value)}
+        />
+        <input
+          className="add-new-task"
+          onClick={event => {
+            clickHandler(event);
+            setAddTaskButton(!addTaskButton);
+          }}
+          type="submit"
+          value="Add Task"
+        />
       </form>
     </StyledNewTask>
   );
 };
 
 const StyledNewTask = styled.div`
-
   form {
     margin: 0 auto;
     display: flex;
@@ -62,13 +78,11 @@ const StyledNewTask = styled.div`
 
     &: hover {
       cursor: pointer;
-      background-color: rgba(200,133,63,0.8);
+      background-color: rgba(200, 133, 63, 0.8);
       color: #ffffff;
       border-radius: 10px;
     }
-
   }
-
 `;
 
 export default NewTask;

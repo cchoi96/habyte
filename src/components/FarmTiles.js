@@ -55,13 +55,13 @@ const FarmTiles = ({
             <li>habit task: {habit.name}</li>
             {habit.notes && <li>Notes: {habit.notes}</li>}
             <li>Habit started: {habit.created_at.slice(0, 10)}</li>
-            <li>habit id: {habit.id}</li>
+
             <li>
               Habit is currently
               {habit.is_already_dying ? " dying :(" : " healthy!"}
             </li>
           </StyledUl>
-          {habit.crop_state === 2 && (
+          {habit.crop_state === 5 && (
             <div>
               Sell ripe {habit.crop_name}
               <button onClick={sellCrop}> Sell </button>
@@ -84,7 +84,8 @@ const StyledHover = styled.div`
   position: absolute;
   width: max-content;
   transform: translateY(-80%);
+  border-radius: 10px;
   background-color: rgba(150, 255, 150, 0.6);
-  z-index: 10;
+  z-index: 100000;
 `;
 export default FarmTiles;
