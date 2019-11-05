@@ -159,6 +159,7 @@ const StyledDiv = styled.div`
 `;
 
 const StyledContainer = styled.div`
+  position: relative;
   display: flex;
   height: 80vh;
   min-height: 500px;
@@ -170,7 +171,7 @@ const StyledContainer = styled.div`
   background-repeat: repeat;
   background-size: 90px 90px;
   box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
-  0 1px 4px 0 rgba(26, 24, 29, 0.12);
+    0 1px 4px 0 rgba(26, 24, 29, 0.12);
   img {
     max-width: 33vw;
     max-height: 33vw;
@@ -180,8 +181,8 @@ const StyledContainer = styled.div`
     width: 70px;
     height: 70px;
     position: absolute;
-    top: 70%;
-    left: 71%;
+    top: 75%;
+    left: 56%;
   }
 
   @media only screen and (max-width: 950px) {
@@ -203,6 +204,15 @@ const StyledContainer = styled.div`
       min-width: 240px;
       min-height: 210px;
     }
+    #animal {
+      left: 15%;
+      top: 28%;
+    }
   }
-}
+
+  @media only screen and (max-width: 480px) {
+    #animal {
+      left: 0%;
+    }
+  }
 `;
