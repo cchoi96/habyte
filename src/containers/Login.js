@@ -61,6 +61,8 @@ const StyledLogin = styled.div`
   height: 100vh;
   text-align: center;
   background-image: url("/assets/other/background.jpg");
+  background-repeat: no-repeat;
+  background-position: 77% 16%;
   h1 {
     margin-bottom: 15vh;
     padding-top: 15vh;
@@ -94,21 +96,17 @@ const StyledLogin = styled.div`
     }
   }
 
-  @media only screen and (max-width: 650px) {
+  @media only screen and (max-width: 725px) {
+    background-position: 71% 32%;
     h1 {
-      padding-top: 8vh;
-      font-size: 3em;
-      margin-bottom: 8vh;
+      margin-bottom: 10vh;
     }
 
     h2 {
       font-size: 2em;
-      width: 85%;
+      width: 75%;
     }
 
-    a {
-      font-size: 1em;
-    }
   }
 `;
 
