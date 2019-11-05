@@ -62,8 +62,9 @@ const Task = ({ task, index, projectState, setProjectState, columnid }) => {
             <StyledForm onSubmit={submitEdit}>
               <input
                 autoFocus
+                onBlur={() => setInEdit(false)}
                 onChange={e => setEditText(e.currentTarget.value)}
-              />{" "}
+              />
               <input type="submit" value="Edit" />
             </StyledForm>
           )}
