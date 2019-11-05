@@ -35,6 +35,10 @@ function App() {
       font-family: 'Roboto Condensed';
       src: url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
     }
+    @font-face {
+      font-family: 'Nunito';
+      src: url('https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap');
+    }
   `;
 
   return (
