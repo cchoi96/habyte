@@ -65,12 +65,14 @@ const StyledLogin = styled.div`
     margin-bottom: 15vh;
     padding-top: 15vh;
     font-size: 3.5em;
+    color: white;
   }
 
   h2 {
     width: 50%;
     font-size: 2.5em;
     margin: 0 auto 5vh auto;
+    color: white;
   }
 
   a {
@@ -78,14 +80,16 @@ const StyledLogin = styled.div`
     font-size: 1.5em;
     width: 270px;
     margin: 0 auto;
-    color: black;
-    border: 1px solid black;
+    color: white;
+    border: 1px solid white;
     border-radius: 5px;
     padding: 5px 10px;
+    box-shadow: 0.3px 0.3px 0.5px 0.5px;
     transition: 0.1s ease-out;
     &:hover {
-      background-color: black;
-      color: white;
+      transform: scale(1.01);
+      background-color: white;
+      color: black;
       text-decoration: none;
     }
   }
