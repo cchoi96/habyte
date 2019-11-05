@@ -116,7 +116,7 @@ const StyledDiv = styled.div`
     width: 100px;
     margin: auto 15px;
     display: flex;
-    align-items: center
+    align-items: center;
     justify-content: flex-start;
     .check {
       width: 20px;
