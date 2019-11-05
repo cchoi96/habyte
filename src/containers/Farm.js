@@ -131,6 +131,7 @@ const StyledFarmTiles = styled(FarmTiles)`
     left: 30%;
     transition: 0.1s ease-out;
     z-index: 5;
+    cursor: pointer;
   }
 
   .soilTile {
