@@ -1,20 +1,26 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Draggable } from "react-beautiful-dnd";
+import axios from "axios";
 
 const Task = ({ task, index, projectState, setProjectState, columnid }) => {
   const [onHover, setOnHover] = useState(false);
 
   const deleteTask = () => {
-    console.log("task", task);
-    console.log("index", index);
-
     let temp = { ...projectState };
     delete temp.tasks[task.id];
     temp.columns[columnid].taskIds = temp.columns[columnid].taskIds.filter(
       ele => ele != task.id
     );
     setProjectState(temp);
+    // ! needs testing to confirm
+    axios
+      .delete("http://0.0.0.0:8080/projects/tasks", {
+        data: { task: task.id }
+      })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+
     console.log("projectState", projectState);
   };
   const editTask = () => {
@@ -36,7 +42,7 @@ const Task = ({ task, index, projectState, setProjectState, columnid }) => {
           {onHover && (
             <div style={{ position: "relative" }}>
               <StyledDelete onClick={deleteTask}>X</StyledDelete>
-              {/* <StyledEdit onClick={editTask}>Edit</StyledEdit> */}
+              <StyledEdit onClick={editTask}>Edit</StyledEdit>
             </div>
           )}
         </Container>
@@ -45,14 +51,14 @@ const Task = ({ task, index, projectState, setProjectState, columnid }) => {
   );
 };
 
-const StyledDelete = styled.div`
+const StyledDelete = styled.span`
   position: absolute;
   right: 0px;
   bottom: 0px;
 `;
-const StyledEdit = styled.div`
+const StyledEdit = styled.span`
   position: absolute;
-  left: 0px;
+  right: 20px;
   bottom: 0px;
 `;
 
