@@ -45,6 +45,7 @@ const StyledDiv = styled.div`
   display: flex;
   align-items: center;
   height: 70%;
+  min-width: fit-content;
   min-height: 60px;
   font-size: 1.1.em;
   margin: 15px 7.5px;
@@ -69,7 +70,7 @@ const StyledDiv = styled.div`
     font-size: 1.3em;
     background-color: #f8f9fa;
     overflow-x: scroll;
-    width: 100%;
+    min-width: fit-content;
     height: 100%;
     min-height: 60px;
     border-top-right-radius: 10px;
