@@ -60,7 +60,10 @@ const Task = ({ task, index, projectState, setProjectState, columnid }) => {
           {!inEdit && task.content}
           {inEdit && (
             <StyledForm onSubmit={submitEdit}>
-              <input onChange={e => setEditText(e.currentTarget.value)} />{" "}
+              <input
+                autoFocus
+                onChange={e => setEditText(e.currentTarget.value)}
+              />{" "}
               <input type="submit" value="Edit" />
             </StyledForm>
           )}
