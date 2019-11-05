@@ -1,20 +1,29 @@
-import React from "react";
+import React, {useState} from "react";
+import GithubProjectList from "./GithubProjectList";
 import Modal from "react-modal";
 import axios from "axios";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const ProjectModal = ({ setIsOpen, isOpen, repos, cookies, refreshList }) => {
   const customStyles = {
     content: {
-      width: "100%",
+      display: "flex",
+      justifyContent: "center",
+      width: "65%",
       overflow: "scroll",
-      height: "80vh",
+      height: "70vh",
       top: "50%",
       left: "50%",
       right: "auto",
       bottom: "auto",
       marginRight: "-50%",
-      transform: "translate(-50%, -50%)"
+      transform: "translate(-50%, -50%)",
+      textAlign: "left",
+      backgroundColor: "#f8f9fa",
+      borderRadius: "10px"
+    },
+    overlay: {
+      zIndex: "999"
     }
   };
 
@@ -38,8 +47,6 @@ const ProjectModal = ({ setIsOpen, isOpen, repos, cookies, refreshList }) => {
         selectedProject.push(project);
       }
     }
-    console.log(selectedProject);
-
     axios
       .post("http://0.0.0.0:8080/project-save", {
         repos: selectedProject,
@@ -51,26 +58,9 @@ const ProjectModal = ({ setIsOpen, isOpen, repos, cookies, refreshList }) => {
   };
 
   const data = {};
-  const repoList = repos.map(repo => {
-    data[repo] = false;
-    return (
-      <div key={repo}>
-        <input
-          type="checkbox"
-          onChange={() => (data[repo] = !data[repo])}
-          id={repo}
-          name="repo"
-          value={repo}
-        />
-        <label>{repo} </label>
-      </div>
-    );
-  });
-
-  console.log(repoList);
 
   return (
-    <StyledContainer>
+    <div>
       <button onClick={openModal}>Open Modal</button>
       <Modal
         isOpen={isOpen}
@@ -78,27 +68,41 @@ const ProjectModal = ({ setIsOpen, isOpen, repos, cookies, refreshList }) => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <h2>Hello</h2>
-        <button onClick={closeModal}>close</button>
-        <form method="POST" action="/project-save">
-          {repoList}
-          <button onClick={saveProject} type="submit">
-            Submit
-          </button>
-        </form>
+        <StyledForm>
+          <form method="POST" action="/project-save">
+            <GithubProjectList repos={repos} data={data} />
+            <button onClick={saveProject} type="submit">
+              Submit
+            </button>
+            <button onClick={closeModal}>Close</button>
+          </form>
+        </StyledForm>
       </Modal>
-    </StyledContainer>
+    </div>
   );
 };
 
 export default ProjectModal;
 
-const StyledContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 70%;
-  margin-left: 30%;
-  border: 2px solid black
+
+const StyledForm = styled.div`
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    button {
+      border-radius: 10px;
+      margin: 5px 15px;
+      box-shadow: 0.5px 0.5px 1px 1px;
+
+      &: hover {
+        cursor: pointer
+        background-color: #666666
+        color: white
+      }
+    }
+  }
+  cursor: pointer;
 
 `;
-

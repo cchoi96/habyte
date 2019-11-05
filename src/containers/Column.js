@@ -82,11 +82,15 @@ const Container = styled.div`
   height: fit-content;
   display: flex;
   justify-content: center;
-  min-width: 300px;
+  min-width: 80%;
   flex-direction: column;
   border-radius: 10px;
   box-shadow: 1px 1px 2px 1px;
   overflow-y: auto;
+
+  @media only screen and (max-width: 950px) {
+    min-width: 80%;
+  }
 `;
 const Title = styled.h3`
   padding: 8px;
