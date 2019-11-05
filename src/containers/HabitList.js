@@ -38,19 +38,18 @@ const StyledDiv = styled.div`
   flex-wrap: wrap;
   .addImage {
     width: 20%;
-    height: 40%;
-    min-height: 220px;
     padding: 20px;
     margin: 20px 2.5%;
     border-radius: 10px;
     background-color: rgb(237, 236, 238);
     box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
       0 1px 4px 0 rgba(26, 24, 29, 0.12);
+    height: 220px;
+    cursor: pointer;
+    transition: 0.1s ease-out;
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-    transition: 0.1s ease-out;
 
     &:hover {
       transform: scale(1.02);

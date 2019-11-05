@@ -290,6 +290,22 @@ const Home = ({ cookies, className }) => {
             updateHabits={updateHabits}
           />
         )}
+        {mode === "finance" && (
+          <Habit
+            habitslength={habits.length}
+            github_id={cookies.github_id}
+            habit_name="finance"
+            updateHabits={updateHabits}
+          />
+        )}
+        {mode === "misc" && (
+          <Habit
+            habitslength={habits.length}
+            github_id={cookies.github_id}
+            habit_name="misc"
+            updateHabits={updateHabits}
+          />
+        )}
       </StyledMainContent>
     </div>
   );

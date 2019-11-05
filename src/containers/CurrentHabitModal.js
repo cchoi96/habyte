@@ -28,6 +28,9 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)"
+    },
+    overlay: {
+      zIndex: "999"
     }
   };
   let habit_history = [];
