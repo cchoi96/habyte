@@ -1,10 +1,8 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
-import GithubProjectListItem from './GithubProjectListItem';
+import GithubProjectListItem from "./GithubProjectListItem";
 
-
-function GithubprojectList({repos, data}) {
-
+function GithubprojectList({ repos, data }) {
   const repoList = repos.map(repo => {
     data[repo] = false;
     return (
@@ -13,23 +11,23 @@ function GithubprojectList({repos, data}) {
       </StyledRepoList>
     );
   });
-  return <StyledGithubProjectList>{repoList}</StyledGithubProjectList>
+  return <StyledGithubProjectList>{repoList}</StyledGithubProjectList>;
 }
 
 export default GithubprojectList;
-
 
 const StyledRepoList = styled.div`
   display: flex;
   height: 100px;
   width: 40%
   justify-content: center;
-  border: 2px solid black;
   border-radius: 10px;
   margin: 10px;
   padding: 10px;
   flex-wrap: wrap;
-  box-shadow: 0.5px 0.5px 1px 1px;
+  background-color: rgba( 140, 218, 254.5, 1)
+  box-shadow: rgba(26,24,29,0.16) 0px 2px 2px 0px, rgba(26,24,29,0.12) 0px 1px 4px 0px;
+  color: #fff;
 
   input {
     display: none;
@@ -47,5 +45,4 @@ const StyledGithubProjectList = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-
 `;

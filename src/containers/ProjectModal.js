@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import GithubProjectList from "./GithubProjectList";
 import Modal from "react-modal";
 import axios from "axios";
@@ -10,7 +10,7 @@ const ProjectModal = ({ setIsOpen, isOpen, repos, cookies, refreshList }) => {
       display: "flex",
       justifyContent: "center",
       width: "65%",
-      overflow: "scroll",
+      overflowY: "scroll",
       height: "70vh",
       top: "50%",
       left: "50%",
@@ -19,8 +19,10 @@ const ProjectModal = ({ setIsOpen, isOpen, repos, cookies, refreshList }) => {
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
       textAlign: "left",
-      backgroundColor: "#f8f9fa",
-      borderRadius: "10px"
+      backgroundColor: "rgba(25, 181, 254, 1)",
+      borderRadius: "10px",
+      color: "#fff",
+      paddingTop: "0"
     },
     overlay: {
       zIndex: "999"
@@ -69,6 +71,7 @@ const ProjectModal = ({ setIsOpen, isOpen, repos, cookies, refreshList }) => {
         contentLabel="Example Modal"
       >
         <StyledForm>
+          <h2>{cookies.github_name}'s Repos</h2>
           <form method="POST" action="/project-save">
             <GithubProjectList repos={repos} data={data} />
             <button onClick={saveProject} type="submit">
@@ -84,25 +87,37 @@ const ProjectModal = ({ setIsOpen, isOpen, repos, cookies, refreshList }) => {
 
 export default ProjectModal;
 
-
 const StyledForm = styled.div`
+  h2 {
+    text-align: center;
+    background-color: rgba(140, 218, 254.5, 1);
+    width: 60%;
+    overflow-wrap: break-word;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin: 0 auto 10px auto;
+    padding: 5px 10px;
+  }
   form {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 
     button {
-      border-radius: 10px;
-      margin: 5px 15px;
-      box-shadow: 0.5px 0.5px 1px 1px;
+      margin: 0 20px 20px 20px;
+      border-radius: 5px;
+      border: 2px solid rgba(136, 54, 0);
+      background-color: rgba(172, 79, 1, 1);
+      color: #fff;
+      box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
+        0 1px 4px 0 rgba(26, 24, 29, 0.12);
+      cursor: pointer;
+      outline: none;
 
-      &: hover {
-        cursor: pointer
-        background-color: #666666
-        color: white
+      :hover {
+        background-color: rgba(172, 79, 1, 0.85);
       }
     }
   }
   cursor: pointer;
-
 `;

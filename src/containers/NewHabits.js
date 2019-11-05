@@ -72,6 +72,9 @@ const StyledDiv = styled.div`
   text-align: center;
   background-color: #fff;
   margin: 15px auto;
+  :first-child {
+    margin-top: 30px;
+  }
   display: flex;
   border-radius: 10px;
   box-shadow: rgba(26, 24, 29, 0.16) 0px 2px 2px 0px,
@@ -122,6 +125,9 @@ const StyledDiv = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    :first-child {
+      margin: auto 15px;
+    }
     .check {
       width: 20px;
       font-size: 0.8em;
@@ -145,6 +151,9 @@ const CheckedStyledDiv = styled.div`
   text-align: center;
   background-color: #fff;
   margin: 15px auto;
+  :first-child {
+    margin-top: 30px;
+  }
   display: flex;
   border-radius: 10px;
   box-shadow: rgba(26, 24, 29, 0.16) 0px 2px 2px 0px,
@@ -187,6 +196,9 @@ const CheckedStyledDiv = styled.div`
     margin: auto 15px;
     display: flex;
     align-items: center;
+    :first-child {
+      margin: auto 15px;
+    }
     .check {
       width: 20px;
       font-size: 0.8em;
