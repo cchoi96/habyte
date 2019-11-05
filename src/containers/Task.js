@@ -6,6 +6,7 @@ import axios from "axios";
 const Task = ({ task, index, projectState, setProjectState, columnid }) => {
   const [onHover, setOnHover] = useState(false);
   const [inEdit, setInEdit] = useState(false);
+  const [editText, setEditText] = useState("asdf");
   const deleteTask = () => {
     let temp = { ...projectState };
     delete temp.tasks[task.id];
@@ -20,12 +21,33 @@ const Task = ({ task, index, projectState, setProjectState, columnid }) => {
       })
       .then(res => console.log(res))
       .catch(err => console.log(err));
-
-    console.log("projectState", projectState);
   };
   const editTask = () => {
-    console.log("edit");
+    setEditText("");
+    setInEdit(prev => !prev);
   };
+  const blurtask = e => {
+    if (editText.length > 0) {
+      submitEdit(e);
+    } else {
+      setInEdit(false);
+    }
+  };
+  const submitEdit = e => {
+    e.preventDefault();
+    if (editText.length > 0) {
+      setProjectState(prev => ({
+        ...prev,
+        ...(prev.tasks[task.id].content = editText)
+      }));
+      axios.post("http://0.0.0.0:8080/projects/tasks/edit", {
+        task: task,
+        new: editText
+      });
+      setInEdit(false);
+    }
+  };
+
   return (
     <Draggable draggableId={task.id} index={index}>
       {(provided, snapshot) => (
@@ -39,7 +61,17 @@ const Task = ({ task, index, projectState, setProjectState, columnid }) => {
           isDragging={snapshot.isDragging}
         >
           {!inEdit && task.content}
-          {onHover && (
+          {inEdit && (
+            <StyledForm onSubmit={submitEdit}>
+              <input
+                autoFocus
+                onBlur={blurtask}
+                onChange={e => setEditText(e.currentTarget.value)}
+              />
+              <input type="submit" value="Edit" />
+            </StyledForm>
+          )}
+          {onHover && !inEdit && (
             <div style={{ position: "relative" }}>
               <StyledDelete onClick={deleteTask}>X</StyledDelete>
               <StyledEdit onClick={editTask}>Edit</StyledEdit>
@@ -50,6 +82,11 @@ const Task = ({ task, index, projectState, setProjectState, columnid }) => {
     </Draggable>
   );
 };
+
+const StyledForm = styled.form`
+  width: 100%;
+  display: flex;
+`;
 
 const StyledDelete = styled.span`
   position: absolute;
