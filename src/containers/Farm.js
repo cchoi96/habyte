@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import FarmTiles from "../components/FarmTiles";
 import styled from "styled-components";
 
@@ -11,8 +11,17 @@ const Farm = ({
   updateCoinInDatabase,
   setHabits
 }) => {
+  const [heart, SetHeart] = useState(false);
+  let timeOut;
+
+  const heartFunction = () => {
+    SetHeart(true);
+    timeOut = setTimeout(() => {
+      SetHeart(false);
+    }, 2000)
+  }
   return (
-    <StyledContainer>
+    <StyledContainer heart={heart}>
       <StyledDiv>
         <div style={{ display: "flex" }}>
           <StyledFarmTiles
@@ -115,8 +124,11 @@ const Farm = ({
       <img
         src={`/assets/other/${cookies.animal}.gif`}
         id="animal"
-        onClick={() => console.log("<3")}
+        onClick={() => {
+          heartFunction()
+        }}
       />
+      <img src="/assets/other/heart.png" alt="heart" id="heart" heart={heart}/>
     </StyledContainer>
   );
 };
@@ -183,6 +195,20 @@ const StyledContainer = styled.div`
     position: absolute;
     top: 75%;
     left: 56%;
+
+    &: hover {
+      cursor: pointer;
+    }
+  }
+
+  #heart {
+    display: ${props => props.heart ? "block" : "none"}
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 73%;
+    left: 60%;
+    opacity: 0.8;
   }
 
   @media only screen and (max-width: 950px) {
@@ -208,11 +234,18 @@ const StyledContainer = styled.div`
       left: 15%;
       top: 28%;
     }
+    #heart {
+      left: 20%;
+      top: 26%;
+    }
   }
 
   @media only screen and (max-width: 480px) {
     #animal {
       left: 0%;
+    }
+    #heart {
+      left: 9%;
     }
   }
 `;
