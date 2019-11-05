@@ -73,6 +73,7 @@ const StyledHome = styled(Home)`
     background-color: #f8f9fa;
     min-height: 100vh;
   }
+
   .main-content {
     margin-top: 5vh;
     display: flex;

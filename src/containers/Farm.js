@@ -135,6 +135,7 @@ const StyledFarmTiles = styled(FarmTiles)`
     transform: translate(-50%, -50%);
     transition: 0.1s ease-out;
     z-index: 5;
+    cursor: pointer;
   }
 
   .soilTile {
