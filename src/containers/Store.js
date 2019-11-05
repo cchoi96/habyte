@@ -32,7 +32,7 @@ const Store = ({ cookies, setMode, userCoin, setUserCoin }) => {
 
   return (
     <StyledStore>
-      <StyledTitle>Plant It</StyledTitle>
+      <StyledTitle>Store</StyledTitle>
       <StoreItems items={items} setItems={setItems} buyItem={buyItem} />
     </StyledStore>
   );

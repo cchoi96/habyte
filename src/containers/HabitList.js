@@ -46,9 +46,14 @@ const StyledDiv = styled.div`
     background-color: rgb(237, 236, 238);
     box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
       0 1px 4px 0 rgba(26, 24, 29, 0.12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.1s ease-out;
 
     &:hover {
-      box-shadow: 0 2px 2px 0 #fff, 0 1px 4px 0 #fff;
+      transform: scale(1.02);
     }
 
     @media only screen and (max-width: 750px) {
@@ -66,13 +71,8 @@ const StyledDiv = styled.div`
 `;
 
 const StyledImg = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   border: none;
-  justify-self: center;
-  align-self: center;
   box-shadow: none;
-  &:hover {
-    transform: scale(1.1);
-  }
 `;

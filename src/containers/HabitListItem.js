@@ -5,9 +5,11 @@ import CurrentHabitModal from "./CurrentHabitModal";
 const HabitListItem = ({ habit, habit_name }) => {
   const [isStatsOpen, setIsStatsOpen] = useState(false);
 
-  const cropImage = (habit) => {
-    return habit.crop_state === 0 ? `/assets/crops/rotten_plant.png` : `/assets/crops/${habit.crop_name}/${habit.crop_name}_Stage_${habit.crop_state}.png`
-  }
+  const cropImage = habit => {
+    return habit.crop_state === 0
+      ? `/assets/crops/rotten_plant.png`
+      : `/assets/crops/${habit.crop_name}/${habit.crop_name}_Stage_${habit.crop_state}.png`;
+  };
 
   return (
     <StyledHabitItem
@@ -18,14 +20,9 @@ const HabitListItem = ({ habit, habit_name }) => {
     >
       <Container>
         <StyledDiv>
-          <div>
-            <StyledHabitName>{habit.name}</StyledHabitName>
-            {habit.counter}/{habit.frequency}
-          </div>
-          <img
-            src={cropImage(habit)}
-            alt=""
-          />
+          <StyledHabitName>{habit.name}</StyledHabitName>
+          {habit.counter}/{habit.frequency}
+          <img src={cropImage(habit)} alt="habit crop" />
         </StyledDiv>
         {isStatsOpen && (
           <CurrentHabitModal
@@ -40,14 +37,18 @@ const HabitListItem = ({ habit, habit_name }) => {
 };
 
 const Container = styled.div`
-  display: flexbox;
+  display: flex;
   align-items: center;
+  justify-content: center;
 `;
 const StyledHabitName = styled.div`
-  font-size: 2em;
+  font-size: 1.5em;
+  word-wrap: wrap;
 `;
 
 const StyledHabitItem = styled.div`
+  display: flex;
+  justify-content: center;
   width: 20%;
   padding: 20px;
   margin: 20px 2.5%;
@@ -56,9 +57,10 @@ const StyledHabitItem = styled.div`
   box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
     0 1px 4px 0 rgba(26, 24, 29, 0.12);
   height: 220px;
+  cursor: pointer;
+  transition: 0.1s ease-out;
   &:hover {
-    box-shadow: 0 2px 1px 3px rgba(26, 24, 29, 0.16),
-      0 1px 1px 1px rgba(26, 24, 29, 0.12);
+    transform: scale(1.02);
   }
 
   @media only screen and (max-width: 750px) {
@@ -77,10 +79,9 @@ const StyledHabitItem = styled.div`
 const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
-
   img {
     width: 50px;
-    margin: 0 auto;
+    margin: 10px auto;
   }
 `;
 export default HabitListItem;
