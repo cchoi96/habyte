@@ -55,11 +55,7 @@ const StyledDiv = styled.div`
   width: 20vw;
   flex-direction: column;
   border-radius: 10px;
-<<<<<<< HEAD
-  z-index: 1;
-=======
   z-index: 998;
->>>>>>> dbf9e845dc9dcdd1217991d31c04411ba313b307
   .headers {
     display: flex;
     height: 7vh;
