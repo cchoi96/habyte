@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import styled from 'styled-components';
 
-const NewTask = ({ setNewTask, projectState, setProjectState, columnId }) => {
+const NewTask = ({ setNewTask, projectState, setProjectState, columnId, addTaskButton, setAddTaskButton }) => {
   const [taskText, setTaskText] = useState("");
   let clickHandler = e => {
     e.preventDefault();
@@ -28,7 +28,10 @@ const NewTask = ({ setNewTask, projectState, setProjectState, columnId }) => {
     <StyledNewTask>
       <form>
         <input className="new-task-name" type="text" onChange={e => setTaskText(e.target.value)} />
-        <input className="add-new-task" onClick={clickHandler} type="submit" value="Add task" />
+        <input className="add-new-task" onClick={(event) => {
+          clickHandler(event);
+          setAddTaskButton(!addTaskButton);
+          }} type="submit" value="Add Task" />
       </form>
     </StyledNewTask>
   );
@@ -37,8 +40,9 @@ const NewTask = ({ setNewTask, projectState, setProjectState, columnId }) => {
 const StyledNewTask = styled.div`
 
   form {
+    margin: 0 auto;
     display: flex;
-    width: 100%;
+    width: 95%;
     flex-wrap: wrap;
     justify-content: center;
   }
@@ -52,7 +56,8 @@ const StyledNewTask = styled.div`
 
   .add-new-task {
     border-radius: 10px;
-    box-shadow: 0px 0.5px 0.5px;
+    box-shadow: 0.5px 0.5px 1px 1px;
+    padding: 2px 12px;
 
     &: hover {
       cursor: pointer;

@@ -66,16 +66,22 @@ const Container = styled.div`
   border: 1px solid lightgrey;
   border-radius: 2px;
   padding: 8px;
+  margin: 0 auto;
   margin-bottom: 8px;
-  transition: background-color 0.2s ease;
+  width: 95%;
+  border-radius: 10px;
   &:hover {
     color: steelblue;
   }
-  background-color: ${props =>
-    props.isDragDisabled
-      ? "lightgrey"
-      : props.isDragging
-      ? "steelblue"
-      : "white"};
 `;
 export default Task;
+
+
+
+
+// background-color: ${props =>
+//   props.isDragDisabled
+//     ? "lightgrey"
+//     : props.isDragging
+//     ? "steelblue"
+//     : "white"};
