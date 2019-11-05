@@ -25,6 +25,7 @@ const Farm = ({
       <StyledDiv>
         <div style={{ display: "flex" }}>
           <StyledFarmTiles
+            top={true}
             habit={habits[0]}
             img={"assets/other/soil-tile-tl.png"}
             setUserCoin={setUserCoin}
@@ -35,6 +36,7 @@ const Farm = ({
             habits={habits}
           />
           <StyledFarmTiles
+            top={true}
             habit={habits[1]}
             img={"assets/other/soil-tile-tm.png"}
             setUserCoin={setUserCoin}
@@ -45,6 +47,7 @@ const Farm = ({
             habits={habits}
           />
           <StyledFarmTiles
+            top={true}
             habit={habits[2]}
             img={"assets/other/soil-tile-tr.png"}
             setUserCoin={setUserCoin}
@@ -139,8 +142,9 @@ const StyledFarmTiles = styled(FarmTiles)`
   position: relative;
   .fruitImg {
     position: absolute;
-    top: 10%;
-    left: 30%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     transition: 0.1s ease-out;
     z-index: 5;
     cursor: pointer;
@@ -152,7 +156,7 @@ const StyledFarmTiles = styled(FarmTiles)`
 
   &:hover {
     .fruitImg {
-      transform: scale(1.1);
+      transform: scale(1.5) translate(-50%, -50%);
     }
   }
 `;
