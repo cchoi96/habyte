@@ -57,10 +57,10 @@ export default Column;
 const StyledDiv = styled.div`
   margin: 0 auto;
   text-align: center;
-  margin-top: 5px;
+  margin-top: 15px;
   box-shadow: 0.5px 0.5px 1px 1px;
   border-radius: 10px;
-  width: 50%;
+  width: fit-content;
   padding: 2px 12px;
   margin-bottom: 15px;
 
