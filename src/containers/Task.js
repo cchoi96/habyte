@@ -26,9 +26,15 @@ const Task = ({ task, index, projectState, setProjectState, columnid }) => {
     setEditText("");
     setInEdit(prev => !prev);
   };
+  const blurtask = e => {
+    if (editText.length > 0) {
+      submitEdit(e);
+    } else {
+      setInEdit(false);
+    }
+  };
   const submitEdit = e => {
     e.preventDefault();
-
     if (editText.length > 0) {
       setProjectState(prev => ({
         ...prev,
@@ -59,7 +65,7 @@ const Task = ({ task, index, projectState, setProjectState, columnid }) => {
             <StyledForm onSubmit={submitEdit}>
               <input
                 autoFocus
-                onBlur={submitEdit}
+                onBlur={blurtask}
                 onChange={e => setEditText(e.currentTarget.value)}
               />
               <input type="submit" value="Edit" />
