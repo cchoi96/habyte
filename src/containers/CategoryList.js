@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import NewHabits from "./NewHabits";
 import OldHabits from "./OldHabits";

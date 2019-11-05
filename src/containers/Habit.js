@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import HabitList from "./HabitList";
-import HabitListItem from "./HabitListItem";
 import HabitModal from "./HabitModal";
 import axios from "axios";
 import styled from "styled-components";

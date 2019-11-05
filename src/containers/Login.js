@@ -9,7 +9,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 const CLIENT_ID = "9eef6e17d66411722d42";
 const REDIRECT_URI = "http://localhost:3000/verify";
 
-const Login = ({ setRepos, repos, setUserInfo, cookies }) => {
+const Login = ({ repos, setUserInfo }) => {
   const verify_user = code => {
     axios
       .post(`http://0.0.0.0:8080/verify`, {
@@ -106,7 +106,6 @@ const StyledLogin = styled.div`
       font-size: 2em;
       width: 75%;
     }
-
   }
 `;
 

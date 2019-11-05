@@ -14,7 +14,8 @@ const AddProject = ({ cookies, refreshList, projectList }) => {
       }
     }
   };
-  //Add projectList as dependency, need to rerender this after projectList is changed
+
+  // Add projectList as dependency, need to rerender this after projectList is changed
   useEffect(() => {
     axios
       .get(`https://api.github.com/users/${cookies.github_name}/repos`)

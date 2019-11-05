@@ -33,7 +33,6 @@ const StoreItems = ({ items, setItems, buyItem }) => {
         onClick={() => {
           setIsOpen(true);
           setBuyingItem(items[item]);
-          console.log(items[item]);
         }}
       >
         <h5 className="item-name">{items[item].name}</h5>

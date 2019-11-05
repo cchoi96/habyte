@@ -14,7 +14,7 @@ const Store = ({ cookies, setMode, userCoin, setUserCoin }) => {
     let total = item.price;
 
     if (total > userCoin) {
-      console.log("too expensive for you, make more money dude");
+      console.log("Not enough money!");
     } else {
       let updateCoin = userCoin;
       updateCoin -= total;

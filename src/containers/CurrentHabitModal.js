@@ -61,13 +61,11 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
       .then(res => res.data)
       .then(data => {
         const habit_history = [];
-        console.log(data);
 
         for (let [index, val] of data.entries()) {
           habit_history.push({ x: index + 1, y: val.counter });
         }
         setModalData(habit_history);
-        console.log(habit_history);
       });
   }, []);
 
@@ -87,7 +85,6 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
     e.preventDefault();
     closeModal();
   };
-  console.log("modalData", modalData);
   return (
     <div>
       <Modal
@@ -119,7 +116,6 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
               <LineMarkSeries data={modalData} animation={"noWobble"} />
             </XYPlot>
           )}
-          <button onClick={closeModal}>close</button>
         </StyledFlexColumn>
       </Modal>
     </div>
@@ -132,6 +128,7 @@ const StyledFlexColumn = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #fff;
 `;
 const StyledTitle = styled.h2`
   color: white;

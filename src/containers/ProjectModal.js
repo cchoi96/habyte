@@ -75,7 +75,7 @@ const ProjectModal = ({ setIsOpen, isOpen, repos, cookies, refreshList }) => {
           <form method="POST" action="/project-save">
             <GithubProjectList repos={repos} data={data} />
             <button onClick={saveProject} type="submit">
-              Submit
+              Save
             </button>
             <button onClick={closeModal}>Close</button>
           </form>
@@ -90,7 +90,7 @@ export default ProjectModal;
 const StyledForm = styled.div`
   h2 {
     text-align: center;
-    background-color: rgba(25,181,254,1);
+    background-color: rgba(25, 181, 254, 1);
     width: 60%;
     overflow-wrap: break-word;
     border-bottom-left-radius: 10px;
@@ -106,16 +106,16 @@ const StyledForm = styled.div`
     button {
       margin: 0 20px 20px 20px;
       border-radius: 5px;
-      border: 2px solid rgba(136, 54, 0);
-      background-color: rgba(25,181,254,0.7);
+      background-color: rgba(25, 181, 254, 1);
       color: #fff;
       box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
         0 1px 4px 0 rgba(26, 24, 29, 0.12);
       cursor: pointer;
       outline: none;
+      transition: 0.1s ease-out;
 
       :hover {
-        background-color: rgba(172, 79, 1, 0.85);
+        transform: scale(1.02);
       }
     }
   }

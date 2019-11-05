@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Task from "./Task";
 import { Droppable } from "react-beautiful-dnd";
 import NewTask from "../components/NewTask";
-const Column = ({ key, column, projectState, setProjectState, tasks }) => {
+const Column = ({ column, projectState, setProjectState, tasks }) => {
   let [newTask, setNewTask] = useState(false);
   let [addTaskButton, setAddTaskButton] = useState(true);
   let addATask = addTaskButton ? "New Task" : "Close";
