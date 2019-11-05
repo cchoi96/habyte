@@ -55,7 +55,6 @@ const ProjectList = ({ cookies, setProjectSelected, projectSelected }) => {
 };
 
 const StyledProjectList = styled.div`
-
   border: 2px solid #D7DEE3
   border-radius: 10px;
   list-style-type: none;
