@@ -60,7 +60,7 @@ const StyledLogin = styled.div`
   font-family: "Varela Round", sans-serif;
   height: 100vh;
   text-align: center;
-
+  background-image: url("/assets/other/background.jpg");
   h1 {
     margin-bottom: 15vh;
     padding-top: 15vh;
