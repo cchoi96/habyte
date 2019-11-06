@@ -7,7 +7,8 @@ const NewHabits = ({ cookies, habits, setHabits, refreshHabits }) => {
     axios
       .get(`http://0.0.0.0:8080/${cookies.github_id}/new-habits`)
       .then(res => {
-        setHabits(res.data);
+        let habitsArr = res.data.sort((a, b) => a.id - b.id);
+        setHabits(habitsArr);
       });
   }, []);
 

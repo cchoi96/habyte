@@ -31,6 +31,7 @@ const Home = ({ cookies, className }) => {
   const updateHabits = github_id => {
     axios.get(`http://0.0.0.0:8080/${github_id}/new-habits`).then(res => {
       let habitsArray = res.data;
+      habitsArray.sort((a, b) => a.id - b.id);
       setHabits(habitsArray);
     });
   };
@@ -246,6 +247,7 @@ const Home = ({ cookies, className }) => {
           .get(`http://0.0.0.0:8080/${cookies.github_id}/new-habits`)
           .then(res => {
             let habits = res.data;
+            habits.sort((a, b) => a.id - b.id);
             setHabits(habits);
             setMode("farm");
           });
@@ -257,6 +259,7 @@ const Home = ({ cookies, className }) => {
   const refreshHabits = github_id => {
     axios.get(`http://0.0.0.0:8080/${github_id}/new-habits`).then(res => {
       let newHabitsArray = res.data;
+      newHabitsArray.sort((a, b) => a.id - b.id);
       setHabits(newHabitsArray);
     });
   };
