@@ -47,7 +47,8 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
-      paddingTop: "0px"
+      paddingTop: "0px",
+      borderRadius: "10px"
     },
     overlay: {
       zIndex: "999"
