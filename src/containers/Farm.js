@@ -207,12 +207,12 @@ const StyledContainer = styled.div`
 
   #heart {
     display: ${props => (props.heart ? "block" : "none")}
-    height: 20px;
-    width: 20px;
+    height: 60px;
+    width: 60px;
     position: absolute;
-    top: 73%;
-    left: 60%;
-    opacity: 0.8;
+    top: 66%;
+    left: 57%;
+    opacity: 1;
   }
 
   @media only screen and (max-width: 950px) {
@@ -240,8 +240,8 @@ const StyledContainer = styled.div`
       top: 28%;
     }
     #heart {
-      left: 20%;
-      top: 26%;
+      left: 15%;
+      top: 20%;
     }
   }
 
@@ -250,7 +250,8 @@ const StyledContainer = styled.div`
       left: 0%;
     }
     #heart {
-      left: 9%;
+      left: 1%;
+      top: 20%;
     }
   }
 `;

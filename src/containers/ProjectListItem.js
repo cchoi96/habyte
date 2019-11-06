@@ -74,7 +74,7 @@ const StyledDiv = styled.div`
     min-height: 60px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    padding: 0 5px;
+    padding: 0 10px;
   }
 
   .projectCommit {
