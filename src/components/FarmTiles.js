@@ -60,7 +60,7 @@ const FarmTiles = ({
             <li>Habit: {habit.name}</li>
             <li>
               {habit.crop_name[0].toUpperCase() + habit.crop_name.slice(1)}:
-              Lvl. {habit.crop_state}
+              Lv. {habit.crop_state}
             </li>
 
             {habit.notes && <li>Notes: {habit.notes}</li>}
@@ -112,13 +112,29 @@ const StyledUl = styled.ul`
 
   padding: 10px;
   list-style: none;
+
+  button {
+    border-radius: 10px;
+    margin-left: 5px;
+    margin-top: 5px;
+    box-shadow: 0px 0px 1px 0.3px;
+
+    &: hover {
+      background-color: #8B4513;
+      color: white;
+    }
+  }
 `;
 const StyledHover = styled.div`
   position: absolute;
   width: max-content;
-  transform: ${props => (props.top ? "translateY(60%)" : "translateY(-70%)")};
+  transform: ${props => (props.top ? "translateY(50%)" : "translateY(-50%)")};
   border-radius: 10px;
   background-color: rgba(150, 255, 150, 0.6);
   z-index: 1000;
+
+  @media only screen and (max-width: 800px) {
+    transform: ${props => (props.top ? "translateY(40%)" : "translateY(-40%)")};
+  }
 `;
 export default FarmTiles;
