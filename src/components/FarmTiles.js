@@ -84,7 +84,9 @@ const FarmTiles = ({
             {habit.crop_state === 5 && (
               <div>
                 Sell ripe {habit.crop_name}
-                <button onClick={sellCrop}> Sell </button>
+                <div id="button-div">
+                  <button onClick={sellCrop}> Sell </button>
+                </div>
               </div>
             )}
           </StyledUl>
@@ -122,18 +124,27 @@ const StyledUl = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   padding: 10px;
   list-style: none;
 
+  #button-div {
+    display: flex;
+    justify-content: center;
+  }
+
   button {
-    border-radius: 10px;
-    margin-left: 5px;
     margin-top: 5px;
-    box-shadow: 0px 0px 1px 0.3px;
+    width: 50px;
+    border-radius: 5px;
+    border: 2px solid rgba(136, 54, 0);
+    background-color: rgba(172, 79, 1, 1);
+    color: #fff;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    outline: none;
 
     &: hover {
-      background-color: #8b4513;
+      background-color: rgba(172, 79, 1, 0.85);
       color: white;
     }
   }
@@ -141,13 +152,18 @@ const StyledUl = styled.ul`
 const StyledHover = styled.div`
   position: absolute;
   width: max-content;
-  transform: ${props => (props.top ? "translateY(60%)" : "translateY(-100%)")};
+  transform: ${props => (props.top ? "translateY(60%)" : "translateY(-80%)")};
   border-radius: 10px;
-  background-color: rgba(150, 255, 150, 0.6);
+  background-color: rgba(255, 255, 255, 1);
   z-index: 1000;
 
-  @media only screen and (max-width: 800px) {
-    transform: ${props => (props.top ? "translateY(40%)" : "translateY(-40%)")};
+  @media only screen and (max-width: 1100px) {
+    transform: ${props => (props.top ? "translateY(50%)" : "translateY(-50%)")};
+  }
+  
+
+  @media only screen and (max-width: 950px) {
+    transform: ${props => (props.top ? "translateY(40%)" : "translateY(-45%)")};
   }
 `;
 export default FarmTiles;
