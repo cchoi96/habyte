@@ -143,12 +143,14 @@ const Home = ({ cookies, className }) => {
         if (habit.is_new_habit) {
           if (isOverDays(habit.last_check_date_week, 7)) {
             if (isCounterMoreFrequency(habit)) {
-              //upgrade the crop_State to the next state
-              queryArray.push(
-                axios.put(
-                  `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}`
-                )
-              );
+              if (habit.crop_state < 5) {
+                //upgrade the crop_State to the next state
+                queryArray.push(
+                  axios.put(
+                    `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}`
+                  )
+                );
+              }
             } else {
               if (habit.name !== "coding") {
                 if (habit.is_already_dying) {
@@ -213,17 +215,18 @@ const Home = ({ cookies, className }) => {
           }
         } else {
           if (isOverDays(habit.last_check_date_day, 14)) {
-            if (habit.counter > 0 ) {
+            if (habit.counter > 0) {
               setUserCoin(prev => prev + 5);
             }
             const new_date_week = new Date();
             queryArray.push(
               axios.put(
-              `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/counter`,
-              {
-                new_date_week: new_date_week
-              }
-            ));
+                `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/counter`,
+                {
+                  new_date_week: new_date_week
+                }
+              )
+            );
             const new_date_day = new Date();
             queryArray.push(
               axios.put(
@@ -233,7 +236,7 @@ const Home = ({ cookies, className }) => {
                   habit: habit.name
                 }
               )
-            )
+            );
           }
         }
       }
