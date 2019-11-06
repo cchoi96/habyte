@@ -126,6 +126,7 @@ const StyledHabitDiv = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+
   width: 100%;
   height: 73vh;
   box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),

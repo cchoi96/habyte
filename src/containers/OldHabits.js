@@ -68,9 +68,9 @@ const StyledMainDiv = styled.div`
 `;
 
 const StyledDiv = styled.div`
-  width: 90%;
+  width: 85%;
   height: 60px;
-  text-align: center;
+  text-align: left;
   background-color: #fff;
   margin: 15px auto;
   :first-child {
@@ -117,11 +117,12 @@ const StyledDiv = styled.div`
     overflow-x: scroll;
     h5 {
       margin: 5px;
+      white-space: nowrap;
     }
   }
 
   @media only screen and (max-width: 950px) {
-    width: 100px;
+    width: 150px;
     margin: auto 15px;
     display: flex;
     align-items: center;
@@ -135,8 +136,8 @@ const StyledDiv = styled.div`
     }
 
     .info {
-      width: 100px;
-      margin: 0 auto;
+      width: 130px;
+      margin: auto 5px;
       overflow-x: scroll;
       align-items: center;
       h5 {
@@ -147,9 +148,9 @@ const StyledDiv = styled.div`
 `;
 
 const CheckedStyledDiv = styled.div`
-  width: 90%;
+  width: 85%;
   height: 60px;
-  text-align: center;
+  text-align: left;
   background-color: #fff;
   margin: 15px auto;
   :first-child {
@@ -187,13 +188,15 @@ const CheckedStyledDiv = styled.div`
     margin-left: 10px;
     align-items: center;
     color: #a5a1ac;
+    overflow-x: scroll;
     h5 {
       margin: 0;
+      white-space: nowrap;
     }
   }
 
   @media only screen and (max-width: 950px) {
-    width: 100px;
+    width: 150px;
     margin: auto 15px;
     display: flex;
     align-items: center;
@@ -206,8 +209,8 @@ const CheckedStyledDiv = styled.div`
     }
 
     .info {
-      width: 100px;
-      margin: 0 auto;
+      width: 130px;
+      margin: auto 5px;
       overflow-x: scroll;
       align-items: center;
       h5 {
