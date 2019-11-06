@@ -131,7 +131,7 @@ const Farm = ({
           heartFunction();
         }}
       />
-      <img src="/assets/other/heart.png" alt="heart" id="heart" heart={heart} />
+      <img src="/assets/other/heart.png" alt="heart" id="heart" heart={heart.toString()} />
     </StyledContainer>
   );
 };

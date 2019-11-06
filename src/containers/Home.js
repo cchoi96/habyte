@@ -38,7 +38,6 @@ const Home = ({ cookies, className }) => {
 
   useEffect(() => {
     // Sets project state
-    console.log("COOKIES ==>", cookies);
     axios
       .post("http://0.0.0.0:8080/projects", {
         github_id: cookies.github_id
