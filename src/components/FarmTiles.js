@@ -78,7 +78,7 @@ const FarmTiles = ({
             {habit.crop_state === 0 && (
               <StyledButtonContainer>
                 {/* <input onClick={revive} type="button" value="Revive" /> */}
-                <input onClick={remove} type="button" value="Remove" />
+                <StyledButton onClick={remove} type="button" value="Remove" />
               </StyledButtonContainer>
             )}
             {habit.crop_state === 5 && (
@@ -96,6 +96,19 @@ const FarmTiles = ({
     </div>
   );
 };
+
+const StyledButton = styled.input`
+  border-radius: 10px;
+  box-shadow: rgba(26, 24, 29, 0.16) 0px 2px 2px 0px,
+    rgba(26, 24, 29, 0.12) 0px 1px 4px 0px;
+  transition: 0.1s ease-in;
+  background-color: rgba(36, 204, 143);
+  border: none;
+  &:hover {
+    box-shadow: rgba(26, 24, 29, 0.32) 0px 2.5px 2px 1px,
+      rgba(26, 24, 29, 0.25) 0px 1.5px 4px 1px;
+  }
+`;
 
 const StyledButtonContainer = styled.div`
   width: 100%;
@@ -116,7 +129,7 @@ const StyledUl = styled.ul`
 const StyledHover = styled.div`
   position: absolute;
   width: max-content;
-  transform: ${props => (props.top ? "translateY(60%)" : "translateY(-70%)")};
+  transform: ${props => (props.top ? "translateY(55%)" : "translateY(-70%)")};
   border-radius: 10px;
   background-color: rgba(150, 255, 150, 0.6);
   z-index: 1000;
