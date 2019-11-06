@@ -97,22 +97,23 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
         style={customStyles}
         contentLabel="Habit Modal"
       >
-        <StyledFlexDiv>
-          <img
-            src={`/assets/crops/${habit.crop_name}/${habit.crop_name}_Stage_${habit.crop_state}.png`}
-            alt=""
-          />
-          <StyledTitle category_name={habit.category_name}>
-            {habit.name}
-          </StyledTitle>
-        </StyledFlexDiv>
-        <div>Stats</div>
-        <p>Habit created on {habit.created_at.slice(0, 10)}</p>
-        <p>
-          Current habit progress: {habit.counter} / {habit.frequency} for the
-          week
-        </p>
-
+        <StyledFlexColumn>
+          <StyledFlexDiv>
+            <img
+              src={`/assets/crops/${habit.crop_name}/${habit.crop_name}_Stage_${habit.crop_state}.png`}
+              alt=""
+            />
+            <StyledTitle category_name={habit.category_name}>
+              {habit.name}
+            </StyledTitle>
+          </StyledFlexDiv>
+          <div>Stats</div>
+          <p>Habit created on {habit.created_at.slice(0, 10)}</p>
+          <p>
+            Current habit progress: {habit.counter} / {habit.frequency} for the
+            week
+          </p>
+        </StyledFlexColumn>
         {modalData.length > 1 && (
           <XYPlot width={400} height={300}>
             <XAxis tickValues={[1, 2, 3, 4]} />
@@ -132,6 +133,11 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
 
 export default CurrentHabitModal;
 
+const StyledFlexColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 const StyledTitle = styled.h2`
   color: white;
   text-align: center;
