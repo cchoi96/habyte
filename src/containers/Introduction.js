@@ -58,12 +58,12 @@ const Introduction = ({ cookies, setUserInfo }) => {
     },
     8: {
       message:
-        "You can buy real strawberries, melons, grapes, or even plant a real tree! Are you ready to get started?",
+        "You can use your coins to plant trees in real life! Are you ready to get started?",
       input: false,
       image: false
     },
     9: {
-      message: `Currently, I only know you as your boring Github ID: ${cookies.github_id}. What is your real name?`,
+      message: `Currently, I only know you as your boring Github name: ${cookies.github_name}. What is your real name?`,
       input: true,
       image: false
     },
