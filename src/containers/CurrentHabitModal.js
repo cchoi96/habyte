@@ -63,7 +63,7 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
         console.log(data);
 
         for (let [index, val] of data.entries()) {
-          habit_history.push({ x: index, y: val.counter });
+          habit_history.push({ x: index + 1, y: val.counter });
         }
         setModalData(habit_history);
         console.log(habit_history);
