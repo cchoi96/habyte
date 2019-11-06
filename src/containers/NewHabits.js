@@ -23,7 +23,6 @@ const NewHabits = ({ cookies, habits, setHabits, refreshHabits }) => {
   };
 
   const newHabitsList = habits.map(habit => {
-    console.log('this is habit inside newHabitsList',habit)
     return habit.is_checked_day ? (
       <CheckedStyledDiv key={habit.name}>
         <div className="check">

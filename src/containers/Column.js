@@ -57,45 +57,50 @@ const Column = ({ key, column, projectState, setProjectState, tasks }) => {
 export default Column;
 
 const StyledDiv = styled.div`
-  margin: 0 auto;
+  margin: 5px auto;
   text-align: center;
-  margin-top: 15px;
   box-shadow: 0.5px 0.5px 1px 1px;
   border-radius: 10px;
   width: fit-content;
   padding: 2px 12px;
-  margin-bottom: 15px;
+  background-color: rgba(140, 218, 254.5, 1);
+  box-shadow: rgba(26, 24, 29, 0.16) 0px 2px 2px 0px,
+    rgba(26, 24, 29, 0.12) 0px 1px 4px 0px;
+  color: #fff;
+  transition: 0.1s ease-out;
 
   &:hover {
     cursor: pointer;
-    background-color: rgba(200, 133, 63, 0.8);
-    color: #ffffff;
-    border-radius: 10px;
+    transform: scale(1.02);
   }
 `;
 
 const Container = styled.div`
-  margin: 8px;
-  border: 1px solid lightgrey;
-  border-radius: 2px;
-  width: 50%;
-  height: fit-content;
   display: flex;
-  justify-content: center;
-  min-width: 80%;
   flex-direction: column;
+  justify-content: center;
+  margin: 7.5px;
+  :first-child {
+    margin-left: 15px;
+  }
+  width: 40%;
+  height: fit-content;
   border-radius: 10px;
-  box-shadow: 1px 1px 2px 1px;
   overflow-y: auto;
-
+  box-shadow: rgba(26, 24, 29, 0.16) 0px 2px 2px 0px,
+    rgba(26, 24, 29, 0.12) 0px 1px 4px 0px;
   @media only screen and (max-width: 950px) {
-    min-width: 80%;
+    min-width: 60%;
   }
 `;
 const Title = styled.h3`
   padding: 8px;
+  margin-bottom: 0;
   text-align: center;
-  font-weight: 700;
+  font-weight: 600;
+  height: 100%;
+  color: #fff;
+  background-color: rgba(140, 218, 254.5, 1);
 `;
 const TaskList = styled.div`
   padding: 8px;

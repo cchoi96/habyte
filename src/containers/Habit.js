@@ -62,7 +62,6 @@ const StyledHabitCategory = styled.div`
   flex-direction: column;
   overflow-y: scroll;
   border-radius: 10px;
-  background-color: #edecee;
   box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
     0 1px 4px 0 rgba(26, 24, 29, 0.12);
   background-color: ${props =>
@@ -75,7 +74,6 @@ const StyledHabitCategory = styled.div`
       : props.habit_name === "misc"
       ? "rgba(145, 61, 136, 0.5)"
       : "rgba(36, 204, 143, 0.5)"};
-  margin-bottom: 20px;
 
   .habit-info {
     background-color: ${props =>

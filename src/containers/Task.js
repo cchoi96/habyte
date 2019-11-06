@@ -100,13 +100,14 @@ const StyledEdit = styled.span`
 `;
 
 const Container = styled.div`
-  border: 1px solid lightgrey;
+  border: 1px solid rgba(140, 218, 254.5, 1);
   border-radius: 2px;
   padding: 8px;
-  margin: 0 auto;
-  margin-bottom: 8px;
+  margin: 10px auto;
   width: 95%;
   border-radius: 10px;
+  text-align: left;
+  padding-left: 10px;
   &:hover {
     color: steelblue;
   }

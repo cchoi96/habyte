@@ -69,7 +69,7 @@ const StyledNavbar = styled(Navbar)`
   font-size: 1.1em;
   color: #fff;
   background: rgba(36, 204, 143);
-  box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
+  box-shadow: 0 4px 10px 0 rgba(0,81,131,0.12);
   #basic-nav-dropdown,
   #responsive-navbar-nav a {
     background-color: rgba(36, 204, 143);
