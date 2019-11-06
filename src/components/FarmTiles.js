@@ -58,8 +58,8 @@ const FarmTiles = ({
           <StyledUl>
             <li>Habit: {habit.name}</li>
             <li>
-              {habit.crop_name[0].toUpperCase() + habit.crop_name.slice(1)}: Lv.{" "}
-              {habit.crop_state}
+              {habit.crop_name[0].toUpperCase() + habit.crop_name.slice(1)}:
+              Week {habit.crop_state}
             </li>
 
             {habit.notes && <li>Notes: {habit.notes}</li>}
