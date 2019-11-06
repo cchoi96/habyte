@@ -73,7 +73,7 @@ const Header = ({ cookies, setMode, className, userCoin }) => {
 const StyledNavbar = styled(Navbar)`
   font-family: "Roboto", sans-serif;
   font-weight: 550;
-  font-size: 1.1em;
+  font-size: 1.5em;
   color: #fff;
   background: rgba(36, 204, 143);
   box-shadow: 0 4px 10px 0 rgba(0,81,131,0.12);
