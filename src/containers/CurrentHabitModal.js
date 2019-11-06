@@ -38,37 +38,36 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
 
   const customStyles = {
     content: {
-      width: "50%",
-      overflow: "scroll",
+      height: "max-content",
       backgroundColor: backgroundColor(habit.category_name),
-      height: "60vh",
+      height: "max-content",
       top: "50%",
       left: "50%",
       right: "auto",
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
-      paddingTop: "0px"
+      paddingTop: "0px",
+      borderRadius: "10px"
     },
     overlay: {
       zIndex: "999"
     }
   };
-  let habit_history = [];
 
   useEffect(() => {
     axios
       .get(`http://0.0.0.0:8080/user/project/${habit.id}`)
       .then(res => res.data)
       .then(data => {
+        const habit_history = [];
         console.log(data);
 
         for (let [index, val] of data.entries()) {
           habit_history.push({ x: index + 1, y: val.counter });
         }
-
-        console.log(habit_history);
         setModalData(habit_history);
+        console.log(habit_history);
       });
   }, []);
 
@@ -88,7 +87,7 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
     e.preventDefault();
     closeModal();
   };
-  console.log(habit);
+  console.log("modalData", modalData);
   return (
     <div>
       <Modal
@@ -99,33 +98,37 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
       >
         <StyledFlexColumn>
           <StyledFlexDiv>
-            <img
-              src={`/assets/crops/${habit.crop_name}/${habit.crop_name}_Stage_${habit.crop_state}.png`}
-              alt=""
-            />
             <StyledTitle category_name={habit.category_name}>
               {habit.name}
             </StyledTitle>
           </StyledFlexDiv>
+          <img
+            src={`/assets/crops/${habit.crop_name}/${habit.crop_name}_Stage_${habit.crop_state}.png`}
+            alt=""
+          />
           <div>Stats</div>
           <p>Habit created on {habit.created_at.slice(0, 10)}</p>
           <p>
             Current habit progress: {habit.counter} / {habit.frequency} for the
             week
           </p>
-        </StyledFlexColumn>
-        {modalData.length > 1 && (
-          <XYPlot width={400} height={300}>
-            <XAxis tickValues={[1, 2, 3, 4]} />
-            <YAxis tickValues={[0, 1, 2, 3, 4, 5, 6, 7]} />
+          {modalData.length > 1 && (
+            <XYPlot width={400} height={300}>
+              <XAxis tickValues={[1, 2, 3, 4]} />
+              <YAxis
+                tickValues={[0, 1, 2, 3, 4, 5, 6, 7]}
+                includeMargin={false}
+                xPercent={0.06}
+                yPercent={0.06}
+              />
 
-            {/* <HorizontalGridLines />
+              {/* <HorizontalGridLines />
           <VerticalGridLines /> */}
-            <LineMarkSeries data={modalData} />
-          </XYPlot>
-        )}
-
-        <button onClick={closeModal}>close</button>
+              <LineMarkSeries data={modalData} animation={"noWobble"} />
+            </XYPlot>
+          )}
+          <button onClick={closeModal}>close</button>
+        </StyledFlexColumn>
       </Modal>
     </div>
   );

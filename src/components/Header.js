@@ -8,11 +8,7 @@ const Header = ({ cookies, setMode, className, userCoin }) => {
   return (
     <StyledNavbar collapseOnSelect expand="md" className={className}>
       <StyledBrand>
-        <img
-          style={{ width: "100px", height: "60px" }}
-          src="/assets/other/Habytelogo.png"
-          alt=""
-        />
+        <img src="/assets/other/Habytelogo.png" alt="logo" />
       </StyledBrand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
@@ -72,8 +68,8 @@ const Header = ({ cookies, setMode, className, userCoin }) => {
 
 const StyledNavbar = styled(Navbar)`
   font-family: "Roboto", sans-serif;
-  font-weight: 550;
-  font-size: 1.5em;
+  font-weight: 400;
+  font-size: 1.3em;
   color: #fff;
   background: rgba(36, 204, 143);
   box-shadow: 0 4px 10px 0 rgba(0,81,131,0.12);
@@ -131,8 +127,10 @@ const StyledNavbar = styled(Navbar)`
 `;
 
 const StyledBrand = styled(Navbar)`
-  font-family: "Roboto", sans-serif;
-  font-size: 1.5em;
+  img {
+    height: 50px;
+    width: 50px;
+  }
 `;
 
 export default Header;
