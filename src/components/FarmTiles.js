@@ -141,11 +141,7 @@ const StyledUl = styled.ul`
 const StyledHover = styled.div`
   position: absolute;
   width: max-content;
-<<<<<<< HEAD
-  transform: ${props => (props.top ? "translateY(55%)" : "translateY(-70%)")};
-=======
   transform: ${props => (props.top ? "translateY(50%)" : "translateY(-50%)")};
->>>>>>> e41d7c6a8d62cc024f46397dbaa6cd8a7b6efcb7
   border-radius: 10px;
   background-color: rgba(150, 255, 150, 0.6);
   z-index: 1000;
