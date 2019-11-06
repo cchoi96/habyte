@@ -39,7 +39,6 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
   const customStyles = {
     content: {
       height: "max-content",
-      overflow: "scroll",
       backgroundColor: backgroundColor(habit.category_name),
       height: "max-content",
       top: "50%",
@@ -114,7 +113,7 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
           </p>
           {modalData.length > 1 && (
             <XYPlot width={400} height={300}>
-              <XAxis tickValues={[0, 1, 2, 3, 4]} />
+              <XAxis tickValues={[1, 2, 3, 4]} />
               <YAxis
                 tickValues={[0, 1, 2, 3, 4, 5, 6, 7]}
                 includeMargin={false}
