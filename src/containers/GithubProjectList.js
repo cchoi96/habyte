@@ -25,7 +25,7 @@ const StyledRepoList = styled.div`
   margin: 10px;
   padding: 10px;
   flex-wrap: wrap;
-  background-color: rgba( 140, 218, 254.5, 1)
+  background-color: rgba(25,181,254,1)
   box-shadow: rgba(26,24,29,0.16) 0px 2px 2px 0px, rgba(26,24,29,0.12) 0px 1px 4px 0px;
   color: #fff;
 

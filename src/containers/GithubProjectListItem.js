@@ -21,7 +21,7 @@ export default GithubProjectListItem;
 
 const StyledLabel = styled.label`
   background-color: ${props =>
-    props.selected ? "#3cd3d1" : "rgba( 140, 218, 254.5, 1);"};
+    props.selected ? "#6c7bf8" : "rgba(25,181,254,1)"};
   width: 100%;
   display: flex;
   cursor: pointer;

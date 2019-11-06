@@ -19,7 +19,7 @@ const ProjectModal = ({ setIsOpen, isOpen, repos, cookies, refreshList }) => {
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
       textAlign: "left",
-      backgroundColor: "rgba(25, 181, 254, 1)",
+      backgroundColor: "rgba(255, 255, 255, 0.8)",
       borderRadius: "10px",
       color: "#fff",
       paddingTop: "0"
@@ -90,7 +90,7 @@ export default ProjectModal;
 const StyledForm = styled.div`
   h2 {
     text-align: center;
-    background-color: rgba(140, 218, 254.5, 1);
+    background-color: rgba(25,181,254,1);
     width: 60%;
     overflow-wrap: break-word;
     border-bottom-left-radius: 10px;
@@ -107,7 +107,7 @@ const StyledForm = styled.div`
       margin: 0 20px 20px 20px;
       border-radius: 5px;
       border: 2px solid rgba(136, 54, 0);
-      background-color: rgba(172, 79, 1, 1);
+      background-color: rgba(25,181,254,0.7);
       color: #fff;
       box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
         0 1px 4px 0 rgba(26, 24, 29, 0.12);
