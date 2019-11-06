@@ -69,7 +69,8 @@ const StyledStore = styled.div`
   overflow-y: scroll;
   
   @media only screen and (max-width: 950px) {
-    width: 88vw;
+    width: 100%;
+    margin: 0 auto;
     height: 70vh;
     order: 1;
     margin-bottom: 100px;

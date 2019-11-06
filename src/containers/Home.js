@@ -140,25 +140,37 @@ const Home = ({ cookies, className }) => {
       let habitsArray = res.data;
       let queryArray = [];
       for (let habit of habitsArray) {
-        if (isOverDays(habit.last_check_date_week, 7)) {
-          if (isCounterMoreFrequency(habit)) {
-            //upgrade the crop_State to the next state
-            queryArray.push(
-              axios.put(
-                `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}`
-              )
-            );
-          } else {
-            if (habit.name !== "coding") {
-              if (habit.is_already_dying) {
+        if (habit.is_new_habit) {
+          if (isOverDays(habit.last_check_date_week, 7)) {
+            if (isCounterMoreFrequency(habit)) {
+              if (habit.crop_state < 5) {
+                //upgrade the crop_State to the next state
                 queryArray.push(
                   axios.put(
-                    `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/dead`
+                    `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}`
                   )
                 );
+              }
+            } else {
+              if (habit.name !== "coding") {
+                if (habit.is_already_dying) {
+                  queryArray.push(
+                    axios.put(
+                      `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/dead`
+                    )
+                  );
+                } else {
+                  if (habit.crop_state > 0) {
+                    //downgrade the crop_state and is_already_dying = true
+                    queryArray.push(
+                      axios.post(
+                        `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/dying`
+                      )
+                    );
+                  }
+                }
               } else {
-                if (habit.crop_state > 0) {
-                  //downgrade the crop_state and is_already_dying = true
+                if (habit.crop_state > 1) {
                   queryArray.push(
                     axios.post(
                       `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/dying`
@@ -166,46 +178,66 @@ const Home = ({ cookies, className }) => {
                   );
                 }
               }
-            } else {
-              if (habit.crop_state > 1) {
-                queryArray.push(
-                  axios.post(
-                    `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/dying`
-                  )
-                );
-              }
             }
+            //reset counter and last_check_date_week
+            const new_date_week = datePlusDays(habit.last_check_date_week, 7);
+
+            queryArray.push(
+              axios.post(
+                `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/record`,
+                {
+                  counter: habit.counter,
+                  id: habit.id
+                }
+              )
+            );
+            queryArray.push(
+              axios.put(
+                `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/counter`,
+                {
+                  new_date_week: new_date_week
+                }
+              )
+            );
           }
-          //reset counter and last_check_date_week
-          const new_date_week = datePlusDays(habit.last_check_date_week, 7);
 
-          queryArray.push(
-            axios.post(
-              `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/record`,
-              {
-                counter: habit.counter,
-                id: habit.id
-              }
-            )
-          );
-          queryArray.push(
-            axios.put(
-              `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/counter`,
-              {
-                new_date_week: new_date_week
-              }
-            )
-          );
-        }
-
-        if (isOverDays(habit.last_check_date_day, 1)) {
-          const new_date_day = new Date();
-          queryArray.push(
-            axios.put(`http://0.0.0.0:8080/${cookies.github_id}/update/habit`, {
-              new_date_day: new_date_day,
-              habit: habit.name
-            })
-          );
+          if (isOverDays(habit.last_check_date_day, 1)) {
+            const new_date_day = new Date();
+            queryArray.push(
+              axios.put(
+                `http://0.0.0.0:8080/${cookies.github_id}/update/habit`,
+                {
+                  new_date_day: new_date_day,
+                  habit: habit.name
+                }
+              )
+            );
+          }
+        } else {
+          if (isOverDays(habit.last_check_date_day, 14)) {
+            if (habit.counter > 0) {
+              setUserCoin(prev => prev + 5);
+            }
+            const new_date_week = new Date();
+            queryArray.push(
+              axios.put(
+                `http://0.0.0.0:8080/${cookies.github_id}/habits/${habit.name}/counter`,
+                {
+                  new_date_week: new_date_week
+                }
+              )
+            );
+            const new_date_day = new Date();
+            queryArray.push(
+              axios.put(
+                `http://0.0.0.0:8080/${cookies.github_id}/update/habit`,
+                {
+                  new_date_day: new_date_day,
+                  habit: habit.name
+                }
+              )
+            );
+          }
         }
       }
       //Try to update the states after each if statement, so we don't need to

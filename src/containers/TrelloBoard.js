@@ -102,7 +102,9 @@ const TrelloBoard = ({ projectState, setProjectState, projectSelected }) => {
               setNewColumn(!newColumn);
             }}
           >
-            +
+            <div id="add-project">
+              <img src="/assets/other/white-plus.png"></img>
+            </div>
           </StyledAddNewColumn>
           {newColumn && (
             <NewColumn
@@ -120,7 +122,7 @@ const TrelloBoard = ({ projectState, setProjectState, projectSelected }) => {
 
 const StyledTrelloBoard = styled.div`
   display: flex;
-  height: 70%;
+  height: 68%;
   background-color: rgba(25, 181, 254, 0.7);
   width: 95%;
   overflow-x: scroll;
@@ -140,30 +142,42 @@ const StyledTrelloBoard = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     height: fit-content;
-    width: 100px;
+    width: 150px;
+  }
+
+  @media only screen and (max-width: 950px) {
+    height: 64.5%;
   }
 `;
 
 const StyledAddNewColumn = styled.div`
-  height: auto;
-  margin-top: 7.5px;
-  text-align: center;
-  border-radius: 10px;
-  color: #fff;
-  box-shadow: rgba(26, 24, 29, 0.16) 0px 2px 2px 0px,
-    rgba(26, 24, 29, 0.12) 0px 1px 4px 0px;
-  background-color: rgba(
-    ${25 * 0.5 + 255 * 0.5},
-    ${181 * 0.5 + 255 * 0.5},
-    ${254 * 0.5 + 255 * 0.5},
-    1
-  );
-  min-width: 100px;
-  transition: 0.1s ease-out;
-
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.02);
+  #add-project {
+    height: 60px;
+    width: 60px;
+    margin-top: 7.5px;
+    transition: 0.1s ease-out;
+    border-radius: 10px;
+    box-shadow: rgba(26, 24, 29, 0.16) 0px 2px 2px 0px,
+      rgba(26, 24, 29, 0.12) 0px 1px 4px 0px;
+    background-color: rgba(
+      ${25 * 0.5 + 255 * 0.5},
+      ${181 * 0.5 + 255 * 0.5},
+      ${254 * 0.5 + 255 * 0.5},
+      1
+    );
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+    }
+  }
+  img {
+    width: 40px;
+    height: 40px;
+    margin: 0px 10px;
   }
 `;
 
