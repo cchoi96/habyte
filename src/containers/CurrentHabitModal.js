@@ -38,7 +38,7 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
 
   const customStyles = {
     content: {
-      width: "50%",
+      height: "max-content",
       overflow: "scroll",
       backgroundColor: backgroundColor(habit.category_name),
       height: "max-content",
@@ -54,21 +54,20 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
       zIndex: "999"
     }
   };
-  let habit_history = [];
 
   useEffect(() => {
     axios
       .get(`http://0.0.0.0:8080/user/project/${habit.id}`)
       .then(res => res.data)
       .then(data => {
+        const habit_history = [];
         console.log(data);
 
         for (let [index, val] of data.entries()) {
-          habit_history.push({ x: index + 1, y: val.counter });
+          habit_history.push({ x: index, y: val.counter });
         }
-
-        console.log(habit_history);
         setModalData(habit_history);
+        console.log(habit_history);
       });
   }, []);
 
@@ -88,7 +87,7 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
     e.preventDefault();
     closeModal();
   };
-  console.log(habit);
+  console.log("modalData", modalData);
   return (
     <div>
       <Modal
@@ -116,16 +115,20 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
           {modalData.length > 1 && (
             <XYPlot width={400} height={300}>
               <XAxis tickValues={[0, 1, 2, 3, 4]} />
-              <YAxis tickValues={[0, 1, 2, 3, 4, 5, 6, 7]} />
+              <YAxis
+                tickValues={[0, 1, 2, 3, 4, 5, 6, 7]}
+                includeMargin={false}
+                xPercent={0.06}
+                yPercent={0.06}
+              />
 
               {/* <HorizontalGridLines />
           <VerticalGridLines /> */}
-              <LineMarkSeries data={modalData} />
+              <LineMarkSeries data={modalData} animation={"noWobble"} />
             </XYPlot>
           )}
+          <button onClick={closeModal}>close</button>
         </StyledFlexColumn>
-
-        <button onClick={closeModal}>close</button>
       </Modal>
     </div>
   );
