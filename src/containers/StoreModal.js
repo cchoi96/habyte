@@ -15,7 +15,7 @@ const StoreModal = ({ buyingItem, setIsOpen, isOpen, className, buyItem }) => {
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
       textAlign: "left",
-      backgroundColor: "#f8f9fa",
+      backgroundColor: "rgba(36,204,143)",
       borderRadius: "10px"
     },
     overlay: {

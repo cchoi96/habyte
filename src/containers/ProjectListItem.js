@@ -4,9 +4,7 @@ import styled from "styled-components";
 
 const ProjectListItem = ({
   cookies,
-  setModalOpen,
   projectName,
-  projectNumberCommit,
   className,
   setProjectSelected,
   projectSelected,

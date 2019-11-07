@@ -8,8 +8,7 @@ const Farm = ({
   cookies,
   userCoin,
   setUserCoin,
-  updateCoinInDatabase,
-  setHabits
+  updateCoinInDatabase
 }) => {
   const [heart, SetHeart] = useState(false);
   let timeOut;
@@ -131,7 +130,12 @@ const Farm = ({
           heartFunction();
         }}
       />
-      <img src="/assets/other/heart.png" alt="heart" id="heart" heart={heart.toString()} />
+      <img
+        src="/assets/other/heart.png"
+        alt="heart"
+        id="heart"
+        heart={heart.toString()}
+      />
     </StyledContainer>
   );
 };
