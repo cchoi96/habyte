@@ -110,7 +110,6 @@ const CurrentHabitModal = ({ habit, setIsStatsOpen, isStatsOpen }) => {
               />
             </XYPlot>
           )}
-          {console.log(modalData)}
         </StyledFlexColumn>
       </Modal>
     </div>
