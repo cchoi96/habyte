@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import crops from "../helpers/cropprices";
@@ -10,12 +10,11 @@ const FarmTiles = ({
   setUserCoin,
   userCoin,
   cookies,
-  habits,
   updateHabits,
   top
 }) => {
   const [showCropDetail, setShowCropDetail] = useState(false);
-  const revive = () => {};
+  // const revive = () => {};
   const remove = () => {
     axios
       .delete("http://0.0.0.0:8080/user/crops", {

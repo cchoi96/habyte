@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import GithubProjectList from "./GithubProjectList";
 import Modal from "react-modal";
 import axios from "axios";
